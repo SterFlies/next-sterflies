@@ -1,0 +1,116 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+/* Hamburger (mobile) */
+.burger {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Main menu (hidden by default on mobile) */
+.menu {
+  display: none;
+  list-style: none;
+  margin: 3;
+  padding: 3;
+}
+
+/* Menu open state (mobile) */
+.menuOpen {
+  display: block;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.menuOpen li + li {
+  border-top: 1px solid #eee;
+}
+
+/* Menu items styling */
+.menu li {
+  margin: 3;
+  padding: 3;
+}
+
+.menu a,
+.menu button {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Thermal submenu (desktop & mobile) */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.dropdown button[aria-expanded="true"] + .submenu {
+  display: block;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+  .menu,
+  .menuOpen {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: static;
+    background: none;
+    border: none;
+  }
+  .menuOpen li + li {
+    border: none;
+  }
+  .submenu {
+    top: 100%;
+    margin-top: 0.25rem;
+  }
+}

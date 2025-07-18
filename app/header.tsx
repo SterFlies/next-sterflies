@@ -1,119 +1,99 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+'use client'
+
+import React, { useState, useRef, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import styles from './components/Header.module.css'
 
 export default function Header() {
-  const [thermalOpen, setThermalOpen] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [thermalOpen, setThermalOpen] = useState(false)
+  const dropdownRef = useRef<HTMLLIElement>(null)
 
+  // Close the thermal submenu if you click outside it
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
+    function onClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setThermalOpen(false);
+        setThermalOpen(false)
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
+  const links: Array<[string, string]> = [
+    ['/', 'Home'],
+    ['/about', 'About'],
+    ['/services', 'Services'],
+    ['/gallery', 'Gallery'],
+    ['/blog', 'Blog'],
+    ['/contact', 'Contact'],
+  ]
+
+  const closeAll = () => {
+    setMenuOpen(false)
+    setThermalOpen(false)
+  }
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <nav className="container mx-auto grid grid-cols-3 items-center py-4">
-        {/* Logo on the left */}
-        <div className="justify-self-start">
-          <Link href="/">
-            <Image
-              src="/logo.png"
-              alt="SterFlies Logo"
-              width={200}
-              height={80}
-              priority
-            />
-          </Link>
-        </div>
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        {/* Logo */}
+        <Link href="/" onClick={closeAll} className={styles.logo}>
+          <Image src="/logo.png" alt="SterFlies Logo" width={160} height={64} />
+        </Link>
 
-        {/* Centered nav links */}
-        <ul className="col-span-1 flex justify-center space-x-8 text-gray-700 justify-self-center">
-          <li>
-            <Link href="/" className="hover:text-blue-600">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="hover:text-blue-600">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="hover:text-blue-600">
-              Services
-            </Link>
-          </li>
-          <li ref={dropdownRef} className="relative">
+        {/* Hamburger button (mobile) */}
+        <button
+          className={styles.burger}
+          onClick={() => { setMenuOpen(o => !o); setThermalOpen(false) }}
+          aria-label="Toggle navigation"
+        >
+          {menuOpen ? '✕' : '☰'}
+        </button>
+
+        {/* Navigation links */}
+        <ul className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}>
+          {links.slice(0, 3).map(([href, label]) => (
+            <li key={href}>
+              <Link href={href} onClick={closeAll}>{label}</Link>
+            </li>
+          ))}
+
+          {/* Thermal dropdown */}
+          <li ref={dropdownRef} className={styles.dropdown}>
             <button
               onClick={() => setThermalOpen(o => !o)}
-              className="flex items-center hover:text-blue-600 focus:outline-none"
               aria-expanded={thermalOpen}
             >
-              Thermal
-              <span
-                className={`ml-1 transform transition-transform duration-200 ${
-                  thermalOpen ? "rotate-180" : ""
-                }`}
-              >
-                ▾
-              </span>
+              Thermal ▾
             </button>
-            {thermalOpen && (
-              <ul className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-gray shadow-lg rounded z-50 divide-y divide-gray-100">
-                <li>
-                  <Link
-                    href="/thermal/case-studies"
-                    className="block px-6 py-2 hover:text-blue-600"
-                  >
-                    Case Studies
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/thermal/Applications"
-                    className="block px-6 py-2 hover:text-blue-600"
-                  >
-                    Applications 
-                  </Link>  
-                </li>
-                <li>
-                  <Link
-                    href="/thermal/method"
-                    className="block px-6 py-2 hover:text-blue-600"
-                  >
-                    Process & Method 
-                  </Link>  
-                </li>
-              </ul>
-            )}
+            <ul className={styles.submenu}>
+              <li>
+                <Link href="/thermal/case-studies" onClick={closeAll}>
+                  Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/thermal/applications" onClick={closeAll}>
+                  Applications
+                </Link>
+              </li>
+              <li>
+                <Link href="/thermal/method" onClick={closeAll}>
+                  Process &amp; Method
+                </Link>
+              </li>
+            </ul>
           </li>
-          <li>
-            <Link href="/gallery" className="hover:text-blue-600">
-              Gallery
-            </Link>
-          </li>
-          <li>
-            <Link href="/blog" className="hover:text-blue-600">
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="hover:text-blue-600">
-              Contact
-            </Link>
-          </li>
-        </ul>
 
-        {/* Right placeholder for symmetry */}
-        <div className="justify-self-end" />
+          {links.slice(3).map(([href, label]) => (
+            <li key={href}>
+              <Link href={href} onClick={closeAll}>{label}</Link>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
-);
+  )
 }

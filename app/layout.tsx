@@ -1,11 +1,12 @@
 // app/layout.tsx
 import React from 'react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Header from './header'
 import Footer from './footer'
 import PageWrapper from '@/app/components/PageWrapper'
 import './globals.css'
+import ScalableContainer from '@/app/components/ScalableContainer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,6 +26,11 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -33,16 +39,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-blue-300`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-blue-300 min-h-screen`}
       >
-        {/* site-wide header */}
-        <Header />
-
-        {/* wrap pages except home via PageWrapper */}
-        <PageWrapper>{children}</PageWrapper>
-
-        {/* site-wide footer */}
-        <Footer />
+        {/* ClientWrapper handles the useIsMobile hook and scaling */}
+        <ScalableContainer>
+          <Header />
+          <PageWrapper>{children}</PageWrapper>
+          <Footer />
+          </ScalableContainer>
       </body>
     </html>
   )
