@@ -75,7 +75,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/thermal/applications" onClick={closeAll}>
+                <Link href="/thermal/Applications" onClick={closeAll}>
                   Applications
                 </Link>
               </li>
