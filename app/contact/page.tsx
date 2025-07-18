@@ -77,15 +77,6 @@ export default function ContactPage() {
             </a>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-800">Phone</h2>
-            <a
-              href="tel:+18329187171"
-              className="text-blue-600 hover:underline"
-            >
-              (832) 918-7171
-            </a>
-          </div>
-          <div>
             <h2 className="text-xl font-semibold text-gray-800">Location</h2>
             <p className="text-gray-700">San Antonio, TX</p>
           </div>
