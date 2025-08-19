@@ -1,0 +1,83 @@
+@import "tailwindcss";
+/* ——— Theme tokens (light only) ——— */
+:root {
+  --background: #ffffff;   /* background color */
+  --foreground: #0b1220;   /* readable dark text */
+  --font-sans: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  --font-mono: var(--font-mono, monospace);
+}
+
+/* Apply them globally */
+html, body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100%;
+}
+
+/* If you still want a sky background in some places */
+.sky-bg { background: #87ceeb; }
+
+/* ——— Drone flight ani ——— */
+@keyframes fly {
+  0%   { transform: translateX(-150px) translateY(20px) rotate(0deg); }
+  25%  { transform: translateX(25vw)   translateY(0px)  rotate(10deg); }
+  75%  { transform: translateX(75vw)   translateY(0px)  rotate(-10deg); }
+  100% { transform: translateX(calc(100vw + 100px)) translateY(20px) rotate(0deg); }
+}
+.drone {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100px;
+  animation: fly 20s linear infinite;
+  z-index: 10;
+}
+
+/* ——— Clouds drifting right→left ——— */
+@keyframes floatCloud {
+  0%   { transform: translateX(calc(100vw + 100px)); }
+  100% { transform: translateX(-100px); }
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+  filter: blur(4px);
+  border-radius: 50%;
+  animation: floatCloud linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  filter: inherit;
+  border-radius: 50%;
+}
+.cloud::before {
+  width: 100px; height: 80px;
+  top: -30px;  left: 10px;
+}
+.cloud::after {
+  width: 120px; height: 100px;
+  top: -40px;  right: 15px;
+}
+
+.cloud1 { top: 10%; width: 200px; height: 80px;  animation-duration: 20s;}
+.cloud2 { top: 35%; width: 250px; height: 100px; animation-duration: 43s;}
+.cloud3 { top: 55%; width: 180px; height: 70px;  animation-duration: 30s;}
+.cloud4 { top: 25%; width: 200px; height: 90px;  animation-duration: 37s;}
+.cloud5 { top: 70%; width: 220px; height: 80px;  animation-duration: 50s;}
+
+/* Shining letter effect */
+@keyframes letter-shine {
+  0%,100% { filter: brightness(1); }
+  30%,70% { filter: brightness(1.4); }
+  50%     { filter: brightness(2); }
+}
+.shine-letter {
+  display: inline-block;
+  animation: letter-shine 2s ease-in-out infinite;
+}

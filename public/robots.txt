@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sterflies.com
+
+# Sitemaps
+Sitemap: https://sterflies.com/sitemap.xml
