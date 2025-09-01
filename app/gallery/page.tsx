@@ -54,6 +54,12 @@ const items = [
     title: 'Scenic Overview Shot',
     category: 'promos',
   },
+  {
+    src: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1756763537/HotSpotCS_q6d2pk.jpg',
+    thumb: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1756763537/HotSpotCS_q6d2pk.jpg',
+    title: 'Thermal Inspection - Hot Spot',
+    category: 'thermal',
+  },
   // ... add other items here
 ];
 

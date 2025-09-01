@@ -120,7 +120,7 @@ export default function OrthomosaicBlogPage() {
                 href="mailto:jerome.sterling@sterflies.com?subject=Inquiry"
                 className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3 text-white font-medium shadow hover:bg-blue-900"
               >
-                Email us!
+                Contact Us!
               </Link>
               <Link
                 href="/blog"

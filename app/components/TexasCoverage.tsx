@@ -21,7 +21,7 @@ export default function TexasCoverage() {
             ))}
             </span>
             
-            <span className="text-orange-500">&amp; SURROUNDING AREAS</span>
+            <span className="text-orange-500"> &amp; SURROUNDING AREAS</span>
           </p>
 
           <p className="mt-5 text-lg text-slate-600">

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { HardHat, LandPlot, Radiation } from "lucide-react";
+import { Camera, LandPlot, Radiation } from "lucide-react";
 import HowItWorks from './components/HowItWorks';
 import TexasCoverage from "./components/TexasCoverage";
 import SignUpForm from "./components/SignUpForm";
@@ -39,9 +39,9 @@ export const metadata = {
 
 export default function HomePage() {
   const industries = [
-    { title: "Construction", Icon: HardHat },
-    { title: "Real-Estate Development", Icon: LandPlot },
-    { title: "Thermal Data", Icon: Radiation },
+    { title: "Photogrammetry", Icon: Camera },
+    { title: "Site-Scanning", Icon: LandPlot },
+    { title: "Thermal Technology", Icon: Radiation },
   ];
 
   return (
@@ -70,12 +70,12 @@ export default function HomePage() {
           <h1 className="text-5xl md:text-6xl font-extrabold text-white">
             A Higher Perspective on Every Project
           </h1>
-          <h2 className="mt-2 text-2xl text-gray-200">
+          <h2 className="mt-2 text-2xl text-black">
             San Antonio&apos;s Premier Thermal &amp; Aerial Media Provider
           </h2>
           <Link href="/contact" passHref>
             <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-              Call Us Today!
+              Schedule a Call!
             </button>
           </Link>
         </div>
@@ -126,8 +126,8 @@ export default function HomePage() {
         {/* Left side: sample photo */}
         <div className="lg:w-1/2">
           <Image
-            src="/Stockpile-photo.png"
-            alt="Drone Mapping: Volumetrics/cut & fill"
+            src="/pointclouds-camerapoints.png"
+            alt="point clouds and camera positions from a drone survey"
             width={600}
             height={400}
             className="rounded-lg shadow-lg"

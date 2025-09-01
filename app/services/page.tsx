@@ -3,7 +3,7 @@ import Link from 'next/link'
 import ProcessFlow from '@/app/components/ProcessFlow'
 import SignUpForm from "@/app/components/SignUpForm";
 import {
-  HardHat,
+  Camera,
   LandPlot,
   CircleDollarSign,
 } from 'lucide-react'
@@ -17,15 +17,15 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Construction',
-    slug: 'construction',
-    description: 'High-resolution aerial imagery and time-lapse videos to document site development.',
-    Icon: HardHat,
+    title: 'Photogrammetry',
+    slug: 'photogrammetry',
+    description: 'High-resolution aerial data (orthomosaics, 3D maps/models, volumetrics, cut/fill, topography).',
+    Icon: Camera,
   },
   {
-    title: 'Vacant Land Photography',
-    slug: 'vacantland',
-    description: 'Detailed aerial photos and videos to showcase land properties for sale.',
+    title: 'Site Inspections & Scanning',
+    slug: 'scanning',
+    description: 'Detailed aerial & ground-level scanning.',
     Icon: LandPlot,
   },
   {
