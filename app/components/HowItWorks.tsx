@@ -18,7 +18,7 @@ const steps = [
     icon: <DownloadCloud className="w-8 h-8 text-white" />,
     title: 'Download Your Aerial Imagery',
     description:
-      'Your visuals are edited and delivered within 24 hours of the shoot—ready for download and ready to use.',
+      'Your visuals are edited and delivered within 7 business days of the shoot—ready for download and ready to use.',
   },
 ];
 

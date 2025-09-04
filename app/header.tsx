@@ -25,7 +25,7 @@ export default function Header() {
     ['/', 'Home'],
     ['/about', 'About'],
     ['/services', 'Services'],
-    ['/gallery', 'Gallery'],
+    ['/projects', 'Projects'],
     ['/blog', 'Blog'],
     ['/contact', 'Contact'],
   ]
