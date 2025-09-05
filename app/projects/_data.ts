@@ -68,7 +68,7 @@ export const projects: Project[] = [
     location: "Greater San Antonio, TX",
     service: "thermal",
     cover: {
-      src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1756763537/HotSpotCS_q6d2pk.jpg",
+      src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png",
       alt: "Thermal hotspot on a PV module",
     },
     excerpt:

@@ -3,39 +3,46 @@ import Link from "next/link";
 
 const ORTHO_BLOG = "/blog/orthomosaic_blog"; // update this path if your article lives elsewhere
 
-// Lightweight metadata you can import on the index page later if you want
+// Lightweight metadata
 const meta = {
   slug: "65acresite",
-  title: "65‑Acre Neighborhood Development – Orthomosaic Monitoring",
+  title: "65-Acre Neighborhood Development – Orthomosaic Monitoring",
   date: "2025-06-02",
   cover: {
     src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
-    alt: "Orthomosaic overview of 65‑acre neighborhood development",
+    alt: "Orthomosaic overview of 65-acre neighborhood development",
   },
   excerpt:
-    "Recurring drone capture and shareable web orthomosaic to coordinate grading, utilities, pads, and access across a 65‑acre site.",
+    "Recurring drone capture and shareable web orthomosaic to coordinate grading, utilities, pads, and access across a 65-acre site.",
   tags: ["orthomosaic", "mapping", "progress"],
 };
 
+// AspectBox with mobile-only size boost + mobile bleed (edge-to-edge)
 function AspectBox({
   aspect = "16/9",
+  mobileTall = false,   // 4:3 on phones (taller); unchanged on sm+
+  bleedMobile = false,  // edge-to-edge on phones; normal on sm+
   children,
 }: {
   aspect?: "16/9" | "4/3" | "1/1" | "21/9" | "3/2";
+  mobileTall?: boolean;
+  bleedMobile?: boolean;
   children: React.ReactNode;
 }) {
-  const cls =
-    aspect === "4/3"
-      ? "aspect-[4/3]"
-      : aspect === "1/1"
-      ? "aspect-square"
-      : aspect === "21/9"
-      ? "aspect-[21/9]"
-      : aspect === "3/2"
-      ? "aspect-[3/2]"
-      : "aspect-[16/9]";
+  const desktop =
+    aspect === "4/3" ? "sm:aspect-[4/3]" :
+    aspect === "1/1" ? "sm:aspect-square" :
+    aspect === "21/9" ? "sm:aspect-[21/9]" :
+    aspect === "3/2" ? "sm:aspect-[3/2]" :
+    "sm:aspect-[16/9]";
+
+  const mobile = mobileTall ? "aspect-[4/3]" : "aspect-[16/9]";
+  const bleed = bleedMobile ? "-mx-4 sm:mx-0" : "";
+
   return (
-    <div className={`${cls} relative w-full rounded-2xl overflow-hidden bg-black`}>{children}</div>
+    <div className={`${bleed} relative w-full ${mobile} ${desktop} rounded-2xl overflow-hidden bg-black`}>
+      {children}
+    </div>
   );
 }
 
@@ -108,18 +115,20 @@ export default function ProjectPage() {
         <div className="lg:col-span-8 space-y-8">
           <SectionCard id="overview" title="Executive Summary">
             <p>
-              This 65‑acre neighborhood development is a living jobsite: cut/fill, utilities, pads,
+              This 65-acre neighborhood development is a living jobsite: cut/fill, utilities, pads,
               roadway subgrade, and staging for vertical construction often move in parallel. The
               team needed a reliable way to <em>see the whole site</em> frequently without pausing work
               or waiting on a long survey cycle. We run a recurring drone capture that publishes a
-              high‑resolution, web‑viewable <Link href={ORTHO_BLOG} className="text-[#00a2ff] underline underline-offset-2">orthomosaic</Link> It’s the shared visual baseline: planners
-              coordinate utilities and pads; supers drop pins for RFIs; subs check access and staging;
-              owners and lenders get a clear, date‑stamped snapshot of change.
+              high-resolution, web-viewable{" "}
+              <Link href={ORTHO_BLOG} className="text-[#00a2ff] underline underline-offset-2">orthomosaic</Link>
+              . It’s the shared visual baseline: planners coordinate utilities and pads; supers drop
+              pins for RFIs; subs check access and staging; owners and lenders get a clear,
+              date-stamped snapshot of change.
             </p>
             <p>
               This deliverable is a georeferenced, measurable surface—not just a pretty image. In the
               browser you can pan/zoom, measure lengths/areas, and compare phases over time. By syncing
-              flights with active earthwork and utility pushes, decision‑makers get the right view at
+              flights with active earthwork and utility pushes, decision-makers get the right view at
               the right moment.
             </p>
           </SectionCard>
@@ -128,15 +137,19 @@ export default function ProjectPage() {
             <p className="text-sm text-gray-600">
               Pan, zoom, and measure directly in the viewer. Open full screen for best clarity.
             </p>
-            <AspectBox>
+
+            {/* 👉 Bigger only on phones; unchanged on tablet/desktop; edge-to-edge on phones */}
+            <AspectBox mobileTall bleedMobile>
               <iframe
                 src="https://cloud.pix4d.com/embed/pro/map/2343984?shareToken=3674eb23-ce25-4347-af2b-7344c37e5128"
                 className="absolute inset-0 w-full h-full"
-                title="65‑Acre Development — Orthomosaic (Pix4Dcloud)"
+                title="65-Acre Development — Orthomosaic (Pix4Dcloud)"
                 frameBorder={0}
                 allowFullScreen
+                loading="lazy"
               />
             </AspectBox>
+
             <p className="text-xs text-gray-500">
               Notes: Web measurements are ideal for coordination; stamped records remain with survey.
             </p>
@@ -149,14 +162,14 @@ export default function ProjectPage() {
                 <p>
                   Durable visual record for lenders and partners. Reduces unnecessary walkthroughs and
                   clarifies sequence of work against the schedule of values. Bookmarks capture key
-                  milestones—subgrade, first lift, utilities tied‑in—and support quick approvals.
+                  milestones—subgrade, first lift, utilities tied-in—and support quick approvals.
                 </p>
               </div>
               <div className="rounded-xl border p-5 space-y-3">
                 <h3 className="font-semibold">General Contractor</h3>
                 <p>
                   Supers reference the map during morning huddles to orient new subs, set traffic
-                  flows, and mark restricted zones. PMs use in‑browser measurements for quick quantity
+                  flows, and mark restricted zones. PMs use in-browser measurements for quick quantity
                   checks and to accelerate clarifications with the design team.
                 </p>
               </div>
@@ -190,14 +203,16 @@ export default function ProjectPage() {
 
           <SectionCard id="change" title="Change Detection & Versioning">
             <p>
-                 On a site this size, meaningful change happens fast—sometimes between Friday’s punch-list and
-                Monday’s stand-up. Pads widen, trench lines jump lots, stockpiles migrate, and access routes pivot
-                around weather or crew availability. A weekly or bi-weekly <Link href={ORTHO_BLOG} className="text-[#00a2ff] underline underline-offset-2">orthomosaic</Link> makes those shifts obvious
-                at a glance, so coordination isn’t based on memory or texts from the field. Side-by-side views of
-                prior captures answer, “What moved?” in seconds, letting PMs redirect trucks, resequence crews, and
-                flag rework risks before they harden. Over time, the versioned mosaic library becomes a visual
-                history of decisions: when the north spine tied in, where silt control crept, how staging evolved.
-                It’s simple, fast change detection that keeps everyone building off the same picture of reality.
+              On a site this size, meaningful change happens fast—sometimes between Friday’s punch-list and
+              Monday’s stand-up. Pads widen, trench lines jump lots, stockpiles migrate, and access routes pivot
+              around weather or crew availability. A weekly or bi-weekly{" "}
+              <Link href={ORTHO_BLOG} className="text-[#00a2ff] underline underline-offset-2">orthomosaic</Link>{" "}
+              makes those shifts obvious at a glance, so coordination isn’t based on memory or texts from the field.
+              Side-by-side views of prior captures answer, “What moved?” in seconds, letting PMs redirect trucks,
+              resequence crews, and flag rework risks before they harden. Over time, the versioned mosaic library
+              becomes a visual history of decisions: when the north spine tied in, where silt control crept, how
+              staging evolved. It’s simple, fast change detection that keeps everyone building off the same picture
+              of reality.
             </p>
           </SectionCard>
 
@@ -205,7 +220,7 @@ export default function ProjectPage() {
             <p>
               Launch/recovery away from haul roads, visual observers near heavy moves, and conservative
               wind/convective limits. Coordination with the superintendent on crane windows and
-              temporary no‑fly areas. Read‑only share links as default; restricted shares for sensitive
+              temporary no-fly areas. Read-only share links as default; restricted shares for sensitive
               overlays.
             </p>
           </SectionCard>
@@ -261,7 +276,7 @@ export default function ProjectPage() {
                 <figure className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
                   <Image
                     src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015632/DJI_20250831081141_0006_V_wzu5oe.jpg"
-                    alt="Bird’s‑eye context with property lines"
+                    alt="Bird’s-eye context with property lines"
                     fill
                     className="object-cover"
                   />
@@ -284,3 +299,4 @@ export default function ProjectPage() {
     </main>
   );
 }
+

@@ -1,4 +1,4 @@
 {
-  "/projects/page": "app/projects/page.js",
-  "/projects/matterport-drone/page": "app/projects/matterport-drone/page.js"
+  "/projects/matterport-drone/page": "app/projects/matterport-drone/page.js",
+  "/page": "app/page.js"
 }

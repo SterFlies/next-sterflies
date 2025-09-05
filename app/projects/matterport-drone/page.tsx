@@ -2,13 +2,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Local meta (kept as a plain const so Next.js build stays clean)
+// Local meta (plain const so Next.js build stays clean)
 const meta = {
-  slug: "custom-home-matterport-drone",
+  slug: "custom-home-matterport-drone", // this value doesn't affect routing
   title: "Custom Home – Matterport + Drone Combo",
   date: "2025-08-15",
   cover: {
-    // Used on the Projects index card
     src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077581/Screenshot_2025-09-05_080609_q3q6nk.png",
     alt: "Custom home interior/exterior capture (Matterport + drone)",
   },
@@ -17,7 +16,7 @@ const meta = {
   tags: ["matterport", "interior", "exterior", "construction"],
 } as const;
 
-// Embeds & assets (yours)
+// Embeds & assets
 const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW";
 const PIX4D_MESH_URL =
   "https://cloud.pix4d.com/dataset/2342031/model?shareToken=89cc5de9-8b83-4729-b25d-40f18e89cfe5";
@@ -29,24 +28,33 @@ const CLOUDINARY_VIDEO_POSTER =
 const CLOUDINARY_FIELD_PHOTO =
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077084/matterportthumb_rosrlb.png";
 
+// AspectBox with mobile-only height boost + optional mobile bleed
 function AspectBox({
   aspect = "16/9",
+  mobileTall = false,   // 4:3 on phones (taller), unchanged on sm+
+  bleedMobile = false,  // edge-to-edge on phones, normal on sm+
   children,
 }: {
   aspect?: "16/9" | "4/3" | "1/1" | "21/9" | "3/2";
+  mobileTall?: boolean;
+  bleedMobile?: boolean;
   children: React.ReactNode;
 }) {
-  const cls =
-    aspect === "4/3"
-      ? "aspect-[4/3]"
-      : aspect === "1/1"
-      ? "aspect-square"
-      : aspect === "21/9"
-      ? "aspect-[21/9]"
-      : aspect === "3/2"
-      ? "aspect-[3/2]"
-      : "aspect-[16/9]";
-  return <div className={`${cls} relative w-full rounded-2xl overflow-hidden bg-black`}>{children}</div>;
+  const desktop =
+    aspect === "4/3" ? "sm:aspect-[4/3]" :
+    aspect === "1/1" ? "sm:aspect-square" :
+    aspect === "21/9" ? "sm:aspect-[21/9]" :
+    aspect === "3/2" ? "sm:aspect-[3/2]" :
+    "sm:aspect-[16/9]";
+
+  const mobile = mobileTall ? "aspect-[4/3]" : "aspect-[16/9]";
+  const bleed = bleedMobile ? "-mx-4 sm:mx-0" : "";
+
+  return (
+    <div className={`${bleed} relative w-full ${mobile} ${desktop} rounded-2xl overflow-hidden bg-black`}>
+      {children}
+    </div>
+  );
 }
 
 function SectionCard({
@@ -81,9 +89,7 @@ export default function ProjectPage() {
     <main className="container mx-auto px-4 py-12 lg:py-16">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/projects" className="hover:underline">
-          Projects
-        </Link>
+        <Link href="/projects" className="hover:underline">Projects</Link>
         <span className="mx-2">/</span>
         <span>{meta.title}</span>
       </nav>
@@ -94,7 +100,7 @@ export default function ProjectPage() {
         <div className="mt-3 text-gray-600 text-sm">{"San Antonio Area, TX • " + meta.date}</div>
       </header>
 
-      {/* HERO — Matterport embed */}
+      {/* HERO — Matterport embed (unchanged desktop/mobile) */}
       <AspectBox>
         <iframe
           src={MATTERPORT_URL}
@@ -103,6 +109,7 @@ export default function ProjectPage() {
           frameBorder={0}
           allow="autoplay; fullscreen; web-share; xr-spatial-tracking"
           allowFullScreen
+          loading="lazy"
         />
       </AspectBox>
 
@@ -121,10 +128,7 @@ export default function ProjectPage() {
         <div className="lg:col-span-8 space-y-8">
           <SectionCard id="overview" title="Executive Summary">
             <p>
-              This project pairs a <strong>Matterport interior scan</strong> with an{" "}
-              <strong>exterior drone-based 3D model</strong> so owners and trades can see the entire build—inside and out—from a
-              single link. The interior tour makes it easy to confirm room flow and rough-in locations, while the exterior model
-              shows access, grading, and roof geometry. It’s a simple digital handoff that reduces site visits and speeds decisions.
+              This project pairs a <strong>Matterport interior scan</strong> with an <strong>exterior drone-based 3D model</strong> so owners and trades can see the entire build—inside and out—from a single link. The interior tour makes it easy to confirm room flow and rough-in locations, while the exterior model shows access, grading, and roof geometry. It’s a simple digital handoff that reduces site visits and speeds decisions.
             </p>
           </SectionCard>
 
@@ -134,15 +138,16 @@ export default function ProjectPage() {
             </p>
           </SectionCard>
 
-          {/* Exterior 3D Model (Pix4D) */}
+          {/* Exterior 3D Model (Pix4D) — bigger on phones only */}
           <SectionCard id="exterior3d" title="Exterior 3D Model">
-            <AspectBox>
+            <AspectBox mobileTall bleedMobile>
               <iframe
                 src={PIX4D_MESH_URL}
                 className="absolute inset-0 w-full h-full"
                 title="Custom Home — Exterior 3D Model (Pix4D)"
                 frameBorder={0}
                 allowFullScreen
+                loading="lazy"
               />
             </AspectBox>
             <p className="text-sm text-gray-600">
@@ -153,10 +158,7 @@ export default function ProjectPage() {
           {/* Cloudinary Video with Pro3 paragraph */}
           <SectionCard id="pro3video" title="Interior Scanning with Matterport Pro3">
             <p>
-              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data,
-              making it ideal for <em>virtual tours, as-built documentation,</em> and quick stakeholder reviews. The result is a
-              clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up
-              about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
+              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for <em>virtual tours, as-built documentation,</em> and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
             </p>
             <AspectBox>
               <video
@@ -167,7 +169,8 @@ export default function ProjectPage() {
                 playsInline
                 preload="metadata"
                 poster={CLOUDINARY_VIDEO_POSTER}
-                className="absolute inset-0 w-full h-full object-cover">
+                className="absolute inset-0 w-full h-full object-cover"
+              >
                 <source src={CLOUDINARY_VIDEO_MP4} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -189,7 +192,7 @@ export default function ProjectPage() {
             </figure>
           </SectionCard>
 
-          <SectionCard id="qa" title="Capture & Quality">
+          <SectionCard id="qa" title="Capture & QA">
             <ul className="list-disc pl-5">
               <li>Matterport interior with control scan for accuracy across floors.</li>
               <li>Exterior flown at low altitude for crisp roof planes and site context.</li>
@@ -200,18 +203,10 @@ export default function ProjectPage() {
 
           <SectionCard id="next" title="Next Steps (Plain English)">
             <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong>Edit and add annotations to tour</strong> (interactive and annotated features) to keep a visual record.
-              </li>
-              <li>
-                <strong>Share one link</strong> in owner updates; add two bullets: “What changed / What’s next.”
-              </li>
-              <li>
-                <strong>Pin 2–3 decisions</strong> inside the tour (fixtures, switches, cabinets) for faster sign-off.
-              </li>
-              <li>
-                <strong>Add an exterior map</strong> (ortho or 3D) here when grading/roof geometry changes.
-              </li>
+              <li><strong>Edit and add annotations to tour</strong> (interactive and annotated features) to keep a visual record.</li>
+              <li><strong>Share one link</strong> in owner updates; add two bullets: “What changed / What’s next.”</li>
+              <li><strong>Pin 2–3 decisions</strong> inside the tour (fixtures, switches, cabinets) for faster sign-off.</li>
+              <li><strong>Add an exterior map</strong> (ortho or 3D) here when grading/roof geometry changes.</li>
             </ul>
           </SectionCard>
         </div>
@@ -222,24 +217,12 @@ export default function ProjectPage() {
             <div className="rounded-2xl border p-6 bg-white">
               <h3 className="text-base font-semibold">Quick Facts</h3>
               <ul className="mt-3 text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-medium">Type:</span> Custom single-family home
-                </li>
-                <li>
-                  <span className="font-medium">Primary:</span> Matterport interior tour
-                </li>
-                <li>
-                  <span className="font-medium">Secondary:</span> Exterior 3D model
-                </li>
-                <li>
-                  <span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop
-                </li>
-                <li>
-                    <span className ="font-medium">Use case:</span> Owner/trade coordination, remote review
-                </li>
-                <li>
-                    <span className ="font-medium">Outputs:</span> Virtual tour, 3D model, MP4 videos, Still Images
-                </li>
+                <li><span className="font-medium">Type:</span> Custom single-family home</li>
+                <li><span className="font-medium">Primary:</span> Matterport interior tour</li>
+                <li><span className="font-medium">Secondary:</span> Exterior 3D model</li>
+                <li><span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop</li>
+                <li><span className="font-medium">Use case:</span> Owner/trade coordination, remote review</li>
+                <li><span className="font-medium">Outputs:</span> Virtual tour, 3D model, MP4 videos, Still Images</li>
               </ul>
               <Link
                 href="/contact"
@@ -261,3 +244,4 @@ export default function ProjectPage() {
     </main>
   );
 }
+
