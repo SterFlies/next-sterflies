@@ -26,7 +26,24 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  // NEW: 65-acre project to match /projects/65acresite
+  // Matterport interior + drone exterior
+  {
+    slug: "matterport-drone",
+    title: "Custom Home – Matterport Interior + Drone Exterior",
+    date: "2025-08-15",
+    client: "Residential GC / Owner",
+    location: "San Antonio Area, TX",
+    service: "construction",
+    cover: {
+      src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077581/Screenshot_2025-09-05_080609_q3q6nk.png",
+      alt: "Custom home interior/exterior capture (Matterport + drone)",
+    },
+    excerpt:
+      "Walk the interior in 3D with Matterport and review the exterior from above in 3D, full context for owners and trades.",
+    tags: ["matterport", "interior", "exterior", "construction", "site-scanning", "site-inspection"],
+  },
+
+  // 65-acre project to match /projects/65acresite
   {
     slug: "65acresite",
     title: "65-Acre Neighborhood Development – Monitoring Using Drones",
@@ -40,8 +57,7 @@ export const projects: Project[] = [
     },
     excerpt:
       "Recurring drone capture and shareable web orthomosaic to coordinate grading, utilities, pads, and access across a 65-acre site.",
-    tags: ["orthomosaic", "mapping", "progress"],
-    // (Detail content for index is optional; the full story lives in /projects/65acresite)
+    tags: ["orthomosaic", "mapping", "progress", "site-scanning", "site-inspection"],
   },
 
   {
@@ -57,7 +73,7 @@ export const projects: Project[] = [
     },
     excerpt:
       "Rapid thermal sweep to isolate underperforming strings. Delivered defect snapshots and a punch-list map for targeted maintenance.",
-    tags: ["thermal", "pv", "o&m"],
+    tags: ["thermal", "pv", "o&m", "site-inspection"],
     problem:
       "Operations suspected energy loss due to underperforming strings and needed rapid triage to prioritize maintenance.",
     approach: [
@@ -85,7 +101,7 @@ export const projects: Project[] = [
     },
     excerpt:
       "High-fidelity mesh for remote stakeholder reviews and owner updates—delivered with a browser-based viewer.",
-    tags: ["construction", "3d-model", "progress"],
+    tags: ["construction", "3d-model", "progress", "site-scanning"],
     problem:
       "Stakeholders needed a visual, measurable record of framing and exterior progress without disrupting crews.",
     approach: [
@@ -100,4 +116,3 @@ export const projects: Project[] = [
     ],
   },
 ];
-
