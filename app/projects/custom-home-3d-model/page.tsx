@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export const meta = {
+const meta = {
   slug: "custom-home-3d-model",
   title: "Custom Home Build – 3D Model (Progression)",
   date: "2025-05-11",

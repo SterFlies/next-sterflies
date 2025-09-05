@@ -4,7 +4,7 @@ import Link from "next/link";
 const ORTHO_BLOG = "/blog/orthomosaic_blog"; // update this path if your article lives elsewhere
 
 // Lightweight metadata you can import on the index page later if you want
-export const meta = {
+const meta = {
   slug: "65acresite",
   title: "65‑Acre Neighborhood Development – Orthomosaic Monitoring",
   date: "2025-06-02",

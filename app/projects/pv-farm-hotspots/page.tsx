@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 /** Lightweight meta your index page can import if you want */
-export const meta = {
+const meta = {
   slug: "pv-farm-hotspots",
   title: "PV Farm Hot-Spot Triage (Thermal + RGB)",
   date: "2025-07-20",
