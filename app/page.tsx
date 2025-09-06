@@ -11,17 +11,41 @@ import SignUpForm from "./components/SignUpForm";
 export const metadata = {
   title: "Professional Drone & Thermal Imaging Services in San Antonio | SterFlies",
   description:
-    "SterFlies provides expert drone photography, FPV videos, and thermal imaging solutions for construction, land, and marketing needs in San Antonio.",
+    "SterFlies provides expert drone photography and thermal imaging solutions in San Antonio.",
   keywords: [
-    "drone photography",
-    "drone services",
-    "thermal imaging",
-    "drone pilot",
-    "San Antonio drone",
-    "SterFlies",
-  ],
+  // Core services
+  "drone site scanning",
+  "drone thermal inspections",
+  "construction site drone mapping",
+  "photogrammetry drone services",
+  "3D site documentation",
+  "orthomosaic mapping",
+  "volumetric drone surveys",
+  "aerial drone photography",
+  "thermal imaging drone services",
+
+  // Industry-specific
+  "solar panel thermal inspection Texas",
+  "construction progress drone scans",
+  "insurance and legal site documentation",
+  "real estate 3D virtual tours",
+  "roof thermal drone inspection",
+  "agricultural drone surveys Texas",
+  "land development drone mapping",
+  "environmental monitoring drones",
+  "infrastructure inspection drones",
+ 
+
+  // Local SEO
+  "San Antonio drone services",
+  "Texas drone inspections",
+  "San Antonio thermal imaging",
+  
+  // Brand
+  "SterFlies",
+],
   openGraph: {
-    title: "SterFlies | Aerial & Thermal Drone Media in San Antonio",
+    title: "SterFlies | Aerial-to-Ground Site Solutions",
     description: "Elevate your project with aerial visuals and thermal insights from SterFlies.",
     url: "https://sterflies.com",
     siteName: "SterFlies",
@@ -71,7 +95,7 @@ export default function HomePage() {
             A Higher Perspective on Every Project
           </h1>
           <h2 className="mt-2 text-2xl text-black">
-            San Antonio&apos;s Premier Thermal &amp; Aerial Media Provider
+            San Antonio&apos;s Premier Thermal &amp; Aerial Media Expert
           </h2>
           <Link href="/contact" passHref>
             <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
@@ -111,8 +135,8 @@ export default function HomePage() {
           </h2>
 
           <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-black-800 leading-relaxed mb-8">
-            We capture high-resolution aerial imagery, thermal insights, and
-            dynamic shots to help you streamline projects, capture data, and tell your story from a whole new angle.
+            We capture high-resolution aerial imagery, thermal insights, 
+            and immersive scans to help you document projects, detect problems early, and communicate clearly from every angle.
           </p>
 
           <Link href="/services" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">
@@ -154,8 +178,7 @@ export default function HomePage() {
         </h2>
 
         <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-gray-800 leading-relaxed mb-8">
-          We use advanced drone technology and software techniques to capture centimeter-level accuracy 
-          and produce detailed maps, 3D models, cut & fill calculations, and more!
+          With precision drone scanning, we capture every detail—providing maps, 3D models, and volume calculations that help you plan smarter and reduce costly mistakes.
         </p>
         <Link href="/blog" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">
             Read more!
