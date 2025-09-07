@@ -19,7 +19,7 @@ const meta = {
 // Embeds & assets
 const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW";
 const PIX4D_MESH_URL =
-  "https://cloud.pix4d.com/dataset/2342031/model?shareToken=89cc5de9-8b83-4729-b25d-40f18e89cfe5";
+  "https://cloud.pix4d.com/dataset/2349141/model?shareToken=4a7c62ac-8c56-462a-af0e-68711a2d00bc";
 
 const CLOUDINARY_VIDEO_MP4 =
   "https://res.cloudinary.com/dzlmoyomq/video/upload/v1757075500/reelmatter_vzpkqo.mp4";
