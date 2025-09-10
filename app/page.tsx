@@ -64,7 +64,7 @@ export const metadata = {
 export default function HomePage() {
   const industries = [
     { title: "Project Documentation", Icon: Camera },
-    { title: "Mapping", Icon: LandPlot },
+    { title: "Site-Reconsctruction", Icon: LandPlot },
     { title: "Thermal Inspections", Icon: Radiation },
   ];
 
