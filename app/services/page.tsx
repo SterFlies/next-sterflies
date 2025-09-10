@@ -17,15 +17,15 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Photogrammetry',
-    slug: 'photogrammetry',
-    description: 'High-resolution aerial data (orthomosaics, 3D maps/models, volumetrics, cut/fill, topography).',
+    title: 'Project Documentation',
+    slug: 'on-track',
+    description: 'Detailed aerial & ground-level scanning.',
     Icon: Camera,
   },
   {
-    title: 'Site Inspections & Scanning',
-    slug: 'scanning',
-    description: 'Detailed aerial & ground-level scanning.',
+    title: 'Mapping & Site-Scanning',
+    slug: 'mapping',
+    description: 'High-resolution aerial data (orthomosaics, 3D maps/models, volumetrics, cut/fill, topography).',
     Icon: LandPlot,
   },
   {

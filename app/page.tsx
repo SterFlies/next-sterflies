@@ -63,9 +63,9 @@ export const metadata = {
 
 export default function HomePage() {
   const industries = [
-    { title: "Photogrammetry", Icon: Camera },
-    { title: "Site-Scanning", Icon: LandPlot },
-    { title: "Thermal Technology", Icon: Radiation },
+    { title: "Project Documentation", Icon: Camera },
+    { title: "Mapping", Icon: LandPlot },
+    { title: "Thermal Inspections", Icon: Radiation },
   ];
 
   return (
@@ -92,10 +92,10 @@ export default function HomePage() {
         {/* Hero text & CTA */}
         <div className="relative z-20 bg-transparent border-4 border-blue-900/70 backdrop-blur-md p-8 rounded text-center shadow-[0_0_4px_rgba(96,165,250,0.8),0_0_8px_rgba(96,165,250,0.6),0_0_16px_rgba(96,165,250,0.4)]">
           <h1 className="text-5xl md:text-6xl font-extrabold text-white">
-            A Higher Perspective on Every Project
+            Aerial & Thermal Drone Services
           </h1>
           <h2 className="mt-2 text-2xl text-black">
-            San Antonio&apos;s Premier Thermal &amp; Aerial Media Expert
+            from inspections to progress tracking to marketing visuals, we make your project clear.
           </h2>
           <Link href="/contact" passHref>
             <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
@@ -135,8 +135,7 @@ export default function HomePage() {
           </h2>
 
           <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-black-800 leading-relaxed mb-8">
-            We capture high-resolution aerial imagery, thermal insights, 
-            and immersive scans to help you document projects, detect problems early, and communicate clearly from every angle.
+            Reliable aerial data and imagery that help you spot issues early, showcase your work, and keep projects moving forward.
           </p>
 
           <Link href="/services" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">

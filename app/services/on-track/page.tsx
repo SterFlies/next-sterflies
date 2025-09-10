@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Site Inspections & Scanning | SterFlies',
+  title: 'Project Documentation | SterFlies',
   description: 'Aerial & ground-level scanning for construction progress, land surveys, inspections, etc.',
 }
 
@@ -43,9 +43,9 @@ export default function VacantLandPage() {
 
         {/* Hero Banner */}
         <div className="bg-gradient-to-r from-green-500 to-blue-500 p-10 rounded-xl shadow-xl text-white text-center mb-16">
-          <h1 className="text-5xl font-bold">Site Inspections & Scanning</h1>
+          <h1 className="text-5xl font-bold">Project Documentation</h1>
           <p className="mt-4 text-lg">
-            From legal evidence to safety audits, our site inspections and scanning services preserve conditions exactly as they are. Whether for attorneys, insurance adjusters, or safety experts, we deliver court-ready visuals and immersive 3D walkthroughs that protect your case and document critical details.
+            From construction sites to legal cases, our documentation services capture clear aerial records of your project at every stage. Whether you need progress photos, visual evidence, or site condition reports, we provide reliable imagery that preserves details exactly as they are — giving you confidence and accountability when it matters most.
           </p>
         </div>
 
