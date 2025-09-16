@@ -7,10 +7,28 @@ import Image, { ImageLoaderProps } from 'next/image';
 const CLOUD_NAME =
   process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'your_cloud_name';
 
+/** Tiny shimmer for instant blur placeholders (no network needed) */
+const shimmer = (w: number, h: number) =>
+  `<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+     <defs>
+       <linearGradient id="g">
+         <stop stop-color="#eee" offset="20%"/>
+         <stop stop-color="#ddd" offset="50%"/>
+         <stop stop-color="#eee" offset="70%"/>
+       </linearGradient>
+     </defs>
+     <rect width="${w}" height="${h}" fill="#eee"/>
+     <rect id="r" width="${w}" height="${h}" fill="url(#g)"/>
+     <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"/>
+   </svg>`;
+
+const toBase64 = (s: string) =>
+  typeof window === 'undefined' ? Buffer.from(s).toString('base64') : window.btoa(s);
+
 /** Next.js <Image> loader for Cloudinary
- * - If you pass a full Cloudinary URL, we inject consistent transforms so both images crop/scale the same.
- * - If you pass a non-Cloudinary URL, we pass it through untouched.
- * - If you pass a public ID (e.g., 'folder/asset'), we build a Cloudinary URL.
+ * - If full Cloudinary URL: inject consistent transforms so both images crop/scale the same.
+ * - If non-Cloudinary URL: pass through untouched.
+ * - If public ID: build Cloudinary URL.
  */
 const cloudinaryLoader = ({ src, width, quality }: ImageLoaderProps) => {
   const q = quality || 'auto';
@@ -22,7 +40,7 @@ const cloudinaryLoader = ({ src, width, quality }: ImageLoaderProps) => {
   if (isCloudinaryUrl) {
     return src.replace(
       /(\/upload\/)(?!.*\/upload\/)/i,
-      `$1f_auto,q_${q},c_fill,g_auto,w_${width}/`
+      `$1f_auto,q_${q},c_fill,g_auto,dpr_auto,w_${width}/`
     );
   }
 
@@ -30,16 +48,59 @@ const cloudinaryLoader = ({ src, width, quality }: ImageLoaderProps) => {
   if (/^https?:\/\//i.test(src)) return src;
 
   // Public ID -> build URL
-  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_${q},c_fill,g_auto,w_${width}/${src}`;
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_${q},c_fill,g_auto,dpr_auto,w_${width}/${src}`;
 };
 
-/** Video URL helper
- * Accepts either a full URL or a Cloudinary public ID.
- */
+/** Video URL helper (accepts full URL or public ID) */
 const cldVideo = (publicId: string) => {
   if (/^https?:\/\//i.test(publicId)) return publicId;
   return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/f_auto,q_auto/${publicId}.mp4`;
 };
+
+/** Lazy video: defers MP4 loading until near viewport */
+function LazyVideo({
+  src,
+  poster,
+  className,
+}: {
+  src: string;
+  poster?: string;
+  className?: string;
+}) {
+  const ref = React.useRef<HTMLVideoElement | null>(null);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const onIntersect = (entries: IntersectionObserverEntry[]) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          if (!el.src) el.src = src; // set when visible
+          observer.disconnect();
+          break;
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(onIntersect, { rootMargin: '200px' });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [src]);
+
+  return (
+    <video
+      ref={ref}
+      className={className}
+      poster={poster}
+      preload="none"
+      muted
+      playsInline
+      loop
+      autoPlay
+    />
+  );
+}
 
 /** 🔁 Your assets (URLs OR public IDs) */
 const media = {
@@ -49,31 +110,34 @@ const media = {
     'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757966482/heb-roofpv-ortho_ywek9f.jpg',
   mosaicThermal:
     'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757970946/HEB-RGB-ORTHO_xvcvyf.jpg',
-  anomalyCloseups: [
-    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967249/Screenshot_2025-09-15_144716_tatheq.png',
-    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967248/Screenshot_2025-09-15_144518_y3rdko.png',
-    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976235/Screenshot_2025-09-15_174340_dxylfu.png',
-  ],
-  exampleHotspotPanels: [
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144810_adwvht.png',
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965898/Screenshot_2025-09-15_144751_dtuqyx.png',
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144800_pkvjwn.png',
-],
-exampleMultiDiodePanels: [
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144845_wn9eqo.png',
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976032/Screenshot_2025-09-15_174021_rsjae4.png',
-],
 
-exampleStringAnomalyPanels: [
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965884/Screenshot_2025-09-15_144948_cjf5j3.png',
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976235/Screenshot_2025-09-15_174340_dxylfu.png',
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976338/Screenshot_2025-09-15_174435_xx890o.png',
-],
-  /** Optional extras for the Severity 4 + ΔT section (replace with your Cloudinary assets) */
-  multiDiodeAnnotated: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png',
-  tempSpreadGraphic: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967074/Screenshot_2025-09-15_145057_bn0hpr.png',
-  conclusionPlaceholder: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757974109/Screenshot_2025-09-15_170815_tqwdqq.png',
-  extraThinTempPhoto: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757974109/Screenshot_2025-09-15_170815_tqwdqq.png',
+  exampleHotspotPanels: [
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144810_adwvht.png',
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965898/Screenshot_2025-09-15_144751_dtuqyx.png',
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144800_pkvjwn.png',
+  ],
+  exampleMultiDiodePanels: [
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965883/Screenshot_2025-09-15_144845_wn9eqo.png',
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976032/Screenshot_2025-09-15_174021_rsjae4.png',
+  ],
+  exampleStringAnomalyPanels: [
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965884/Screenshot_2025-09-15_144948_cjf5j3.png',
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976235/Screenshot_2025-09-15_174340_dxylfu.png',
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757976338/Screenshot_2025-09-15_174435_xx890o.png',
+  ],
+
+  /** Optional extras for the Severity 4 + ΔT section */
+  multiDiodeAnnotated:
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png',
+  tempSpreadGraphic:
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967074/Screenshot_2025-09-15_145057_bn0hpr.png',
+
+  conclusionPlaceholder:
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757974109/Screenshot_2025-09-15_170815_tqwdqq.png',
+
+  // You kept this ID same as conclusion; okay to reuse if desired.
+  extraThinTempPhoto:
+    'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757974109/Screenshot_2025-09-15_170815_tqwdqq.png',
 };
 
 /** Overlay before/after slider (seamless wipe + easy drag) */
@@ -125,9 +189,11 @@ function CompareSlider({
             src={leftSrc}
             alt={leftLabel}
             fill
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 1000px"
             className="object-cover"
-            priority
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(16, 10))}`}
+            fetchPriority="low"
           />
         </div>
 
@@ -141,9 +207,11 @@ function CompareSlider({
             src={rightSrc}
             alt={rightLabel}
             fill
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 1000px"
             className="object-cover"
-            priority
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(16, 10))}`}
+            fetchPriority="low"
           />
         </div>
 
@@ -202,6 +270,7 @@ function CompareSlider({
             className="absolute top-1/2 -translate-y-1/2 -ml-5 px-4 py-3 rounded-full bg-white shadow hover:shadow-lg active:scale-95 transition
                        focus:outline-none focus:ring-2 focus:ring-blue-500"
             style={{ minWidth: 44, minHeight: 44 }}
+            aria-hidden
           >
             <span className="text-base font-semibold">⇆</span>
           </button>
@@ -219,7 +288,6 @@ function CompareSlider({
   );
 }
 
-
 export default function CaseStudiesPage() {
   return (
     <main className="w-full bg-white text-gray-900">
@@ -228,13 +296,10 @@ export default function CaseStudiesPage() {
         {/* HERO */}
         <section className="relative mb-14 rounded-3xl overflow-hidden shadow-xl">
           <div className="absolute inset-0">
-            <video
-              className="h-full w-full object-cover"
+            <LazyVideo
               src={cldVideo(media.heroVideo)}
-              autoPlay
-              loop
-              muted
-              playsInline
+              poster={media.mosaicRGB}
+              className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/40" />
           </div>
@@ -251,32 +316,32 @@ export default function CaseStudiesPage() {
         </section>
 
         {/* THERMAL ↔ RGB COMPARE */}
-<section className="mb-14">
-  <h2 className="text-2xl md:text-3xl font-semibold mb-3">Thermal ↔ RGB Compare</h2>
-  <p className="mb-6">
-    Slide to compare the thermal orthomosaic against the RGB (visual) context. This makes it easy to see how heat
-    signatures align with physical features on the roof—without walking every row.
-  </p>
+        <section className="mb-14">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3">Thermal ↔ RGB Compare</h2>
+          <p className="mb-6">
+            Slide to compare the thermal orthomosaic against the RGB (visual) context. This makes it easy to see how heat
+            signatures align with physical features on the roof—without walking every row.
+          </p>
 
-  {/* Wrap slider in a max-width container */}
-  <div className="max-w-5xl mx-auto">
-    <CompareSlider
-      leftLabel="RGB"
-      rightLabel="Thermal"
-      leftSrc={media.mosaicRGB}
-      rightSrc={media.mosaicThermal}
-      // aspectWidth={4}
-      // aspectHeight={3}
-    />
-  </div>
-</section>
-
+          {/* Wrap slider in a max-width container */}
+          <div className="max-w-5xl mx-auto">
+            <CompareSlider
+              leftLabel="RGB"
+              rightLabel="Thermal"
+              leftSrc={media.mosaicRGB}
+              rightSrc={media.mosaicThermal}
+              // aspectWidth={4}
+              // aspectHeight={3}
+            />
+          </div>
+        </section>
 
         {/* PROBLEM → SOLUTION: FINDINGS */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3">Problem → Solution: What We Found</h2>
 
           <div className="space-y-8">
+            {/* Hotspots & Multi-Hotspots */}
             <div>
               <h3 className="text-xl md:text-2xl font-semibold mb-2">Hotspots & Multi-Hotspots</h3>
               <p>
@@ -289,24 +354,30 @@ export default function CaseStudiesPage() {
                     key={i}
                     className="rounded-xl border border-gray-200 bg-white shadow-sm p-2 flex flex-col items-center"
                   >
-                  <Image
-                    loader={cloudinaryLoader}
-                    src={src}
-                    alt={`Hotspot panel example ${i + 1}`}
-                    width={100}
-                    height={200}
-                    className="object-contain"
-                  />
-                  <figcaption className="mt-2 text-sm text-gray-600 text-center">
-                    {i === 0 && 'Hotspot'}
-                    {i === 1 && 'Multi-hotspot'}
-                    {i === 2 && 'Multi-hotspot'}
-                 </figcaption>
+                    <Image
+                      loader={cloudinaryLoader}
+                      src={src}
+                      alt={`Hotspot panel example ${i + 1}`}
+                      width={220}
+                      height={330}
+                      quality={50}
+                      sizes="(max-width: 640px) 45vw, 220px"
+                      className="object-contain"
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(11, 16))}`}
+                      fetchPriority="low"
+                    />
+                    <figcaption className="mt-2 text-sm text-gray-600 text-center">
+                      {i === 0 && 'Hotspot'}
+                      {i === 1 && 'Multi-hotspot'}
+                      {i === 2 && 'Multi-hotspot'}
+                    </figcaption>
                   </figure>
                 ))}
               </div>
             </div>
 
+            {/* Multi-Diode Issues (Severity 4) */}
             <div>
               <h3 className="text-xl md:text-2xl font-semibold mb-2">Multi-Diode Issues (Severity 4)</h3>
               <p>
@@ -320,23 +391,29 @@ export default function CaseStudiesPage() {
                     key={i}
                     className="rounded-xl border border-gray-200 bg-white shadow-sm p-2 flex flex-col items-center"
                   >
-                  <Image
-                    loader={cloudinaryLoader}
-                    src={src}
-                    alt={`Multi-diode anomaly panel ${i + 1}`}
-                    width={100}
-                    height={200}
-                    className="object-contain"
-                  />
+                    <Image
+                      loader={cloudinaryLoader}
+                      src={src}
+                      alt={`Multi-diode anomaly panel ${i + 1}`}
+                      width={220}
+                      height={330}
+                      quality={50}
+                      sizes="(max-width: 640px) 45vw, 220px"
+                      className="object-contain"
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(11, 16))}`}
+                      fetchPriority="low"
+                    />
                     <figcaption className="mt-2 text-sm text-gray-600 text-center">
-                    {i === 0 && 'Multi-Diode Issues'}
-                    {i === 1 && 'Sinle-diode Issue'}
+                      {i === 0 && 'Multi-Diode Issues'}
+                      {i === 1 && 'Single-Diode Issue'}
                     </figcaption>
                   </figure>
                 ))}
               </div>
             </div>
 
+            {/* String Anomaly */}
             <div>
               <h3 className="text-xl md:text-2xl font-semibold mb-2">String Anomaly</h3>
               <p>
@@ -348,16 +425,21 @@ export default function CaseStudiesPage() {
                     key={i}
                     className="rounded-xl border border-gray-200 bg-white shadow-sm p-2 flex flex-col items-center"
                   >
-                  <Image
-                    loader={cloudinaryLoader}
-                    src={src}
-                    alt={`String anomaly panel ${i + 1}`}
-                    width={100}
-                    height={200}
-                    className="object-contain"
-                  />
+                    <Image
+                      loader={cloudinaryLoader}
+                      src={src}
+                      alt={`String anomaly panel ${i + 1}`}
+                      width={220}
+                      height={330}
+                      quality={50}
+                      sizes="(max-width: 640px) 45vw, 220px"
+                      className="object-contain"
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(11, 16))}`}
+                      fetchPriority="low"
+                    />
                     <figcaption className="mt-2 text-sm text-gray-600 text-center">
-                      {i === 0 && 'String Anamoly'}
+                      {i === 0 && 'String Anomaly'}
                       {i === 1 && 'Uneven heating across one string'}
                       {i === 2 && 'Another actual example'}
                     </figcaption>
@@ -366,6 +448,7 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
+            {/* Temperature Spread Matters */}
             <div>
               <h3 className="text-xl md:text-2xl font-semibold mb-2">Temperature Spread Matters</h3>
               <p>
@@ -397,8 +480,11 @@ export default function CaseStudiesPage() {
                 alt="Annotated thermal frame showing multiple multi-diode issues"
                 width={1600}
                 height={1200}
-                sizes="(max-width:1024px) 100vw, 50vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
                 className="w-full h-auto"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(16, 12))}`}
+                fetchPriority="low"
               />
               <figcaption className="text-sm text-gray-600 px-4 py-3">
                 Multi-diode issues highlighted across adjacent strings. Repeated patterns indicate severity and route
@@ -406,15 +492,18 @@ export default function CaseStudiesPage() {
               </figcaption>
             </figure>
 
-            <figure>
+            <figure className="rounded-2xl border border-gray-200 overflow-hidden bg-white">
               <Image
                 loader={cloudinaryLoader}
                 src={media.tempSpreadGraphic}
                 alt="Illustration of temperature spread across modules"
                 width={1600}
                 height={1200}
-                sizes="(max-width:1024px) 100vw, 50vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 700px"
                 className="w-full h-auto"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(16, 12))}`}
+                fetchPriority="low"
               />
               <figcaption className="text-sm text-gray-600 px-4 py-3">
                 Temperature spread (ΔT): comparing warmest vs. coolest modules under the same irradiance surfaces true
@@ -422,6 +511,23 @@ export default function CaseStudiesPage() {
               </figcaption>
             </figure>
           </div>
+
+          {/* If you decide to re-add the thin banner under this section, use this: */}
+          {/* <div className="mt-6 rounded-2xl border border-gray-200 overflow-hidden bg-white">
+            <div className="relative w-full" style={{ aspectRatio: '21 / 6' }}>
+              <Image
+                loader={cloudinaryLoader}
+                src={media.extraThinTempPhoto}
+                alt="Temperature detail strip"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(21, 6))}`}
+                fetchPriority="low"
+              />
+            </div>
+          </div> */}
 
           <div className="mt-8 rounded-3xl border border-gray-200 p-6 bg-gray-50">
             <h3 className="text-xl md:text-2xl font-semibold mb-3">Problem → Solution</h3>
@@ -432,7 +538,7 @@ export default function CaseStudiesPage() {
               </li>
               <li>
                 <span className="font-semibold">Solution:</span> Thermal mapping flags all occurrences at once in minutes, records by
-                ΔT, and geo-tags each panel for fast on-roof verification.  Warranty claims are simplified with clear documentation.
+                ΔT, and geo-tags each panel for fast on-roof verification. Warranty claims are simplified with clear documentation.
               </li>
               <li>
                 <span className="font-semibold">Why ΔT matters:</span> A larger ΔT between modules under the same
@@ -447,28 +553,6 @@ export default function CaseStudiesPage() {
           </div>
         </section>
 
-        {/* CLOSE-UPS */}
-        <section className="mb-14">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3">Close up</h2>
-          <p className="mb-6">
-            Several anomalies were captured in detail, helping the facilities team understand exact locations and
-            severity.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {media.anomalyCloseups.map((id) => (
-              <Image
-                key={id}
-                loader={cloudinaryLoader}
-                src={id}
-                alt="Thermal anomaly close-up"
-                width={800}
-                height={600}
-                className="rounded-2xl border border-gray-200 shadow-sm bg-white"
-              />
-            ))}
-          </div>
-        </section>
-
         {/* CONCLUSION */}
         <section className="mb-14">
           <h2 className="text-2xl md:text-3xl font-semibold mb-3">Thankfully,</h2>
@@ -476,16 +560,20 @@ export default function CaseStudiesPage() {
             We identified <span className="font-semibold">160+ anomalies</span> within minutes of arriving
             on site and generated a inspection report 24hrs post flight, in accordance with IEC 62446-3 guidelines. Critical defects—including multi-diode failures—were
             surfaced for immediate attention, giving the facilities manager clear, actionable next steps and protecting
-            long-term performance. 
+            long-term performance.
           </p>
           <figure className="mt-6 rounded-2xl border border-white overflow-hidden bg-white">
             <Image
               loader={cloudinaryLoader}
               src={media.conclusionPlaceholder}
               alt="Thermal Map of Annotated Defects"
-              width={600}
-              height={300}
-              className="w-1/2 h-auto object-cover mx-auto"
+              width={1200}
+              height={540}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+              className="w-full h-auto object-cover mx-auto"
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(12, 5.4))}`}
+              fetchPriority="low"
             />
             <figcaption className="text-sm text-gray-600 px-4 py-2 text-center">
               Annotated Orthomosaic Highlighting Detected Anomalies
@@ -518,6 +606,3 @@ export default function CaseStudiesPage() {
     </main>
   );
 }
-
-
-
