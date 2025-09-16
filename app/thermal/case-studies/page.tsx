@@ -358,8 +358,8 @@ export default function CaseStudiesPage() {
                       loader={cloudinaryLoader}
                       src={src}
                       alt={`Hotspot panel example ${i + 1}`}
-                      width={220}
-                      height={330}
+                      width={100}
+                      height={200}
                       quality={50}
                       sizes="(max-width: 640px) 45vw, 220px"
                       className="object-contain"
@@ -395,8 +395,8 @@ export default function CaseStudiesPage() {
                       loader={cloudinaryLoader}
                       src={src}
                       alt={`Multi-diode anomaly panel ${i + 1}`}
-                      width={220}
-                      height={330}
+                      width={100}
+                      height={200}
                       quality={50}
                       sizes="(max-width: 640px) 45vw, 220px"
                       className="object-contain"
@@ -429,8 +429,8 @@ export default function CaseStudiesPage() {
                       loader={cloudinaryLoader}
                       src={src}
                       alt={`String anomaly panel ${i + 1}`}
-                      width={220}
-                      height={330}
+                      width={100}
+                      height={200}
                       quality={50}
                       sizes="(max-width: 640px) 45vw, 220px"
                       className="object-contain"
@@ -512,22 +512,6 @@ export default function CaseStudiesPage() {
             </figure>
           </div>
 
-          {/* If you decide to re-add the thin banner under this section, use this: */}
-          {/* <div className="mt-6 rounded-2xl border border-gray-200 overflow-hidden bg-white">
-            <div className="relative w-full" style={{ aspectRatio: '21 / 6' }}>
-              <Image
-                loader={cloudinaryLoader}
-                src={media.extraThinTempPhoto}
-                alt="Temperature detail strip"
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
-                className="object-cover"
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(21, 6))}`}
-                fetchPriority="low"
-              />
-            </div>
-          </div> */}
 
           <div className="mt-8 rounded-3xl border border-gray-200 p-6 bg-gray-50">
             <h3 className="text-xl md:text-2xl font-semibold mb-3">Problem → Solution</h3>
@@ -567,9 +551,8 @@ export default function CaseStudiesPage() {
               loader={cloudinaryLoader}
               src={media.conclusionPlaceholder}
               alt="Thermal Map of Annotated Defects"
-              width={1200}
-              height={540}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+              width={600}
+              height={300}
               className="w-full h-auto object-cover mx-auto"
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(12, 5.4))}`}
