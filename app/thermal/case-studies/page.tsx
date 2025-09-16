@@ -553,7 +553,7 @@ export default function CaseStudiesPage() {
               alt="Thermal Map of Annotated Defects"
               width={600}
               height={300}
-              className="w-full h-auto object-cover mx-auto"
+              className="w-1/2 h-auto object-cover mx-auto"
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(12, 5.4))}`}
               fetchPriority="low"
