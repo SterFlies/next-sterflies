@@ -139,7 +139,7 @@ export default function ProjectPage() {
 
           <SectionCard id="results" title="Results">
             <ul className="list-disc pl-5 space-y-2">
-              <li>Isolated multiple hotspots and cracked-cell patterns in a single session.</li>
+              <li>Isolated multi hotspots and cracked-cell patterns in a single session.</li>
               <li>Delivered annotated snapshots + coordinates and a CSV punch-list by string/row.</li>
               <li>Enabled targeted maintenance instead of full-field walk-downs.</li>
               <li>Created a baseline for future scans to verify repairs and trend issues.</li>

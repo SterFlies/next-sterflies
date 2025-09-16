@@ -52,7 +52,7 @@ export default function ConstructionPage() {
 
         {/* Hero Banner */}
         <div className="bg-gradient-to-r from-blue-500 to-green-500 p-10 rounded-xl shadow-xl text-white text-center mb-16">
-          <h1 className="text-5xl font-bold">Photogrammetry & Mapping</h1>
+          <h1 className="text-5xl font-bold">Mapping & Reconstruction</h1>
           <p className="mt-4 text-lg">
             At SterFlies, we transform aerial imagery into precise, actionable data. From orthomosaics and 3D models to volumetric and cut/fill reports, our photogrammetry services provide the clarity you need to plan, monitor, and analyze your projects with confidence.
           </p>
