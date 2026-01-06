@@ -82,27 +82,26 @@ export default function VacantLandPage() {
     { title: 'Custom Services', icon:Layers2Icon}
   ]
 
-  {/* Cloudinary Video with Pro3 paragraph */}
-          <SectionCard id="pro3video" title="Interior Scanning with Matterport Pro3">
-            <p>
-              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for <em>virtual tours, as-built documentation,</em> and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
-            </p>
-            <AspectBox>
-              <video
-                controls={false}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={CLOUDINARY_Forensic_POSTER}
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </AspectBox>
-          </SectionCard>
+  {/* Cloudinary Video loop -example */}
+          <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
+  <div className="relative aspect-video overflow-hidden rounded-lg">
+    <AspectBox>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={CLOUDINARY_Forensic_POSTER}
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </AspectBox>
+  </div>
+</SectionCard>
+
 
   // "Why Choose SterFlies?" benefits
   const benefits = [
