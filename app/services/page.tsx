@@ -17,19 +17,19 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'Project Documentation',
+    title: 'Forensic Site Documentation',
     slug: 'on-track',
-    description: 'Detailed aerial & ground-level scanning.',
+    description: 'time-stamped interior and exterior 3D documentation.',
     Icon: Camera,
   },
   {
-    title: 'Mapping & Site-Scanning',
+    title: '3D Site Mapping & Measurement',
     slug: 'mapping',
     description: 'High-resolution aerial data (orthomosaics, 3D maps/models, volumetrics, cut/fill, topography).',
     Icon: LandPlot,
   },
   {
-    title: 'Business Marketing Content',
+    title: 'Marketing Visuals',
     slug: 'marketing',
     description: 'Professional drone cinematography to enhance your brand’s marketing strategy.',
     Icon: CircleDollarSign,
