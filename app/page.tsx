@@ -63,7 +63,7 @@ export const metadata = {
 
 export default function HomePage() {
   const industries = [
-    { title: "Project Documentation", Icon: Camera },
+    { title: "Forensic Site Documentation", Icon: Camera },
     { title: "Site-Reconsctruction", Icon: LandPlot },
     { title: "Thermal Inspections", Icon: Radiation },
   ];
@@ -92,14 +92,14 @@ export default function HomePage() {
         {/* Hero text & CTA */}
         <div className="relative z-20 bg-transparent border-4 border-blue-900/70 backdrop-blur-md p-8 rounded text-center shadow-[0_0_4px_rgba(96,165,250,0.8),0_0_8px_rgba(96,165,250,0.6),0_0_16px_rgba(96,165,250,0.4)]">
           <h1 className="text-5xl md:text-6xl font-extrabold text-white">
-            Aerial & Thermal Drone Services
+            Professional Aerial & Ground-Based Site Documentation
           </h1>
           <h2 className="mt-2 text-2xl text-black">
-            from inspections to progress tracking to marketing visuals, we make your project clear.
+            Accurate visual and spatial documentation for inspection, verification, and informed decision-making.
           </h2>
           <Link href="/contact" passHref>
             <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-              Schedule a Call!
+              Schedule a Consultation!
             </button>
           </Link>
         </div>

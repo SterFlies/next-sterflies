@@ -14,27 +14,102 @@ import {
 } from 'lucide-react'
 
 export const metadata = {
-  title: 'Project Documentation | SterFlies',
+  title: 'Forensic Site Documentation | SterFlies',
   description: 'Aerial & ground-level scanning for construction progress, land surveys, inspections, etc.',
+}
+
+// Assets
+  const CLOUDINARY_Forensic_MP4 =
+  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767664687/Site_Demo_bzyjdd.mov";
+
+  const CLOUDINARY_Forensic_POSTER =
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png";
+
+  // AspectBox with mobile-only height boost + optional mobile bleed
+function AspectBox({
+  aspect = "16/9",
+  mobileTall = false,   // 4:3 on phones (taller), unchanged on sm+
+  bleedMobile = false,  // edge-to-edge on phones, normal on sm+
+  children,
+}: {
+  aspect?: "16/9" | "4/3" | "1/1" | "21/9" | "3/2";
+  mobileTall?: boolean;
+  bleedMobile?: boolean;
+  children: React.ReactNode;
+}) {
+  const desktop =
+    aspect === "4/3" ? "sm:aspect-[4/3]" :
+    aspect === "1/1" ? "sm:aspect-square" :
+    aspect === "21/9" ? "sm:aspect-[21/9]" :
+    aspect === "3/2" ? "sm:aspect-[3/2]" :
+    "sm:aspect-[16/9]";
+
+  const mobile = mobileTall ? "aspect-[4/3]" : "aspect-[16/9]";
+  const bleed = bleedMobile ? "-mx-4 sm:mx-0" : "";
+
+  return (
+    <div className={`${bleed} relative w-full ${mobile} ${desktop} rounded-2xl overflow-hidden bg-black`}>
+      {children}
+    </div>
+  );
+}
+
+function SectionCard({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="bg-white rounded-2xl border p-6 md:p-8 space-y-4 md:space-y-5">
+      <h2 className="text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
+      <div className="text-[17px] md:text-lg leading-relaxed text-gray-800 space-y-4">{children}</div>
+    </section>
+  );
 }
 
 export default function VacantLandPage() {
   // "What We Offer" features
   const features = [
-    { title: 'High-Res Photos', desc: 'High-Res photos to capture specifics', icon: CameraIcon },
-    { title: 'Interactive Maps', desc: 'Georeferenced maps with parcel boundaries.', icon: MapIcon },
-    { title: '3D Site Models', desc: 'Photogrammetric 3D models for terrain visualization.', icon: BoxIcon },
-    { title: 'Detailed Reports', desc: 'Reports with measurements and annotations.', icon: FileTextIcon },
-    { title: 'Virtual Tours', desc: 'Ground-level data capture to creat a 3D virtual tour through the site.', icon: EyeIcon },
+    { title: 'High-Res Photos & or Videos', desc: 'High-Res photos to capture specifics', icon: CameraIcon },
+    { title: 'Thermal Imaging', desc: 'Infrared (IR) scanning.', icon: MapIcon },
+    { title: '3D Site Models', desc: 'Interior & Exterior 3D scanning for full visual context.', icon: BoxIcon },
+    { title: 'Detailed Reports', desc: 'Structured reports including measurements, annotations, and visual references for documentation and review.', icon: FileTextIcon },
+    { title: 'Virtual Tours', desc: 'Ground-level 3D walkthroughs that allow remote review of interior and exterior site conditions with annotations.', icon: EyeIcon },
     { title: 'Custom Services', icon:Layers2Icon}
   ]
 
+  {/* Cloudinary Video with Pro3 paragraph */}
+          <SectionCard id="pro3video" title="Interior Scanning with Matterport Pro3">
+            <p>
+              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for <em>virtual tours, as-built documentation,</em> and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
+            </p>
+            <AspectBox>
+              <video
+                controls={false}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={CLOUDINARY_Forensic_POSTER}
+                className="absolute inset-0 w-full h-full object-cover"
+              >
+                <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </AspectBox>
+          </SectionCard>
+
   // "Why Choose SterFlies?" benefits
   const benefits = [
-    { title: 'Local Expertise', desc: 'In-depth knowledge of land parcels and zoning.', icon: ShieldIcon },
-    { title: 'Pinpoint Accuracy', desc: 'RTK-enabled GPS for centimeter precision.', icon: TargetIcon },
-    { title: 'Quick Turnaround', desc: 'Processed deliverables within 24 hours.', icon: ZapIcon },
-    { title: 'Full Support', desc: 'End-to-end project management and consultation.', icon: EyeIcon },
+    { title: 'Context-Aware Documentation', desc: 'Documentation informed by site layout, access constraints, and physical conditions to ensure clarity and consistency.', icon: ShieldIcon },
+    { title: 'Pinpoint Accuracy', desc: 'LiDar and RTK-enabled positioning used to improve spatial consistency and measurement reliability.', icon: TargetIcon },
+    { title: 'Quick Turnaround', desc: 'Efficient turnaround times based on project scope and documentation requirements.', icon: ZapIcon },
+    { title: 'Full Support', desc: 'End-to-end coordination and technical support throughout the documentation process.', icon: EyeIcon },
   ]
 
   return (
@@ -43,9 +118,11 @@ export default function VacantLandPage() {
 
         {/* Hero Banner */}
         <div className="bg-gradient-to-r from-green-500 to-blue-500 p-10 rounded-xl shadow-xl text-white text-center mb-16">
-          <h1 className="text-5xl font-bold">Project Documentation</h1>
+          <h1 className="text-5xl font-bold">Forensic Site Documentation</h1>
           <p className="mt-4 text-lg">
-            From construction sites to legal cases, our documentation services capture clear aerial records of your project at every stage. Whether you need progress photos, visual evidence, or site condition reports, we provide reliable imagery that preserves details exactly as they are — giving you confidence and accountability when it matters most.
+           From active construction sites to post-incident locations, our forensic site documentation services preserve site conditions exactly as they exist at a specific point in time.
+
+           Using aerial and ground-based capture, we create accurate visual and spatial records that support investigation, verification, and dispute review. Whether documenting progress, existing conditions, or physical evidence, our deliverables provide a clear, reviewable record that remains usable long after conditions change.
           </p>
         </div>
 

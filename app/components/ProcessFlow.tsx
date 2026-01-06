@@ -31,7 +31,7 @@ const steps: Step[] = [
   },
   {
     id: 3,
-    title: 'Schedule Flight',
+    title: 'Schedule Mission',
     description: 'Select your preferred date and confirm the site prep.',
     Icon: CalendarIcon,
   },
