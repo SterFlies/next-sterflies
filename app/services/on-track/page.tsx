@@ -75,32 +75,12 @@ export default function VacantLandPage() {
   // "What We Offer" features
   const features = [
     { title: 'High-Res Photos & or Videos', desc: 'High-Res photos to capture specifics', icon: CameraIcon },
-    { title: 'Thermal Imaging', desc: 'Infrared (IR) scanning.', icon: MapIcon },
+    { title: 'Thermal Imaging', desc: 'Infrared (IR) scanning included if needed.', icon: MapIcon },
     { title: '3D Site Models', desc: 'Interior & Exterior 3D scanning for full visual context.', icon: BoxIcon },
     { title: 'Detailed Reports', desc: 'Structured reports including measurements, annotations, and visual references for documentation and review.', icon: FileTextIcon },
     { title: 'Virtual Tours', desc: 'Ground-level 3D walkthroughs that allow remote review of interior and exterior site conditions with annotations.', icon: EyeIcon },
     { title: 'Custom Services', icon:Layers2Icon}
   ]
-
-  {/* Cloudinary Video loop - example */}
-        <div className="mb-16">
-          <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
-            <AspectBox>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={CLOUDINARY_Forensic_POSTER}
-                className="absolute inset-0 h-full w-full object-cover"
-              >
-                <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </AspectBox>
-          </SectionCard>
-        </div>
 
 
   // "Why Choose SterFlies?" benefits
@@ -138,6 +118,26 @@ export default function VacantLandPage() {
             ))}
           </div>
         </section>
+
+        {/* Cloudinary Video loop - example */}
+        <div className="mb-16">
+          <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
+            <AspectBox>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={CLOUDINARY_Forensic_POSTER}
+                className="absolute inset-0 h-full w-full object-cover"
+              >
+                <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </AspectBox>
+          </SectionCard>
+        </div>
 
         {/* Why Choose SterFlies? */}
         <section className="mb-16">
