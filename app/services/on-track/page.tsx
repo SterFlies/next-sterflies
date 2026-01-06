@@ -23,7 +23,7 @@ export const metadata = {
   "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/Timeline_1_dbtois.mp4";
 
   const CLOUDINARY_Forensic_POSTER =
-  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png";
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1767665046/Screenshot_2026-01-05_200321_cnzuw0.png";
 
   // AspectBox with mobile-only height boost + optional mobile bleed
 function AspectBox({
@@ -122,6 +122,9 @@ export default function VacantLandPage() {
         {/* Cloudinary Video loop - example */}
         <div className="mb-16">
           <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
+            <p> Example of an exterior-to-interior site capture used during an indoor air quality assessment. 
+              This walkthrough preserves spatial context, room relationships, and observed conditions at the time of inspection,
+               creating a reviewable visual record that supports analysis and reporting.</p>
             <AspectBox>
               <video
                 autoPlay
