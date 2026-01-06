@@ -20,7 +20,7 @@ export const metadata = {
 
 // Assets
   const CLOUDINARY_Forensic_MP4 =
-  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767664687/Site_Demo_bzyjdd.mov";
+  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/Timeline_1_dbtois.mp4";
 
   const CLOUDINARY_Forensic_POSTER =
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png";
@@ -82,25 +82,25 @@ export default function VacantLandPage() {
     { title: 'Custom Services', icon:Layers2Icon}
   ]
 
-  {/* Cloudinary Video loop -example */}
+  {/* Cloudinary Video loop - example */}
+        <div className="mb-16">
           <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
-  <div className="relative aspect-video overflow-hidden rounded-lg">
-    <AspectBox>
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={CLOUDINARY_Forensic_POSTER}
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </AspectBox>
-  </div>
-</SectionCard>
+            <AspectBox>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={CLOUDINARY_Forensic_POSTER}
+                className="absolute inset-0 h-full w-full object-cover"
+              >
+                <source src={CLOUDINARY_Forensic_MP4} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </AspectBox>
+          </SectionCard>
+        </div>
 
 
   // "Why Choose SterFlies?" benefits
