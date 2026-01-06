@@ -121,8 +121,8 @@ export default function VacantLandPage() {
 
         {/* Cloudinary Video loop - example */}
         <div className="mb-16">
-          <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough">
-            <p> Example of an exterior-to-interior site capture used during an indoor air quality assessment. 
+          <SectionCard id="exterior-interior" title="Exterior Model and Interior Walkthrough Example">
+            <p> Example of an exterior-to-interior site capture used during an indoor air quality assessment (IAQ). 
               This walkthrough preserves spatial context, room relationships, and observed conditions at the time of inspection,
                creating a reviewable visual record that supports analysis and reporting.</p>
             <AspectBox>

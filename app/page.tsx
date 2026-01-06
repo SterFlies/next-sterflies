@@ -185,6 +185,29 @@ export default function HomePage() {
       </div>
      </section>
 
+     {/* YouTube Embedded Video - Homepage */}
+     <section className="mb-12">
+  <div className="w-full px-6 flex flex-col items-center">
+    <h3 className="text-3xl font-bold text-blue-900 mb-4 text-center">
+      Watch This Short Infomercial
+    </h3>
+
+    <div className="w-full max-w-3xl">
+      <div className="relative aspect-video max-h-[360px] overflow-hidden rounded-lg shadow-lg">
+        <iframe
+          className="absolute inset-0 w-full h-full"
+          src="https://www.youtube.com/embed/-FxpLibvKiM?si=xIhyd42UPvfZCo7v"
+          title="SterFlies Infomercial"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+
       <TexasCoverage />
 
       {/* Specialty */}
