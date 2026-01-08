@@ -5,8 +5,23 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+// ✅ Cloudinary loader (returns the URL you pass in)
+const cloudinaryLoader = ({ src }: { src: string }) => src
+
+// ✅ helper: detect Cloudinary URL
+const isCloudinaryUrl = (src: string) =>
+  src.startsWith('https://res.cloudinary.com/')
+
 // Categories for filtering
-const categories = ['All', 'Construction', 'Land', 'Marketing', 'Thermal Solutions', 'Data Collection']
+const categories = [
+  'All',
+  'Construction',
+  'Land',
+  'Marketing',
+  'Thermal Solutions',
+  'Data Collection',
+  'Forensic Documentation', // ✅ add missing category
+]
 
 // list
 const posts = [
@@ -15,7 +30,9 @@ const posts = [
     title: 'Exploring 3D Models',
     excerpt: 'Dive into how we generate accurate 3D models of your site using photogrammetry.',
     category: 'Data Collection',
-    image: '/3DThumbnail.png', 
+    // ✅ Swap to Cloudinary whenever you’re ready:
+    // image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/f_auto,q_auto,w_1200/blog/thumbs/3DThumbnail.png',
+    image: '/3DThumbnail.png',
     slug: '/blog/3d_model',
   },
   {
@@ -23,11 +40,11 @@ const posts = [
     title: 'What is an Orthomosaic (2D) Map?',
     excerpt: 'An underrated asset people tend to look past.',
     category: 'Data Collection',
-    image: '/TOPO_DEMO_transparent_mosaic_group1.png', 
+    image: '/TOPO_DEMO_transparent_mosaic_group1.png',
     slug: '/blog/orthomosaic_blog',
   },
   {
-    id:3,
+    id: 3,
     title: 'Volumetric Data Explained: Aerial Insights for Smarter Site Decisions',
     excerpt: 'Understanding how drone data can save time and resources',
     category: 'Data Collection',
@@ -35,38 +52,37 @@ const posts = [
     slug: '/blog/volumetric_blog',
   },
   {
-    id:4,
+    id: 4,
     title: 'Topographic Maps: Unlocking Knowledge with Topographic Maps',
     excerpt: 'Undertsanding Topographic Maps',
     category: 'Data Collection',
     image: '/STERFLIES_TOPODEMO.png',
     slug: '/blog/topography_blog',
   },
-   {
-    id:5,
-    title: 'Thermal Imaging 101: How to Spot What the Eye Can\'t See',
+  {
+    id: 5,
+    title: "Thermal Imaging 101: How to Spot What the Eye Can't See",
     excerpt: 'Thermal Data Saves Time & Resources',
     category: 'Thermal Solutions',
     image: '/ThermalThumb.png',
     slug: '/blog/thermal101_blog',
   },
   {
-    id:6,
+    id: 6,
     title: 'Why Monthly Stockpile Reporting Beats the "Once-a-Year" Mindset',
-    excerpt: 'Stop waiting 12 months to find out what you\'ve lost',
+    excerpt: `Stop waiting 12 months to find out what you've lost`,
     category: 'Data Collection',
     image: '/VThumbnail.png',
     slug: '/blog/monthly-volumetric-reporting_blog',
   },
   {
-    id:7,
+    id: 7,
     title: 'Why Site Conditions Should Be Documented Before they are Altered',
     excerpt: 'Document to support your findings',
     category: 'Forensic Documentation',
-    image: '/forensic_thumb.png',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1767906103/Screenshot_2026-01-08_145836_zgatsw.png',
     slug: '/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog',
-
-  }
+  },
 ]
 
 export default function BlogList() {
@@ -75,8 +91,9 @@ export default function BlogList() {
 
   // Filter and search logic
   const visiblePosts = posts.filter(
-    (p) => (filter === 'All' || p.category === filter) &&
-           p.title.toLowerCase().includes(search.toLowerCase())
+    (p) =>
+      (filter === 'All' || p.category === filter) &&
+      p.title.toLowerCase().includes(search.toLowerCase())
   )
 
   return (
@@ -91,10 +108,13 @@ export default function BlogList() {
             className="px-3 py-2 border rounded"
           >
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
             ))}
           </select>
         </div>
+
         <input
           type="text"
           placeholder="Search..."
@@ -118,8 +138,13 @@ export default function BlogList() {
                 alt={post.title}
                 fill
                 className="object-cover"
+                // ✅ Only use Cloudinary loader when it’s a Cloudinary URL
+                loader={isCloudinaryUrl(post.image) ? cloudinaryLoader : undefined}
+                // ✅ Small perf boost (optional)
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
+
             <div className="p-4">
               <h2 className="text-xl font-semibold text-blue-900 mb-2">{post.title}</h2>
               <p className="text-gray-700 text-sm">{post.excerpt}</p>
