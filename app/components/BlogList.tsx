@@ -58,6 +58,15 @@ const posts = [
     image: '/VThumbnail.png',
     slug: '/blog/monthly-volumetric-reporting_blog',
   },
+  {
+    id:7,
+    title: 'Why Site Conditions Should Be Documented Before they are Altered',
+    excerpt: 'Document to support your findings',
+    category: 'Forensic Documentation',
+    image: '/forensic_thumb.png',
+    slug: '/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog',
+
+  }
 ]
 
 export default function BlogList() {
