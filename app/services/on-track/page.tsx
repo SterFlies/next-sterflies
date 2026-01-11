@@ -15,7 +15,7 @@ import {
 
 export const metadata = {
   title: 'Forensic Site Documentation | SterFlies',
-  description: 'Aerial & ground-level scanning for construction progress, land surveys, inspections, etc.',
+  description: 'High-accuracy 3D site documentation using aerial and ground-based reality capture to preserve conditions, timelines, and visual records for investigations, disputes, and project analysis.',
 }
 
 // Assets

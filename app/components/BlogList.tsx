@@ -83,6 +83,14 @@ const posts = [
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1767906103/Screenshot_2026-01-08_145836_zgatsw.png',
     slug: '/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog',
   },
+  {
+    id: 8,
+    title: 'Why Existing Conditions Documentation is Critical for Environmental & IH Investigations',
+    excerpt: 'Preserve site conditions with objective visual records',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768151899/Mold-Inspection-image-5_ceiqaj.webp',
+    slug: '/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations',
+  }
 ]
 
 export default function BlogList() {

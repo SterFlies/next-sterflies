@@ -77,14 +77,14 @@ export default function AboutPage() {
           <div className="max-w-2xl text-black text-center md:text-left">
             <h2 className="text-2xl font-semibold mb-4">Jerome Sterling</h2>
             <p className="text-lg md:text-xl font-medium leading-relaxed mb-4">
-              Jerome Sterling, founder and chief pilot of SterFlies. With over
-              1,000 hours of drone flights and thermal imaging experience, he brings
-              precision, creativity, and safety to every project.
+              Jerome Sterling is the founder of SterFlies, specializing in forensic 3D site documentation 
+              and reality capture. With experience working alongside industrial hygienists and forensic experts, 
+              he focuses on accurately preserving site conditions through repeatable, high-fidelity visual documentation.
             </p>
             <p className="text-lg md:text-xl font-medium leading-relaxed">
-              From aerial data to cinematic fly‑throughs, Jerome is passionate about using
-              cutting‑edge drone technology to help clients see their world from a
-              whole new perspective.
+              Jerome’s work supports professionals who require objective visual records for analysis, 
+              reporting, and dispute resolution. By combining precise capture methods with disciplined workflows, 
+              SterFlies delivers reliable documentation designed to stand up to professional review.
             </p>
           </div>
         </div>
@@ -94,17 +94,15 @@ export default function AboutPage() {
       <section className="bg-sky-50 p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
         <p className="text-lg font-medium leading-relaxed mb-6">
-          SterFlies is dedicated to delivering top-tier aerial and thermal services
-          that empower businesses, homeowners, and builders with insights and
-          stunning visuals. Whether you need a roof inspection, site progress
-          reporting, or marketing content, we combine expertise with reliability to
-          exceed your expectations.
+         SterFlies provides high-accuracy forensic site documentation through aerial and ground-level reality capture. 
+         Our mission is to preserve site conditions, spatial context, and timelines with objective, 
+         repeatable visual records that support investigations, analysis, and dispute resolution.
         </p>
         <ul className="list-disc list-inside text-lg leading-relaxed space-y-2">
           <li>Thermal inspections for energy efficiency and preventative maintenance</li>
           <li>High-resolution aerial photography & videography</li>
-          <li>FPV cinematic fly-overs for marketing and storytelling</li>
-          <li>Subscription content packages for ongoing project documentation</li>
+          <li>Visual context for expert reports and claims</li>
+          <li>Forensic 3D site documentation and reality capture</li>
         </ul>
       </section>
 
