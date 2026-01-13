@@ -28,7 +28,7 @@ export type Project = {
 export const projects: Project[] = [
   // Matterport interior + drone exterior
   {
-    slug: "matterport-drone",
+    slug: "iaq-mold-documentation",
     title: "IAQ - Mold Survey Documentation DEMO (Matterport)",
     date: "2025-08-15",
     client: "IH Consulting (Demo Project)",

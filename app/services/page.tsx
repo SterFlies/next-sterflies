@@ -18,7 +18,7 @@ interface Service {
 const services: Service[] = [
   {
     title: 'Forensic Site Documentation',
-    slug: 'on-track',
+    slug: 'forensic-site-documentation',
     description: 'time-stamped interior and exterior 3D documentation.',
     Icon: Camera,
   },
