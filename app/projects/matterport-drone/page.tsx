@@ -4,8 +4,8 @@ import Link from "next/link";
 
 // Local meta (plain const so Next.js build stays clean)
 const meta = {
-  slug: "custom-home-matterport-drone", // this value doesn't affect routing
-  title: "Custom Home – Matterport + Drone Combo",
+  slug: "Indoor Air Quality Assessment Documentation", // this value doesn't affect routing
+  title: "IAQ - Mold Survey Documentation DEMO (Matterport)",
   date: "2025-08-15",
   cover: {
     src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077581/Screenshot_2025-09-05_080609_q3q6nk.png",
@@ -27,6 +27,9 @@ const CLOUDINARY_VIDEO_POSTER =
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png";
 const CLOUDINARY_FIELD_PHOTO =
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077084/matterportthumb_rosrlb.png";
+
+const CLOUDINARY_DATA_PHOTO =
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png";  
 
 // AspectBox with mobile-only height boost + optional mobile bleed
 function AspectBox({
@@ -105,7 +108,7 @@ export default function ProjectPage() {
         <iframe
           src={MATTERPORT_URL}
           className="absolute inset-0 w-full h-full"
-          title="Custom Home — Matterport Interior Tour"
+          title="IAQ - Mold Survey Documentation DEMO (Matterport)"
           frameBorder={0}
           allow="autoplay; fullscreen; web-share; xr-spatial-tracking"
           allowFullScreen
@@ -128,13 +131,22 @@ export default function ProjectPage() {
         <div className="lg:col-span-8 space-y-8">
           <SectionCard id="overview" title="Executive Summary">
             <p>
-              This project pairs a <strong>Matterport interior scan</strong> with an <strong>exterior drone-based 3D model</strong> so owners and trades can see the entire build—inside and out—from a single link. The interior tour makes it easy to confirm room flow and rough-in locations, while the exterior model shows access, grading, and roof geometry. It’s a simple digital handoff that reduces site visits and speeds decisions.
+              This demo project illustrates how interior Matterport scanning paired with an exterior drone-based 3D model supports indoor air quality (IAQ) and mold investigations by preserving site conditions at the time of assessment.
+            </p>
+            <p>
+              The interior model provides a navigable record of room layout and sampling locations, while the exterior model documents building envelope context, access conditions, grading, and roof geometry. Together, they form a single, time-stamped visual reference that supports sampling documentation, reporting clarity, and third-party review without repeated site visits.
             </p>
           </SectionCard>
 
-          <SectionCard id="tour" title="Interactive Interior Tour (Matterport)">
+          <SectionCard id="tour" title="Important Disclaimer">
             <p className="text-sm text-gray-600">
-              Use the viewer above: click to move, drag to look around, and open full screen for the sharpest detail.
+              This project is a <strong>demonstration example only</strong> and does <strong>not represent an active or ongoing investigation or case.</strong>
+            </p>
+            <p className="text-sm text-gray-600">
+             Any sampling information, spore types, laboratory results, or data visualizations shown within the models or supporting materials are <strong>entirely fictional and provided for illustrative purposes only.</strong> They are intended solely to demonstrate how environmental data may be visually referenced within site documentation.
+            </p>
+            <p className="text-sm text-gray-600">
+              No mold identification, air quality conclusions, moisture diagnosis, or causation analysis is provided or implied. All real-world assessments, interpretations, and findings must be performed by a licensed consultant, industrial hygienist, or accredited laboratory.
             </p>
           </SectionCard>
 
@@ -153,12 +165,15 @@ export default function ProjectPage() {
             <p className="text-sm text-gray-600">
               Rotate, zoom, and inspect roof planes, elevation transitions, and site access directly in the browser.
             </p>
+            <p className="text-sm text-gray-600">
+              Right mouse drag to rotate, scroll to zoom, and left mouse drag to pan the view.
+            </p>
           </SectionCard>
 
           {/* Cloudinary Video with Pro3 paragraph */}
           <SectionCard id="pro3video" title="Interior Scanning with Matterport Pro3">
             <p>
-              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for <em>virtual tours, as-built documentation,</em> and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
+              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for virtual tours, as-built documentation, and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
             </p>
             <AspectBox>
               <video
@@ -177,10 +192,31 @@ export default function ProjectPage() {
             </AspectBox>
           </SectionCard>
 
-          {/* Cloudinary Photo (you + Pro3) */}
+          {/* Annotated data Picture */}
+          <SectionCard id="pictureannotation" title="Added a photo annotation example">
+            <p>
+             High-resolution imagery and data can be <strong>annotated directly within the 3D tour</strong> to visually reference <strong>areas of observed concern,</strong> access points, and sampling locations. Annotations preserve what was documented, where it was documented, and when, without interpreting cause or severity.
+            </p>
+            <p>
+              This approach allows consultants, reviewers, and attorneys to quickly understand <strong>spatial context</strong>—such as the relationship between HVAC components, wall cavities, and adjacent rooms—while maintaining a clear separation between <strong>visual documentation</strong> and <strong>professional findings</strong>.
+            </p>
+            <figure className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
+              <Image
+                src={CLOUDINARY_DATA_PHOTO}
+                alt="Example annotation demonstrating how observed conditions may be visually referenced within the tour."
+                fill
+                className="object-cover"
+              />
+            </figure>
+          </SectionCard>
+
+          {/* Cloudinary Photo (me + Pro3) */}
           <SectionCard id="fieldphoto" title="On Site with the Pro3">
             <p>
-              We plan each interior loop for clear line-of-sight and minimal occlusion, then use the Pro3 on a tripod for stable, repeatable captures. Live feedback on the tablet confirms alignment and fill so every space stitches cleanly. The outcome is a highly accurate, navigable model that speeds RFIs and punch-list decisions.
+             Interior capture is planned around <strong>clear line-of-sight, minimal occlusion, and consistent scan spacing</strong> to ensure rooms, corridors, and transitions stitch accurately. The Pro3 is used on a tripod for stable, repeatable capture, while live tablet feedback confirms coverage and alignment.
+            </p>
+            <p>
+              The resulting model creates a <strong>navigable visual baseline</strong> that allows consultants to reference <strong>sampling locations, room relationships, and observed conditions</strong> during analysis, reporting, and follow-up—reducing ambiguity and improving documentation quality.
             </p>
             <figure className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
               <Image
@@ -192,21 +228,30 @@ export default function ProjectPage() {
             </figure>
           </SectionCard>
 
+          <SectionCard id="3D" title="Exterior Drone Capture & 3D Model">
+            <p className="text-lg text-black-600">
+              Exterior drone capture provides <strong>contextual documentation</strong> that can inform IAQ and moisture-related investigations. High-resolution visual imagery and thermal imaging are used to record building orientation, roof geometry, drainage patterns, exterior material transitions, and adjacent structures at the time of assessment.
+            </p>
+            <p>
+              The exterior 3D model does <strong>not diagnose conditions</strong>, but preserves spatial relationships that can be correlated with interior observations, sampling data, and historical findings.
+            </p>
+          </SectionCard>
+
           <SectionCard id="qa" title="Capture & QA">
             <ul className="list-disc pl-5">
-              <li>Matterport interior with control scan for accuracy across floors.</li>
-              <li>Exterior flown at low altitude for crisp roof planes and site context.</li>
-              <li>Consistent camera geometry so repeat scans compare cleanly.</li>
-              <li>Quick QC: door/window rough-in positions, stair openings, soffit clearances.</li>
+              <li>Matterport interior capture with control scans to ensure accurate alignment across rooms and levels.</li>
+              <li>Exterior drone and thermal capture at appropriate altitudes to document roof geometry, drainage features, and exterior context relevant to moisture and IAQ considerations.</li>
+              <li>Consistent camera geometry and capture parameters so repeat documentation can be compared over time if follow-up surveys are required.</li>
+              <li>Quality checks to confirm clear visibility of sampling locations, room transitions, material interfaces, and access points prior to delivery.</li>
             </ul>
           </SectionCard>
 
           <SectionCard id="next" title="Next Steps (Plain English)">
             <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Edit and add annotations to tour</strong> (interactive and annotated features) to keep a visual record.</li>
-              <li><strong>Share one link</strong> in owner updates; add two bullets: “What changed / What’s next.”</li>
-              <li><strong>Pin 2–3 decisions</strong> inside the tour (fixtures, switches, cabinets) for faster sign-off.</li>
-              <li><strong>Add an exterior map</strong> (ortho or 3D) here when grading/roof geometry changes.</li>
+              <li><strong>Edit and add annotations to scan</strong> to visually document sampling locations, room conditions, and observed areas of interest as a permanent visual record.</li>
+              <li><strong>Share one secure link</strong> with consultants, clients, or third parties, including brief notes for “Areas documented” and “Purpose of follow-up”. Supports investigation reports.</li>
+              <li><strong>Pin sampling points or reference markers</strong> inside the tour (air samples, surface samples, moisture readings) to maintain clear spatial context between data and location.</li>
+              <li><strong>Attach exterior context (visual, thermal, ortho, or 3D)</strong> when roof conditions, drainage patterns, or envelope-related factors are relevant to the investigation.</li>
             </ul>
           </SectionCard>
         </div>
@@ -217,12 +262,12 @@ export default function ProjectPage() {
             <div className="rounded-2xl border p-6 bg-white">
               <h3 className="text-base font-semibold">Quick Facts</h3>
               <ul className="mt-3 text-sm text-gray-700 space-y-2">
-                <li><span className="font-medium">Type:</span> Custom single-family home</li>
+                <li><span className="font-medium">Type:</span> Custom single-family home, Construction defect documentation</li>
                 <li><span className="font-medium">Primary:</span> Matterport interior tour</li>
                 <li><span className="font-medium">Secondary:</span> Exterior 3D model</li>
-                <li><span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop</li>
-                <li><span className="font-medium">Use case:</span> Owner/trade coordination, remote review</li>
-                <li><span className="font-medium">Outputs:</span> Virtual tour, 3D model, MP4 videos, Still Images</li>
+                <li><span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop, tablet/iPad</li>
+                <li><span className="font-medium">Use case:</span> Owner/trade coordination, mold consultation, Industrial hygienist report support, remote review</li>
+                <li><span className="font-medium">Outputs:</span> Virtual tour, 3D model, MP4 videos, Still Images, Thermal Images</li>
               </ul>
               <Link
                 href="/contact"

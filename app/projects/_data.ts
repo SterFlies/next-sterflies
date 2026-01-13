@@ -6,7 +6,7 @@ export type Project = {
   date?: string; // YYYY-MM-DD (used for sorting)
   client?: string;
   location?: string;
-  service: "photogrammetry" | "thermal" | "construction" | "promos" | "mapping";
+  service: "photogrammetry" | "thermal" | "construction" | "promos" | "mapping" | "3d-model" | "site-scanning" | "site-inspection" | "iaq" | "3D Forensic Documentation";
   cover: { src: string; alt: string };
   excerpt: string;
   tags: string[];
@@ -29,18 +29,18 @@ export const projects: Project[] = [
   // Matterport interior + drone exterior
   {
     slug: "matterport-drone",
-    title: "Custom Home – Matterport Interior + Drone Exterior",
+    title: "IAQ - Mold Survey Documentation DEMO (Matterport)",
     date: "2025-08-15",
-    client: "Residential GC / Owner",
+    client: "IH Consulting (Demo Project)",
     location: "San Antonio Area, TX",
-    service: "construction",
+    service: "3D Forensic Documentation",
     cover: {
       src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077581/Screenshot_2025-09-05_080609_q3q6nk.png",
       alt: "Custom home interior/exterior capture (Matterport + drone)",
     },
     excerpt:
-      "Walk the interior in 3D with Matterport and review the exterior from above in 3D, full context for owners and trades.",
-    tags: ["matterport", "interior", "exterior", "construction", "site-scanning", "site-inspection"],
+      "Walk the interior in 3D with Matterport and review the exterior from above in 3D.",
+    tags: ["IAQ", "mold", "3D", "matterport", "interior", "exterior", "construction", "site-scanning", "site-inspection"],
   },
 
   // 65-acre project to match /projects/65acresite
