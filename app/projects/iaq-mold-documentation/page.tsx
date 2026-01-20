@@ -131,7 +131,7 @@ export default function ProjectPage() {
         <div className="lg:col-span-8 space-y-8">
           <SectionCard id="overview" title="Executive Summary">
             <p>
-              This demo project illustrates how interior Matterport scanning paired with an exterior drone-based 3D model supports indoor air quality (IAQ) and mold investigations by preserving site conditions at the time of assessment.
+              This demo project illustrates how interior 3D & 360° scanning paired with an exterior drone-based 3D model supports indoor air quality (IAQ) and mold investigations by preserving site conditions at the time of assessment.
             </p>
             <p>
               The interior model provides a navigable record of room layout and sampling locations, while the exterior model documents building envelope context, access conditions, grading, and roof geometry. Together, they form a single, time-stamped visual reference that supports sampling documentation, reporting clarity, and third-party review without repeated site visits.

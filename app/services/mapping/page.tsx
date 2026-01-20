@@ -21,7 +21,7 @@ import Link from 'next/link'
 
 
 export const metadata = {
-  title: 'Site Analysis & Earthwork Quantities | SterFlies',
+  title: 'Site Progress Tracking & Measurements | SterFlies',
   description: 'High-resolution aerial imagery stitched into orthomosaics, 3D models, volumetrics, cut/fill, and topographic maps.',
 }
 
@@ -52,9 +52,9 @@ export default function ConstructionPage() {
 
         {/* Hero Banner */}
         <div className="bg-gradient-to-r from-blue-500 to-green-500 p-10 rounded-xl shadow-xl text-white text-center mb-16">
-          <h1 className="text-5xl font-bold">Site Analysis & Earthwork Quantities</h1>
+          <h1 className="text-5xl font-bold">Site Progress Tracking & Measurements</h1>
           <p className="mt-4 text-lg">
-            At SterFlies, we transform aerial imagery into precise, actionable data. From orthomosaics and 3D models to volumetric and cut/fill reports, our photogrammetry services provide the clarity you need to plan, monitor, and analyze your projects with confidence.
+            At SterFlies, we transform aerial imagery into precise, actionable data. From 2D and 3D models to volumetric and cut/fill reports, our photogrammetry services provide the clarity you need to plan, monitor, and analyze your projects with confidence.
           </p>
         </div>
 
@@ -75,11 +75,11 @@ export default function ConstructionPage() {
         {/* 3D Model Embed & CTA */}
         <section className="py-16 bg-gray-100 rounded-lg mb-16">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">Interact with our 3D Model</h3>
+            <h3 className="text-2xl font-bold text-blue-900 mb-6">Interact with our 2D Map</h3>
             <div className="w-full h-[400px] mb-6">
               <iframe
-                title="Construction Progress 3D Model"
-                src="https://cloud.pix4d.com/embed/pro/mesh/2296493?shareToken=47b2a408687641a3bc946816afe5b10d"
+                title="Construction Progress Map"
+                src="https://cloud.pix4d.com/dataset/2343984/map?shareToken=9dc76459-aab0-4309-8d9f-5d8e89f663cc"
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -87,7 +87,7 @@ export default function ConstructionPage() {
                 className="rounded-lg shadow"
               />
             </div>
-            <Link href="/blog/3d_model" passHref>
+            <Link href="/blog/orthomosaic_blog" passHref>
               <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
                 Read our Blog!
               </button>

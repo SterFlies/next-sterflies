@@ -23,7 +23,7 @@ const services: Service[] = [
     Icon: Camera,
   },
   {
-    title: 'Site Analysis & Earthwork Quantities',
+    title: 'Site Progress Tracking & Measurements',
     slug: 'mapping',
     description: 'High-resolution aerial data (orthomosaics, 3D maps/models, volumetrics, cut/fill, topography).',
     Icon: LandPlot,

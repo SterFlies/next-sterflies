@@ -6,19 +6,38 @@ import Link from 'next/link'
 import {
   ClockIcon,
   MapIcon,
-  BoxIcon,
-  TrendingUpIcon,
+  RulerIcon,
   FileTextIcon,
 } from 'lucide-react'
 
 // menu configuration
 const menuItems = [
-  { id: 'progress', title: 'Progress Monitoring', Icon: ClockIcon },
-  { id: 'survey', title: 'Surveying & Mapping', Icon: MapIcon },
-  { id: 'photogrammetry', title: 'Photogrammetry', Icon: BoxIcon },
-  { id: 'stockpile', title: 'Stockpile Reports', Icon: TrendingUpIcon },
-  { id: 'cutfill', title: 'Cut & Fill Reports', Icon: FileTextIcon },
+  {
+    id: 'progress',
+    title: 'Progress Monitoring',
+    Icon: ClockIcon,
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768942786/week-to-week-ortho_jephtz.jpg',
+  },
+  {
+    id: 'mapping',
+    title: 'Site Mapping',
+    Icon: MapIcon,
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768943315/Screenshot_2026-01-20_150808_wnmf26.png',
+  },
+  {
+    id: 'measurements',
+    title: 'Area & Distance Measurements',
+    Icon: RulerIcon,
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768943757/Screenshot_2026-01-20_151530_obdglx.png',
+  },
+  {
+    id: 'cutfill',
+    title: 'Cut & Fill Reports',
+    Icon: FileTextIcon,
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768928902/Screenshot_2026-01-20_110713_in25xr.png',
+  },
 ]
+
 
 export default function ConstructionMenu() {
   const [active, setActive] = useState(menuItems[0].id)
@@ -27,7 +46,7 @@ export default function ConstructionMenu() {
     <>
       {/* Interactive menu buttons */}
       <div className="overflow-x-auto mb-12">
-        <ul className="flex space-x-4">
+        <ul className="flex justify-center space-x-4">
           {menuItems.map(item => (
             <li key={item.id} className="flex-shrink-0">
               <button
@@ -51,6 +70,11 @@ export default function ConstructionMenu() {
         {menuItems.map(item => (
           active === item.id && (
             <section key={item.id}>
+              <img
+                src={item.image}
+                alt={`${item.title} example`}
+                className="w-full max-w-2xl mx-auto mb-6 rounded-lg shadow"
+              />
               <h2 className="text-3xl font-bold text-blue-900 mb-4">
                 {item.title}
               </h2>
@@ -58,17 +82,14 @@ export default function ConstructionMenu() {
                 {item.id === 'progress' && (
                   'We capture high-resolution aerial imagery at scheduled intervals using our drones like the DJI Matrice 4 series, collecting orthophotos and time-lapse videos to accurately track site progress and build a visual timeline for stakeholder updates.'
                 )}
-                {item.id === 'survey' && (
-                  'Our team flies systematic grid-pattern missions to gather geotagged photos, then processes them into precise orthomosaics and georeferenced point clouds, providing detailed mapping data for planning and analysis.'
+                {item.id === 'mapping' && (
+                  'We produce accurate site maps that document layout, access paths, and surface features across large areas. These maps provide spatial context that supports planning, coordination, and reference throughout a project.'
                 )}
-                {item.id === 'photogrammetry' && (
-                  'Using overlapping aerial images, we reconstruct detailed 3D point clouds and textured meshes in Pix4Dmapper, enabling accurate volumetric measurements and realistic visualizations of your site.'
-                )}
-                {item.id === 'stockpile' && (
-                  'Focused overflights of stockpile areas capture high-overlap photos which we process to compute precise volumes and generate clear stockpile reports, helping you manage inventory and reconcile materials.'
+                {item.id === 'measurements' && (
+                  'We generate reliable area and distance measurements directly from spatial site data. These measurements help teams understand dimensions, clearances, and coverage without needing to interpret raw imagery.'
                 )}
                 {item.id === 'cutfill' && (
-                  'By comparing digital surface models from different flight dates, we calculate cut and fill volumes, producing contour maps and detailed reports to optimize earthmoving operations and budget planning.'
+                  'We analyze surface changes between capture dates to quantify material added or removed across a site. These reports provide clear volume comparisons and visual context to support earthwork planning and progress verification.'
                 )}
               </p>
             <div className="text-center">
