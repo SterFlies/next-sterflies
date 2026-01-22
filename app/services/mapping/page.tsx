@@ -95,6 +95,30 @@ export default function ConstructionPage() {
           </div>
         </section>
 
+        {/* Video Cloudinary Loop */}
+        <section className="py-16 bg-gray-100 rounded-lg mb-16">
+          <div className="max-w-4xl mx-auto px-6 text-center">
+            <h3 className="text-2xl font-bold text-blue-900 mb-6">Planning Made Easier</h3>
+            <div className="w-full h-[400px] mb-6">
+              <video
+                title="Mapping Measurement Video loop"
+                src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1715284592/Video_loop_-measure_mapping_website_2_wryb2d.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="w-full h-full rounded-lg shadow object-cover"
+              />
+            </div>
+            <Link href="/contact" passHref>
+              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
+                Schedule a Call!
+              </button>
+            </Link>
+          </div>
+        </section>
+
         {/* Construction Menu*/}
         <ConstructionMenu />
 

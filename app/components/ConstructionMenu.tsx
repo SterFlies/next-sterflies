@@ -8,6 +8,7 @@ import {
   MapIcon,
   RulerIcon,
   FileTextIcon,
+  CameraIcon,
 } from 'lucide-react'
 
 // menu configuration
@@ -23,6 +24,12 @@ const menuItems = [
     title: 'Site Mapping',
     Icon: MapIcon,
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768943315/Screenshot_2026-01-20_150808_wnmf26.png',
+  },
+  {
+    id: 'video&photography',
+    title: 'Aerial Video & Photos',
+    Icon: CameraIcon,
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1769102135/DJI_20250831081054_0001_V_uxuneh.jpg',
   },
   {
     id: 'measurements',
@@ -80,10 +87,13 @@ export default function ConstructionMenu() {
               </h2>
               <p className="text-black mb-6">
                 {item.id === 'progress' && (
-                  'We capture high-resolution aerial imagery at scheduled intervals using our drones like the DJI Matrice 4 series, collecting orthophotos and time-lapse videos to accurately track site progress and build a visual timeline for stakeholder updates.'
+                  'We capture high-resolution aerial imagery at scheduled intervals to document site progress over time. Using consistent flight paths, we produce orthomosaics and time-lapse visuals that create a clear, chronological record for progress updates reporting, and stakeholder communication'
                 )}
                 {item.id === 'mapping' && (
                   'We produce accurate site maps that document layout, access paths, and surface features across large areas. These maps provide spatial context that supports planning, coordination, and reference throughout a project.'
+                )}
+                {item.id === 'video&photography' && (
+                  'We also include high resolution aerial photography and video footage to complement our mapping services. These visuals offer additional perspectives that enhance site understanding and communication.'
                 )}
                 {item.id === 'measurements' && (
                   'We generate reliable area and distance measurements directly from spatial site data. These measurements help teams understand dimensions, clearances, and coverage without needing to interpret raw imagery.'

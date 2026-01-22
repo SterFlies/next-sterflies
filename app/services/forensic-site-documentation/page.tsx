@@ -12,6 +12,7 @@ import {
   ZapIcon,
   Layers2Icon
 } from 'lucide-react'
+import ForensicMenu from '@/app/components/ForensicMenu';
 
 export const metadata = {
   title: 'Forensic Site Documentation | SterFlies',
@@ -20,10 +21,10 @@ export const metadata = {
 
 // Assets
   const CLOUDINARY_Forensic_MP4 =
-  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/Timeline_1_dbtois.mp4";
+  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/IAQ_-_DEMO_showcase_qo4nav.mp4";
 
   const CLOUDINARY_Forensic_POSTER =
-  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1767665046/Screenshot_2026-01-05_200321_cnzuw0.png";
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png";
 
   // AspectBox with mobile-only height boost + optional mobile bleed
 function AspectBox({
@@ -141,6 +142,9 @@ export default function VacantLandPage() {
             </AspectBox>
           </SectionCard>
         </div>
+
+        {/* ForensicMenu component */}
+        <ForensicMenu />
 
         {/* Why Choose SterFlies? */}
         <section className="mb-16">
