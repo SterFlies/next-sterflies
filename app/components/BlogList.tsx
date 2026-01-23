@@ -90,7 +90,15 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768151899/Mold-Inspection-image-5_ceiqaj.webp',
     slug: '/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations',
-  }
+  },
+  {
+    id: 9,
+    title: 'Documenting Site Conditions for Mold Assessments and Supporting Safety Decisions',
+    excerpt: 'How visual records can enhance your mold assessment process',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png',
+    slug: '/blog/documenting-mold-assessments-and-supporting-safety-decisions',
+  },
 ]
 
 export default function BlogList() {
