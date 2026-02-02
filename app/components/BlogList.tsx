@@ -99,6 +99,22 @@ const posts = [
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png',
     slug: '/blog/documenting-mold-assessments-and-supporting-safety-decisions',
   },
+  {
+    id: 10,
+    title: '10 Places to Visit in San Antonio',
+    excerpt: 'Discover the top attractions and hidden gems in San Antonio, Texas.',
+    category: 'Land',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770054988/csm_favorite_alamo_29649f9bee_t6c95f.jpg',
+    slug: '/blog/10-places-to-visit-in-san-antonio',
+  },
+  {
+    id: 11,
+    title: 'Documenting Site Conditions for Construction Defect Litigation',
+    excerpt: 'How interactive scans can provide crucial evidence in construction disputes',
+    category: 'Construction',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770059287/constructiondelay_gfs4si.png',
+    slug: '/blog/documenting-site-conditions-for-construction-defect-litigation',
+  }
 ]
 
 export default function BlogList() {

@@ -31,6 +31,7 @@ const CLOUDINARY_FIELD_PHOTO =
 const CLOUDINARY_DATA_PHOTO =
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png";  
 
+
 // AspectBox with mobile-only height boost + optional mobile bleed
 function AspectBox({
   aspect = "16/9",
