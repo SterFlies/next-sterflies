@@ -12,13 +12,13 @@ const CLOUDINARY_HERO =
   'https://res.cloudinary.com/dzlmoyomq/image/upload/v1767904099/Screenshot_2026-01-07_135958_aylyh6.png'
 
 const CLOUDINARY_RISK =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1767665046/Screenshot_2026-01-05_200321_cnzuw0.png'
+  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1769104726/Matterport_FloorplanSample_FLOOR2_aflqkk.png'
 
 const CLOUDINARY_VISUAL_CONTEXT =
-  'https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/Timeline_1_dbtois.mp4'
+  'https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/virtualtour_dq3b1w.mp4'
 
 const CLOUDINARY_EARLY_VALUE =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1767905302/Screenshot_2026-01-08_144800_qrzymb.png'
+  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1769207358/Screenshot_2026-01-23_162843_tckamn.png'
 
 export default function SiteConditionsBlogPage() {
   return (
@@ -72,7 +72,7 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* Risk of After-the-Fact */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
           <h2 className="text-4xl font-semibold">The Risk of After-the-Fact Documentation</h2>
 
           <p>
@@ -111,7 +111,7 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* What it is / is not */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
           <h2 className="text-4xl font-semibold">
             What Forensic Site Documentation Is and What It Is Not
           </h2>
@@ -137,14 +137,14 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* Visual / spatial context */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
   <h2 className="text-4xl font-semibold">
     Why Visual and Spatial Context Matters for Data-Based Reporting
   </h2>
 
   <figure className="my-16">
     <video
-      src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/Timeline_1_dbtois.mp4"
+      src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/virtualtour_dq3b1w.mp4"
       autoPlay
       loop
       muted
@@ -178,7 +178,7 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* When early documentation is valuable */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
           <h2 className="text-4xl font-semibold">When Early Documentation Is Most Valuable</h2>
 
           <p>
@@ -215,7 +215,7 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* Neutral role */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
           <h2 className="text-4xl font-semibold">A Neutral, Supporting Role by Design</h2>
 
           <p>
@@ -234,7 +234,7 @@ export default function SiteConditionsBlogPage() {
         <hr className="my-16 border-gray-300" />
 
         {/* Final thought */}
-        <section className="mb-12">
+        <section className="mb-12 space-y-6">
           <h2 className="text-4xl font-semibold">Final Thought</h2>
 
           <p>
