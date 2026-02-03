@@ -20,7 +20,7 @@ const categories = [
   'Marketing',
   'Thermal Solutions',
   'Data Collection',
-  'Forensic Documentation', // ✅ add missing category
+  'Forensic Documentation', 
 ]
 
 // list
@@ -114,6 +114,14 @@ const posts = [
     category: 'Construction',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770059287/constructiondelay_gfs4si.png',
     slug: '/blog/documenting-site-conditions-for-construction-defect-litigation',
+  },
+  {
+    id: 12,
+    title: 'Construction Progress Monitoring Best Practices',
+    excerpt: 'Maximizing Efficiency and Accuracy with Drone Technology',
+    category: 'Construction',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770156435/drone_iomryo.webp',
+    slug: '/blog/construction-progress-monitoring-best-practices',
   }
 ]
 
