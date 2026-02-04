@@ -122,6 +122,14 @@ const posts = [
     category: 'Construction',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770156435/drone_iomryo.webp',
     slug: '/blog/construction-progress-monitoring-best-practices',
+  },
+  {
+    id: 13,
+    title: 'What is Forensic Site Documentation?',
+    excerpt: 'An Introduction to Forensic Site Documentation and its Importance',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768153123/indoor-mapping-pix4d-pix4dmapper-spherical-camera-360_puyy1y.jpg',
+    slug: '/blog/what-is-forensic-site-documentation',
   }
 ]
 
