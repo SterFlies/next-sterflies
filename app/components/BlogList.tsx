@@ -130,6 +130,14 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1768153123/indoor-mapping-pix4d-pix4dmapper-spherical-camera-360_puyy1y.jpg',
     slug: '/blog/what-is-forensic-site-documentation',
+  },
+  {
+    id: 14,
+    title: 'You Don’t Think You Need Site Documentation Until The Investigation Starts',
+    excerpt: 'Understanding why site documentation is essential even before an investigation begins',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770398417/Massive_manufacturing_plant_02_Pro3_1960x1080px_rc3wqx.png',
+    slug: '/blog/you-dont-think-you-need-site-documentation-until-the-investigation-starts',
   }
 ]
 
