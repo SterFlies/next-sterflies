@@ -138,6 +138,14 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770398417/Massive_manufacturing_plant_02_Pro3_1960x1080px_rc3wqx.png',
     slug: '/blog/you-dont-think-you-need-site-documentation-until-the-investigation-starts',
+  },
+  {
+    id: 15,
+    title: 'Safety Investigations fail more often from missing context than missing data',
+    excerpt: 'How comprehensive site documentation can prevent safety investigation failures',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770491192/Warehouse_digital_twin_with_autostore_rxrrzw.jpg',
+    slug: '/blog/safety-investigations-fail-more-often-from-missing-context-than-missing-data',
   }
 ]
 
