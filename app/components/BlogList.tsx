@@ -146,6 +146,14 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770491192/Warehouse_digital_twin_with_autostore_rxrrzw.jpg',
     slug: '/blog/safety-investigations-fail-more-often-from-missing-context-than-missing-data',
+  },
+  {
+    id: 16,
+    title: 'Why Photos, Notes, and Memory Are the Weakest Parts of a Safety Investigation',
+    excerpt: 'Understanding why traditional evidence becomes fragile when the site changes',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770759280/69044891e3b2e9001d8e91b0_aplk7q.jpg',
+    slug: '/blog/why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation',
   }
 ]
 
