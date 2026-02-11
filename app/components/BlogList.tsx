@@ -154,6 +154,14 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770759280/69044891e3b2e9001d8e91b0_aplk7q.jpg',
     slug: '/blog/why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation',
+  },
+  {
+    id: 17,
+    title: 'The Growing Necessity of Drone Integration',
+    excerpt: 'How drones are becoming essential tools across various industries',
+    category: 'Data Collection',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770830502/ImageForArticle_8660_17060939845694007_qtwoma.webp',
+    slug: '/blog/the-growing-necessity-of-drone-integration',
   }
 ]
 
