@@ -162,6 +162,14 @@ const posts = [
     category: 'Data Collection',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770830502/ImageForArticle_8660_17060939845694007_qtwoma.webp',
     slug: '/blog/the-growing-necessity-of-drone-integration',
+  },
+  {
+    id: 18,
+    title: 'Rebuilding Reality: How SterFlies Creates Defensible Digital Site Environments',
+    excerpt: 'Discover how SterFlies transforms physical sites into accurate digital environments for better decision-making.',
+    category: 'Data Collection',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771003197/nashville-scan-to-bim-1642095994_pkyjqb.jpg',
+    slug: '/blog/rebuilding-reality-defensible-digital-site-environments',
   }
 ]
 
