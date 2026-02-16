@@ -8,7 +8,7 @@
   --font-mono: var(--font-mono, monospace);
 }
 
-/* ——— Global base + hard stop for horizontal overflow ——— */
+/* ——— Global base ——— */
 html,
 body {
   background: var(--background);
@@ -16,24 +16,21 @@ body {
   font-family: var(--font-sans);
   min-height: 100%;
   width: 100%;
-  overflow-x: clip;
 }
 
-/* Fallback for browsers that don't support overflow-x: clip */
-@supports not (overflow-x: clip) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
+/* Prevent tiny default spacing issues */
+body {
+  margin: 0;
 }
 
-/* Box sizing + media safety */
+/* Consistent sizing calculations */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Media should never force horizontal overflow */
 img,
 video,
 canvas,
@@ -42,33 +39,19 @@ svg {
   height: auto;
 }
 
-/* Optional: prevents long strings/URLs from forcing overflow */
-body {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
 /* If you still want a sky background in some places */
 .sky-bg {
   background: #87ceeb;
   position: relative; /* needed because .drone/.cloud are absolute */
-  overflow: hidden;   /* contains animations so they can't create page scroll */
+  overflow: hidden;   /* contains the animation without affecting the whole site */
 }
 
 /* ——— Drone flight ani ——— */
 @keyframes fly {
-  0% {
-    transform: translateX(-150px) translateY(20px) rotate(0deg);
-  }
-  25% {
-    transform: translateX(25vw) translateY(0px) rotate(10deg);
-  }
-  75% {
-    transform: translateX(75vw) translateY(0px) rotate(-10deg);
-  }
-  100% {
-    transform: translateX(calc(100vw + 100px)) translateY(20px) rotate(0deg);
-  }
+  0%   { transform: translateX(-150px) translateY(20px) rotate(0deg); }
+  25%  { transform: translateX(25vw)   translateY(0px)  rotate(10deg); }
+  75%  { transform: translateX(75vw)   translateY(0px)  rotate(-10deg); }
+  100% { transform: translateX(calc(100vw + 100px)) translateY(20px) rotate(0deg); }
 }
 
 .drone {
@@ -83,17 +66,13 @@ body {
 
 /* ——— Clouds drifting right→left ——— */
 @keyframes floatCloud {
-  0% {
-    transform: translateX(calc(100vw + 100px));
-  }
-  100% {
-    transform: translateX(-100px);
-  }
+  0%   { transform: translateX(calc(100vw + 100px)); }
+  100% { transform: translateX(-100px); }
 }
 
 .cloud {
   position: absolute;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255,255,255,0.8);
   filter: blur(4px);
   border-radius: 50%;
   animation: floatCloud linear infinite;
@@ -110,63 +89,26 @@ body {
 }
 
 .cloud::before {
-  width: 100px;
-  height: 80px;
-  top: -30px;
-  left: 10px;
+  width: 100px; height: 80px;
+  top: -30px;  left: 10px;
 }
 
 .cloud::after {
-  width: 120px;
-  height: 100px;
-  top: -40px;
-  right: 15px;
+  width: 120px; height: 100px;
+  top: -40px;  right: 15px;
 }
 
-.cloud1 {
-  top: 10%;
-  width: 200px;
-  height: 80px;
-  animation-duration: 20s;
-}
-.cloud2 {
-  top: 35%;
-  width: 250px;
-  height: 100px;
-  animation-duration: 43s;
-}
-.cloud3 {
-  top: 55%;
-  width: 180px;
-  height: 70px;
-  animation-duration: 30s;
-}
-.cloud4 {
-  top: 25%;
-  width: 200px;
-  height: 90px;
-  animation-duration: 37s;
-}
-.cloud5 {
-  top: 70%;
-  width: 220px;
-  height: 80px;
-  animation-duration: 50s;
-}
+.cloud1 { top: 10%; width: 200px; height: 80px;  animation-duration: 20s;}
+.cloud2 { top: 35%; width: 250px; height: 100px; animation-duration: 43s;}
+.cloud3 { top: 55%; width: 180px; height: 70px;  animation-duration: 30s;}
+.cloud4 { top: 25%; width: 200px; height: 90px;  animation-duration: 37s;}
+.cloud5 { top: 70%; width: 220px; height: 80px;  animation-duration: 50s;}
 
 /* Shining letter effect */
 @keyframes letter-shine {
-  0%,
-  100% {
-    filter: brightness(1);
-  }
-  30%,
-  70% {
-    filter: brightness(1.4);
-  }
-  50% {
-    filter: brightness(2);
-  }
+  0%,100% { filter: brightness(1); }
+  30%,70% { filter: brightness(1.4); }
+  50%     { filter: brightness(2); }
 }
 
 .shine-letter {
