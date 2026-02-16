@@ -21,7 +21,7 @@ export default function Page() {
         <div className="container mx-auto px-4">
           {/* Gradient Banner */}
           <div className="bg-gradient-to-r from-teal-400 to-blue-500 text-white rounded-lg shadow-lg p-12 mb-12 text-center">
-            <h2 className="text-4xl font-bold mb-4">Business Marketing Content</h2>
+            <h2 className="text-4xl font-bold mb-4">Drone Photography & Videography</h2>
             <p className="text-lg">
               Elevate your brand with custom aerial & ground-based video content that captivates
               and converts across every platform.

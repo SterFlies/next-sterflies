@@ -29,7 +29,7 @@ const services: Service[] = [
     Icon: LandPlot,
   },
   {
-    title: 'Marketing Visuals',
+    title: 'Drone Photography & Videography',
     slug: 'marketing',
     description: 'Professional drone cinematography to enhance your brand’s marketing strategy.',
     Icon: CircleDollarSign,
