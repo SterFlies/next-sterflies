@@ -170,6 +170,14 @@ const posts = [
     category: 'Data Collection',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771003197/nashville-scan-to-bim-1642095994_pkyjqb.jpg',
     slug: '/blog/rebuilding-reality-defensible-digital-site-environments',
+  },
+  {
+    id: 19,
+    title: 'Thermal Reporting Standards IEC 62446-3: What You Need to Know',
+    excerpt: 'Understanding the IEC 62446-3 standard for thermal reporting and its implications for industry professionals.',
+    category: 'Thermal Solutions',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png',
+    slug: '/blog/thermal-reporting-standards-iec-62446-3',
   }
 ]
 
