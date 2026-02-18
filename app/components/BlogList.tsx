@@ -178,6 +178,14 @@ const posts = [
     category: 'Thermal Solutions',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png',
     slug: '/blog/thermal-reporting-standards-iec-62446-3',
+  },
+  {
+    id: 20,
+    title: 'Digital Evidence in Legal Disputes: How 3D Reality Capture Is Changing Case Strategy',
+    excerpt: 'Explore how 3D reality capture technology is revolutionizing the use of digital evidence in legal disputes and shaping case strategies.',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771444596/2958_Article_Daubert-Challenge_Main_1400x760_kivetp.jpg',
+    slug: '/blog/digital-evidence-3d-reality-capture-legal-disputes',
   }
 ]
 
