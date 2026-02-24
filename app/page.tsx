@@ -7,6 +7,7 @@ import { Camera, LandPlot, Radiation } from "lucide-react";
 import HowItWorks from './components/HowItWorks';
 import TexasCoverage from "./components/TexasCoverage";
 import SignUpForm from "./components/SignUpForm";
+import Certifications from "./components/Certifications";
 
 export const metadata = {
   title: "3D Forensic Site Documentation & Aerial Data Capture | SterFlies",
@@ -211,6 +212,8 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      <Certifications />
 
       {/* Mission Section */}
       <section className="flex flex-col-reverse lg:flex-row items-center gap-8 py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

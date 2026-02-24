@@ -186,6 +186,14 @@ const posts = [
     category: 'Forensic Documentation',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771444596/2958_Article_Daubert-Challenge_Main_1400x760_kivetp.jpg',
     slug: '/blog/digital-evidence-3d-reality-capture-legal-disputes',
+  },
+  {
+    id: 21,
+    title: 'Solar Thermal Anomalies and Drone-Based PV Inspections',
+    excerpt: 'Discover how drone-based PV inspections are revolutionizing the detection of solar thermal anomalies, enhancing efficiency and accuracy in solar energy maintenance.',
+    category: 'Thermal Solutions',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771950485/KDPPplqmAQe2fdphC9rf_YXJa2-JV05flIlTVm_0olNL6iPSbK44ss93VsnQ7__nTCrgrdk_GawIbQ3Ib_7sg3PFn5dR3U1euhfE28_rjnw_axeh2c.jpg',
+    slug: '/blog/solar-thermal-anomalies-drone-based-pv-inspections',
   }
 ]
 

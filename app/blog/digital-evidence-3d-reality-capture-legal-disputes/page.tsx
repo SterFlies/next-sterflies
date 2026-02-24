@@ -7,7 +7,7 @@ import Link from 'next/link'
 // Cloudinary loader
 const cloudinaryLoader = ({ src }: { src: string }) => src
 
-// ✅ Cloudinary assets (replace with your uploads)
+// ✅ Cloudinary assets 
 const CLOUDINARY_TOP_HERO =
   'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771444596/2958_Article_Daubert-Challenge_Main_1400x760_kivetp.jpg'
 
