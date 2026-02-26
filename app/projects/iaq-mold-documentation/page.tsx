@@ -176,19 +176,18 @@ export default function ProjectPage() {
             <p>
               For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for virtual tours, as-built documentation, and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
             </p>
-            <AspectBox>
+            <AspectBox aspect="16/9">
               <video
-                controls={false}
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
                 poster={CLOUDINARY_VIDEO_POSTER}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full"
+                style={{ objectFit: "contain", transform: "translateY(-40%) scale(1)", }}
               >
                 <source src={CLOUDINARY_VIDEO_MP4} type="video/mp4" />
-                Your browser does not support the video tag.
               </video>
             </AspectBox>
           </SectionCard>
