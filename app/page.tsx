@@ -203,7 +203,7 @@ export default function HomePage() {
             Professional Aerial & Ground-Based Site Documentation
           </h1>
           <h2 className="mt-2 text-2xl text-black">
-            We capture real-world sites in accurate 2D and 3D for documentation, review, and record-keeping
+            We capture entire properties in measurable 2D and 3D formats including floor plans, virtual tours, photography, video, and full 3D models so attorneys and experts can review site conditions from anywhere even after the property changes.
           </h2>
           <Link href="/contact" passHref>
             <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
