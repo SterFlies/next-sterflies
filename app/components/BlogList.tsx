@@ -194,7 +194,15 @@ const posts = [
     category: 'Thermal Solutions',
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1771950485/KDPPplqmAQe2fdphC9rf_YXJa2-JV05flIlTVm_0olNL6iPSbK44ss93VsnQ7__nTCrgrdk_GawIbQ3Ib_7sg3PFn5dR3U1euhfE28_rjnw_axeh2c.jpg',
     slug: '/blog/solar-thermal-anomalies-drone-based-pv-inspections',
-  }
+  },
+  {
+    id: 22,
+    title: 'Chain of Custody for Digital Site Documentation: How to Preserve Context That Holds Up in Litigation',
+    excerpt: 'Learn how to maintain defensible digital site documentation that stands up in court.',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg',
+    slug: '/blog/chain-of-custody-digital-site-documentation-litigation',
+  },
 ]
 
 export default function BlogList() {
