@@ -208,7 +208,7 @@ const posts = [
     title: 'Why Expert Witnesses Need More Than Photos to Analyze a Site',
     excerpt: 'Understanding the limitations of traditional evidence and the importance of comprehensive digital documentation.',
     category: 'Forensic Documentation',
-    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1772732136/b689410e-fa09-409e-b890-8d30c290ae4c_bzeb1e.png',
     slug: '/blog/why-expert-witnesses-need-more-than-photos-to-analyze-a-site',
   }
 ]
