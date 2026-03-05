@@ -203,6 +203,14 @@ const posts = [
     image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg',
     slug: '/blog/chain-of-custody-digital-site-documentation-litigation',
   },
+  {
+    id: 23,
+    title: 'Why Expert Witnesses Need More Than Photos to Analyze a Site',
+    excerpt: 'Understanding the limitations of traditional evidence and the importance of comprehensive digital documentation.',
+    category: 'Forensic Documentation',
+    image: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg',
+    slug: '/blog/why-expert-witnesses-need-more-than-photos-to-analyze-a-site',
+  }
 ]
 
 export default function BlogList() {
