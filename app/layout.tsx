@@ -54,7 +54,7 @@ export default function RootLayout({
         )}
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

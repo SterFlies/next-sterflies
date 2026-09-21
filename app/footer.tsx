@@ -1,66 +1,144 @@
-// components/Footer.tsx
-
 import React from 'react'
 import Link from 'next/link'
-import { FaLinkedin, FaYoutube, FaInstagram, FaFacebook, } from 'react-icons/fa'
+import { FaLinkedin, FaYoutube, FaInstagram, FaFacebook } from 'react-icons/fa'
+import BrandMark from './components/BrandMark'
+import SiteContainer from './components/SiteContainer'
+import { serviceNav, siteConfig } from './config/site'
+
+const companyLinks = [
+  { href: '/projects', label: 'Projects' },
+  { href: '/blog', label: 'Articles' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+]
+
+const legalLinks = [
+  { href: '/privacy', label: 'Privacy' },
+  { href: '/terms_conditions', label: 'Terms' },
+  { href: '/faq', label: 'FAQs' },
+]
+
+const socialIcons = {
+  LinkedIn: FaLinkedin,
+  YouTube: FaYoutube,
+  Instagram: FaInstagram,
+  Facebook: FaFacebook,
+} as const
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-gray-400">
-      {/* Top section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left: contact + socials */}
-        <div className="space-y-4 text-center lg:text-left">
-          <p>10515 Weser Ln, Helotes, TX 78023</p>
-          <p>
-            <a href="mailto:jerome.sterling@sterflies.com" className="hover:text-white">
-              jerome.sterling@sterflies.com
+    <footer className="mt-auto border-t border-[var(--color-line)] bg-[var(--color-ink)] text-[#c8cdd3]">
+      <SiteContainer className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-16">
+        <div>
+          <div className="text-white">
+            <BrandMark showTagline />
+          </div>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed">
+            {siteConfig.description}
+          </p>
+          <p className="mt-4 text-sm leading-relaxed">
+            {siteConfig.companyRelationship || siteConfig.relationshipFallback}
+          </p>
+          <p className="mt-5 text-sm">
+            <a href={`mailto:${siteConfig.email}`} className="text-white hover:underline">
+              {siteConfig.email}
             </a>
           </p>
-          <div className="flex justify-center lg:justify-start space-x-4 mt-2">
-            <a href="https://www.linkedin.com/in/jeromesterling/" aria-label="LinkedIn" className="hover:text-white">
-              <FaLinkedin size={20} />
-            </a>
-            <a href="https://youtube.com/@SterFlies" aria-label="YouTube" className="hover:text-white">
-              <FaYoutube size={20} />
-            </a>
-            <a href="https://instagram.com/sterflies" aria-label="Instagram" className="hover:text-white">
-              <FaInstagram size={20} />
-            </a>
-            <a href="https://facebook.com/SterFlies" aria-label="Facebook" className="hover:text-white">
-              <FaFacebook size={20} />
-            </a>
-          </div>
+          <p className="mt-1 text-sm">{siteConfig.address}</p>
         </div>
 
-        {/* Right: quick links */}
-        <div className="text-center lg:text-right">
-          <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            <li>
-              <Link href="/faq" className="hover:text-white">
-                FAQs
-              </Link>
-            </li>
-            <li>
-              <Link href="/privacy" className="hover:text-white">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="/terms_conditions" className="hover:text-white">
-                Terms &amp; Conditions
-              </Link>
-            </li>
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-white">Services</h2>
+          <ul className="mt-4 space-y-2 text-sm">
+            {serviceNav.filter((item) => item.href !== '/services').map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-white">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-gray-700">
-        <p className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
-          &copy; {new Date().getFullYear()} SterFlies LLC. All rights reserved.
-        </p>
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-white">Company</h2>
+          <ul className="mt-4 space-y-2 text-sm">
+            {companyLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-white">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.12em] text-white">Legal</h2>
+          <ul className="mt-4 space-y-2 text-sm">
+            {legalLinks.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-white">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <form
+            action={siteConfig.newsletter.action}
+            method="post"
+            target="_blank"
+            className="relative mt-8"
+          >
+            <label htmlFor="footer-email" className="block text-sm font-medium text-white">
+              Technical notes
+            </label>
+            <p className="mt-1 text-xs leading-relaxed">
+              Occasional updates on field documentation methods. No promotional cadence.
+            </p>
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row">
+              <input
+                id="footer-email"
+                type="email"
+                name="EMAIL"
+                required
+                placeholder="Email address"
+                className="min-h-11 w-full rounded-[6px] border border-white/15 bg-white/5 px-3 text-sm text-white placeholder:text-[#8b929b]"
+              />
+              <button
+                type="submit"
+                name="subscribe"
+                className="min-h-11 shrink-0 rounded-[6px] bg-white px-4 text-sm font-semibold text-[var(--color-ink)]"
+              >
+                Subscribe
+              </button>
+            </div>
+            <div aria-hidden="true" className="absolute left-[-5000px]">
+              <input type="text" name={siteConfig.newsletter.honeypot} tabIndex={-1} defaultValue="" />
+            </div>
+          </form>
+        </div>
+      </SiteContainer>
+
+      <div className="border-t border-white/10">
+        <SiteContainer className="flex flex-col gap-4 py-4 text-xs sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
+          </p>
+          <ul className="flex gap-4">
+            {siteConfig.social.map((item) => {
+              const Icon = socialIcons[item.label as keyof typeof socialIcons]
+              return (
+                <li key={item.label}>
+                  <a href={item.href} aria-label={item.label} className="hover:text-white">
+                    <Icon size={16} />
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </SiteContainer>
       </div>
     </footer>
   )

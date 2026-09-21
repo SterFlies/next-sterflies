@@ -1,438 +1,561 @@
-/* eslint-disable @next/next/no-img-element */
-// app/page.tsx
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Camera, LandPlot, Radiation } from "lucide-react";
-import HowItWorks from './components/HowItWorks';
-import TexasCoverage from "./components/TexasCoverage";
-import SignUpForm from "./components/SignUpForm";
-import Certifications from "./components/Certifications";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
+import type { Metadata } from "next"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ButtonLink from "@/app/components/ButtonLink"
+import { cloudinaryUrl, siteConfig } from "@/app/config/site"
+import { projects } from "@/app/projects/_data"
 
-export const metadata = {
-  title: "3D Forensic Site Documentation & Aerial Data Capture | SterFlies",
+export const metadata: Metadata = {
+  title: "Forensic Mapping & Reality Capture | SterFlies",
   description:
-    "SterFlies provides expert drone photography and thermal imaging solutions in San Antonio.",
-  keywords: [
-  // Core services
-  "drone site scanning",
-  "drone thermal inspections",
-  "construction site drone mapping",
-  "photogrammetry drone services",
-  "3D site documentation",
-  "orthomosaic mapping",
-  "volumetric drone surveys",
-  "aerial drone photography",
-  "thermal imaging drone services",
-  "3D site modeling",
-  "2D site mapping",
-  "drone data analysis",
-  "drone site monitoring",
-  "drone topographic surveys",
-  "drone stockpile measurements",
-  "aerial site documentation",
-  "drone land surveys",
-  "forensic site documentation",
-  "forensic site mapping",
-  "forensic site imaging",
-  "forensic site reconstruction",
-  "forensic site analysis",
-  "forensic site modeling",
-  "forensic site data collection",
-
-  // Industry-specific
-  "solar panel thermal inspection Texas",
-  "construction progress drone scans",
-  "insurance and legal site documentation",
-  "real estate 3D virtual tours",
-  "roof thermal drone inspection",
-  "agricultural drone surveys Texas",
-  "land development drone mapping",
-  "environmental monitoring drones",
-  "infrastructure inspection drones",
-  "forensic site documentation drones",
-  "environmental safety site surveys",
-  "3D forensic reconstruction Texas",
-  "3D forensic site modeling",
-  "3D forensic site mapping",
-  "2D forensic site documentation",
-  "forensic site data capture Texas",
-  "forensic site imaging services",
-  "forensic site analysis Texas",
-  "forensic site reconstruction services",
-  "forensic site modeling Texas",
-  "forensic site documentation services",
-  "forensic site data collection services",
-  "forensic site surveys Texas",
-  "forensic site monitoring services",
-  "forensic site mapping services",
-  "forensic site imaging Texas",
-  "forensic site reconstruction Texas",
-  "forensic site analysis services",
-  "forensic site modeling services",
-  "forensic site documentation Texas",
-  "forensic site data collection Texas",
-  "forensic site surveys services",
-  "forensic site monitoring Texas",
-  "forensic site mapping Texas",
-  "forensic site imaging services Texas",
-  "forensic site reconstruction services Texas",
-  "forensic site analysis Texas",
-  "forensic site modeling Texas",
-  "forensic site documentation services Texas",
-  "forensic site data collection services Texas",
-  "forensic site surveys Texas services",
-  "forensic site monitoring services Texas",
-  "forensic site mapping services Texas",
-  "forensic site imaging Texas services",
-  "forensic site reconstruction Texas services",
-  "forensic site analysis services Texas",
-  "forensic site modeling services Texas",
- 
-
-  // Local SEO
-  "San Antonio drone services",
-  "Texas drone inspections",
-  "San Antonio thermal imaging",
-  "San Antonio aerial photography",
-  "Texas construction drone surveys",
-  "San Antonio site documentation",
-  "drone services near me San Antonio",
-  "drone mapping Texas",
-  "drone inspection services San Antonio",
-  "thermal drone services Texas",
-  "drone surveying San Antonio",
-  "aerial site surveys Texas",
-  "drone imaging services San Antonio",
-  "drone data collection Texas",
-  "drone site analysis San Antonio",
-  "drone project documentation Texas",
-  "drone site monitoring San Antonio",
-  "drone topographic mapping Texas",
-  "drone stockpile measurement San Antonio",
-  "drone volumetric analysis Texas",
-  "drone land surveying San Antonio",
-  "San Antonio 3D forensic documentation",
-  "Texas forensic site surveys",
-  "San Antonio forensic site mapping",
-  "Texas forensic site imaging",
-  "San Antonio forensic site reconstruction",
-  "Texas forensic site analysis",
-  "San Antonio forensic site modeling",
-  "Texas forensic site documentation",
-  "San Antonio forensic site data collection",
-  "drone services San Antonio",
-  "drone services Texas",
-  "aerial drone services San Antonio",
-  "aerial drone services Texas",
-  "3D forensic mold documentation San Antonio",
-  "3D forensic mold documentation Texas",
-  "forensic site drone services San Antonio",
-  "forensic site drone services Texas",
-  "3D forensic asbestos documentation San Antonio",
-  "3D forensic asbestos documentation Texas",
-  "3D forensic fire damage documentation San Antonio",
-  "3D forensic fire damage documentation Texas",
-  "3D forensic accident site documentation San Antonio",
-  "3D forensic accident site documentation Texas",
-  "3D forensic environmental site documentation San Antonio",
-  "3D forensic environmental site documentation Texas",
-  "3D forensic crime scene documentation San Antonio",
-  "3D forensic crime scene documentation Texas",
-  "3D forensic structural damage documentation San Antonio",
-  "3D forensic structural damage documentation Texas",
-  "3D forensic industrial site documentation San Antonio",
-  "3D forensic industrial site documentation Texas",
-  
-  // Brand
-  "SterFlies",
-],
+    "SterFlies provides forensic mapping, photogrammetry, reality capture, thermal imaging, and technical site documentation for investigations, construction, and industrial work.",
   openGraph: {
-    title: "SterFlies | Aerial-to-Ground Site Solutions",
-    description: "Elevate your project with aerial visuals and thermal insights from SterFlies.",
+    title: "Forensic Mapping & Reality Capture | SterFlies",
+    description:
+      "Technical field documentation that preserves site conditions as reviewable, measurable spatial records.",
     url: "https://sterflies.com",
     siteName: "SterFlies",
     images: [
       {
-        url: "https://sterflies.com/website-sample-photo.JPG",
+        url: cloudinaryUrl(
+          "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
+          1200
+        ),
         width: 1200,
         height: 630,
-        alt: "SterFlies drone in action",
+        alt: "Aerial mapping of a 65-acre development site",
       },
     ],
     type: "website",
   },
-};
+}
+
+const audienceGroups = [
+  {
+    label: "Investigations & counsel",
+    items: ["Forensic consultants", "Attorneys", "Expert witnesses", "Insurers / claims professionals"],
+  },
+  {
+    label: "Health & safety",
+    items: ["Industrial hygienists", "EHS / safety teams"],
+  },
+  {
+    label: "Built environment",
+    items: ["Construction professionals", "Engineers", "Facility operators"],
+  },
+]
+
+const services = [
+  {
+    number: "01",
+    title: "Forensic Mapping & Site Documentation",
+    href: "/services/forensic-site-documentation",
+    summary: "Capture existing site conditions before they change.",
+    outputs: [
+      "Orthomosaics",
+      "3D models",
+      "Aerial context",
+      "Measurable scene records",
+      "Interior and exterior documentation",
+    ],
+    image: {
+      src: "/3DThumbnail.png",
+      alt: "3D reconstruction of a structure under construction",
+    },
+  },
+  {
+    number: "02",
+    title: "Mapping & Photogrammetry",
+    href: "/services/mapping",
+    summary: "Create measurable site data for construction, industrial, and technical workflows.",
+    outputs: [
+      "Orthomosaics",
+      "Point clouds",
+      "Surface models",
+      "Volumetric data",
+      "Progress documentation",
+    ],
+    image: {
+      src: cloudinaryUrl(
+        "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
+        900
+      ),
+      alt: "Aerial mapping of a 65-acre development site",
+    },
+  },
+  {
+    number: "03",
+    title: "Thermal Documentation",
+    href: "/thermal/Applications",
+    summary: "Capture thermal data for inspection and documentation workflows where it is useful.",
+    outputs: [
+      "PV systems",
+      "Building envelope",
+      "Electrical systems",
+      "Industrial assets",
+    ],
+    image: {
+      src: "/ThermalThumb.png",
+      alt: "Thermal documentation of a photovoltaic array",
+    },
+  },
+]
+
+const methods = [
+  {
+    number: "01",
+    title: "Aerial photogrammetry",
+    text: "Stills processed into orthomosaics, models, and spatial context when a site needs overview, measurement, or repeatable coverage.",
+  },
+  {
+    number: "02",
+    title: "Terrestrial reality capture",
+    text: "Interior and close-range scanning when room relationships, access, and walkable context matter as much as the exterior.",
+  },
+  {
+    number: "03",
+    title: "Thermal imaging",
+    text: "Infrared capture paired with visual imagery when temperature variation is relevant to inspection or documentation.",
+  },
+  {
+    number: "04",
+    title: "High-resolution aerial photography",
+    text: "Still imagery for conditions, access, staging, and visual reference when a full spatial product is not required.",
+  },
+  {
+    number: "05",
+    title: "Point cloud / 3D processing",
+    text: "Photogrammetric processing that turns field capture into models, clouds, and other reviewable spatial products.",
+  },
+]
+
+const deliverableGroups = [
+  {
+    label: "Spatial",
+    items: [
+      { title: "Orthomosaics", text: "Scaled aerial maps that show site layout, access, and change over time." },
+      { title: "3D models", text: "Navigable site geometry for remote review after conditions have changed." },
+      { title: "Point clouds", text: "Spatial datasets that support measurement, context, and further analysis." },
+      { title: "Site measurements", text: "Distances, areas, and volumes derived from the agreed capture scope." },
+    ],
+  },
+  {
+    label: "Visual",
+    items: [
+      { title: "Reality-capture walkthroughs", text: "Interior tours that preserve room layout, access, and annotated locations." },
+      { title: "Annotated imagery", text: "Marked stills that connect observations to a specific location in the record." },
+    ],
+  },
+  {
+    label: "Thermal",
+    items: [
+      { title: "Thermal imagery", text: "Infrared frames and location context for inspection documentation." },
+    ],
+  },
+  {
+    label: "Supporting records",
+    items: [
+      { title: "Supporting files", text: "Organized exports and reports as specified for the engagement." },
+    ],
+  },
+]
+
+const process = [
+  {
+    number: "01",
+    title: "Define the documentation objective",
+    text: "Understand what conditions need to be preserved, measured, or reviewed.",
+  },
+  {
+    number: "02",
+    title: "Plan the capture",
+    text: "Select appropriate aerial, terrestrial, thermal, or combined methods.",
+  },
+  {
+    number: "03",
+    title: "Document the site",
+    text: "Capture field conditions systematically and safely.",
+  },
+  {
+    number: "04",
+    title: "Process & organize",
+    text: "Create the agreed spatial, visual, and supporting deliverables.",
+  },
+  {
+    number: "05",
+    title: "Deliver for review",
+    text: "Provide organized documentation for project teams and qualified professionals.",
+  },
+]
+
+const featured = [
+  {
+    slug: "iaq-mold-documentation",
+    title: "IAQ & Mold Existing Conditions Documentation",
+    type: "Interior and exterior documentation",
+    documented: "Interior walkthrough and exterior 3D model of existing building conditions.",
+    why: "Preserve room layout, sampling context, and envelope conditions for later professional review.",
+    deliverables: "Interior walkthrough, exterior model, and annotated views.",
+    image: {
+      src: cloudinaryUrl(
+        "https://res.cloudinary.com/dzlmoyomq/image/upload/v1769103746/ext-int3D_h28l56.jpg",
+        1400
+      ),
+      alt: "Combined interior and exterior 3D documentation of existing site conditions",
+      object: "object-left",
+    },
+  },
+  {
+    slug: "65acresite",
+    title: "65-Acre Site Mapping & Progress Documentation",
+    type: "Mapping and progress documentation",
+    documented: "Recurring aerial mapping of grading, utilities, pads, and access across a 65-acre development.",
+    why: "Give project teams a shared spatial record of site conditions as work advanced.",
+    deliverables: "Orthomosaic and shareable web map.",
+    image: {
+      src: cloudinaryUrl(
+        "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
+        1400
+      ),
+      alt: "Aerial mapping of a 65-acre development site",
+    },
+  },
+  {
+    slug: "pv-farm-hotspots",
+    title: "Solar PV Thermal Documentation",
+    type: "Thermal documentation",
+    documented: "RGB and thermal documentation of a photovoltaic array.",
+    why: "Locate underperforming modules so maintenance can be targeted rather than walked field-wide.",
+    deliverables: "Thermal imagery, defect snapshots, and location context.",
+    image: {
+      src: "/ThermalThumb.png",
+      alt: "Thermal documentation of a photovoltaic array",
+    },
+  },
+]
+
+const HERO_OUTPUT = "/3D-website-data.png"
+const HERO_SITE = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
+  1200
+)
 
 export default function HomePage() {
-  const industries = [
-    { title: "Forensic Site Documentation", Icon: Camera },
-    { title: "Site-Reconsctruction", Icon: LandPlot },
-    { title: "Thermal Inspections", Icon: Radiation },
-  ];
-
-  // Cloudinary video loop URL)
-  const CLOUDINARY_SITE_WALKTHROUGH_LOOP =
-    "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/IAQ_-_DEMO_showcase_qo4nav.mp4";
-
+  const featuredProjects = featured.map((item) => {
+    const project = projects.find((entry) => entry.slug === item.slug)
+    return { ...item, project }
+  })
 
   return (
     <>
-      {/* Hero Section with drone animation */}
-      <section className="relative flex items-center justify-center h-screen overflow-hidden bg-gradient-to-b from-sky-300 to-sky-500 px-4">
-        {/* Clouds (make sure your globals.css or a module defines .cloud, .cloud1, etc.) */}
-        <div className="absolute inset-0">
-          <div className="cloud cloud1" />
-          <div className="cloud cloud2" />
-          <div className="cloud cloud3" />
-          <div className="cloud cloud4" />
-          <div className="cloud cloud5" />
-        </div>
-
-        {/* Flying Drone */}
-        <img
-          src="/Drone picture (1).png"
-          alt="Flying Drone"
-          className="absolute top-[20%] left-0 w-[100px]"
-          style={{ animation: "fly 20s linear infinite", zIndex: 10 }}
-        />
-
-        {/* Hero text & CTA */}
-        <div className="relative z-20 w-full max-w-5xl bg-transparent border-4 border-blue-900/70 backdrop-blur-md p-6 sm:p-8 rounded text-center shadow-[0_0_4px_rgba(96,165,250,0.8),0_0_8px_rgba(96,165,250,0.6),0_0_16px_rgba(96,165,250,0.4)]">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white">
-            Professional Aerial & Ground-Based Site Documentation
-          </h1>
-          <h2 className="mt-2 text-base sm:text-2xl text-black">
-            We capture entire properties in measurable 2D and 3D formats including floor plans, virtual tours, photography, video, and full 3D models so attorneys and experts can review site conditions from anywhere even after the property changes.
-          </h2>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
-          >
-            Schedule a Consultation!
-          </Link>
-        </div>
-      </section>
-
-      <Certifications />
-
-      {/* Mission Section */}
-      <section className="flex flex-col-reverse lg:flex-row items-center gap-8 py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Left side: sample photo */}
-        <div className="lg:w-1/2">
-          <Image
-            src="/website-sample-photo.JPG"
-            alt="SterFlies drone in action"
-            width={800}
-            height={600}
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-
-        {/* Right side: Mission & “Elevate” slogan */}
-        <div className="lg:w-1/2">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 leading-tight">
-            {"Elevate".split("").map((char, i) => (
-              <span
-                key={i}
-                className="shine-letter inline-block"
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                {char}
-              </span>
-            ))}
-            <br />
-            <span className="text-orange-500">your vision with SterFlies</span>
-          </h2>
-
-          <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-black-800 leading-relaxed mb-8">
-            Reliable aerial and ground data and imagery for clear, accurate site documentation.
-          </p>
-
-          <Link href="/services" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">
-            Let’s Get Started
-          </Link>
-        </div>
-      </section>
-
-      {/* Data Left side photo */}
-       <section className="flex flex-col-reverse lg:flex-row items-center gap-8 py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Left side: sample photo */}
-        <div className="lg:w-1/2">
-          <Image
-            src="/pointclouds-camerapoints.png"
-            alt="point clouds and camera positions from a drone survey"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-
-        
-
-
-        {/* Data Capture */}
-        <div className="lg:w-1/2">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 leading-tight">
-            {"Data Captured".split("").map((char, i) => (
-              <span
-                key={i}
-                className={`shine-letter inline-block ${char === " " ? "w-3" : ""}`}
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                {char}
-              </span>
-            ))}
-          <br />
-          <span className="text-orange-500">for Your Current Project</span>
-        </h2>
-
-        <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-gray-800 leading-relaxed mb-8">
-         Aerial and ground-based scanning using drones and 3D capture to document sites in accurate 2D and 3D.
-        </p>
-        <Link href="/blog" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">
-            Read more!
-          </Link>
-      </div>
-     </section>
-
-     {/* Data Left side photo */}
-       <section className="flex flex-col-reverse lg:flex-row items-center gap-8 py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Left side: sample photo */}
-        <div className="lg:w-1/2">
-          <Image
-            src="/3D-website-data.png"
-            alt="3D model generated from drone data"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-lg"
-          />
-        </div>
-
-        {/* 3D Models */}
-        <div className="lg:w-1/2">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 leading-tight">
-            {"Site Conditions".split("").map((char, i) => (
-              <span
-                key={i}
-                className={`shine-letter inline-block ${char === " " ? "w-3" : ""}`}
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                {char}
-              </span>
-            ))}
-          <br />
-          <span className="text-orange-500">Captured as Measurable 3D Data</span>
-        </h2>
-
-        <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-gray-800 leading-relaxed mb-8">
-         We capture sites as structured 3D data rather than simple imagery, producing accurate visual records that can be measured, revisited, and referenced long after site conditions change.
-        </p>
-        <Link href="/blog" className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600">
-            Read more!
-          </Link>
-      </div>
-     </section>
-
-     {/* NEW SECTION: Cloudinary Video Loop for Interior + Exterior Context */}
-      <section className="flex flex-col lg:flex-row items-center gap-8 py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Left side: video loop */}
-        <div className="lg:w-1/2 w-full">
-          <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
-            <video
-              className="w-full h-auto rounded-lg"
-              src={CLOUDINARY_SITE_WALKTHROUGH_LOOP}
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-            />
+      <section className="border-b border-[var(--color-line)]">
+        <SiteContainer className="grid items-start gap-10 py-12 md:gap-14 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:py-20">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-muted)]">
+              {siteConfig.name}
+            </p>
+            <h1 className="mt-3 max-w-[16ch] text-[2.375rem] font-semibold leading-[1.12] tracking-tight text-[var(--color-ink)] sm:text-[2.75rem] lg:text-[3.5rem]">
+              {siteConfig.tagline}
+            </h1>
+            <p className="mt-4 max-w-[36rem] text-lg text-[var(--color-muted)] md:text-xl">
+              {siteConfig.description}
+            </p>
+            <p className="mt-5 max-w-[40rem] text-base leading-relaxed text-[var(--color-ink)] md:text-lg">
+              SterFlies captures aerial and ground-based spatial data to preserve site conditions as reviewable, measurable records. The documentation supports measurement, collaboration, and technical analysis by qualified professionals.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href={siteConfig.cta.href}>{siteConfig.cta.label}</ButtonLink>
+              <ButtonLink href="/projects" variant="secondary">
+                View Projects
+              </ButtonLink>
+            </div>
           </div>
-        </div>
 
-        {/* Right side: copy + CTA */}
-        <div className="lg:w-1/2">
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 leading-tight">
-            {"Full Site Context".split("").map((char, i) => (
-              <span
-                key={i}
-                className={`shine-letter inline-block ${char === " " ? "w-3" : ""}`}
-                style={{ animationDelay: `${i * 0.15}s` }}
-              >
-                {char}
-              </span>
-            ))}
-            <br />
-            <span className="text-orange-500">Interior and Exterior Connected</span>
-          </h2>
-
-          <p className="max-w-prose mx-auto text-lg md:text-xl font-medium text-gray-800 leading-relaxed mb-8">
-            We document sites as one navigable spatial record, combining exterior aerial capture with interior 3D scanning to preserve full context across spaces, structures, and conditions.
-          </p>
-
-          <Link
-            href="/projects/iaq-mold-documentation"
-            className="mt-6 inline-block bg-orange-500 text-white px-6 py-3 rounded-md shadow hover:bg-orange-600"
-          >
-            See How It Works
-          </Link>
-        </div>
+          <div className="grid gap-3 sm:grid-cols-5">
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[#111] sm:col-span-5">
+              <Image
+                src={HERO_OUTPUT}
+                alt="3D reconstruction of documented site conditions with a measurable bounding volume"
+                width={1600}
+                height={900}
+                priority
+                className="aspect-[16/10] w-full object-cover object-center"
+              />
+              <figcaption className="border-t border-[var(--color-line)] bg-[var(--color-surface)] px-3 py-2 text-[0.7rem] font-medium uppercase tracking-[0.1em] text-[var(--color-muted)]">
+                3D reconstruction
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-surface)] sm:col-span-5">
+              <Image
+                src={HERO_SITE}
+                alt="Aerial mapping of a 65-acre development site"
+                width={1200}
+                height={500}
+                className="aspect-[21/9] w-full object-cover"
+              />
+              <figcaption className="border-t border-[var(--color-line)] px-3 py-2 text-[0.7rem] font-medium uppercase tracking-[0.1em] text-[var(--color-muted)]">
+                Mapped site conditions
+              </figcaption>
+            </figure>
+          </div>
+        </SiteContainer>
       </section>
 
-     {/* YouTube Embedded Video - Homepage */}
-     <section className="mb-12">
-  <div className="w-full px-6 flex flex-col items-center">
-    <h3 className="text-3xl font-bold text-blue-900 mb-4 text-center">
-      Watch This Short Infomercial
-    </h3>
-
-    <div className="w-full max-w-3xl">
-      <div className="relative aspect-video max-h-[360px] overflow-hidden rounded-lg shadow-lg">
-        <iframe
-          className="absolute inset-0 w-full h-full"
-          src="https://www.youtube.com/embed/-FxpLibvKiM?si=xIhyd42UPvfZCo7v"
-          title="SterFlies Infomercial"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-    </div>
-  </div>
-</section>
-
-
-      <TexasCoverage />
-
-      {/* Specialty */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8">
-            Proudly Specializing In
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {industries.map(({ title, Icon }) => (
-              <div
-                key={title}
-                className="bg-white rounded-lg p-8 shadow hover:shadow-lg transition flex flex-col items-center text-center"
-              >
-                <Icon className="w-12 h-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Audience"
+            title="Field documentation built for professional review"
+            description="SterFlies produces spatial and visual records. Qualified experts, investigators, engineers, attorneys, and other professionals interpret those records."
+          />
+          <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+            {audienceGroups.map((group) => (
+              <div key={group.label} className="border-t border-[var(--color-ink)] pt-5">
+                <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                  {group.label}
+                </p>
+                <ul className="mt-4 space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item} className="text-base text-[var(--color-ink)]">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
-        </div>
-        <HowItWorks/>
+        </SiteContainer>
       </section>
-      {/* My Newsleter*/}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl">
-            <SignUpForm />
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Services"
+            title="Documentation selected for the work"
+            description="Services are organized by the record being produced, not by a piece of hardware."
+          />
+          <div className="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-8">
+            {services.map((service) => (
+              <article key={service.number} className="flex flex-col">
+                <div className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+                  <Image
+                    src={service.image.src}
+                    alt={service.image.alt}
+                    width={900}
+                    height={600}
+                    className="aspect-[16/10] w-full object-cover"
+                  />
+                </div>
+                <p className="mt-5 text-xs tracking-[0.14em] text-[var(--color-muted)]">{service.number}</p>
+                <h3 className="mt-2 text-[1.375rem] font-semibold leading-snug tracking-tight md:text-[1.5rem]">
+                  {service.title}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-[var(--color-muted)]">
+                  {service.summary}
+                </p>
+                <ul className="mt-5 space-y-1.5 text-sm text-[var(--color-ink)]">
+                  {service.outputs.map((output) => (
+                    <li key={output}>{output}</li>
+                  ))}
+                </ul>
+                <Link
+                  href={service.href}
+                  className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+                >
+                  View service
+                </Link>
+              </article>
+            ))}
           </div>
-        </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Methods"
+            title="Capture methods selected for the site"
+            description="Aerial systems, terrestrial scanners, thermal sensors, and processing software are tools. The method is chosen from site conditions and the deliverable that is actually needed."
+          />
+          <ol className="mt-12 divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+            {methods.map((method) => (
+              <li key={method.number} className="grid gap-2 py-6 md:grid-cols-[3rem_minmax(0,16rem)_minmax(0,1fr)] md:items-baseline md:gap-8">
+                <p className="text-xs tracking-[0.14em] text-[var(--color-muted)]">{method.number}</p>
+                <h3 className="text-base font-semibold">{method.title}</h3>
+                <p className="text-base leading-relaxed text-[var(--color-muted)]">{method.text}</p>
+              </li>
+            ))}
+          </ol>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Deliverables"
+            title="Field data built for review"
+            description="Not every project includes every product. Deliverables are scoped to the site and the questions the record needs to support."
+          />
+          <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {deliverableGroups.map((group) => (
+              <div key={group.label} className="border-t border-[var(--color-ink)] pt-5">
+                <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
+                  {group.label}
+                </p>
+                <ul className="mt-5 space-y-5">
+                  {group.items.map((item) => (
+                    <li key={item.title}>
+                      <h3 className="text-base font-semibold">{item.title}</h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-[var(--color-muted)]">{item.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Projects"
+            title="Selected Field Documentation"
+            description="Examples spanning interior reality capture, mapping, and thermal documentation."
+          />
+          <div className="mt-12 space-y-12">
+            {featuredProjects.map((item) => {
+              if (!item.project) return null
+              return (
+                <article
+                  key={item.slug}
+                  className="grid gap-6 border-t border-[var(--color-line)] pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-12"
+                >
+                  <Link href={`/projects/${item.slug}`} className="block overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+                    <Image
+                      src={item.image.src}
+                      alt={item.image.alt}
+                      width={1400}
+                      height={900}
+                      className={`aspect-[16/10] w-full object-cover ${item.image.object ?? ""}`}
+                    />
+                  </Link>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                      {item.type}
+                    </p>
+                    <h3 className="mt-2 text-2xl font-semibold tracking-tight">{item.title}</h3>
+                    <dl className="mt-5 space-y-4 text-sm leading-relaxed md:text-base">
+                      <div>
+                        <dt className="font-semibold">What was documented</dt>
+                        <dd className="mt-1 text-[var(--color-muted)]">{item.documented}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold">Why it mattered</dt>
+                        <dd className="mt-1 text-[var(--color-muted)]">{item.why}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold">Deliverables</dt>
+                        <dd className="mt-1 text-[var(--color-muted)]">{item.deliverables}</dd>
+                      </div>
+                    </dl>
+                    <Link
+                      href={`/projects/${item.slug}`}
+                      className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+                    >
+                      View project
+                    </Link>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Process"
+            title="A documentation workflow"
+            description="The work is scoped to the record required, not sold as a flight package."
+          />
+          <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+            {process.map((step) => (
+              <li key={step.number} className="border-t border-[var(--color-ink)] pt-5">
+                <p className="text-xs tracking-[0.14em] text-[var(--color-muted)]">{step.number}</p>
+                <h3 className="mt-3 text-lg font-semibold leading-snug">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Qualifications"
+            title="Field credentials"
+            description="Operations are conducted under an FAA Part 107 remote pilot certificate, with OSHA 10 construction safety training and insured operations."
+          />
+          <ul className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-line)] sm:grid-cols-3">
+            <li className="flex min-h-[3.5rem] items-center justify-center gap-3 bg-[var(--color-surface)] px-5 py-4">
+              <Image src="/Part 107.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" />
+              <span className="text-sm font-medium">FAA Part 107</span>
+            </li>
+            <li className="flex min-h-[3.5rem] items-center justify-center gap-3 bg-[var(--color-surface)] px-5 py-4">
+              <Image
+                src="https://res.cloudinary.com/dzlmoyomq/image/upload/f_auto,q_auto,c_limit,w_160/v1771954912/OSHA-10hr-Logo-150x150_g3q3jp.png"
+                alt=""
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
+              />
+              <span className="text-sm font-medium">OSHA 10</span>
+            </li>
+            <li className="flex min-h-[3.5rem] items-center justify-center bg-[var(--color-surface)] px-5 py-4">
+              <span className="text-sm font-medium">Insured Operations</span>
+            </li>
+          </ul>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <p className="text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
+            {siteConfig.companyRelationship || siteConfig.relationshipFallback}
+          </p>
+        </SiteContainer>
+      </section>
+
+      <section className="bg-[var(--color-ink)] py-14 text-white md:py-20">
+        <SiteContainer className="max-w-3xl">
+          <h2 className="text-[1.75rem] font-semibold tracking-tight md:text-[2.125rem]">
+            Need a site documented?
+          </h2>
+          <p className="mt-4 max-w-[42rem] text-base leading-relaxed text-white/75 md:text-lg">
+            Tell us what needs to be captured, measured, or preserved and we can determine the appropriate documentation approach.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/contact"
+              className="inline-flex min-h-11 items-center justify-center rounded-[6px] bg-white px-5 text-sm font-semibold text-[var(--color-ink)]"
+            >
+              {siteConfig.cta.label}
+            </Link>
+            <Link
+              href={`mailto:${siteConfig.email}`}
+              className="inline-flex min-h-11 items-center justify-center rounded-[6px] border border-white/25 px-5 text-sm font-semibold text-white"
+            >
+              Contact SterFlies
+            </Link>
+          </div>
+        </SiteContainer>
       </section>
     </>
-  );
+  )
 }

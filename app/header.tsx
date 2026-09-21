@@ -1,28 +1,21 @@
 'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import BrandMark from './components/BrandMark'
+import { primaryNav, serviceNav, siteConfig } from './config/site'
 import styles from './components/Header.module.css'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [thermalOpen, setThermalOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
-  const dropdownRef = useRef<HTMLLIElement>(null)
-
-  const links: Array<[string, string]> = [
-    ['/', 'Home'],
-    ['/about', 'About'],
-    ['/services', 'Services'],
-    ['/projects', 'Our Projects'],
-    ['/blog', 'Blog'],
-    ['/contact', 'Contact'],
-  ]
+  const burgerRef = useRef<HTMLButtonElement>(null)
+  const servicesRef = useRef<HTMLLIElement>(null)
 
   const closeAll = () => {
     setMenuOpen(false)
-    setThermalOpen(false)
+    setServicesOpen(false)
   }
 
   useEffect(() => {
@@ -37,34 +30,66 @@ export default function Header() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') closeAll()
+      if (e.key === 'Escape') {
+        const wasOpen = menuOpen || servicesOpen
+        closeAll()
+        if (wasOpen) burgerRef.current?.focus()
+      }
     }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [])
+  }, [menuOpen, servicesOpen])
 
   useEffect(() => {
     document.body.classList.toggle('nav-open', menuOpen)
     return () => document.body.classList.remove('nav-open')
   }, [menuOpen])
 
+  useEffect(() => {
+    if (!menuOpen) return
+    const root = headerRef.current
+    if (!root) return
+    const focusable = Array.from(
+      root.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    ).filter((el) => el.offsetParent !== null)
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+
+    function onKey(e: KeyboardEvent) {
+      if (e.key !== 'Tab' || !first || !last) return
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [menuOpen])
+
   return (
     <header ref={headerRef} className={styles.header}>
+      {menuOpen ? (
+        <div className={styles.overlay} onClick={closeAll} aria-hidden="true" />
+      ) : null}
+
       <nav className={styles.nav} aria-label="Primary">
         <Link href="/" onClick={closeAll} className={styles.logo}>
-          <Image
-            src="/logo.png"
-            alt="SterFlies Logo"
-            width={140}
-            height={48}
-            priority
-          />
+          <BrandMark />
+          <span className="sr-only"> home</span>
         </Link>
 
         <button
+          ref={burgerRef}
           type="button"
           className={styles.burger}
-          onClick={() => { setMenuOpen(o => !o); setThermalOpen(false) }}
+          onClick={() => {
+            setMenuOpen((open) => !open)
+            setServicesOpen(false)
+          }}
           aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
@@ -78,45 +103,50 @@ export default function Header() {
           id="primary-navigation"
           className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}
         >
-          {links.slice(0, 3).map(([href, label]) => (
-            <li key={href}>
-              <Link href={href} onClick={closeAll}>{label}</Link>
-            </li>
-          ))}
+          <li>
+            <Link href="/" onClick={closeAll}>Home</Link>
+          </li>
 
-          <li ref={dropdownRef} className={styles.dropdown}>
+          <li ref={servicesRef} className={styles.dropdown}>
+            <span className={styles.groupLabel}>Services</span>
             <button
               type="button"
-              onClick={() => setThermalOpen(o => !o)}
-              aria-expanded={thermalOpen}
-              aria-controls="thermal-submenu"
+              className={styles.dropdownToggle}
+              aria-expanded={servicesOpen}
+              aria-controls="services-submenu"
+              onClick={() => setServicesOpen((open) => !open)}
             >
-              Thermal ▾
+              Services
+              <span className={styles.chevron} aria-hidden="true">▾</span>
             </button>
-            <ul id="thermal-submenu" className={styles.submenu}>
-              <li>
-                <Link href="/thermal/case-studies" onClick={closeAll}>
-                  Case Studies
-                </Link>
-              </li>
-              <li>
-                <Link href="/thermal/Applications" onClick={closeAll}>
-                  Applications
-                </Link>
-              </li>
-              <li>
-                <Link href="/thermal/method" onClick={closeAll}>
-                  Process &amp; Method
-                </Link>
-              </li>
+            <ul
+              id="services-submenu"
+              className={styles.submenu}
+              data-open={servicesOpen ? 'true' : 'false'}
+            >
+              {serviceNav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} onClick={closeAll}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </li>
 
-          {links.slice(3).map(([href, label]) => (
-            <li key={href}>
-              <Link href={href} onClick={closeAll}>{label}</Link>
+          {primaryNav.filter((item) => item.href !== '/').map((item) => (
+            <li key={item.href}>
+              <Link href={item.href} onClick={closeAll}>
+                {item.label}
+              </Link>
             </li>
           ))}
+
+          <li className={styles.ctaItem}>
+            <Link href={siteConfig.cta.href} onClick={closeAll} className={styles.cta}>
+              {siteConfig.cta.label}
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
