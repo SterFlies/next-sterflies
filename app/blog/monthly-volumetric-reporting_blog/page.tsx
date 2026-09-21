@@ -39,7 +39,7 @@ export default function MonthlyVolumetricReportingBlogPage() {
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:justify-between text-gray-600 text-sm">
-            <p>By Jerome Sterling — Chief Pilot</p>
+            <p>By Jerome Sterling</p>
             <time dateTime="2025-08-15">August 15, 2025</time>
           </div>
         </header>

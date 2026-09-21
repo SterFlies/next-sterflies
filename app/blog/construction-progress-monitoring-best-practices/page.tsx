@@ -9,7 +9,7 @@ const cloudinaryLoader = ({ src }: { src: string }) => src
 
 // ✅ Cloudinary 
 const CLOUDINARY_TOP_HERO =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770156031/6751a7b6a33cec3127f9e96e_645448fca93097059f02fe4f_drone_20construction_yceynb.webp'
+  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg'
 const CLOUDINARY_HERO_1 =
   'https://res.cloudinary.com/dzlmoyomq/image/upload/v1770154941/63b931_79b3ed8b41f34d279b7560b5b1ef8dce_mv2_ifumgr.avif'
 const CLOUDINARY_HERO_2 =
@@ -39,7 +39,7 @@ export default function Page() {
                 <Image
                   loader={cloudinaryLoader}
                   src={CLOUDINARY_TOP_HERO}
-                  alt="Construction Hero Image"
+                  alt="Mapped construction site record used for progress documentation"
                   width={800}
                   height={800}
                   className="rounded-lg shadow-md mx-auto my-12"

@@ -25,7 +25,7 @@ export default function ThermalImagingBlogPage() {
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-600 text-sm">
-            <p>By Jerome Sterling — Chief Pilot</p>
+            <p>By Jerome Sterling</p>
             <time dateTime="2025-08-14">August 14, 2025</time>
           </div>
         </header>

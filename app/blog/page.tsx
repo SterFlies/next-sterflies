@@ -36,7 +36,9 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const featured = getFeaturedArticle()
   const listed = getListedArticles()
-  const selected = listed.filter((article) => !article.featured && article.tier !== "legacy").slice(0, 6)
+  const selected = listed
+    .filter((article) => article.tier === "core" && !article.featured)
+    .slice(0, 6)
 
   return (
     <div>
@@ -116,7 +118,11 @@ export default function BlogPage() {
             {articleCategories.map((category) => {
               const items = listed
                 .filter((article) => article.category === category && article.tier !== "legacy")
-                .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+                .sort((a, b) => {
+                  if (Boolean(a.featured) !== Boolean(b.featured)) return a.featured ? -1 : 1
+                  if (a.tier !== b.tier) return a.tier === "core" ? -1 : 1
+                  return b.publishedAt.localeCompare(a.publishedAt)
+                })
               if (!items.length) return null
               return (
                 <div key={category}>

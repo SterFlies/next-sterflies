@@ -51,9 +51,12 @@ export const articles: Article[] = [
     heroAlt: "Interior spatial documentation used to preserve site conditions for later review",
     readingTime: "8 min read",
     relatedSlugs: [
-      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
-      "why-existing-conditions-documentation-is-critical-for-ih-investigations",
       "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+      "digital-evidence-3d-reality-capture-legal-disputes",
+      "chain-of-custody-digital-site-documentation-litigation",
+      "why-existing-conditions-documentation-is-critical-for-ih-investigations",
+      "documenting-site-conditions-for-construction-defect-litigation",
     ],
     featured: true,
     listed: true,
@@ -168,7 +171,11 @@ export const articles: Article[] = [
     heroImage: "/3DThumbnail.png",
     heroAlt: "Photogrammetric 3D reconstruction of a structure",
     readingTime: "8 min read",
-    relatedSlugs: ["orthomosaic_blog", "construction-progress-monitoring-best-practices"],
+    relatedSlugs: [
+      "orthomosaic_blog",
+      "construction-progress-monitoring-best-practices",
+      "rebuilding-reality-defensible-digital-site-environments",
+    ],
     listed: true,
     tier: "core",
   },
@@ -177,17 +184,22 @@ export const articles: Article[] = [
     title: "Why Site Conditions Should Be Documented Before They Are Altered",
     description:
       "Why existing conditions should be preserved before repairs, demolition, or construction change the site.",
-    excerpt: "Document conditions while they still exist.",
+    excerpt: "Document conditions while they still exist, before repairs or remediation change the site.",
     category: "Forensic Documentation",
     publishedAt: "2026-01-08",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1767906103/Screenshot_2026-01-08_145836_zgatsw.png",
-      1200
+      1600
     ),
-    heroAlt: "Documented site conditions before alteration",
+    heroAlt: "Documented interior site conditions before alteration",
     readingTime: "6 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
+      "what-is-forensic-site-documentation",
+      "why-existing-conditions-documentation-is-critical-for-ih-investigations",
+    ],
     listed: true,
     tier: "core",
   },
@@ -196,17 +208,22 @@ export const articles: Article[] = [
     title: "You Don’t Think You Need Site Documentation Until the Investigation Starts",
     description:
       "Why documentation is often requested only after the original site conditions are gone.",
-    excerpt: "The investigation often starts after the site has already changed.",
+    excerpt: "The investigation often starts after the original site conditions are already gone.",
     category: "Forensic Documentation",
     publishedAt: "2026-02-06",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770398417/Massive_manufacturing_plant_02_Pro3_1960x1080px_rc3wqx.png",
-      1200
+      1600
     ),
     heroAlt: "Interior facility documentation for later investigation review",
     readingTime: "7 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "safety-investigations-fail-more-often-from-missing-context-than-missing-data",
+      "why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation",
+    ],
     listed: true,
     tier: "core",
   },
@@ -215,17 +232,22 @@ export const articles: Article[] = [
     title: "Safety Investigations Fail More Often From Missing Context Than Missing Data",
     description:
       "Why spatial context can matter as much as individual measurements in safety investigations.",
-    excerpt: "Missing context can matter more than missing data points.",
+    excerpt: "Spatial relationships and environment can matter more than additional isolated measurements.",
     category: "Forensic Documentation",
     publishedAt: "2026-02-07",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770491192/Warehouse_digital_twin_with_autostore_rxrrzw.jpg",
-      1200
+      1600
     ),
     heroAlt: "Facility documentation used to preserve investigation context",
     readingTime: "7 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation",
+      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
+      "what-is-forensic-site-documentation",
+    ],
     listed: true,
     tier: "core",
   },
@@ -234,17 +256,22 @@ export const articles: Article[] = [
     title: "Why Photos, Notes, and Memory Are the Weakest Parts of a Safety Investigation",
     description:
       "Why traditional field notes and photographs become fragile after a site changes.",
-    excerpt: "Traditional records often cannot reconstruct a changed site.",
+    excerpt: "Isolated photographs, notes, and recall become harder to use after a site changes.",
     category: "Forensic Documentation",
     publishedAt: "2026-02-10",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770759280/69044891e3b2e9001d8e91b0_aplk7q.jpg",
-      1200
+      1600
     ),
     heroAlt: "Field notes and photographs as incomplete investigation records",
     readingTime: "7 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "safety-investigations-fail-more-often-from-missing-context-than-missing-data",
+      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
+      "what-is-forensic-site-documentation",
+    ],
     listed: true,
     tier: "core",
   },
@@ -253,17 +280,22 @@ export const articles: Article[] = [
     title: "Why Documenting Site Conditions Is Critical for Construction Defect Litigation",
     description:
       "How spatial documentation can preserve construction conditions for later professional review.",
-    excerpt: "Preserving construction conditions before they are covered or altered.",
+    excerpt: "Preserving visible construction conditions, spatial relationships, and timing for later professional review.",
     category: "Construction Documentation",
     publishedAt: "2026-02-02",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770059287/constructiondelay_gfs4si.png",
-      1200
+      1600
     ),
     heroAlt: "Construction site documentation for later condition review",
     readingTime: "8 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "what-is-forensic-site-documentation",
+      "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+    ],
     listed: true,
     tier: "core",
   },
@@ -277,31 +309,36 @@ export const articles: Article[] = [
     publishedAt: "2026-02-03",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770156435/drone_iomryo.webp",
-      1200
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg",
+      1600
     ),
-    heroAlt: "Construction progress documentation from aerial mapping",
+    heroAlt: "Mapped construction site record used for progress documentation",
     readingTime: "7 min read",
-    relatedSlugs: [],
+    relatedSlugs: ["orthomosaic_blog", "3d_model"],
     listed: true,
     tier: "supporting",
   },
   {
     slug: "digital-evidence-3d-reality-capture-legal-disputes",
-    title: "Digital Evidence in Legal Disputes: How 3D Reality Capture Is Changing Case Strategy",
+    title: "Digital Site Documentation in Legal Disputes",
     description:
-      "How 3D reality capture can preserve site context for later legal and expert review.",
-    excerpt: "Spatial records as supporting context in disputes.",
+      "How spatial site documentation can become part of a later professional or legal workflow without being treated as automatic evidence.",
+    excerpt: "What a digital site record can preserve, and what it cannot decide, in a later dispute.",
     category: "Reality Capture",
     publishedAt: "2026-02-18",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1771444596/2958_Article_Daubert-Challenge_Main_1400x760_kivetp.jpg",
-      1200
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770228255/construction_model_point_cloud_zjshmk.webp",
+      1600
     ),
-    heroAlt: "Reality capture used as supporting context in a dispute review",
+    heroAlt: "Point cloud used as a spatial site record for later review",
     readingTime: "8 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "what-is-forensic-site-documentation",
+      "chain-of-custody-digital-site-documentation-litigation",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+    ],
     listed: true,
     tier: "core",
   },
@@ -309,75 +346,93 @@ export const articles: Article[] = [
     slug: "chain-of-custody-digital-site-documentation-litigation",
     title: "Chain of Custody for Digital Site Documentation",
     description:
-      "How capture, organization, and handling of digital site records can be explained later.",
-    excerpt: "Traceability for digital site records.",
+      "How file traceability differs from a legal chain of custody, and what organized digital site records can actually document.",
+    excerpt: "File naming, dates, and organized storage are not the same as a legal chain of custody.",
     category: "Forensic Documentation",
     publishedAt: "2026-03-03",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg",
-      1200
+      1600
     ),
     heroAlt: "Organized digital documentation files",
     readingTime: "8 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "digital-evidence-3d-reality-capture-legal-disputes",
+      "what-is-forensic-site-documentation",
+      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
+    ],
     listed: true,
     tier: "core",
   },
   {
     slug: "rebuilding-reality-defensible-digital-site-environments",
-    title: "Rebuilding Reality: How SterFlies Creates Defensible Digital Site Environments",
+    title: "Rebuilding Reality: Creating Reviewable Digital Site Records",
     description:
-      "How coordinated capture can produce a navigable digital record of a physical site.",
-    excerpt: "Turning field capture into a reviewable digital environment.",
+      "How coordinated exterior and interior capture can produce a navigable digital record of a physical site.",
+    excerpt: "Turning field capture into a reviewable digital site record, not a legal guarantee.",
     category: "Reality Capture",
     publishedAt: "2026-02-13",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1771003197/nashville-scan-to-bim-1642095994_pkyjqb.jpg",
-      1200
+      1600
     ),
     heroAlt: "Digital reconstruction of an existing building",
     readingTime: "7 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "what-is-forensic-site-documentation",
+      "3d_model",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+    ],
     listed: true,
-    tier: "supporting",
+    tier: "core",
   },
   {
     slug: "thermal-reporting-standards-iec-62446-3",
     title: "Thermal Reporting Standards in Solar PV Inspections",
     description:
       "What IEC 62446-3 covers for photovoltaic thermal inspection reporting, and why that scope is PV-specific.",
-    excerpt: "PV thermal reporting under IEC 62446-3.",
+    excerpt: "What IEC 62446-3 covers for photovoltaic thermal reporting, and where that scope ends.",
     category: "Thermal Documentation",
     publishedAt: "2026-02-17",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
       "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png",
-      1200
+      1600
     ),
     heroAlt: "Annotated thermal documentation of a photovoltaic array",
     readingTime: "8 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "solar-thermal-anomalies-drone-based-pv-inspections",
+      "thermal101_blog",
+    ],
     listed: true,
     tier: "core",
   },
   {
     slug: "solar-thermal-anomalies-drone-based-pv-inspections",
-    title: "Solar Thermal Anomalies and Drone-Based PV Inspections",
+    title: "Solar Thermal Anomalies in PV Inspections",
     description:
-      "How apparent temperature patterns on photovoltaic arrays can be documented for later professional review.",
-    excerpt: "Documenting thermal patterns on PV systems.",
+      "How apparent temperature patterns on photovoltaic arrays can be documented for later qualified review.",
+    excerpt: "Documenting apparent temperature differences on PV systems, not diagnosing failed modules.",
     category: "Thermal Documentation",
     publishedAt: "2026-02-24",
+    updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1771950485/KDPPplqmAQe2fdphC9rf_YXJa2-JV05flIlTVm_0olNL6iPSbK44ss93VsnQ7__nTCrgrdk_GawIbQ3Ib_7sg3PFn5dR3U1euhfE28_rjnw_axeh2c.jpg",
-      1200
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png",
+      1600
     ),
-    heroAlt: "Thermal inspection of a photovoltaic array",
+    heroAlt: "Radiometric thermal and RGB documentation of a photovoltaic array",
     readingTime: "8 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "thermal-reporting-standards-iec-62446-3",
+      "thermal101_blog",
+    ],
     listed: true,
     tier: "core",
   },
@@ -393,7 +448,10 @@ export const articles: Article[] = [
     heroImage: "/ThermalThumb.png",
     heroAlt: "Thermal documentation of a photovoltaic array",
     readingTime: "6 min read",
-    relatedSlugs: [],
+    relatedSlugs: [
+      "thermal-reporting-standards-iec-62446-3",
+      "solar-thermal-anomalies-drone-based-pv-inspections",
+    ],
     listed: true,
     tier: "supporting",
   },

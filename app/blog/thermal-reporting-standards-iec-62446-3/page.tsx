@@ -1,389 +1,181 @@
-// app/blog/thermal-reporting-standards-iec-62446-3/page.tsx
-'use client'
+import Link from "next/link"
+import ArticleCallout from "@/app/components/article/ArticleCallout"
+import ArticleFigure, { ArticleFigureRow } from "@/app/components/article/ArticleFigure"
+import ArticleLayout from "@/app/components/article/ArticleLayout"
+import { articleMetadata } from "@/app/lib/articles"
 
-import Image from 'next/image'
-import Link from 'next/link'
-
-// Cloudinary loader
-const cloudinaryLoader = ({ src }: { src: string }) => src
-
-// ✅ Cloudinary assets (replace with your uploads)
-const CLOUDINARY_TOP_HERO =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757964993/cover-photo_zcsaju.png'
-
-// Image pair 1: Utility-scale context + drone survey context
-const CLOUDINARY_SOLAR_FARM_1 =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_172933_ctigrw.png'
-const CLOUDINARY_SOLAR_FARM_2 =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_173015_tbmuho.png'
-
-// Image pair 2: Thermal workflow + electrical risk context
-const CLOUDINARY_THERMAL_WORKFLOW_1 =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965251/Screenshot_2025-09-12_194648_ibq3cr.png'
-const CLOUDINARY_THERMAL_WORKFLOW_2 =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png'
-
-// Vid loop: Rooftop PV context 
-const CLOUDINARY_ROOFTOP_PV_VIDEO =
-  'https://res.cloudinary.com/dzlmoyomq/video/upload/v1757964961/roofpv_adkqfe.mp4'
-
-// Image: Thermal example (best is your own radiometric screenshot)
-const CLOUDINARY_THERMAL_EXAMPLE =
-  'https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png'
+export const metadata = articleMetadata("thermal-reporting-standards-iec-62446-3")
 
 export default function Page() {
   return (
-    <div className="bg-white">
-      {/* Header */}
-      <section className="mx-auto max-w-5xl px-6 pt-10 pb-6">
-        <header className="space-y-6">
-          <Image
-            loader={cloudinaryLoader}
-            src={CLOUDINARY_TOP_HERO}
-            alt="Thermal reporting standards for solar PV inspections using infrared thermography and drone surveys"
-            width={900}
-            height={900}
-            className="rounded-lg shadow-md mx-auto my-12"
-            priority
-          />
+    <ArticleLayout
+      slug="thermal-reporting-standards-iec-62446-3"
+      references={[
+        {
+          href: "https://webstore.iec.ch/en/publication/28628",
+          label:
+            "IEC TS 62446-3:2017, Photovoltaic systems — Infrared thermography of photovoltaic modules and plants",
+        },
+        {
+          href: "https://www.iso.org/standard/61417.html",
+          label:
+            "ISO 18436-7:2014, Condition monitoring — Qualification and assessment of personnel — Thermography",
+        },
+        {
+          href: "https://www.astm.org/e1934-99ar18.html",
+          label: "ASTM E1934, Standard Guide for Examining Electrical and Mechanical Equipment with Infrared Thermography",
+        },
+        {
+          href: "https://www.nfpa.org/codes-and-standards/nfpa-70b-standard-development/70b",
+          label: "NFPA 70B, Standard for Electrical Equipment Maintenance",
+        },
+        {
+          href: "https://doi.org/10.1016/j.rser.2016.04.079",
+          label:
+            "Tsanakas, J. A., Ha, L., and Buerhop, C. (2016). Faults and infrared thermographic diagnosis in operating c-Si photovoltaic modules. Renewable and Sustainable Energy Reviews, 62, 695–709",
+        },
+      ]}
+    >
+      <p>
+        Thermal work on photovoltaic systems is useful when it is captured under stated conditions
+        and reported so a later reviewer can understand what was measured. Colorful heat maps are
+        not the deliverable. The deliverable is a documented inspection record: operating
+        conditions, equipment notes, location context, and apparent temperature differences that a
+        qualified reviewer can interpret.
+      </p>
+      <p>
+        <Link href="https://webstore.iec.ch/en/publication/28628" target="_blank" rel="noreferrer">
+          IEC TS 62446-3:2017
+        </Link>{" "}
+        is the standard that addresses infrared thermography of photovoltaic modules and plants. It
+        covers measurement equipment, ambient and operating conditions, inspection procedure,
+        reporting, personnel qualification, and guidance for classifying thermal abnormalities. That
+        scope is PV-specific. IEC 62446-3 does not govern all SterFlies thermal documentation.
+      </p>
 
-          <h1 className="mt-3 text-4xl font-bold leading-tight text-slate-900 md:text-5xl text-center">
-            Thermal Reporting Standards in Solar PV Inspections
-          </h1>
+      <ArticleFigureRow>
+        <ArticleFigure
+          src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_172933_ctigrw.png"
+          alt="Utility-scale photovoltaic array documented from the air"
+          caption="As arrays grow, consistent coverage and location context become as important as individual frames."
+        />
+        <ArticleFigure
+          src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_173015_tbmuho.png"
+          alt="Aerial documentation pass over photovoltaic modules"
+          caption="Coverage is useful only when capture conditions and reporting remain explainable."
+        />
+      </ArticleFigureRow>
 
-          <h2 className="mt-3 text-xl font-semibold text-slate-700 md:text-2xl">
-            IEC 62446-3 and the framework behind professional thermal drone surveys
-          </h2>
+      <h2>Why reporting conditions matter</h2>
+      <p>
+        Apparent temperature differences on PV modules are easier to observe when the array is under
+        sufficient irradiance and load. Low irradiance, strong wind, unstable sky, or inconsistent
+        loading can reduce contrast. IEC 62446-3 exists because thermography is treated as
+        measurement, and measurement needs constraints. Documenting those conditions is part of
+        explaining why a later reviewer should treat a finding as comparable.
+      </p>
+      <p>
+        A casual workflow can produce warm-looking frames. A professional PV thermal report should
+        be able to state when the inspection was performed, what environmental conditions were
+        present, what equipment and settings were used, and how findings were described. Severity
+        language still belongs to qualified review. Documentation records apparent temperature
+        difference and location. It does not diagnose a failed module.
+      </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-600 text-sm">
-            <p>By Jerome Sterling</p>
-            <time dateTime="2026-02-17">February 17, 2026</time>
-          </div>
+      <h2>What IEC 62446-3 actually frames</h2>
+      <p>
+        The technical specification treats PV thermography as an inspection activity with documented
+        requirements, not a vague best practice. In practice, a useful report shows more than an
+        anomaly. It shows the conditions that make the anomaly meaningful and the method that makes
+        later surveys comparable.
+      </p>
+      <p>
+        Repeat surveys only help if the method stays consistent. That is a reporting issue, not a
+        claim that every thermal service SterFlies provides is an IEC inspection. For how anomalies
+        appear in the field, see{" "}
+        <Link href="/blog/solar-thermal-anomalies-drone-based-pv-inspections">
+          solar thermal anomalies in PV inspections
+        </Link>
+        .
+      </p>
 
-          <p className="mt-6 text-base leading-7 text-slate-700">
-            Thermal analysis in solar is not about collecting dramatic heat maps. It is about producing defensible information that an owner,
-            O&amp;M team, EPC, insurer, or engineer can use to make decisions. That means the inspection has to be executed under valid operating
-            conditions, captured with appropriate equipment, and reported in a way that is repeatable and explainable. The deliverable is not a
-            folder of images. The deliverable is a documented inspection that holds up under review.
-          </p>
+      <ArticleFigureRow>
+        <ArticleFigure
+          src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757965251/Screenshot_2025-09-12_194648_ibq3cr.png"
+          alt="Thermography workflow used to document apparent temperature differences"
+          caption="Thermography is measurement. Documented assumptions matter more than palette."
+        />
+        <ArticleFigure
+          src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757967114/Screenshot_2025-09-15_151144_izd9ql.png"
+          alt="Annotated thermal documentation of a photovoltaic array"
+          caption="A report is more useful when an apparent temperature difference is tied to a location."
+        />
+      </ArticleFigureRow>
 
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            The standard that anchors professional PV thermography is{' '}
-            <Link
-              href="https://webstore.iec.ch/en/publication/28628"
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-blue-700 hover:text-blue-900"
-            >
-              IEC TS 62446-3:2017
-            </Link>
-            . It lays out requirements for measurement equipment, ambient conditions, inspection procedure, inspection reporting, personnel
-            qualification, and guidance for classifying thermal abnormalities. That is exactly why it matters if you want to position as a thermal
-            professional rather than “someone with a thermal drone.”{' '}
-          </p>
-        </header>
-      </section>
+      <h2>Radiometric files versus thermal pictures</h2>
+      <p>
+        Radiometric files preserve temperature information per pixel. That allows later
+        post-processing, quantified apparent temperature differences, and comparison under stated
+        assumptions. A non-radiometric picture can still show a pattern. It is harder to revisit as
+        a measurement.
+      </p>
+      <p>
+        Flight planning also affects what can be resolved. Altitude, angle, and speed change ground
+        sampling distance. If the objective is module- or substring-level identification, the
+        capture geometry should match that objective. The report should state that intent.
+      </p>
+      <p>
+        Tsanakas, Ha, and Buerhop (2016) review thermographic interpretation challenges in operating
+        crystalline-silicon modules. That paper is useful background on why visual patterns still
+        require qualified interpretation. It is not a SterFlies inspection method.
+      </p>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png"
+        alt="Side-by-side RGB and radiometric thermal documentation of a photovoltaic array"
+        caption="RGB context plus radiometric values turn a visual pattern into a located observation."
+      />
 
-      {/* Image pair 1 */}
-      <section className="mx-auto max-w-5xl px-6 pb-10">
-        <div className="grid gap-4 md:grid-cols-2">
-          <Figure
-            src={CLOUDINARY_SOLAR_FARM_1}
-            alt="Utility-scale solar farm aerial view"
-            caption="Scale matters. Thermal inspection becomes more valuable as arrays grow and manual checks become impractical."
-          />
-          <Figure
-            src={CLOUDINARY_SOLAR_FARM_2}
-            alt="Drone survey perspective over solar panels"
-            caption="Method matters. Drones accelerate coverage, but professional results still depend on valid conditions and disciplined reporting."
-          />
-        </div>
-      </section>
+      <h2>What makes a PV thermal report usable later</h2>
+      <p>
+        Operators usually need counts, location context, and an explainable description of apparent
+        temperature difference. Mapping, labeling, and pairing thermal imagery with visible
+        photographs help maintenance teams find the same module later. Classification language
+        should remain cautious: area for further inspection, not failed panel.
+      </p>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1757964961/roofpv_adkqfe.mp4"
+        alt="Rooftop photovoltaic array documented for later thermal review"
+        caption="Rooftop or utility-scale, the reporting need is the same: method, location, and apparent temperature difference."
+        video
+      />
+      <p>
+        Project examples are shown in the{" "}
+        <Link href="/projects/pv-farm-hotspots">PV farm thermal documentation project</Link> and{" "}
+        <Link href="/thermal/case-studies">thermal case studies</Link>. Service scope is described
+        under{" "}
+        <Link href="/thermal/Applications">thermal documentation</Link>.
+      </p>
+      <ArticleCallout>
+        IEC 62446-3 applies to photovoltaic infrared thermography workflows. It does not govern
+        building-envelope, moisture, or other non-PV thermal documentation.
+      </ArticleCallout>
 
-      {/* Body */}
-      <article className="mx-auto max-w-5xl px-6 pb-20">
-        <Section title="Why standards matter in thermal reporting">
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            Thermal findings are only meaningful if they were produced under conditions that allow defects to express as temperature differentials.
-            Solar PV anomalies can hide during low irradiance, heavy wind, unstable sky conditions, or inconsistent loading. IEC 62446-3 exists
-            because thermography is not just “seeing heat.” It is measurement, and measurement needs constraints. When you document inspection
-            conditions, you are documenting why your findings can be trusted.
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            This is also the line between content capture and professional inspection. A casual workflow might deliver a set of hot-looking frames.
-            A professional workflow produces a report that explains when the inspection was performed, what environmental assumptions were present,
-            what camera settings were used, and how findings were evaluated. If someone asks why a module was classified as severe, you can answer
-            without hand-waving, because the report shows the logic and the measurement context.
-          </p>
-        </Section>
-
-        <Section title="IEC 62446-3: what it actually expects from a PV thermography inspection">
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            IEC 62446-3 is valuable because it does not treat infrared inspection as a vague best practice. It frames PV thermography as an
-            inspection activity with documented requirements, including equipment suitability, inspection procedure, and reporting content. It also
-            explicitly ties inspection validity to ambient and operating conditions, and provides a matrix-style guideline for interpreting thermal
-            abnormalities. In practice, that means a proper report does not just show an anomaly. It shows the conditions that make the anomaly
-            meaningful and the method that makes it comparable across time.
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            When you run a drone survey under IEC-style discipline, you are building a dataset that can support more than maintenance. You are
-            building documentation that can support warranty narratives, risk discussions, and long-term degradation monitoring. If a site operator
-            wants repeat surveys quarterly, the methodology must remain consistent. Standards-based reporting is what allows that repeatability.
-          </p>
-        </Section>
-
-        {/* Image pair 2 */}
-        <div className="my-10 grid gap-4 md:grid-cols-2">
-          <Figure
-            src={CLOUDINARY_THERMAL_WORKFLOW_1}
-            alt="Handheld thermal imager or thermography workflow"
-            caption="Thermography is measurement. Professional results come from documented assumptions, not just colorful images."
-          />
-          <Figure
-            src={CLOUDINARY_THERMAL_WORKFLOW_2}
-            alt="Electrical maintenance context"
-            caption="PV is electrical infrastructure. Thermal reporting also intersects with reliability and safety-driven maintenance expectations."
-          />
-        </div>
-
-        <Section title="Radiometric capture and the difference between evidence and imagery">
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            One of the fastest ways to strengthen your positioning as a thermal professional is to communicate the difference between thermal
-            pictures and radiometric thermal data. Radiometric files preserve temperature information per pixel, which enables post-processing
-            verification, quantified deltas, and consistent classification logic. When stakeholders question severity, radiometric workflows let you
-            show measurement-based support rather than a subjective impression based on palette and contrast.
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            This is also why flight planning matters in aerial thermography. Altitude, angle, and speed change what the sensor can resolve. If the
-            goal is anomaly identification at a module or substring level, you need the right ground sampling distance and stable capture geometry.
-            The report should reflect that discipline by showing acquisition intent, not just results.
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            For a deeper review of common PV fault signatures and thermographic interpretation challenges in operating modules, see this peer-reviewed review:{' '}
-            <a
-                href="https://www.sciencedirect.com/science/article/pii/S1364032116301629"
-                target="_blank"
-                rel="noreferrer"
-                className="font-semibold text-blue-700 hover:text-blue-900"
-            >
-                Renewable &amp; Sustainable Energy Reviews (2016)
-            </a>.
-            </p>
-
-
-          <div className="my-10">
-            <Figure
-              src={CLOUDINARY_THERMAL_EXAMPLE}
-              alt="Thermal example of PV hotspot behavior"
-              caption="Side-by-side RGB and radiometric thermal imagery revealing localized temperature differentials within the array. Quantified deltas and spatial context transform visual anomalies into actionable findings."
-            />
-          </div>
-        </Section>
-
-        <Section title="How professional reporting becomes actionable">
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            Operators don’t just want to know that anomalies exist. They need counts, location context, severity logic, and response timelines.
-            A strong report ties findings to site geography so maintenance teams can locate the exact module without interpretation. That means
-            mapping, labeling, and pairing thermal imagery with visible context. It also means using an explainable classification approach so a
-            decision maker can understand why one anomaly is “monitor” and another is “urgent.”
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            This is where standards-backed thermography becomes a professional service category of its own. Anyone can fly over panels and collect
-            images. A thermal professional produces a defensible inspection record that supports operational decisions, documentation needs, and
-            repeat monitoring. The market rewards clarity and repeatability because those are the properties that reduce risk.
-          </p>
-        </Section>
-
-        <div className="my-10 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="relative aspect-[16/9] w-full">
-                <video
-                src={CLOUDINARY_ROOFTOP_PV_VIDEO}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="h-full w-full object-cover"
-                />
-            </div>
-            <div className="px-4 py-3 text-sm text-slate-600">
-                Rooftop or utility-scale, the reporting expectation is the same: clear methodology, clear classification, and clear location context.
-                <div className="mt-2">
-                <Link
-                    href="/thermal/case-studies"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    View thermal case study →
-                </Link>
-                </div>
-            </div>
-        </div>
-
-
-        <Section title="Related frameworks that strengthen credibility">
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            IEC 62446-3 is solar-specific, but thermography professionalism is reinforced by broader qualification and documentation frameworks.
-            ISO 18436-7 defines qualification and assessment requirements for personnel performing condition monitoring using infrared thermography.
-            If you want to position as a thermal professional, competency language matters because your work will be reviewed by technical
-            stakeholders who care about method and repeatability.
-          </p>
-
-          <p className="mt-4 text-base leading-7 text-slate-700">
-            ASTM E1934 further reinforces what should be included when documenting qualitative and quantitative infrared examinations of electrical
-            and mechanical systems. And NFPA 70B has increased visibility around thermal inspection within electrical equipment maintenance programs,
-            which overlaps with PV environments because arrays connect into electrical infrastructure where overheating and failure can become safety
-            issues.
-          </p>
-        </Section>
-
-        {/* References */}
-            <section className="mt-14">
-            <h3 className="text-2xl font-bold text-slate-900">References</h3>
-
-            <ol className="mt-4 list-decimal space-y-3 pl-6 text-slate-700">
-                <li>
-                IEC. IEC TS 62446-3:2017, Photovoltaic systems – Requirements for testing, documentation and maintenance – Part 3: Infrared thermography
-                of photovoltaic modules and plants.{' '}
-                <a
-                    href="https://webstore.iec.ch/en/publication/28628"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://webstore.iec.ch/en/publication/28628
-                </a>
-                </li>
-
-                <li>
-                ISO. ISO 18436-7:2014, Condition monitoring and diagnostics of machines – Requirements for qualification and assessment of personnel – Part 7:
-                Thermography.{' '}
-                <a
-                    href="https://www.iso.org/standard/61417.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://www.iso.org/standard/61417.html
-                </a>{' '}
-                (ISO page, public summary)
-                </li>
-
-                <li>
-                ASTM. ASTM E1934, Standard Guide for Examining Electrical and Mechanical Equipment with Infrared Thermography.{' '}
-                <a
-                    href="https://www.astm.org/e1934-99ar18.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://www.astm.org/e1934-99ar18.html
-                </a>
-                </li>
-
-                <li>
-                NFPA. NFPA 70B Standard Development page.{' '}
-                <a
-                    href="https://www.nfpa.org/codes-and-standards/nfpa-70b-standard-development/70b"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://www.nfpa.org/codes-and-standards/nfpa-70b-standard-development/70b
-                </a>
-                </li>
-
-                <li>
-                Tsanakas, J. A., Ha, L., &amp; Buerhop, C. (2016). Faults and infrared thermographic diagnosis in operating c-Si photovoltaic modules:
-                A review of research and future challenges. <em>Renewable and Sustainable Energy Reviews</em>, 62, 695–709. DOI:{' '}
-                <a
-                    href="https://doi.org/10.1016/j.rser.2016.04.079"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://doi.org/10.1016/j.rser.2016.04.079
-                </a>{' '}
-                | ScienceDirect:{' '}
-                <a
-                    href="https://www.sciencedirect.com/science/article/pii/S1364032116301629"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://www.sciencedirect.com/science/article/pii/S1364032116301629
-                </a>
-                </li>
-
-                <li>
-                Google Scholar search for the above review (stable lookup):{' '}
-                <a
-                    href="https://scholar.google.com/scholar?q=10.1016%2Fj.rser.2016.04.079"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://scholar.google.com/scholar?q=10.1016/j.rser.2016.04.079
-                </a>
-                </li>
-
-                <li>
-                Google Scholar search (general): infrared thermography photovoltaic inspection:{' '}
-                <a
-                    href="https://scholar.google.com/scholar?q=infrared+thermography+photovoltaic+inspection+drone"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-semibold text-blue-700 hover:text-blue-900"
-                >
-                    https://scholar.google.com/scholar?q=infrared+thermography+photovoltaic+inspection+drone
-                </a>
-                </li>
-            </ol>
-            </section>
-
-
-        {/* Footer CTA */}
-        <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-6">
-          <p className="text-base font-semibold text-slate-900">
-            Need standards-based thermal reporting for your PV asset
-          </p>
-          <p className="mt-2 text-base leading-7 text-slate-700">
-            SterFlies supports solar operators and stakeholders with radiometric thermal surveys and reporting workflows built for clarity,
-            repeatability, and defensibility. If the findings matter, the method matters.
-          </p>
-          <p className="mt-4">
-            <Link
-              href="/blog"
-              className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3 text-white font-medium shadow hover:bg-blue-900"
-            >
-              Blogs
-            </Link>
-          </p>
-        </div>
-      </article>
-    </div>
-  )
-}
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="mt-10">
-      <h3 className="text-2xl font-bold text-slate-900">{title}</h3>
-      {children}
-    </section>
-  )
-}
-
-function Figure({ src, alt, caption }: { src: string; alt: string; caption: string }) {
-  return (
-    <figure className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="relative aspect-[16/9] w-full">
-        <Image loader={cloudinaryLoader} src={src} alt={alt} fill className="object-cover" />
-      </div>
-      <figcaption className="px-4 py-3 text-sm text-slate-600">{caption}</figcaption>
-    </figure>
+      <h2>Related frameworks, used in their own scope</h2>
+      <p>
+        ISO 18436-7 addresses qualification and assessment of personnel performing condition
+        monitoring with infrared thermography. ASTM E1934 is a guide for documenting qualitative
+        and quantitative infrared examinations of electrical and mechanical equipment. NFPA 70B
+        addresses electrical-equipment maintenance, which can overlap where arrays connect into
+        electrical infrastructure.
+      </p>
+      <p>
+        Those documents strengthen method language in their own domains. They do not convert a
+        thermal image into a diagnosis, and they do not make a report legally defensible.
+      </p>
+      <p>
+        A shorter introduction is in{" "}
+        <Link href="/blog/thermal101_blog">Thermal Imaging 101</Link>.
+      </p>
+    </ArticleLayout>
   )
 }

@@ -159,7 +159,16 @@ export default function Page() {
         <Link href="/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations">
           existing-conditions documentation for industrial hygiene investigations
         </Link>{" "}
-        is useful: the investigation often continues after the site has already changed.
+        is useful: the investigation often continues after the site has already changed. The same
+        timing problem appears in{" "}
+        <Link href="/blog/documenting-site-conditions-for-construction-defect-litigation">
+          construction-defect documentation
+        </Link>{" "}
+        and in later questions about{" "}
+        <Link href="/blog/digital-evidence-3d-reality-capture-legal-disputes">
+          digital site documentation in legal disputes
+        </Link>
+        .
       </p>
 
       <h2>When later review is likely</h2>
