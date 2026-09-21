@@ -1,106 +1,130 @@
-'use client';
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ThermalNav from "@/app/components/service/ThermalNav"
+import ProcessSteps from "@/app/components/service/ProcessSteps"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
 
-import React from 'react';
-import Image from 'next/image';
-import { Settings, MapPin, Drone, Cpu, FileText } from 'lucide-react';
+export const metadata: Metadata = {
+  title: "Thermal Documentation Method | SterFlies",
+  description:
+    "How SterFlies plans, captures, and organizes thermal and RGB documentation for later professional review.",
+  alternates: { canonical: "/thermal/method" },
+}
 
-// Cloudinary loader (reuse from Applications page)
-const cloudinaryLoader = ({ src }: { src: string }) => src;
+const steps = [
+  {
+    number: "01",
+    title: "Objective",
+    text: "Define what temperature-pattern documentation needs to support: inspection review, location context, or a repeatable record of current conditions.",
+  },
+  {
+    number: "02",
+    title: "Capture planning",
+    text: "Review access, sun and load conditions, emissivity and reflectivity concerns, overlap, and altitude so coverage matches the required record.",
+  },
+  {
+    number: "03",
+    title: "Thermal data collection",
+    text: "Capture radiometric thermal stills systematically across the asset or area, checking coverage before leaving the site.",
+  },
+  {
+    number: "04",
+    title: "RGB context",
+    text: "Pair thermal frames with visual imagery so apparent temperature patterns can be located on the physical asset.",
+  },
+  {
+    number: "05",
+    title: "Review and reporting",
+    text: "Organize thermal and RGB stills, location context, and supporting files for the people who will interpret the record.",
+  },
+]
 
-export default function ProcessMethodPage() {
+export default function ThermalMethodPage() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-16">
-      {/* Hero Section */}
-      <header className="text-center max-w-2xl mx-auto mb-16">
-        <h1 className="text-4xl font-bold mb-4">Process & Method</h1>
-        <p className="text-lg text-gray-600 leading-relaxed">
-          At SterFlies, we follow a rigorous workflow to ensure accurate, reliable, and actionable thermal data. From mission planning to final report delivery, our approach leverages cutting-edge DJI Matrice 4T hardware and advanced analytics software.
-        </p>
-      </header>
+    <>
+      <ThermalNav current="/thermal/method" />
+      <section className="border-b border-[var(--color-line)]">
+        <SiteContainer className="py-10 md:py-14">
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-muted)]">
+            Thermal documentation
+          </p>
+          <h1 className="mt-3 max-w-[16ch] text-[2rem] font-semibold leading-[1.12] tracking-tight md:text-[2.5rem]">
+            Method
+          </h1>
+          <p className="mt-4 max-w-[40rem] text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
+            Thermal documentation is planned around the record required, then captured with paired visual context so later review can locate apparent temperature patterns on the asset.
+          </p>
+        </SiteContainer>
+      </section>
 
-      {/* Equipment & Platform Section */}
-      <section className="space-y-6">
-        <div className="flex items-center space-x-4">
-          <Drone className="w-10 h-10 text-blue-600" />
-          <h2 className="text-2xl font-semibold">Equipment & Platform</h2>
-        </div>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader eyebrow="Workflow" title="From objective to organized record" />
+          <ProcessSteps steps={steps} />
+        </SiteContainer>
+      </section>
 
-        <div className="md:grid md:grid-cols-2 gap-8 items-start">
-          <div className="space-y-4">
-            <p className="text-gray-700 leading-relaxed">
-              We deploy the DJI Matrice 4T—our flagship thermal drone platform—equipped with 640x512 resolution thermal camera. Key specifications include:
-            </p>
-            <ul className="list-disc list-inside text-gray-700">
-              <li><strong>Max Flight Time:</strong> up to 38 minutes per battery</li>
-              <li><strong>RTK Module:</strong> Built in RTK Module that delivers centimeter-level positional accuracy—keeping thermal overlays aligned within just ±2 cm of real-world coordinates. </li>
-              <li><strong>Sensor:</strong> DJI Matrice 4T: uncooled vanadium oxide (VOx) (640×512 thermal resolution, 20 MP RGB)</li>
-              <li><strong>Transmission Range:</strong>  Up to 15.5 miles with DJI O4 Enterprise system. </li>
-              <li><strong>Laser Rangefinder:</strong> Measurement Range: 1800 m (1 Hz) @20% reflectivity target. Blind Zone: 1 m. Distance Measurement Accuracy: 1-3 m: System Error less than 0.3 m, Random Error less than 0.1 meters @1σ</li>
-              <li><strong>Operational Temp:</strong> –20 °C to 50 °C</li>
-            </ul>
-            <p className="text-gray-700 leading-relaxed">
-              This robust setup enables high-altitude, stable flights even in challenging environments—capturing crisp thermal data for every job.
-            </p>
-          </div>
-          <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow">
-            {/* Placeholder for Matrice 4T image */}
-            <Image
-              loader={cloudinaryLoader}
-              src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1752714517/Screenshot_2025-07-16_200823_otr7os.png"
-              alt="DJI Matrice 4T Drone"
-              fill
-              className="object-cover"
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+          <div>
+            <SectionHeader
+              eyebrow="Technology"
+              title="Equipment and processing"
+              description="Aerial systems, thermal sensors, and software are tools. They are selected after the documentation objective is defined."
             />
+            <p className="mt-6 max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)]">
+              Current aerial thermal work uses a radiometric thermal sensor paired with a high-resolution RGB camera. When RTK or other positional control is used, it can improve alignment between thermal overlays and real-world location. Alignment still depends on capture conditions and the control method specified for the engagement.
+            </p>
+            <p className="mt-4 max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)]">
+              For photovoltaic inspections, reporting can be organized to support review under IEC 62446-3. That standard is specific to PV thermal inspection and is not a general thermal-documentation protocol.
+            </p>
+            <p className="mt-4 max-w-[42rem] text-sm leading-relaxed text-[var(--color-muted)]">
+              Thermal imaging records apparent surface-temperature differences. Interpretation remains with the appropriate qualified professional.
+            </p>
           </div>
-        </div>
+          <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+            <Image
+              src="/ThermalThumb.png"
+              alt="Thermal documentation of a photovoltaic array"
+              width={900}
+              height={600}
+              className="aspect-[16/10] w-full object-cover"
+            />
+            <figcaption className="border-t border-[var(--color-line)] px-3 py-2 text-[0.7rem] font-medium uppercase tracking-[0.1em] text-[var(--color-muted)]">
+              Thermal record
+            </figcaption>
+          </figure>
+        </SiteContainer>
       </section>
 
-      {/* Workflow Steps */}
-      <section className="space-y-16">
-        {/* Step 1: Mission Planning */}
-        <article className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <MapPin className="w-10 h-10 text-blue-600" />
-            <h2 className="text-2xl font-semibold">Step 1: Mission Planning</h2>
-          </div>
-          <p className="text-gray-700 leading-relaxed">
-            Our team analyzes site maps, client objectives, and environmental factors to design flight paths that ensure full coverage and optimal thermal resolution. We consider altitude, emissivity, reflectivity, overlap, and speed to balance image detail with efficient operation.
-          </p>
-        </article>
-
-        {/* Step 2: Data Acquisition */}
-        <article className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <Settings className="w-10 h-10 text-blue-600" />
-            <h2 className="text-2xl font-semibold">Step 2: Data Acquisition</h2>
-          </div>
-          <p className="text-gray-700 leading-relaxed">
-            Using the Matrice 4T and Zenmuse H20T, we execute pre-approved flight plans in compliance with FAA regulations. Real-time telemetry and thermal preview allow us to adjust camera settings on-the-fly and confirm data quality before concluding the mission.
-          </p>
-        </article>
-
-        {/* Step 3: Processing & Analysis */}
-        <article className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <Cpu className="w-10 h-10 text-blue-600" />
-            <h2 className="text-2xl font-semibold">Step 3: Processing & Analysis</h2>
-          </div>
-          <p className="text-gray-700 leading-relaxed">
-            Raw thermal footage and stills are imported into our analysis suite for georeferencing, radiometric calibration, and heat-map generation. We integrate GIS layers and NDVI indices when crop or vegetation metrics are required.
-          </p>
-        </article>
-
-        {/* Step 4: Reporting & Delivery */}
-        <article className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <FileText className="w-10 h-10 text-blue-600" />
-            <h2 className="text-2xl font-semibold">Step 4: Reporting & Delivery</h2>
-          </div>
-          <p className="text-gray-700 leading-relaxed">
-            Clients receive a comprehensive report featuring high-resolution thermal images, annotated maps, trend analysis, and clear action items. Reports are delivered as interactive PDFs and optional web dashboards for ongoing monitoring.
-          </p>
-        </article>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Related" title="Continue" />
+          <RelatedArticles
+            items={[
+              { href: "/thermal/Applications", title: "Thermal documentation applications" },
+              { href: "/thermal/case-studies", title: "Thermal case studies" },
+              { href: "/blog/thermal-reporting-standards-iec-62446-3", title: "Thermal Reporting Standards: IEC 62446-3" },
+              { href: "/blog/solar-thermal-anomalies-drone-based-pv-inspections", title: "Solar Thermal Anomalies in PV Inspections" },
+            ]}
+          />
+          <Link
+            href="/projects/pv-farm-hotspots"
+            className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+          >
+            View Solar PV Thermal Documentation
+          </Link>
+        </SiteContainer>
       </section>
-    </div>
-  );
+
+      <PageCta
+        title="Need thermal documentation?"
+        text="Describe the asset and the review the record needs to support."
+      />
+    </>
+  )
 }

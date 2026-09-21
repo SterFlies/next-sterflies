@@ -1,152 +1,177 @@
-// app/services/construction/page.tsx
-import React from 'react'
-import DeliverablesGrid from '@/app/components/DeliverablesGrid/DeliverablesGrid'
-import ConstructionMenu from "@/app/components/ConstructionMenu"
+import type { Metadata } from "next"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ServiceHero from "@/app/components/service/ServiceHero"
+import ApplicationList from "@/app/components/service/ApplicationList"
+import DeliverableList from "@/app/components/service/DeliverableList"
+import ProjectProof from "@/app/components/service/ProjectProof"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
+import { cloudinaryUrl } from "@/app/config/site"
 
-import {
-  ClockIcon,
-  MapIcon,
-  BoxIcon,
-  FileTextIcon,
-  ShieldIcon,
-  TargetIcon,
-  ZapIcon,
-  EyeIcon,
-  FileText,
-  FilmIcon,
-} from 'lucide-react'
-import Link from 'next/link'
-
-
-
-
-export const metadata = {
-  title: 'Site Progress Tracking & Measurements | SterFlies',
-  description: 'High-resolution aerial imagery stitched into orthomosaics, 3D models, volumetrics, cut/fill, and topographic maps.',
+export const metadata: Metadata = {
+  title: "Mapping & Photogrammetry | SterFlies",
+  description:
+    "Create measurable 2D and 3D site records using coordinated image capture and photogrammetric processing.",
+  alternates: { canonical: "/services/mapping" },
 }
 
-export default function ConstructionPage() {
-  // "What We Offer" features
-  const features = [
-    { title: 'Routine Flights', desc: 'Weekly or bi-weekly aerial photography sessions', icon: ClockIcon },
-    { title: 'Still image & Video Capture', desc: 'High-resolution photos and 4K videos for progress documentation.', icon: FilmIcon },
-    { title: 'Topographic Mapping', desc: 'Detailed elevation and contour models for surveying and planning.', icon: MapIcon },
-    { title: 'Orthomosaic Maps (2D)', desc: 'Orthomosaic maps for detailed site analysis', icon: MapIcon },
-    { title: '3D Models & Digital Twins', desc: 'Interactive site models for planning, visualization, and presentations.', icon: BoxIcon },
-    { title: 'Volumetric & Cut/Fill Analysis', desc: 'Accurate volume calculations and cut/fill reports for earthworks.', icon: FileTextIcon },
-    { title: 'Custom Deliverables', desc: 'Tailored reporting packages in formats like GeoTIFF, LAS, OBJ, and DWG.', icon: FileText },
-  ]
+const SITE_AERIAL = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
+  1400
+)
 
-  // "Why Choose SterFlies?" benefits
-  const benefits = [
-    { title: 'Safety First', desc: 'Fully FAA Part 107 certified pilots and $2M liability insurance.', icon: ShieldIcon },
-    { title: 'Centimeter Accuracy', desc: 'RTK-enabled GPS for sub-inch precision.', icon: TargetIcon },
-    { title: 'Fast Turnaround', desc: 'Deliverables within 24–48 hours of flight.', icon: ZapIcon },
-    { title: 'Insightful Data', desc: 'Actionable insights tailored to your needs.', icon: EyeIcon },
-  ]
-
+export default function MappingPage() {
   return (
-    <div className="bg-blue-50 py-16">
+    <>
+      <ServiceHero
+        eyebrow="Service 02"
+        title="Mapping & Photogrammetry"
+        description="Create measurable 2D and 3D site records using coordinated image capture and photogrammetric processing."
+        primary={{ href: "/contact", label: "Discuss a Project" }}
+        secondary={{ href: "/projects/65acresite", label: "View Relevant Work" }}
+        image={{
+          src: SITE_AERIAL,
+          alt: "Aerial mapping of a 65-acre development site",
+          priority: true,
+        }}
+      />
 
-      <div className="max-w-5xl mx-auto px-6">
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Applications"
+            title="Where mapped records are used"
+            description="Mapping is selected when a site needs overview, measurement, or a repeatable spatial record over time."
+          />
+          <ApplicationList
+            items={[
+              { title: "Construction progress", text: "Shared spatial records of grading, utilities, pads, and access as work advances." },
+              { title: "Existing conditions", text: "A baseline of current layout before design or construction changes the site." },
+              { title: "Site mapping", text: "Scaled coverage of property layout, access, and surrounding context." },
+              { title: "Stockpile / volumetric documentation", text: "Volume context derived from the processed surface when scoped." },
+              { title: "Industrial sites", text: "Yards, plants, and operational areas where a measurable overview is useful." },
+              { title: "Large properties", text: "Coverage that is difficult to assemble from ground photography alone." },
+              { title: "Earthwork / terrain context", text: "Surface and elevation context for planning and later comparison." },
+              { title: "Recurring project records", text: "Repeatable capture so later visits can be compared to an earlier state." },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-        {/* Hero Banner */}
-        <div className="bg-gradient-to-r from-blue-500 to-green-500 p-10 rounded-xl shadow-xl text-white text-center mb-16">
-          <h1 className="text-5xl font-bold">Site Progress Tracking & Measurements</h1>
-          <p className="mt-4 text-lg">
-            At SterFlies, we transform aerial imagery into precise, actionable data. From 2D and 3D models to volumetric and cut/fill reports, our photogrammetry services provide the clarity you need to plan, monitor, and analyze your projects with confidence.
-          </p>
-        </div>
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader eyebrow="Deliverables" title="Mapped outputs" />
+          <DeliverableList
+            note="Deliverables are selected according to project scope, site conditions, and documentation objectives. Technical exports such as GeoTIFF, LAS, or OBJ are provided when the processing method and engagement specify them."
+            items={[
+              { title: "Orthomosaics", text: "Scaled aerial maps that show site layout, access, and change over time." },
+              { title: "Point clouds", text: "Spatial datasets that support measurement, context, and further analysis." },
+              { title: "3D models", text: "Reconstructed site geometry for remote review and communication." },
+              { title: "Volumetric data", text: "Cut, fill, or stockpile quantities when the capture is scoped for volume." },
+              { title: "Surface / elevation outputs", text: "Terrain context derived from the processed model when requested." },
+              { title: "High-resolution imagery", text: "Still coverage for conditions, staging, and visual reference." },
+              { title: "Technical exports", text: "Agreed files for GIS, CAD, or review workflows." },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-        {/* What We Offer */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center">What We Offer</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map(f => (
-              <div key={f.title} className="bg-white p-8 rounded-lg shadow hover:shadow-xl transition flex flex-col items-center text-center">
-                <f.icon className="w-12 h-12 text-blue-500 mb-4" aria-hidden="true" />
-                <h3 className="font-semibold text-xl mb-2">{f.title}</h3>
-                <p className="text-gray-600">{f.desc}</p>
-              </div>
-            ))}
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2 lg:items-start">
+          <div>
+            <SectionHeader
+              eyebrow="Method"
+              title="How photogrammetry works"
+              description="Overlapping stills are captured across the site, aligned through common features, and reconstructed into measurable spatial products."
+            />
+            <ol className="mt-8 space-y-4 text-base leading-relaxed">
+              <li>
+                <span className="font-semibold">01 — Overlapping image capture.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  A planned set of stills covers the area with enough overlap to reconstruct geometry.
+                </span>
+              </li>
+              <li>
+                <span className="font-semibold">02 — Reconstruction.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  Processing software aligns the images and builds a dense spatial model of the captured surface.
+                </span>
+              </li>
+              <li>
+                <span className="font-semibold">03 — Measurable outputs.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  The model can be exported as orthomosaics, point clouds, meshes, or other agreed products.
+                </span>
+              </li>
+            </ol>
+            <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+              Measurement quality depends on capture geometry, processing, and any control used for the engagement. It is not a universal accuracy claim.
+            </p>
           </div>
-        </section>
-
-        {/* 3D Model Embed & CTA */}
-        <section className="py-16 bg-gray-100 rounded-lg mb-16">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">Interact with our 2D Map</h3>
-            <div className="w-full h-[400px] mb-6">
+          <div>
+            <SectionHeader
+              eyebrow="Positioning"
+              title="Photographs versus mapped records"
+              description="A photograph documents one viewpoint. A mapped dataset preserves spatial relationships across an area."
+            />
+            <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+              Individual stills remain useful for specific observations. They do not, by themselves, reconstruct distances, layout, or how one location relates to another. Photogrammetric products exist to keep those relationships available after the site has changed.
+            </p>
+            <div className="mt-8 overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[#111]">
               <iframe
-                title="Construction Progress Map"
+                title="Example orthomosaic of a mapped construction site"
                 src="https://cloud.pix4d.com/dataset/2343984/map?shareToken=9dc76459-aab0-4309-8d9f-5d8e89f663cc"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allow="autoplay; fullscreen; vr"
-                className="rounded-lg shadow"
+                className="aspect-[16/10] w-full"
+                allow="fullscreen"
               />
             </div>
-            <Link
-              href="/blog/orthomosaic_blog"
-              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded"
-            >
-              Read our Blog!
-            </Link>
+            <p className="mt-3 text-xs uppercase tracking-[0.1em] text-[var(--color-muted)]">
+              Example mapped record
+            </p>
           </div>
-        </section>
+        </SiteContainer>
+      </section>
 
-        {/* Video Cloudinary Loop */}
-        <section className="py-16 bg-gray-100 rounded-lg mb-16">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h3 className="text-2xl font-bold text-blue-900 mb-6">Planning Made Easier</h3>
-            <div className="w-full h-[400px] mb-6">
-              <video
-                title="Mapping Measurement Video loop"
-                src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1715284592/Video_loop_-measure_mapping_website_2_wryb2d.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="w-full h-full rounded-lg shadow object-cover"
-              />
-            </div>
-            <Link
-              href="/contact"
-              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded"
-            >
-              Schedule a Call!
-            </Link>
-          </div>
-        </section>
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Project"
+            title="Selected field documentation"
+            description="An example of recurring aerial mapping. No universal accuracy claim is attached to this project."
+          />
+          <ProjectProof
+            type="Mapping and progress documentation"
+            title="65-Acre Site Mapping & Progress Documentation"
+            href="/projects/65acresite"
+            image={{
+              src: SITE_AERIAL,
+              alt: "Aerial mapping of a 65-acre development site",
+            }}
+            documented="Recurring aerial mapping of grading, utilities, pads, and access across a 65-acre development."
+            method="Coordinated still capture processed into an orthomosaic and shareable web map."
+            why="Give project teams a shared spatial record of site conditions as work advanced."
+            deliverables="Orthomosaic and shareable web map."
+          />
+        </SiteContainer>
+      </section>
 
-        {/* Construction Menu*/}
-        <ConstructionMenu />
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Articles" title="Related reading" />
+          <RelatedArticles
+            items={[
+              { href: "/blog/orthomosaic_blog", title: "Orthomosaic Mapping" },
+              { href: "/blog/3d_model", title: "3D Models" },
+              { href: "/blog/volumetric_blog", title: "Volumetric Data" },
+              { href: "/blog/topography_blog", title: "Topographic Maps" },
+              { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Monitoring" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-        {/* Why Choose SterFlies? */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-blue-900 mb-8 text-center">Why Choose SterFlies?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {benefits.map(b => (
-              <div key={b.title} className="p-6 bg-white border-l-4 border-green-500 rounded-lg shadow flex items-start gap-4">
-                <b.icon className="w-8 h-8 text-green-500 flex-shrink-0 mt-1" aria-hidden="true" />
-                <div>
-                  <h4 className="font-semibold mb-1">{b.title}</h4>
-                  <p className="text-gray-600 text-sm">{b.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Deliverables Grid */}
-        <section className="mt-16">
-          <DeliverablesGrid />
-        </section>
-
-      </div>
-    </div>
+      <PageCta />
+    </>
   )
 }
-

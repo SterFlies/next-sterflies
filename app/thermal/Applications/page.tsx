@@ -1,117 +1,174 @@
-'use client';
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ServiceHero from "@/app/components/service/ServiceHero"
+import ThermalNav from "@/app/components/service/ThermalNav"
+import ProjectProof from "@/app/components/service/ProjectProof"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
+import { cloudinaryUrl } from "@/app/config/site"
 
-import React from 'react';
-import Image from 'next/image';
-import { Sun, Home, Zap, Droplet, Crop, Search } from 'lucide-react';
-
-// Custom Cloudinary loader
-const cloudinaryLoader = ({ src }: { src: string }) => {
-  return src;
-};
+export const metadata: Metadata = {
+  title: "Thermal Documentation | SterFlies",
+  description:
+    "Temperature-pattern documentation used to support inspection and technical review of solar PV, electrical systems, building envelope, and industrial assets.",
+  alternates: { canonical: "/thermal/Applications" },
+}
 
 const applications = [
   {
-    Icon: Sun,
-    title: 'Solar Farm Inspections',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190608_gmv8aj.png',
-    description: [
-      `Thermal imaging excels at identifying underperforming or damaged solar panels by revealing temperature variations. With SterFlies, we quickly pinpoint hot spots and panel failures on large solar arrays, ensuring efficient maintenance and maximizing energy output.`,
-      `In addition, our high-resolution thermal scans help operations teams plan cleaning schedules and detect shading issues before they impact performance. Regular thermal surveys can extend the lifespan of solar installations and improve ROI.`
-    ]
+    title: "Solar PV",
+    text: "Document apparent temperature variation across modules and strings so maintenance can be directed to specific locations.",
+    image: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190608_gmv8aj.png",
+      900
+    ),
+    alt: "Thermal documentation of a photovoltaic array",
   },
   {
-    Icon: Home,
-    title: 'Roof & Building Envelope Inspections',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190627_nktdiu.png',
-    description: [
-      `Heat leaks, missing insulation, and moisture intrusion become visible through thermal scans. Our drone surveys capture entire rooftops and façades, helping facility managers and homeowners detect issues before they escalate into costly repairs.`,
-      `By integrating thermal data with 3D models, SterFlies delivers comprehensive reports that prioritize repairs, optimize energy audits, and support compliance with building standards.`
-    ]
+    title: "Electrical systems",
+    text: "Record apparent temperature patterns on accessible electrical equipment as supporting context for qualified electrical review.",
+    image: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190633_vv1dmt.png",
+      900
+    ),
+    alt: "Thermal imagery of electrical equipment",
   },
   {
-    Icon: Zap,
-    title: 'Electrical System Diagnostics',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190633_vv1dmt.png',
-    description: [
-      `Overheated connections, overloaded circuits, and transformer faults are critical safety hazards. Thermal imaging from above reveals electrical hot spots in substations, switchgear, and power lines, enabling preventative repairs and reducing downtime.`,
-      `Our detailed thermal inspections include trend analysis and heat map visualizations, providing asset managers with actionable insights to schedule maintenance and avoid failures.`
-    ]
+    title: "Building envelope",
+    text: "Capture exterior temperature patterns that can support later review of insulation, openings, and envelope conditions.",
+    image: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712045/Screenshot_2025-07-16_190627_nktdiu.png",
+      900
+    ),
+    alt: "Thermal imagery of a building envelope",
   },
   {
-    Icon: Droplet,
-    title: 'Plumbing & Leak Detection',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712055/Screenshot_2025-07-16_190648_nfdiqw.png',
-    description: [
-      `Hidden leaks in pipes and HVAC systems often lead to structural damage. Our thermal flights rapidly locate moisture intrusion and pipe failures in commercial and residential properties, guiding precise repairs without invasive demolition.`,
-      `With synchronized thermal and visual imaging, SterFlies delivers georeferenced leak maps and moisture profiles, reducing repair time and minimizing disruption.`
-    ]
+    title: "Industrial assets",
+    text: "Document accessible industrial equipment and process areas where temperature variation is relevant to inspection workflows.",
+    image: "/ThermalThumb.png",
+    alt: "Thermal documentation of industrial photovoltaic arrays",
   },
   {
-    Icon: Crop,
-    title: 'Agriculture & Crop Monitoring',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712056/Screenshot_2025-07-16_190704_gu3jul.png',
-    description: [
-      `Stress, disease, and irrigation issues manifest as temperature anomalies in crops. By mapping large fields, SterFlies delivers actionable insights on plant health, water management, and yield optimization for farmers and agronomists.`,
-      `Our NDVI and thermal data fusion supports precision agriculture workflows, enabling targeted interventions and efficient resource management.`
-    ]
+    title: "Roofing / moisture-investigation support",
+    text: "Thermal patterns can support moisture or roofing investigations when interpreted with other observations by a qualified professional.",
+    image: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712055/Screenshot_2025-07-16_190648_nfdiqw.png",
+      900
+    ),
+    alt: "Thermal imagery used as supporting context for roof or moisture review",
   },
-  {
-    Icon: Search,
-    title: 'Search & Rescue / Wildlife Monitoring',
-    imageUrl: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1752712055/Screenshot_2025-07-16_190639_uqio4u.png',
-    description: [
-      `Thermal cameras detect warm-bodied subjects in low-light or obscured environments. From locating lost hikers to tracking wildlife movements, our drones provide critical data for first responders and conservationists alike.`,
-      `Real-time thermal feeds and GPS tagging accelerate response times and improve mission success rates, whether in emergency scenarios or ecological studies.`
-    ]
-  }
-];
+]
 
-export default function ThermalApplicationsPage() {
+export default function ThermalDocumentationPage() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-16">
-      {/* Hero Section */}
-      <header className="text-center max-w-2xl mx-auto mb-16">
-        <h1 className="text-4xl font-bold mb-4">Applications & Services</h1>
-        <p className="bg-white py-6 rounded-lg text-lg text-gray-600 leading-relaxed">
-          Unlock insights beyond visible sight. Thermal imaging reveals hidden anomalies,
-          improves safety, and optimizes performance across a broad range of industries.
-        </p>
-      </header>
+    <>
+      <ThermalNav current="/thermal/Applications" />
+      <ServiceHero
+        eyebrow="Service 03"
+        title="Thermal Documentation"
+        description="Thermal imaging captures apparent surface-temperature patterns that can help identify areas for further professional review."
+        primary={{ href: "/contact", label: "Discuss a Project" }}
+        secondary={{ href: "/thermal/case-studies", label: "View Case Studies" }}
+        image={{
+          src: "/ThermalThumb.png",
+          alt: "Thermal documentation of a photovoltaic array",
+          priority: true,
+        }}
+      />
 
-      {/* Application Sections with Cloudinary Images */}
-      {applications.map(({ Icon, title, description, imageUrl }, index) => (
-        <article
-          key={title}
-          className="space-y-6"
-          style={{ pageBreakAfter: index < applications.length - 1 ? 'always' : 'auto' }}
-        >
-          <div className="flex items-center space-x-4">
-            <Icon className="w-10 h-10 text-blue-600" />
-            <h2 className="text-2xl font-semibold">{title}</h2>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <p className="text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
+            Thermal imaging records apparent surface-temperature differences. It does not independently determine defect cause, moisture source, electrical failure, code violation, or liability unless interpreted by a qualified professional.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+            <Link href="/thermal/method" className="text-[var(--color-accent)] hover:underline">
+              Review the thermal method
+            </Link>
+            <Link href="/thermal/case-studies" className="text-[var(--color-accent)] hover:underline">
+              View thermal case studies
+            </Link>
           </div>
+        </SiteContainer>
+      </section>
 
-          <div className="md:grid md:grid-cols-2 gap-8 items-start">
-            {/* Text Column */}
-            <div className="bg-white py-6 rounded-lg space-y-4">
-              {description.map((para, i) => (
-                <p key={i} className="text-gray-700 leading-relaxed">{para}</p>
-              ))}
-            </div>
-
-             {/* Image Column: maintain aspect ratio and show full image */}
-            <div className="relative w-full aspect-video overflow-hidden">
-              <Image
-                loader={cloudinaryLoader}
-                src={imageUrl}
-                alt={`Thermal ${title}`}
-                fill
-                className="object-contain"
-              />
-            </div>
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Applications"
+            title="Where thermal documentation is used"
+            description="These are current SterFlies thermal documentation applications. Capture is selected only when temperature variation is relevant to the work."
+          />
+          <div className="mt-12 space-y-12">
+            {applications.map((item) => (
+              <article
+                key={item.title}
+                className="grid gap-6 border-t border-[var(--color-line)] pt-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-center"
+              >
+                <div>
+                  <h3 className="text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 max-w-[40rem] text-base leading-relaxed text-[var(--color-muted)]">
+                    {item.text}
+                  </p>
+                </div>
+                <div className="overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-surface)]">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    width={900}
+                    height={600}
+                    className="aspect-[16/10] w-full object-contain bg-[var(--color-canvas)]"
+                  />
+                </div>
+              </article>
+            ))}
           </div>
-        </article>
-      ))}
-    </div>
-  );
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Project"
+            title="Selected thermal documentation"
+          />
+          <ProjectProof
+            type="Thermal documentation"
+            title="Solar PV Thermal Documentation"
+            href="/projects/pv-farm-hotspots"
+            image={{
+              src: "/ThermalThumb.png",
+              alt: "Thermal documentation of a photovoltaic array",
+            }}
+            documented="RGB and thermal documentation of a photovoltaic array."
+            method="Paired thermal and visual capture with location context for later review."
+            why="Locate underperforming modules so maintenance can be targeted rather than walked field-wide."
+            deliverables="Thermal imagery, defect snapshots, and location context."
+          />
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Articles" title="Related reading" />
+          <RelatedArticles
+            items={[
+              { href: "/blog/thermal-reporting-standards-iec-62446-3", title: "Thermal Reporting Standards: IEC 62446-3" },
+              { href: "/blog/solar-thermal-anomalies-drone-based-pv-inspections", title: "Solar Thermal Anomalies in PV Inspections" },
+              { href: "/thermal/method", title: "Thermal documentation method" },
+              { href: "/thermal/case-studies", title: "Thermal case studies" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
+
+      <PageCta
+        title="Need thermal documentation?"
+        text="Describe the asset, access, and what the record needs to support. We can determine whether thermal capture is appropriate."
+      />
+    </>
+  )
 }
-
