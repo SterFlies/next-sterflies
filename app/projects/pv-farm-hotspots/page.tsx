@@ -1,227 +1,198 @@
-// app/projects/pv-farm-hotspots/page.tsx
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ServiceHero from "@/app/components/service/ServiceHero"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
+import ProjectFacts from "@/app/components/project/ProjectFacts"
+import { cloudinaryUrl } from "@/app/config/site"
 
-/** Lightweight meta your index page can import if you want */
-const meta = {
-  slug: "pv-farm-hotspots",
-  title: "PV Farm Hot-Spot Triage (Thermal + RGB)",
-  date: "2025-07-20",
-  cover: {
-    src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png",
-    alt: "Thermal and RGB comparison of PV rows with localized hotspots",
-  },
-  excerpt:
-    "Rapid aerial thermal sweep to locate underperforming modules and strings. Defects mapped to row/string IDs with snapshots for targeted maintenance.",
-  tags: ["thermal", "pv", "o&m"],
-} as const;
-
-
-function SectionCard({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section id={id} className="bg-white rounded-2xl border p-6 md:p-8 space-y-4 md:space-y-5">
-      <h2 className="text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
-      <div className="text-[17px] md:text-lg leading-relaxed text-gray-800 space-y-4">{children}</div>
-    </section>
-  );
+export const metadata: Metadata = {
+  title: "Solar PV Thermal Documentation | SterFlies",
+  description:
+    "Paired thermal and RGB documentation of a photovoltaic array, with location context for later professional review.",
+  alternates: { canonical: "/projects/pv-farm-hotspots" },
 }
 
-/** ✅ Default export MUST be a React component */
-export default function ProjectPage() {
-  const pills = [
-    { id: "overview", label: "Overview" },
-    { id: "anomalies", label: "Anomalies" },
-    { id: "workflow", label: "Workflow" },
-    { id: "qa", label: "Quality" },
-    { id: "results", label: "Results" },
-    { id: "next", label: "Next Steps" },
-  ];
+const HERO = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png",
+  1400
+)
+const PAIR = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_173015_tbmuho.png",
+  1200
+)
+const ROW = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_172933_ctigrw.png",
+  1200
+)
 
+export default function PvProjectPage() {
   return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/projects" className="hover:underline">
-          Projects
-        </Link>
-        <span className="mx-2">/</span>
-        <span>{meta.title}</span>
-      </nav>
+    <>
+      <ServiceHero
+        eyebrow="Thermal Documentation"
+        title="Solar PV Thermal Documentation"
+        description="Document apparent temperature patterns across a photovoltaic array and preserve corresponding RGB and location context for later review."
+        primary={{ href: "/contact", label: "Discuss a Project" }}
+        secondary={{ href: "/thermal/Applications", label: "View Thermal Documentation" }}
+        image={{
+          src: HERO,
+          alt: "Thermal documentation of photovoltaic modules with apparent temperature variation",
+          priority: true,
+        }}
+      />
 
-      {/* Header */}
-      <header className="max-w-3xl">
-        <h1 className="text-3xl md:text-5xl font-bold leading-tight">{meta.title}</h1>
-        <div className="mt-3 text-gray-600 text-sm">{"Greater San Antonio, TX • " + meta.date}</div>
-      </header>
+      <section className="border-b border-[var(--color-line)] py-10 md:py-14">
+        <SiteContainer>
+          <ProjectFacts
+            items={[
+              { label: "Category", value: "Thermal Documentation" },
+              { label: "Location", value: "Greater San Antonio, TX" },
+              { label: "Capture method", value: "Thermal and RGB aerial capture" },
+              { label: "Asset", value: "Photovoltaic array" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-      {/* Hero */}
-      <div className="relative aspect-[16/9] bg-gray-100 rounded-2xl overflow-hidden mt-8">
-        <Image src={meta.cover.src} alt={meta.cover.alt} fill className="object-cover" />
-      </div>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Objective" title="Documentation objective" />
+          <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+            Record apparent surface-temperature differences across the array and keep the corresponding visual and location context so maintenance or inspection teams could review specific modules rather than walking the field without a map.
+          </p>
+        </SiteContainer>
+      </section>
 
-      {/* Jump Pills */}
-      <div className="mt-6 flex flex-wrap gap-2">
-        {pills.map((p) => (
-          <a key={p.id} href={`#${p.id}`} className="px-3 py-1.5 rounded-full border text-sm hover:bg-gray-50">
-            {p.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Layout */}
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Main column */}
-        <div className="lg:col-span-8 space-y-8">
-          <SectionCard id="overview" title="Executive Summary">
-            <p>
-              Thermal inspections by drone are the fastest, least disruptive way to pinpoint PV performance issues. From above the array we capture module-level temperature patterns in minutes—not days on foot—and do it safely without walking tables. Pairing thermal with RGB frames cuts false positives and gives technicians exact row/string locations and visual context. The outcome is a ranked punch-list that turns guesswork into targeted maintenance: less downtime, fewer truck rolls, and proof of repairs on the follow-up scan.
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeader eyebrow="Methods" title="Capture method" />
+            <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+              Thermal and RGB stills were captured together so apparent temperature patterns could be located on physical modules. Coverage was planned for module-level review of the array.
             </p>
-            <p>
-              The value is speed, clarity, and accuracy: instead of walking miles of modules in the heat, the team gets a defect list with
-              photos, locations, and priorities. Maintenance can roll straight to the right tables with the right parts.
+            <p className="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+              Aerial thermal work for this project used a radiometric thermal sensor paired with a high-resolution RGB camera. Equipment is a method, not the service.
             </p>
-          </SectionCard>
-
-          <SectionCard id="anomalies" title="What We Look For (Thermal Anomalies)">
-            <ul className="list-disc pl-5">
-              <li>
-                <strong>Module hotspots</strong> (cell or sub-string) indicating cracked cells or bad solder.
-              </li>
-              <li>
-                <strong>Bypass diode signatures</strong>—distinct thermal patterns at junction boxes.
-              </li>
-              <li>
-                <strong>String outages / mismatch</strong>—rows with cooler-than-expected response.
-              </li>
-              <li>
-                <strong>Soiling / shading bands</strong> creating uneven heating across modules.
-              </li>
-              <li>
-                <strong>Balance-of-system heat</strong> at combiner/inverter pads suggesting load issues.
-              </li>
-            </ul>
-          </SectionCard>
-
-          <SectionCard id="workflow" title="Capture → Map → Action">
-            <ol className="list-decimal pl-5 space-y-2">
-              <li>
-                <strong>Fly</strong> a consistent-altitude grid with thermal + RGB to lock alignment.
-              </li>
-              <li>
-                <strong>Detect</strong> anomalies during processing and validate with RGB frames.
-              </li>
-              <li>
-                <strong>Create a Map</strong> of entire site and annotate each anomolie.
-              </li>
-              <li>
-                <strong>Hand off</strong> to maintenance with photos, severity, and recommended checks.
-              </li>
-            </ol>
-          </SectionCard>
-
-          <SectionCard id="qa" title="Quality & Safety">
-            <ul className="list-disc pl-5">
-              <li>Morning flights reduce thermal shimmer and give consistent module response.</li>
-              <li>Uniform altitude and overlap maintain comparable pixel size across sweeps.</li>
-              <li>Thermal + RGB pairing avoids false positives and clarifies root causes.</li>
-              <li>Ops brief before launch; VO on haul paths; conservative stand-off from tracker rows.</li>
-            </ul>
-          </SectionCard>
-
-          <SectionCard id="results" title="Results">
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Isolated multi hotspots and cracked-cell patterns in a single session.</li>
-              <li>Delivered annotated snapshots + coordinates and a CSV punch-list by string/row.</li>
-              <li>Enabled targeted maintenance instead of full-field walk-downs.</li>
-              <li>Created a baseline for future scans to verify repairs and trend issues.</li>
-            </ul>
-          </SectionCard>
-
-          <SectionCard id="next" title="Next Steps (Plain English)">
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <strong>Re-scan after repairs</strong> to confirm hotspots cleared.
-              </li>
-              <li>
-                <strong>Schedule maintenance scans</strong> (quarterly/yearly) to catch faults before it costs you.
-              </li>
-              <li>
-                <strong>Track repeat offenders</strong>—flag modules/strings that recur across scans.
-              </li>
-              <li>
-                <strong>Share the defect list link</strong> with techs and bring the right spares to the row.
-              </li>
-            </ul>
-          </SectionCard>
-        </div>
-
-        {/* Sidebar */}
-        <aside className="lg:col-span-4">
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div className="rounded-2xl border p-6 bg-white">
-              <h3 className="text-base font-semibold">Quick Facts</h3>
-              <ul className="mt-3 text-sm text-gray-700 space-y-2">
-                <li>
-                  <span className="font-medium">Type:</span> Utility-scale PV rows
-                </li>
-                <li>
-                  <span className="font-medium">Primary:</span> Thermal + RGB sweep
-                </li>
-                <li>
-                  <span className="font-medium">Output:</span> Thermal + RGB Orthomosaic Map, PDF snapshots + Annotations of each anomolie, PDF report.
-                </li>
-                <li>
-                  <span className="font-medium">Best viewing:</span> Fullscreen web-viewer of map for module-level detail
-                </li>
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-5 inline-block px-4 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800"
-              >
-                Start a project
-              </Link>
-            </div>
-
-            <div className="rounded-2xl border p-6 bg-white">
-              <h3 className="text-base font-semibold mb-4">Photo Highlights</h3>
-              <div className="grid gap-4">
-                <figure className="relative aspect-[1/1] rounded-lg overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_173015_tbmuho.png"
-                    alt="Thermal vs RGB composite showing hotspots"
-                    fill
-                    className="object-cover"
-                  />
-                </figure>
-                <figure className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025051/Screenshot_2025-09-04_172933_ctigrw.png"
-                    alt="Row-level detail for documentation"
-                    fill
-                    className="object-cover"
-                  />
-                </figure>
-              </div>
-            </div>
           </div>
-        </aside>
-      </div>
+          <div>
+            <SectionHeader eyebrow="Deliverables" title="What was delivered" />
+            <ul className="mt-6 space-y-2 text-base leading-relaxed text-[var(--color-muted)]">
+              <li>Thermal imagery</li>
+              <li>RGB imagery</li>
+              <li>Annotated snapshots with location context</li>
+              <li>Mapped array context</li>
+              <li>Review report organizing documented patterns</li>
+            </ul>
+          </div>
+        </SiteContainer>
+      </section>
 
-      {/* Footer CTA */}
-      <div className="mt-12">
-        <Link href="/contact" className="inline-block px-5 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800">
-          Start a project
-        </Link>
-      </div>
-    </div>
-  );
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Documented observations"
+            title="Apparent temperature patterns"
+            description="Thermal color is a visualization of apparent temperature. The patterns below were documented for later review. They are not independent determinations of module failure or liability."
+          />
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+            {[
+              {
+                title: "Localized high-temperature cells",
+                text: "Apparent hotspots were recorded so specific modules could be inspected later.",
+              },
+              {
+                title: "Repeated block patterns",
+                text: "Multi-cell temperature patterns were documented as areas identified for further electrical review.",
+              },
+              {
+                title: "String-level variation",
+                text: "Uneven heating along a string was recorded with location context for downstream review.",
+              },
+              {
+                title: "RGB confirmation",
+                text: "Thermal frames were reviewed against visual imagery to locate the pattern on the physical array.",
+              },
+            ].map((item) => (
+              <li key={item.title} className="border-t border-[var(--color-ink)] pt-4">
+                <h3 className="text-base font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{item.text}</p>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-canvas)]">
+              <Image
+                src={PAIR}
+                alt="Paired thermal and RGB frames locating apparent temperature variation on PV modules"
+                width={1200}
+                height={900}
+                className="h-auto w-full object-contain"
+              />
+              <figcaption className="px-3 py-2 text-sm text-[var(--color-muted)]">
+                Thermal and RGB frames used together so apparent heat signatures can be located on physical modules.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-canvas)]">
+              <Image
+                src={ROW}
+                alt="Row-level thermal documentation with location context"
+                width={1200}
+                height={900}
+                className="h-auto w-full object-contain"
+              />
+              <figcaption className="px-3 py-2 text-sm text-[var(--color-muted)]">
+                Row-level context used to direct later inspection rather than a field-wide walk-down.
+              </figcaption>
+            </figure>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <p className="text-sm leading-relaxed text-[var(--color-muted)]">
+            Thermal imaging records apparent surface-temperature differences. Interpretation of those patterns, including any determination of defect cause, remains with qualified personnel.
+          </p>
+          <p className="mt-6">
+            <Link
+              href="/thermal/case-studies"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              Review additional thermal case-study context
+            </Link>
+          </p>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Continue" title="Related service and reading" />
+          <p className="mt-6">
+            <Link
+              href="/thermal/Applications"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              View Thermal Documentation
+            </Link>
+          </p>
+          <RelatedArticles
+            items={[
+              { href: "/blog/thermal-reporting-standards-iec-62446-3", title: "Thermal Reporting Standards: IEC 62446-3" },
+              { href: "/blog/solar-thermal-anomalies-drone-based-pv-inspections", title: "Solar Thermal Anomalies in PV Inspections" },
+              { href: "/thermal/method", title: "Thermal documentation method" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
+
+      <PageCta
+        title="Need thermal documentation?"
+        text="Describe the array or asset and what the record needs to support."
+      />
+    </>
+  )
 }

@@ -1,91 +1,110 @@
-// app/contact/page.tsx
-'use client';
+import type { Metadata } from "next"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ButtonLink from "@/app/components/ButtonLink"
+import CalendlyEmbed from "@/app/components/contact/CalendlyEmbed"
+import { siteConfig } from "@/app/config/site"
 
-import Script from 'next/script';
-import { Mail, MapPin, CalendarClock, ShieldCheck } from 'lucide-react';
+export const metadata: Metadata = {
+  title: "Contact | SterFlies",
+  description:
+    "Tell us what needs to be documented, where the site is located, and what records or deliverables are needed.",
+  alternates: { canonical: "/contact" },
+}
+
+const intake = [
+  "Site location",
+  "Documentation objective",
+  "Approximate site size",
+  "Interior, exterior, or both",
+  "Time sensitivity",
+  "Known access restrictions",
+  "Desired deliverables, if known",
+]
 
 export default function ContactPage() {
   return (
-    <div className="bg-gradient-to-b from-sky-50 to-white">
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
-        <header className="mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-blue-900">
-            Get In Touch
-          </h1>
-          <p className="mt-3 text-lg text-gray-700">
-            Pick a time that works for you—schedule a call or send an email. We&apos;re here to help with your next project!
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {/* Left: Info card */}
-          <aside className="rounded-2xl bg-white p-6 md:p-8 shadow-sm ring-1 ring-black/5">
-            <div className="space-y-6">
-              <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-blue-50 p-2">
-                  <Mail className="size-5 text-blue-700" />
-                </div>
-                <div>
-                  <h2 className="text-base font-semibold text-gray-900">Email</h2>
-                  <a
-                    href="mailto:jerome.sterling@sterflies.com"
-                    className="text-blue-600 hover:underline break-all"
-                  >
-                    jerome.sterling@sterflies.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-blue-50 p-2">
-                  <MapPin className="size-5 text-blue-700" />
-                </div>
-                <div>
-                  <h2 className="text-base font-semibold text-gray-900">Location</h2>
-                  <p className="text-gray-700">San Antonio, TX</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="rounded-xl bg-blue-50 p-2">
-                  <CalendarClock className="size-5 text-blue-700" />
-                </div>
-                <div>
-                  <h2 className="text-base font-semibold text-gray-900">Response Time</h2>
-                  <p className="text-gray-700">Usually within one business day.</p>
-                </div>
-              </div>
-
-              <hr className="my-4 border-gray-200" />
-
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-green-600" />
-                  No spam—ever. We only use your info to reply.
-                </li>
-                <li className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-green-600" />
-                  Clear scope & deliverables on every engagement.
-                </li>
-              </ul>
-            </div>
-          </aside>
-
-          {/* Right: Calendly card */}
-          <div className="rounded-2xl bg-white p-2 md:p-3 shadow-sm ring-1 ring-black/5">
-            <Script
-              src="https://assets.calendly.com/assets/external/widget.js"
-              strategy="lazyOnload"
-            />
-            <div
-              className="calendly-inline-widget rounded-xl"
-              data-url="https://calendly.com/sterling-spear74?hide_landing_page_details=1&hide_gdpr_banner=1"
-              style={{ minWidth: '100%', height: '740px' }} // adjust height if you like
-              aria-label="Calendly scheduling widget"
-            />
+    <>
+      <section className="border-b border-[var(--color-line)]">
+        <SiteContainer className="py-10 md:py-14">
+          <SectionHeader
+            as="h1"
+            eyebrow="Contact"
+            title="Discuss a Documentation Project"
+            description="Tell us what needs to be documented, where the site is located, and what records or deliverables are needed."
+          />
+          <div className="mt-7 flex flex-wrap gap-3">
+            <ButtonLink href={`mailto:${siteConfig.email}`}>Email SterFlies</ButtonLink>
+            <ButtonLink href="#schedule" variant="secondary">
+              Schedule a Consultation
+            </ButtonLink>
           </div>
-        </div>
+        </SiteContainer>
       </section>
-    </div>
-  );
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+          <div>
+            <SectionHeader
+              eyebrow="Preparation"
+              title="Helpful information to include"
+              description="You do not need to know whether the project requires drone mapping, Matterport, thermal imaging, or another method. Start with the documentation objective."
+            />
+            <ul className="mt-8 space-y-3 text-base">
+              {intake.map((item) => (
+                <li key={item} className="border-t border-[var(--color-line)] pt-3">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHeader eyebrow="Direct contact" title="Email and location" />
+            <dl className="mt-8 space-y-6">
+              <div className="border-t border-[var(--color-ink)] pt-4">
+                <dt className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                  Email
+                </dt>
+                <dd className="mt-2">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="text-base font-semibold text-[var(--color-accent)] hover:underline"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </dd>
+              </div>
+              <div className="border-t border-[var(--color-ink)] pt-4">
+                <dt className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                  Location
+                </dt>
+                <dd className="mt-2 text-base">{siteConfig.address}</dd>
+              </div>
+              <div className="border-t border-[var(--color-ink)] pt-4">
+                <dt className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                  Response
+                </dt>
+                <dd className="mt-2 text-base text-[var(--color-muted)]">
+                  Usually within one business day.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section id="schedule" className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Scheduling"
+            title="Schedule a consultation"
+            description="Pick a time to discuss the site, the documentation objective, and the record that would be useful."
+          />
+          <div className="mt-10">
+            <CalendlyEmbed />
+          </div>
+        </SiteContainer>
+      </section>
+    </>
+  )
 }

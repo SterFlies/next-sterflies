@@ -1,292 +1,256 @@
-// app/projects/matterport-drone/page.tsx
-import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ServiceHero from "@/app/components/service/ServiceHero"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
+import ProjectFacts from "@/app/components/project/ProjectFacts"
+import ProjectEmbed from "@/app/components/project/ProjectEmbed"
+import { cloudinaryUrl } from "@/app/config/site"
 
-// Local meta (plain const so Next.js build stays clean)
-const meta = {
-  slug: "Indoor Air Quality Assessment Documentation", // this value doesn't affect routing
-  title: "IAQ - Mold Survey Documentation DEMO (Matterport)",
-  date: "2025-08-15",
-  cover: {
-    src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077581/Screenshot_2025-09-05_080609_q3q6nk.png",
-    alt: "Custom home interior/exterior capture (Matterport + drone)",
-  },
-  excerpt:
-    "Walk the interior in 3D with Matterport and review the exterior from above with drone imagery—one link, full context for owners and trades.",
-  tags: ["matterport", "interior", "exterior", "construction"],
-} as const;
+export const metadata: Metadata = {
+  title: "IAQ & Mold Existing Conditions Documentation | SterFlies",
+  description:
+    "Demonstration project illustrating combined interior walkthrough and exterior 3D documentation of existing site conditions.",
+  alternates: { canonical: "/projects/iaq-mold-documentation" },
+}
 
-// Embeds & assets
-const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW";
+const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW"
 const PIX4D_MESH_URL =
-  "https://cloud.pix4d.com/dataset/2349141/model?shareToken=4a7c62ac-8c56-462a-af0e-68711a2d00bc";
+  "https://cloud.pix4d.com/dataset/2349141/model?shareToken=4a7c62ac-8c56-462a-af0e-68711a2d00bc"
+const VIDEO =
+  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1757075500/reelmatter_vzpkqo.mp4"
+const VIDEO_POSTER = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png",
+  1400
+)
+const ANNOTATED = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png",
+  1400
+)
+const COMBINED = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1769103746/ext-int3D_h28l56.jpg",
+  1400
+)
+const FIELD = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077084/matterportthumb_rosrlb.png",
+  1200
+)
 
-const CLOUDINARY_VIDEO_MP4 =
-  "https://res.cloudinary.com/dzlmoyomq/video/upload/v1757075500/reelmatter_vzpkqo.mp4";
-const CLOUDINARY_VIDEO_POSTER =
-  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757090021/Screenshot_2025-09-05_113308_yh4rz0.png";
-const CLOUDINARY_FIELD_PHOTO =
-  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757077084/matterportthumb_rosrlb.png";
-
-const CLOUDINARY_DATA_PHOTO =
-  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1768335085/Screenshot_2026-01-13_140858_guyvz2.png";  
-
-
-// AspectBox with mobile-only height boost + optional mobile bleed
-function AspectBox({
-  aspect = "16/9",
-  mobileTall = false,   // 4:3 on phones (taller), unchanged on sm+
-  bleedMobile = false,  // edge-to-edge on phones, normal on sm+
-  children,
-}: {
-  aspect?: "16/9" | "4/3" | "1/1" | "21/9" | "3/2";
-  mobileTall?: boolean;
-  bleedMobile?: boolean;
-  children: React.ReactNode;
-}) {
-  const desktop =
-    aspect === "4/3" ? "sm:aspect-[4/3]" :
-    aspect === "1/1" ? "sm:aspect-square" :
-    aspect === "21/9" ? "sm:aspect-[21/9]" :
-    aspect === "3/2" ? "sm:aspect-[3/2]" :
-    "sm:aspect-[16/9]";
-
-  const mobile = mobileTall ? "aspect-[4/3]" : "aspect-[16/9]";
-  const bleed = bleedMobile ? "-mx-4 sm:mx-0" : "";
-
+export default function IaqProjectPage() {
   return (
-    <div className={`${bleed} relative w-full ${mobile} ${desktop} rounded-2xl overflow-hidden bg-black`}>
-      {children}
-    </div>
-  );
-}
+    <>
+      <ServiceHero
+        eyebrow="Existing Conditions / Reality Capture"
+        title="IAQ & Mold Existing Conditions Documentation"
+        description="Demonstration project illustrating an interior and exterior documentation workflow used to preserve site conditions as a reviewable spatial record."
+        primary={{ href: "/contact", label: "Discuss a Project" }}
+        secondary={{ href: "/services/forensic-site-documentation", label: "View Forensic Mapping" }}
+      />
 
-function SectionCard({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section id={id} className="bg-white rounded-2xl border p-6 md:p-8 space-y-4 md:space-y-5">
-      <h2 className="text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
-      <div className="text-[17px] md:text-lg leading-relaxed text-gray-800 space-y-4">{children}</div>
-    </section>
-  );
-}
+      <section className="border-b border-[var(--color-line)] py-10 md:py-14">
+        <SiteContainer>
+          <ProjectFacts
+            items={[
+              { label: "Category", value: "Existing Conditions / Reality Capture" },
+              { label: "Location", value: "San Antonio Area, TX" },
+              { label: "Capture methods", value: "Matterport / terrestrial capture and exterior photogrammetry" },
+              { label: "Record type", value: "Demonstration project" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-export default function ProjectPage() {
-  const pills = [
-    { id: "overview", label: "Overview" },
-    { id: "tour", label: "Interior Tour" },
-    { id: "exterior3d", label: "Exterior 3D Model" },
-    { id: "pro3video", label: "Pro3 Video" },
-    { id: "fieldphoto", label: "Field Photo" },
-    { id: "qa", label: "Capture & QA" },
-    { id: "next", label: "Next Steps" },
-  ];
-
-  return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/projects" className="hover:underline">Projects</Link>
-        <span className="mx-2">/</span>
-        <span>{meta.title}</span>
-      </nav>
-
-      {/* Header */}
-      <header className="max-w-3xl">
-        <h1 className="text-3xl md:text-5xl font-bold leading-tight">{meta.title}</h1>
-        <div className="mt-3 text-gray-600 text-sm">{"San Antonio Area, TX • " + meta.date}</div>
-      </header>
-
-      {/* HERO — Matterport embed (unchanged desktop/mobile) */}
-      <AspectBox>
-        <iframe
-          src={MATTERPORT_URL}
-          className="absolute inset-0 w-full h-full"
-          title="IAQ - Mold Survey Documentation DEMO (Matterport)"
-          frameBorder={0}
-          allow="autoplay; fullscreen; web-share; xr-spatial-tracking"
-          allowFullScreen
-          loading="lazy"
-        />
-      </AspectBox>
-
-      {/* Jump Pills */}
-      <div className="mt-6 flex flex-wrap gap-2">
-        {pills.map((p) => (
-          <a key={p.id} href={`#${p.id}`} className="px-3 py-1.5 rounded-full border text-sm hover:bg-gray-50">
-            {p.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Two-column layout */}
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Main column */}
-        <div className="lg:col-span-8 space-y-8">
-          <SectionCard id="overview" title="Executive Summary">
-            <p>
-              This demo project illustrates how interior 3D & 360° scanning paired with an exterior drone-based 3D model supports indoor air quality (IAQ) and mold investigations by preserving site conditions at the time of assessment.
-            </p>
-            <p>
-              The interior model provides a navigable record of room layout and sampling locations, while the exterior model documents building envelope context, access conditions, grading, and roof geometry. Together, they form a single, time-stamped visual reference that supports sampling documentation, reporting clarity, and third-party review without repeated site visits.
-            </p>
-          </SectionCard>
-
-          <SectionCard id="tour" title="Important Disclaimer">
-            <p className="text-sm text-gray-600">
-              This project is a <strong>demonstration example only</strong> and does <strong>not represent an active or ongoing investigation or case.</strong>
-            </p>
-            <p className="text-sm text-gray-600">
-             Any sampling information, spore types, laboratory results, or data visualizations shown within the models or supporting materials are <strong>entirely fictional and provided for illustrative purposes only.</strong> They are intended solely to demonstrate how environmental data may be visually referenced within site documentation.
-            </p>
-            <p className="text-sm text-gray-600">
-              No mold identification, air quality conclusions, moisture diagnosis, or causation analysis is provided or implied. All real-world assessments, interpretations, and findings must be performed by a licensed consultant, industrial hygienist, or accredited laboratory.
-            </p>
-          </SectionCard>
-
-          {/* Exterior 3D Model (Pix4D) — bigger on phones only */}
-          <SectionCard id="exterior3d" title="Exterior 3D Model">
-            <AspectBox mobileTall bleedMobile>
-              <iframe
-                src={PIX4D_MESH_URL}
-                className="absolute inset-0 w-full h-full"
-                title="Custom Home — Exterior 3D Model (Pix4D)"
-                frameBorder={0}
-                allowFullScreen
-                loading="lazy"
-              />
-            </AspectBox>
-            <p className="text-sm text-gray-600">
-              Rotate, zoom, and inspect roof planes, elevation transitions, and site access directly in the browser.
-            </p>
-            <p className="text-sm text-gray-600">
-              Right mouse drag to rotate, scroll to zoom, and left mouse drag to pan the view.
-            </p>
-          </SectionCard>
-
-          {/* Cloudinary Video with Pro3 paragraph */}
-          <SectionCard id="pro3video" title="Interior Scanning with Matterport Pro3">
-            <p>
-              For interiors, we use the <strong>Matterport Pro3</strong>—it combines fast capture with high-quality depth data, making it ideal for virtual tours, as-built documentation, and quick stakeholder reviews. The result is a clean, navigable model that anyone can open on a phone or laptop without installing software. When questions come up about layout, clearances, or finish choices, the Pro3 tour answers them in seconds.
-            </p>
-            <AspectBox aspect="16/9">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster={CLOUDINARY_VIDEO_POSTER}
-                className="absolute inset-0 w-full h-full"
-                style={{ objectFit: "contain", transform: "translateY(-35%) scale(1)", }}
-              >
-                <source src={CLOUDINARY_VIDEO_MP4} type="video/mp4" />
-              </video>
-            </AspectBox>
-          </SectionCard>
-
-          {/* Annotated data Picture */}
-          <SectionCard id="pictureannotation" title="Added a photo annotation example">
-            <p>
-             High-resolution imagery and data can be <strong>annotated directly within the 3D tour</strong> to visually reference <strong>areas of observed concern,</strong> access points, and sampling locations. Annotations preserve what was documented, where it was documented, and when, without interpreting cause or severity.
-            </p>
-            <p>
-              This approach allows consultants, reviewers, and attorneys to quickly understand <strong>spatial context</strong>—such as the relationship between HVAC components, wall cavities, and adjacent rooms—while maintaining a clear separation between <strong>visual documentation</strong> and <strong>professional findings</strong>.
-            </p>
-            <figure className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
-              <Image
-                src={CLOUDINARY_DATA_PHOTO}
-                alt="Example annotation demonstrating how observed conditions may be visually referenced within the tour."
-                fill
-                className="object-cover"
-              />
-            </figure>
-          </SectionCard>
-
-          {/* Cloudinary Photo (me + Pro3) */}
-          <SectionCard id="fieldphoto" title="On Site with the Pro3">
-            <p>
-             Interior capture is planned around <strong>clear line-of-sight, minimal occlusion, and consistent scan spacing</strong> to ensure rooms, corridors, and transitions stitch accurately. The Pro3 is used on a tripod for stable, repeatable capture, while live tablet feedback confirms coverage and alignment.
-            </p>
-            <p>
-              The resulting model creates a <strong>navigable visual baseline</strong> that allows consultants to reference <strong>sampling locations, room relationships, and observed conditions</strong> during analysis, reporting, and follow-up—reducing ambiguity and improving documentation quality.
-            </p>
-            <figure className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
-              <Image
-                src={CLOUDINARY_FIELD_PHOTO}
-                alt="Scanning with the Matterport Pro3 during capture"
-                fill
-                className="object-cover"
-              />
-            </figure>
-          </SectionCard>
-
-          <SectionCard id="3D" title="Exterior Drone Capture & 3D Model">
-            <p className="text-lg text-black-600">
-              Exterior drone capture provides <strong>contextual documentation</strong> that can inform IAQ and moisture-related investigations. High-resolution visual imagery and thermal imaging are used to record building orientation, roof geometry, drainage patterns, exterior material transitions, and adjacent structures at the time of assessment.
-            </p>
-            <p>
-              The exterior 3D model does <strong>not diagnose conditions</strong>, but preserves spatial relationships that can be correlated with interior observations, sampling data, and historical findings.
-            </p>
-          </SectionCard>
-
-          <SectionCard id="qa" title="Capture & QA">
-            <ul className="list-disc pl-5">
-              <li>Matterport interior capture with control scans to ensure accurate alignment across rooms and levels.</li>
-              <li>Exterior drone and thermal capture at appropriate altitudes to document roof geometry, drainage features, and exterior context relevant to moisture and IAQ considerations.</li>
-              <li>Consistent camera geometry and capture parameters so repeat documentation can be compared over time if follow-up surveys are required.</li>
-              <li>Quality checks to confirm clear visibility of sampling locations, room transitions, material interfaces, and access points prior to delivery.</li>
-            </ul>
-          </SectionCard>
-
-          <SectionCard id="next" title="Next Steps (Plain English)">
-            <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Edit and add annotations to scan</strong> to visually document sampling locations, room conditions, and observed areas of interest as a permanent visual record.</li>
-              <li><strong>Share one secure link</strong> with consultants, clients, or third parties, including brief notes for “Areas documented” and “Purpose of follow-up”. Supports investigation reports.</li>
-              <li><strong>Pin sampling points or reference markers</strong> inside the tour (air samples, surface samples, moisture readings) to maintain clear spatial context between data and location.</li>
-              <li><strong>Attach exterior context (visual, thermal, ortho, or 3D)</strong> when roof conditions, drainage patterns, or envelope-related factors are relevant to the investigation.</li>
-            </ul>
-          </SectionCard>
-        </div>
-
-        {/* Sidebar (no Photo Highlights per request) */}
-        <aside className="lg:col-span-4">
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div className="rounded-2xl border p-6 bg-white">
-              <h3 className="text-base font-semibold">Quick Facts</h3>
-              <ul className="mt-3 text-sm text-gray-700 space-y-2">
-                <li><span className="font-medium">Type:</span> Custom single-family home, Construction defect documentation</li>
-                <li><span className="font-medium">Primary:</span> Matterport interior tour</li>
-                <li><span className="font-medium">Secondary:</span> Exterior 3D model</li>
-                <li><span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop, tablet/iPad</li>
-                <li><span className="font-medium">Use case:</span> Owner/trade coordination, mold consultation, Industrial hygienist report support, remote review</li>
-                <li><span className="font-medium">Outputs:</span> Virtual tour, 3D model, MP4 videos, Still Images, Thermal Images</li>
-              </ul>
-              <Link
-                href="/contact"
-                className="mt-5 inline-block px-4 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800"
-              >
-                Start a project
-              </Link>
-            </div>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Interior record"
+            title="Interactive walkthrough"
+            description="The interior tour preserves room layout, access, and annotated locations for later review."
+          />
+          <div className="mt-10">
+            <ProjectEmbed src={MATTERPORT_URL} title="Interior walkthrough of documented existing conditions" tall />
           </div>
-        </aside>
-      </div>
+        </SiteContainer>
+      </section>
 
-      {/* Footer CTA */}
-      <div className="mt-12">
-        <Link href="/contact" className="inline-block px-5 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800">
-          Start a project
-        </Link>
-      </div>
-    </div>
-  );
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Overview" title="Project overview" />
+          <div className="mt-8 space-y-4 text-base leading-relaxed text-[var(--color-muted)]">
+            <p>
+              The purpose of this work was to preserve interior and exterior conditions as a reviewable spatial record. Interior capture documents room relationships and close-range conditions. Exterior photogrammetry documents the building envelope, access, and surrounding context.
+            </p>
+            <p>
+              Demonstration project illustrating an interior/exterior documentation workflow. Sampling labels or laboratory values shown in the models are fictional and included only to show how location context can be referenced inside a record.
+            </p>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Objective"
+            title="What needed to be preserved"
+            description="The record was scoped to conditions that later professional review would need after the site has changed."
+          />
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+            {[
+              "Interior layout and room relationships",
+              "Corridors, access, and transitions",
+              "Exterior envelope and site context",
+              "Visible conditions at the time of capture",
+              "Location context for later sampling or review notes",
+            ].map((item) => (
+              <li key={item} className="border-t border-[var(--color-ink)] pt-4 text-base">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeader eyebrow="Methods" title="Capture methods" />
+            <ul className="mt-8 space-y-4 text-base leading-relaxed">
+              <li>
+                <span className="font-semibold">Matterport / terrestrial capture.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  Interior scanning used to create a navigable walkthrough of rooms, corridors, and annotated locations.
+                </span>
+              </li>
+              <li>
+                <span className="font-semibold">Exterior photogrammetry.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  Overlapping stills processed into an exterior 3D model of roof geometry, elevations, and access.
+                </span>
+              </li>
+              <li>
+                <span className="font-semibold">High-resolution imagery.</span>{" "}
+                <span className="text-[var(--color-muted)]">
+                  Still photography used for close visual reference and annotation.
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <SectionHeader eyebrow="Deliverables" title="What was delivered" />
+            <ul className="mt-8 space-y-3 text-base leading-relaxed text-[var(--color-muted)]">
+              <li>Interior walkthrough</li>
+              <li>Exterior 3D model</li>
+              <li>Annotated views</li>
+              <li>Spatial context connecting interior rooms to exterior conditions</li>
+            </ul>
+            <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+              Deliverables were selected for this documentation objective. Not every forensic engagement includes the same set of products.
+            </p>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Combined capture"
+            title="Why interior and exterior records were paired"
+            description="Interior capture provides room-level continuity. Exterior mapping provides broader site context that a walkthrough alone cannot reconstruct."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+              <Image
+                src={COMBINED}
+                alt="Combined interior and exterior 3D documentation of existing site conditions"
+                width={1400}
+                height={900}
+                className="aspect-[16/10] w-full object-cover object-left"
+              />
+            </figure>
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+              <Image
+                src={ANNOTATED}
+                alt="Annotated interior view showing location context inside the walkthrough"
+                width={1400}
+                height={900}
+                className="aspect-[16/10] w-full object-cover"
+              />
+            </figure>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Exterior model"
+            title="Exterior 3D documentation"
+            description="The exterior model preserves roof planes, elevation transitions, and site access for later comparison with interior conditions."
+          />
+          <div className="mt-10">
+            <ProjectEmbed src={PIX4D_MESH_URL} title="Exterior 3D model of documented site conditions" tall />
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+          <div>
+            <SectionHeader eyebrow="Interior capture" title="Terrestrial scanning in the field" />
+            <p className="mt-6 max-w-[42rem] text-base leading-relaxed text-[var(--color-muted)]">
+              Interior capture was planned around line of sight, scan spacing, and room continuity so corridors and transitions would stitch into a navigable record. Matterport is the capture tool used for the walkthrough; the product is the interior documentation, not the scanner.
+            </p>
+            <figure className="mt-8 overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[#111]">
+              <video controls playsInline preload="metadata" poster={VIDEO_POSTER} className="aspect-video w-full">
+                <source src={VIDEO} type="video/mp4" />
+              </video>
+            </figure>
+          </div>
+          <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+            <Image
+              src={FIELD}
+              alt="Terrestrial scanner in place during interior documentation"
+              width={900}
+              height={700}
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </figure>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <p className="text-sm leading-relaxed text-[var(--color-muted)]">
+            SterFlies documents field conditions. Mold assessment, industrial hygiene interpretation, and health-related conclusions remain with qualified professionals.
+          </p>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Continue" title="Related service and reading" />
+          <p className="mt-6">
+            <Link
+              href="/services/forensic-site-documentation"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              View Forensic Mapping & Site Documentation
+            </Link>
+          </p>
+          <RelatedArticles
+            items={[
+              { href: "/blog/what-is-forensic-site-documentation", title: "What Is Forensic Site Documentation" },
+              { href: "/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations", title: "Why Existing Conditions Documentation Is Critical for IH Investigations" },
+              { href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog", title: "Why Site Conditions Should Be Documented Before They Are Altered" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
+
+      <PageCta />
+    </>
+  )
 }
-

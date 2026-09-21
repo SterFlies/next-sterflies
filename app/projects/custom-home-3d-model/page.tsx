@@ -1,264 +1,174 @@
-import Image from "next/image";
-import Link from "next/link";
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ServiceHero from "@/app/components/service/ServiceHero"
+import RelatedArticles from "@/app/components/service/RelatedArticles"
+import PageCta from "@/app/components/service/PageCta"
+import ProjectFacts from "@/app/components/project/ProjectFacts"
+import ProjectEmbed from "@/app/components/project/ProjectEmbed"
+import { cloudinaryUrl } from "@/app/config/site"
 
-const meta = {
-  slug: "custom-home-3d-model",
-  title: "Custom Home Build – 3D Model (Progression)",
-  date: "2025-05-11",
-  cover: {
-    src: "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757016149/flighttomesh_ae4avk.png",
-    alt: "Framed custom home with aerial 3D visualization",
-  },
-  excerpt:
-    "High-fidelity 3D mesh of a custom home used for remote reviews, punch-list coordination, and owner updates—captured in minutes and viewable in the browser.",
-  tags: ["construction", "3d-model", "progress"],
-};
-
-// ---- AspectBox with mobile-only height boost ----
-function AspectBox({
-  aspect = "16/9",
-  mobileTall = false, // when true: 4:3 on phones; unchanged on sm+ screens
-  children,
-}: {
-  aspect?: "16/9" | "4/3" | "1/1" | "21/9" | "3/2";
-  mobileTall?: boolean;
-  children: React.ReactNode;
-}) {
-  // Desktop/tablet aspect follows your chosen ratio
-  const desktop =
-    aspect === "4/3"
-      ? "sm:aspect-[4/3]"
-      : aspect === "1/1"
-      ? "sm:aspect-square"
-      : aspect === "21/9"
-      ? "sm:aspect-[21/9]"
-      : aspect === "3/2"
-      ? "sm:aspect-[3/2]"
-      : "sm:aspect-[16/9]";
-
-  // Phone aspect: opt-in taller 4:3 to make embeds feel less cramped
-  const mobile = mobileTall ? "aspect-[4/3]" : "aspect-[16/9]";
-
-  return (
-    <div className={`${mobile} ${desktop} relative w-full rounded-2xl overflow-hidden bg-black`}>
-      {children}
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Custom Home 3D Progress Documentation | SterFlies",
+  description:
+    "Recurring photogrammetric 3D documentation of a custom home used to preserve changing construction conditions for remote review.",
+  alternates: { canonical: "/projects/custom-home-3d-model" },
 }
 
-function SectionCard({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
+const COVER = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757016149/flighttomesh_ae4avk.png",
+  1400
+)
+const MESH =
+  "https://cloud.pix4d.com/embed/pro/mesh/2296493?shareToken=47b2a408687641a3bc946816afe5b10d"
+const FRAMING = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757023984/Screenshot_2025-09-04_171243_h3pjwq.png",
+  1200
+)
+const ROUGH_IN = cloudinaryUrl(
+  "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757023989/Screenshot_2025-09-04_171148_r6ocqt.png",
+  1200
+)
+
+export default function CustomHomeProjectPage() {
   return (
-    <section id={id} className="bg-white rounded-2xl border p-6 md:p-8 space-y-4 md:space-y-5">
-      <h2 className="text-xl md:text-2xl font-bold tracking-tight">{title}</h2>
-      <div className="text-[17px] md:text-lg leading-relaxed text-gray-800 space-y-4">{children}</div>
-    </section>
-  );
-}
+    <>
+      <ServiceHero
+        eyebrow="3D Progress Documentation"
+        title="Custom Home 3D Progress Documentation"
+        description="Recurring 3D documentation of a custom home so changing construction conditions could be reviewed remotely as work advanced."
+        primary={{ href: "/contact", label: "Discuss a Project" }}
+        secondary={{ href: "/services/mapping", label: "View Mapping & Photogrammetry" }}
+        image={{
+          src: COVER,
+          alt: "Photogrammetric 3D model of a custom home during construction",
+          priority: true,
+        }}
+      />
 
-export default function ProjectPage() {
-  const pills = [
-    { id: "overview", label: "Overview" },
-    { id: "viewer", label: "3D Viewer" },
-    { id: "workflows", label: "Workflows" },
-    { id: "qa", label: "Capture & QA" },
-    { id: "progress", label: "Progress" },
-    { id: "safety", label: "Safety" },
-    { id: "next", label: "Next Steps" },
-  ];
+      <section className="border-b border-[var(--color-line)] py-10 md:py-14">
+        <SiteContainer>
+          <ProjectFacts
+            items={[
+              { label: "Category", value: "3D Progress Documentation" },
+              { label: "Location", value: "San Antonio Area, TX" },
+              { label: "Capture method", value: "Aerial photogrammetry" },
+              { label: "Cadence", value: "Milestone-based repeat capture" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
 
-  return (
-    <div className="container mx-auto px-4 py-12 lg:py-16">
-      {/* Breadcrumb */}
-      <nav className="mb-6 text-sm text-gray-500">
-        <Link href="/projects" className="hover:underline">Projects</Link>
-        <span className="mx-2">/</span>
-        <span>{meta.title}</span>
-      </nav>
-
-      {/* Header */}
-      <header className="max-w-3xl">
-        <h1 className="text-3xl md:text-5xl font-bold leading-tight">{meta.title}</h1>
-        <div className="mt-3 text-gray-600 text-sm">{"San Antonio Area, TX • " + meta.date}</div>
-      </header>
-
-      {/* Hero */}
-      <div className="relative aspect-[16/9] bg-gray-100 rounded-2xl overflow-hidden mt-8">
-        <Image src={meta.cover.src} alt={meta.cover.alt} fill className="object-cover" />
-      </div>
-
-      {/* Jump Pills */}
-      <div className="mt-6 flex flex-wrap gap-2">
-        {pills.map((p) => (
-          <a key={p.id} href={`#${p.id}`} className="px-3 py-1.5 rounded-full border text-sm hover:bg-gray-50">
-            {p.label}
-          </a>
-        ))}
-      </div>
-
-      {/* Layout */}
-      <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Main column */}
-        <div className="lg:col-span-8 space-y-8">
-          <SectionCard id="overview" title="Executive Summary">
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Overview" title="Project overview" />
+          <div className="mt-8 space-y-4 text-base leading-relaxed text-[var(--color-muted)]">
             <p>
-              This custom home is moving fast—from slab to framed shell in a matter of weeks. Rather than
-              relying on phone photos and long site walks, we capture a short, carefully planned drone
-              mission to build a <strong>high-fidelity 3D model</strong> you can explore in the browser. The model
-              makes remote reviews simple: pan and orbit to check framing details, roof geometry, stair
-              openings, and rough-in paths. Supers and PMs use it during huddles; the owner uses it to
-              understand progress without standing in mud; designers use it to sanity-check clearances
-              before decisions harden.
+              Construction conditions on this custom home changed quickly as framing, roof geometry, and rough-in advanced. The documentation objective was to preserve a repeatable 3D record of those conditions so the project team could review progress without reconstructing the site from disconnected photographs.
             </p>
             <p>
-              The result is <em>shared reality</em>. Everyone sees the same view, at the same scale, with the
-              same context. When questions come up—“Is the ridge straight?”, “Where does the chase run?”,
-              “Do we have enough soffit for the fixtures?”—the 3D model answers in seconds, and notes can
-              be pinned to locations for follow-up.
+              Each capture produced a navigable model that could be compared with earlier visits. The record supported remote review, coordination, and later confirmation of what had changed.
             </p>
-          </SectionCard>
-
-          <SectionCard id="viewer" title="Interactive 3D Model">
-            <p className="text-sm text-gray-600">Click and drag to orbit. Scroll to zoom. Open full screen for the clearest view.</p>
-
-            {/* 👉 Taller only on phones; unchanged on tablet/desktop */}
-            <AspectBox mobileTall>
-              <iframe
-                src="https://cloud.pix4d.com/embed/pro/mesh/2296493?shareToken=47b2a408687641a3bc946816afe5b10d"
-                className="absolute inset-0 w-full h-full"
-                title="Custom Home — 3D Model (Pix4Dcloud)"
-                frameBorder={0}
-                allowFullScreen
-                loading="lazy"
-              />
-            </AspectBox>
-
-            <p className="text-xs text-gray-500">
-              Measurements in the viewer are great for planning; record drawings remain with survey/engineering.
-            </p>
-          </SectionCard>
-
-          <SectionCard id="workflows" title="Stakeholder Workflows">
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="rounded-xl border p-5 space-y-3">
-                <h3 className="font-semibold">Owner Updates</h3>
-                <p>
-                  Send a single link instead of dozens of photos. Walk the model together on a call and
-                  capture decisions with screenshots or pinned notes.
-                </p>
-              </div>
-              <div className="rounded-xl border p-5 space-y-3">
-                <h3 className="font-semibold">PM / Superintendent</h3>
-                <p>
-                  Verify framing geometry, roof planes, stair openings, and chase paths. Tag issues, create
-                  a quick punch list, and align on the next trade’s needs.
-                </p>
-              </div>
-              <div className="rounded-xl border p-5 space-y-3">
-                <h3 className="font-semibold">Trades</h3>
-                <p>
-                  Share the model with MEP subs for routing checks (vents, stacks, penetrations) and to
-                  confirm clearances before material arrives.
-                </p>
-              </div>
-              <div className="rounded-xl border p-5 space-y-3">
-                <h3 className="font-semibold">Design Team</h3>
-                <p>
-                  Compare intent vs. as-built. Use screenshots to resolve RFIs quickly and to confirm any
-                  small deviations won’t snowball into rework.
-                </p>
-              </div>
-            </div>
-          </SectionCard>
-
-          <SectionCard id="qa" title="Capture & Quality">
-            <ul className="list-disc pl-5">
-              <li>Low-altitude perimeter orbit plus oblique passes for dense, even coverage.</li>
-              <li>Consistent camera geometry ensures comparable models across visits.</li>
-              <li>RTK positioning where available; otherwise tight control via processing constraints.</li>
-              <li>Quick QC: check ridge/valley straightness, wall plumb, and occlusion at porches/eaves.</li>
-            </ul>
-          </SectionCard>
-
-          <SectionCard id="progress" title="Progress Tracking">
-            <p>
-              Because captures are repeatable, you can compare models week to week. Framing completion,
-              roof sheathing, window/door installs, and exterior wrap all stand out immediately. Use
-              split-screen or tabbed viewers to answer, “What changed?” in seconds and to validate that
-              the job is ready for the next trade.
-            </p>
-          </SectionCard>
-
-          <SectionCard id="safety" title="Safety Considerations">
-            <p>
-              Flights are coordinated with the superintendent, launched away from crews, and flown well
-              clear of people. We avoid windy gust fronts and keep a conservative buffer around ladders,
-              lifts, and deliveries. Short, efficient missions reduce site impact while capturing
-              everything needed for a solid model.
-            </p>
-          </SectionCard>
-
-          <SectionCard id="next" title="Next Steps (Plain English)">
-            <ul className="list-disc pl-5 space-y-2">
-              <li><strong>Capture again after major milestones</strong> (roof deck, windows/doors, MEP rough-in).</li>
-              <li><strong>Share the link</strong> in weekly updates; add two bullets: “What changed / What’s next.”</li>
-              <li><strong>Mark 2–3 follow-ups</strong> in the viewer (e.g., soffit spacing, vent path, stair headroom).</li>
-              <li><strong>Grab a few obliques</strong> at eye-level next visit for context shots in the report.</li>
-              <li><strong>Archive models by date</strong> so comparisons are one click when questions pop up later.</li>
-            </ul>
-          </SectionCard>
-        </div>
-
-        {/* Sidebar */}
-        <aside className="lg:col-span-4">
-          <div className="lg:sticky lg:top-24 space-y-6">
-            <div className="rounded-2xl border p-6 bg-white">
-              <h3 className="text-base font-semibold">Quick Facts</h3>
-              <ul className="mt-3 text-sm text-gray-700 space-y-2">
-                <li><span className="font-medium">Type:</span> Custom single-family home</li>
-                <li><span className="font-medium">Primary deliverable:</span> Web 3D model</li>
-                <li><span className="font-medium">Best viewing:</span> Fullscreen on laptop/desktop</li>
-                <li><span className="font-medium">Ideal cadence:</span> Milestone-based (1–2 weeks)</li>
-              </ul>
-              <Link href="/contact" className="mt-5 inline-block px-4 py-2 rounded-full bg-black text-white text-sm font-medium hover:bg-gray-800">Start a project</Link>
-            </div>
-
-            <div className="rounded-2xl border p-6 bg-white">
-              <h3 className="text-base font-semibold mb-4">Photo Highlights</h3>
-              <div className="grid gap-4">
-                <figure className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757023984/Screenshot_2025-09-04_171243_h3pjwq.png"
-                    alt="Framing context and roof geometry"
-                    fill
-                    className="object-cover"
-                  />
-                </figure>
-                <figure className="relative aspect-[16/9] rounded-lg overflow-hidden bg-gray-100">
-                  <Image
-                    src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1757023989/Screenshot_2025-09-04_171148_r6ocqt.png"
-                    alt="Piping chase and rough-in paths"
-                    fill
-                    className="object-cover"
-                  />
-                </figure>
-              </div>
-            </div>
           </div>
-        </aside>
-      </div>
+        </SiteContainer>
+      </section>
 
-      {/* Footer CTA */}
-      <div className="mt-12">
-        <Link href="/contact" className="inline-block px-5 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800">Start a project</Link>
-      </div>
-    </div>
-  );
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Deliverable"
+            title="Interactive 3D model"
+            description="Orbit and zoom the reconstructed geometry. Viewer measurements are useful for planning; record drawings remain with survey or engineering when those are required."
+          />
+          <div className="mt-10">
+            <ProjectEmbed src={MESH} title="3D progress model of a custom home under construction" tall />
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeader eyebrow="Objective" title="What needed to be preserved" />
+            <ul className="mt-6 space-y-2 text-base leading-relaxed text-[var(--color-muted)]">
+              <li>Framing and roof geometry as work advanced</li>
+              <li>Openings, chases, and rough-in context</li>
+              <li>A comparable 3D record between visits</li>
+              <li>Remote review of changing construction conditions</li>
+            </ul>
+          </div>
+          <div>
+            <SectionHeader eyebrow="Methods" title="Capture method" />
+            <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+              Aerial photogrammetry used overlapping stills around the structure, then processed those stills into a 3D model. Repeat visits used comparable camera geometry so later models could be compared with earlier ones.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+              When RTK or other positional control is used, it can improve alignment between visits. Alignment still depends on capture conditions and the control method specified for the engagement.
+            </p>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Why it mattered"
+            title="Progress visible after the site has changed"
+            description="Once sheathing, wrap, or interiors proceed, earlier geometry is no longer available on site. A dated 3D record keeps that state reviewable."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+              <Image
+                src={FRAMING}
+                alt="3D model view of framing and roof geometry during construction"
+                width={1200}
+                height={800}
+                className="aspect-[16/10] w-full object-cover"
+              />
+              <figcaption className="px-3 py-2 text-sm text-[var(--color-muted)]">
+                Framing and roof geometry preserved for later comparison.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-[6px] border border-[var(--color-line)]">
+              <Image
+                src={ROUGH_IN}
+                alt="3D model view of construction rough-in paths"
+                width={1200}
+                height={800}
+                className="aspect-[16/10] w-full object-cover"
+              />
+              <figcaption className="px-3 py-2 text-sm text-[var(--color-muted)]">
+                Rough-in context captured while it was still visible.
+              </figcaption>
+            </figure>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader eyebrow="Continue" title="Related service and reading" />
+          <p className="mt-6">
+            <Link
+              href="/services/mapping"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              View Mapping & Photogrammetry
+            </Link>
+          </p>
+          <RelatedArticles
+            items={[
+              { href: "/blog/3d_model", title: "3D Models" },
+              { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Monitoring" },
+              { href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog", title: "Why Site Conditions Should Be Documented Before They Are Altered" },
+            ]}
+          />
+        </SiteContainer>
+      </section>
+
+      <PageCta />
+    </>
+  )
 }

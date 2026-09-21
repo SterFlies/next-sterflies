@@ -1,68 +1,91 @@
-import Link from "next/link";
-import Image from "next/image";
-import { projects } from "./_data";
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import PageCta from "@/app/components/service/PageCta"
+import { projects } from "./_data"
 
-const BRAND = "#00a2ff";
-
-function sortByDateDesc() {
-  return [...projects].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+export const metadata: Metadata = {
+  title: "Selected Field Documentation | SterFlies",
+  description:
+    "Examples of aerial, terrestrial, thermal, and photogrammetric documentation used to preserve site conditions and support technical review.",
+  alternates: { canonical: "/projects" },
 }
 
 export default function ProjectsIndexPage() {
-  const items = sortByDateDesc();
+  const items = [...projects].sort((a, b) => (b.date || "").localeCompare(a.date || ""))
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      {/* Header */}
-      <header className="max-w-3xl mx-auto text-center mb-12">
-        <span className="inline-block text-xs tracking-widest uppercase text-gray-500">
-          SterFlies
-        </span>
-        <h1 className="text-3xl md:text-5xl font-bold mt-2">Projects</h1>
-        <p className="text-gray-600 mt-4 md:text-lg">
-          A curated set of field work and deliverables—click a project to view details and
-          interactive assets.
-        </p>
-      </header>
-
-      {/* Grid */}
-      <section className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((p) => (
-          <article
-            key={p.slug}
-            className="group rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition"
-          >
-            <Link href={`/projects/${p.slug}`} className="block">
-              <div className="relative aspect-[16/9] bg-gray-100">
-                <Image src={p.cover.src} alt={p.cover.alt} fill className="object-cover" />
-              </div>
-              <div className="p-5">
-                <h2
-                  className="text-lg md:text-xl font-semibold group-hover:underline"
-                  style={{ textDecorationColor: BRAND }}
-                >
-                  {p.title}
-                </h2>
-                <p className="mt-2 text-gray-600 text-sm">{p.excerpt}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 text-xs"
-                    >
-                      #{t}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-5 text-sm font-medium" style={{ color: BRAND }}>
-                  View project →
-                </div>
-              </div>
-            </Link>
-          </article>
-        ))}
+    <>
+      <section className="border-b border-[var(--color-line)]">
+        <SiteContainer className="py-10 md:py-14">
+          <SectionHeader
+            as="h1"
+            eyebrow="Projects"
+            title="Selected Field Documentation"
+            description="Examples of aerial, terrestrial, thermal, and photogrammetric documentation used to preserve site conditions, create spatial records, and support technical review."
+          />
+        </SiteContainer>
       </section>
-    </div>
-  );
-}
 
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <div className="space-y-16">
+            {items.map((project) => (
+              <article
+                key={project.slug}
+                className="grid gap-8 border-t border-[var(--color-line)] pt-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12"
+              >
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="block overflow-hidden rounded-[6px] border border-[var(--color-line)]"
+                >
+                  <Image
+                    src={project.cover.src}
+                    alt={project.cover.alt}
+                    width={1400}
+                    height={900}
+                    className="aspect-[16/10] w-full object-cover"
+                  />
+                </Link>
+                <div className="flex flex-col justify-center">
+                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                    {project.category}
+                  </p>
+                  <h2 className="mt-2 text-[1.5rem] font-semibold tracking-tight md:text-[1.75rem]">
+                    <Link href={`/projects/${project.slug}`} className="hover:text-[var(--color-accent)]">
+                      {project.title}
+                    </Link>
+                  </h2>
+                  <dl className="mt-6 space-y-4 text-sm leading-relaxed md:text-base">
+                    <div>
+                      <dt className="font-semibold">Documentation objective</dt>
+                      <dd className="mt-1 text-[var(--color-muted)]">{project.objective}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold">Capture method</dt>
+                      <dd className="mt-1 text-[var(--color-muted)]">{project.method}</dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold">Deliverables</dt>
+                      <dd className="mt-1 text-[var(--color-muted)]">{project.deliverables}</dd>
+                    </div>
+                  </dl>
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+                  >
+                    View project
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </SiteContainer>
+      </section>
+
+      <PageCta />
+    </>
+  )
+}

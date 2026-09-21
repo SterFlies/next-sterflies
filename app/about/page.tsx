@@ -1,140 +1,134 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import type { Metadata } from "next"
+import SiteContainer from "@/app/components/SiteContainer"
+import SectionHeader from "@/app/components/SectionHeader"
+import ButtonLink from "@/app/components/ButtonLink"
+import PageCta from "@/app/components/service/PageCta"
+import { siteConfig } from "@/app/config/site"
 
-export const metadata = {
-  title: "About SterFlies | Aerial & Thermal Drone Services",
-  description: "Learn about Jerome Sterling and the mission of SterFlies: delivering precision aerial imagery, thermal inspections, and cinematic FPV fly-overs across San Antonio and the Hill Country.",
-  keywords: ["about SterFlies","drone services","thermal imaging","FPV","San Antonio drone"],
-  openGraph: {
-    title: "About SterFlies | Aerial & Thermal Drone Services",
-    description: "Discover Jerome Sterling's expertise and SterFlies' mission to empower clients with actionable drone-based insights and stunning visuals.",
-    url: "https://sterflies.com/about",
-    siteName: "SterFlies",
-    images: [
-      {
-        url: "https://sterflies.com/headshot.png",
-        width: 1200,
-        height: 630,
-        alt: "Jerome Sterling, Chief Pilot at SterFlies",
-      },
-    ],
-    type: "website",
-  },
-};
-
-interface FAQ {
-  question: string;
-  answer: string;
+export const metadata: Metadata = {
+  title: "About | SterFlies",
+  description:
+    "SterFlies uses aerial and ground-based capture methods to create reviewable spatial records of physical sites and changing conditions.",
+  alternates: { canonical: "/about" },
 }
 
-const faqs: FAQ[] = [
+const qualifications = [
   {
-    question: 'Are you insured?',
-    answer: 'At SterFlies, we hold the FAA Part 107 Remote Pilot Certificate and carry $2M in general liability insurance for your peace of mind, and will show proof upon client request.',
+    title: "FAA Part 107",
+    text: "Commercial aerial operations are conducted under an FAA Part 107 remote pilot certificate.",
   },
   {
-    question: 'What service areas do you cover?',
-    answer: 'We operate throughout San Antonio and the Greater Texas Hill Country. Contact us for custom coverage needs.',
+    title: "OSHA 10",
+    text: "Field work on construction and industrial sites is supported by OSHA 10 construction safety training.",
   },
   {
-    question: 'How long is the turnaround time?',
-    answer: 'Standard delivery for deliverables is within 5 business days after the flight. Rush orders can be accommodated on request.',
+    title: "Insured Operations",
+    text: "SterFlies maintains insurance appropriate to its field operations. Proof can be provided for an engagement upon request.",
   },
-];
+]
+
+const audiences = [
+  "Forensic consultants and expert witnesses",
+  "Attorneys and investigation teams",
+  "Industrial hygienists and EHS professionals",
+  "Engineers, construction teams, and facility operators",
+  "Insurers and claims professionals",
+]
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-16 space-y-16">
-      {/* Hero Banner */}
-      <div className="flex justify-center">
-        <div className="bg-white p-4 md:p-6 rounded-lg shadow-md inline-block">
-          <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-900">
-            When Data Takes Flight, Insights Land in Sight
-          </h1>
-        </div>
-      </div>
-
-      {/* Profile + Drone Overlay Section */}
-      <section className="relative mb-16">
-        <Image
-          src="/drone-pic.png"
-          alt="Drone behind profile"
-          width={192}
-          height={192}
-          className="pointer-events-none absolute top-[60%] left-3 transform translate-y-20 w-80 opacity-100 z-0"
-        />
-        <div className="relative z-10 flex flex-col md:flex-row items-center">
-          <div className="w-48 h-100 mb-8 md:mb-0 md:mr-12 mx-auto">
-            <Image
-              src="/headshot.png"
-              alt="Jerome Sterling"
-              width={192}
-              height={192}
-              className="rounded-full object-cover shadow-lg"
-            />
-          </div>
-          <div className="max-w-2xl text-black text-center md:text-left">
-            <h2 className="text-2xl font-semibold mb-4">Jerome Sterling</h2>
-            <p className="text-lg md:text-xl font-medium leading-relaxed mb-4">
-              Jerome Sterling is the founder of SterFlies, specializing in forensic 3D site documentation 
-              and reality capture. With experience working alongside industrial hygienists and forensic experts, 
-              he focuses on accurately preserving site conditions through repeatable, high-fidelity visual documentation.
-            </p>
-            <p className="text-lg md:text-xl font-medium leading-relaxed">
-              Jerome’s work supports professionals who require objective visual records for analysis, 
-              reporting, and dispute resolution. By combining precise capture methods with disciplined workflows, 
-              SterFlies delivers reliable documentation designed to stand up to professional review.
-            </p>
-          </div>
-        </div>
+    <>
+      <section className="border-b border-[var(--color-line)]">
+        <SiteContainer className="py-10 md:py-14">
+          <SectionHeader
+            as="h1"
+            eyebrow="About"
+            title="Technical Field Documentation, Built Around the Site"
+            description="SterFlies uses aerial and ground-based capture methods to create reviewable spatial records of physical sites and changing conditions."
+          />
+        </SiteContainer>
       </section>
 
-      {/* Mission Section */}
-      <section className="bg-sky-50 p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
-        <p className="text-lg font-medium leading-relaxed mb-6">
-         SterFlies provides high-accuracy forensic site documentation through aerial and ground-level reality capture. 
-         Our mission is to preserve site conditions, spatial context, and timelines with objective, 
-         repeatable visual records that support investigations, analysis, and dispute resolution.
-        </p>
-        <ul className="list-disc list-inside text-lg leading-relaxed space-y-2">
-          <li>Thermal inspections for energy efficiency and preventative maintenance</li>
-          <li>High-resolution aerial photography & videography</li>
-          <li>Visual context for expert reports and claims</li>
-          <li>Forensic 3D site documentation and reality capture</li>
-        </ul>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Practice" title="What SterFlies does" />
+          <div className="mt-8 space-y-4 text-base leading-relaxed text-[var(--color-muted)]">
+            <p>
+              SterFlies documents physical site conditions so later review does not depend on memory, scattered photographs, or a site that has already changed. The work produces spatial and visual records. Qualified professionals interpret those records.
+            </p>
+            <p>
+              The practice began in drone-based capture. It has evolved into a broader technical documentation workflow that selects aerial, terrestrial, thermal, and photogrammetric methods according to the site, the documentation objective, and the deliverables required.
+            </p>
+            <p>
+              Hardware, sensors, and software are tools. They are not independent product brands. The service is the record: site context, measurable outputs, and organized files that can support investigation, construction, and industrial review.
+            </p>
+          </div>
+        </SiteContainer>
       </section>
 
-      {/* Call to Action */}
-      <div className="text-center">
-        <Link
-          href="/contact"
-          className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
-        >
-          Get in Touch
-        </Link>
-      </div>
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHeader eyebrow="Audience" title="Who the work supports" />
+            <ul className="mt-8 space-y-3 text-base leading-relaxed">
+              {audiences.map((item) => (
+                <li key={item} className="border-t border-[var(--color-line)] pt-3">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHeader eyebrow="Role" title="How SterFlies relates to technical work" />
+            <p className="mt-8 text-base leading-relaxed text-[var(--color-muted)]">
+              SterFlies captures and organizes field conditions. Interpretation of those conditions—including mold assessment, accident causation, electrical diagnosis, code determinations, and legal conclusions—remains with the appropriate qualified professional.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-[var(--color-muted)]">
+              Photogrammetric products can support measurement and comparison. They do not replace a licensed land survey when a legal survey is required.
+            </p>
+          </div>
+        </SiteContainer>
+      </section>
 
-      {/* FAQ Banner Section */}
-      <section className="bg-blue-900 text-white py-16">
-        <div className="max-w-3xl mx-auto px-4 space-y-6">
-          <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <details key={idx} className="bg-white border rounded-lg p-4 shadow-sm">
-                <summary className="cursor-pointer font-medium text-lg text-gray-900">
-                  {faq.question}
-                </summary>
-                <p className="mt-2 text-gray-700">
-                  {faq.answer}
-                </p>
-              </details>
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Qualifications"
+            title="Field credentials that support the work"
+            description="Operations are planned around access, safety, and the documentation objective."
+          />
+          <ul className="mt-10 grid gap-8 md:grid-cols-3">
+            {qualifications.map((item) => (
+              <li key={item.title} className="border-t border-[var(--color-ink)] pt-4">
+                <h3 className="text-base font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{item.text}</p>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </SiteContainer>
       </section>
-    </div>
-  );
-}
 
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Location" title="Where work is based" />
+          <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
+            SterFlies is based in the San Antonio area and works throughout Greater Texas Hill Country and nearby regions when access and project conditions allow.
+          </p>
+          {siteConfig.companyRelationship ? (
+            <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+              {siteConfig.companyRelationship}
+            </p>
+          ) : null}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <ButtonLink href="/contact">Discuss a Project</ButtonLink>
+            <ButtonLink href="/faq" variant="secondary">
+              Read the FAQ
+            </ButtonLink>
+          </div>
+        </SiteContainer>
+      </section>
+
+      <PageCta />
+    </>
+  )
+}
