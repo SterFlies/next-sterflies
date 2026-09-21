@@ -93,6 +93,10 @@ export default function Page() {
         <Link href="/services/forensic-site-documentation">
           forensic mapping and site documentation
         </Link>
+        . How aerial and ground-based capture can support later incident review is covered in{" "}
+        <Link href="/blog/forensic-mapping-incident-investigations">
+          forensic mapping for incident investigations
+        </Link>
         . Interior existing-conditions work for environmental review is shown in the{" "}
         <Link href="/projects/iaq-mold-documentation">IAQ and mold documentation project</Link>.
       </p>

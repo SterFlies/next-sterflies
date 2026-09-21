@@ -218,10 +218,10 @@ export default function ForensicMappingPage() {
           <SectionHeader eyebrow="Articles" title="Related reading" />
           <RelatedArticles
             items={[
+              { href: "/blog/forensic-mapping-incident-investigations", title: "Forensic Mapping for Incident Investigations" },
               { href: "/blog/what-is-forensic-site-documentation", title: "What Is Forensic Site Documentation" },
               { href: "/blog/why-expert-witnesses-need-more-than-photos-to-analyze-a-site", title: "Why Expert Witnesses Need More Than Photographs" },
               { href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog", title: "Why Site Conditions Should Be Documented Before They Are Altered" },
-              { href: "/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations", title: "Why Existing Conditions Documentation Is Critical for IH Investigations" },
             ]}
           />
         </SiteContainer>

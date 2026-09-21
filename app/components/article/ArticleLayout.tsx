@@ -2,6 +2,7 @@ import Image from "next/image"
 import ArticleBreadcrumbs from "@/app/components/article/ArticleBreadcrumbs"
 import ArticleCta from "@/app/components/article/ArticleCta"
 import ArticleHeader from "@/app/components/article/ArticleHeader"
+import ArticleJsonLd from "@/app/components/article/ArticleJsonLd"
 import ArticleReferences from "@/app/components/article/ArticleReferences"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import { getArticle, getRelatedArticles } from "@/app/lib/articles"
@@ -10,16 +11,19 @@ export default function ArticleLayout({
   slug,
   children,
   references,
+  wordCount,
 }: {
   slug: string
   children: React.ReactNode
   references?: { href: string; label: string }[]
+  wordCount?: number
 }) {
   const article = getArticle(slug)
   const related = getRelatedArticles(article.relatedSlugs)
 
   return (
     <article className="bg-[var(--color-canvas)] pb-16 pt-8 md:pb-20 md:pt-10">
+      <ArticleJsonLd article={article} wordCount={wordCount} />
       <div className="article-measure">
         <ArticleBreadcrumbs title={article.title} />
         <ArticleHeader article={article} />
