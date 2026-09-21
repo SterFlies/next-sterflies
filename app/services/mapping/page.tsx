@@ -46,7 +46,7 @@ export default function ConstructionPage() {
   ]
 
   return (
-    <main className="bg-blue-50 py-16">
+    <div className="bg-blue-50 py-16">
 
       <div className="max-w-5xl mx-auto px-6">
 
@@ -87,10 +87,11 @@ export default function ConstructionPage() {
                 className="rounded-lg shadow"
               />
             </div>
-            <Link href="/blog/orthomosaic_blog" passHref>
-              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
-                Read our Blog!
-              </button>
+            <Link
+              href="/blog/orthomosaic_blog"
+              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded"
+            >
+              Read our Blog!
             </Link>
           </div>
         </section>
@@ -111,10 +112,11 @@ export default function ConstructionPage() {
                 className="w-full h-full rounded-lg shadow object-cover"
               />
             </div>
-            <Link href="/contact" passHref>
-              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded">
-                Schedule a Call!
-              </button>
+            <Link
+              href="/contact"
+              className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded"
+            >
+              Schedule a Call!
             </Link>
           </div>
         </section>
@@ -144,7 +146,7 @@ export default function ConstructionPage() {
         </section>
 
       </div>
-    </main>
+    </div>
   )
 }
 

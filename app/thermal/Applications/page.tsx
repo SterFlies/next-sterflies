@@ -68,7 +68,7 @@ const applications = [
 
 export default function ThermalApplicationsPage() {
   return (
-    <main className="container mx-auto px-4 py-16 space-y-16">
+    <div className="container mx-auto px-4 py-16 space-y-16">
       {/* Hero Section */}
       <header className="text-center max-w-2xl mx-auto mb-16">
         <h1 className="text-4xl font-bold mb-4">Applications & Services</h1>
@@ -111,7 +111,7 @@ export default function ThermalApplicationsPage() {
           </div>
         </article>
       ))}
-    </main>
+    </div>
   );
 }
 

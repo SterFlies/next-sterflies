@@ -32,7 +32,7 @@ const faqs: FAQ[] = [
 
 export default function FAQ() {
   return (
-    <main className="container mx-auto px-4 py-16 space-y-16">
+    <div className="container mx-auto px-4 py-16 space-y-16">
       {/* Hero Banner */}
       <div className="flex justify-center">
         <div className="bg-white p-4 md:p-6 rounded-lg shadow-md inline-block">
@@ -60,12 +60,13 @@ export default function FAQ() {
         </div>
       </section>
     <section className="text-center">
-        <Link href="/">
-          <button className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-            Return to Home
-          </button>
+        <Link
+          href="/"
+          className="mt-8 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
+        >
+          Return to Home
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

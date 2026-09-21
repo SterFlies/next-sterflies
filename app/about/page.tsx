@@ -45,7 +45,7 @@ const faqs: FAQ[] = [
 
 export default function AboutPage() {
   return (
-    <main className="container mx-auto px-4 py-16 space-y-16">
+    <div className="container mx-auto px-4 py-16 space-y-16">
       {/* Hero Banner */}
       <div className="flex justify-center">
         <div className="bg-white p-4 md:p-6 rounded-lg shadow-md inline-block">
@@ -108,10 +108,11 @@ export default function AboutPage() {
 
       {/* Call to Action */}
       <div className="text-center">
-        <Link href="/contact">
-          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-            Get in Touch
-          </button>
+        <Link
+          href="/contact"
+          className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
+        >
+          Get in Touch
         </Link>
       </div>
 
@@ -133,7 +134,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 

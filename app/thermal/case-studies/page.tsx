@@ -290,7 +290,7 @@ function CompareSlider({
 
 export default function CaseStudiesPage() {
   return (
-    <main className="w-full bg-white text-gray-900">
+    <div className="w-full bg-white text-gray-900">
       {/* Spacious layout: large fonts + double-spaced leading */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14 text-lg md:text-xl leading-loose">
         {/* HERO */}
@@ -586,6 +586,6 @@ export default function CaseStudiesPage() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

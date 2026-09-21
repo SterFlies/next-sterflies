@@ -93,7 +93,7 @@ export default function VacantLandPage() {
   ]
 
   return (
-    <main className="bg-green-50 py-16">
+    <div className="bg-green-50 py-16">
       <div className="max-w-5xl mx-auto px-6">
 
         {/* Hero Banner */}
@@ -167,6 +167,6 @@ export default function VacantLandPage() {
             <VacantLandDeliverables />
         </section>
       </div>
-    </main>
+    </div>
   )
 }

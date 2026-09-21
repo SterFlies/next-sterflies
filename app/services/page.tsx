@@ -43,7 +43,7 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="max-w-7xl mx-auto py-12 px-4">
+    <div className="max-w-7xl mx-auto py-12 px-4">
       <h1 className="text-center text-4xl font-bold mb-6">Our Services</h1>
 
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -77,6 +77,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

@@ -75,7 +75,7 @@ export default function ProjectPage() {
   ];
 
   return (
-    <main className="container mx-auto px-4 py-12 lg:py-16">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
         <Link href="/projects" className="hover:underline">Projects</Link>
@@ -259,6 +259,6 @@ export default function ProjectPage() {
       <div className="mt-12">
         <Link href="/contact" className="inline-block px-5 py-3 rounded-full bg-black text-white font-medium hover:bg-gray-800">Start a project</Link>
       </div>
-    </main>
+    </div>
   );
 }

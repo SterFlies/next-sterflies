@@ -6,7 +6,7 @@ import { Mail, MapPin, CalendarClock, ShieldCheck } from 'lucide-react';
 
 export default function ContactPage() {
   return (
-    <main className="bg-gradient-to-b from-sky-50 to-white">
+    <div className="bg-gradient-to-b from-sky-50 to-white">
       <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
         <header className="mb-10">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-blue-900">
@@ -86,6 +86,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

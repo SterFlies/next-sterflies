@@ -179,7 +179,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section with drone animation */}
-      <section className="relative flex items-center justify-center h-screen overflow-hidden bg-gradient-to-b from-sky-300 to-sky-500">
+      <section className="relative flex items-center justify-center h-screen overflow-hidden bg-gradient-to-b from-sky-300 to-sky-500 px-4">
         {/* Clouds (make sure your globals.css or a module defines .cloud, .cloud1, etc.) */}
         <div className="absolute inset-0">
           <div className="cloud cloud1" />
@@ -198,17 +198,18 @@ export default function HomePage() {
         />
 
         {/* Hero text & CTA */}
-        <div className="relative z-20 bg-transparent border-4 border-blue-900/70 backdrop-blur-md p-8 rounded text-center shadow-[0_0_4px_rgba(96,165,250,0.8),0_0_8px_rgba(96,165,250,0.6),0_0_16px_rgba(96,165,250,0.4)]">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white">
+        <div className="relative z-20 w-full max-w-5xl bg-transparent border-4 border-blue-900/70 backdrop-blur-md p-6 sm:p-8 rounded text-center shadow-[0_0_4px_rgba(96,165,250,0.8),0_0_8px_rgba(96,165,250,0.6),0_0_16px_rgba(96,165,250,0.4)]">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white">
             Professional Aerial & Ground-Based Site Documentation
           </h1>
-          <h2 className="mt-2 text-2xl text-black">
+          <h2 className="mt-2 text-base sm:text-2xl text-black">
             We capture entire properties in measurable 2D and 3D formats including floor plans, virtual tours, photography, video, and full 3D models so attorneys and experts can review site conditions from anywhere even after the property changes.
           </h2>
-          <Link href="/contact" passHref>
-            <button className="mt-6 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-              Schedule a Consultation!
-            </button>
+          <Link
+            href="/contact"
+            className="mt-6 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
+          >
+            Schedule a Consultation!
           </Link>
         </div>
       </section>

@@ -130,10 +130,11 @@ export default function ForensicMenu() {
                 )}
               </p>
             <div className="text-center">
-                <Link href="/contact">
-                    <button className="px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition mx-auto">
-                    Schedule Mission
-                    </button>
+                <Link
+                  href="/contact"
+                  className="inline-block px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition mx-auto"
+                >
+                  Schedule Mission
                 </Link>
             </div>
             </section>

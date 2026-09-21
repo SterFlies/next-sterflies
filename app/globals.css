@@ -2,10 +2,24 @@
 
 /* ——— Theme tokens (light only) ——— */
 :root {
-  --background: #ffffff; /* background color */
-  --foreground: #0b1220; /* readable dark text */
+  --background: #ffffff;
+  --foreground: #0b1220;
   --font-sans: var(--font-geist-sans, Arial, Helvetica, sans-serif);
   --font-mono: var(--font-mono, monospace);
+  --site-max-width: 80rem; /* 1280px */
+  --page-pad-x: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-pad-x: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-pad-x: 2rem;
+  }
 }
 
 /* ——— Global base ——— */
@@ -16,27 +30,64 @@ body {
   font-family: var(--font-sans);
   min-height: 100%;
   width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-/* Prevent tiny default spacing issues */
 body {
   margin: 0;
 }
 
-/* Consistent sizing calculations */
+body.nav-open {
+  overflow: hidden;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Media should never force horizontal overflow */
+img,
+video,
+canvas,
+svg,
+iframe,
+embed,
+object {
+  max-width: 100%;
+}
+
 img,
 video,
 canvas,
 svg {
-  max-width: 100%;
   height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  padding: 0.75rem 1rem;
+  background: #0b1220;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 /* If you still want a sky background in some places */

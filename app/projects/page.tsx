@@ -12,7 +12,7 @@ export default function ProjectsIndexPage() {
   const items = sortByDateDesc();
 
   return (
-    <main className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16">
       {/* Header */}
       <header className="max-w-3xl mx-auto text-center mb-12">
         <span className="inline-block text-xs tracking-widest uppercase text-gray-500">
@@ -62,7 +62,7 @@ export default function ProjectsIndexPage() {
           </article>
         ))}
       </section>
-    </main>
+    </div>
   );
 }
 

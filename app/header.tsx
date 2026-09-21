@@ -8,18 +8,8 @@ import styles from './components/Header.module.css'
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [thermalOpen, setThermalOpen] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
   const dropdownRef = useRef<HTMLLIElement>(null)
-
-  // Close the thermal submenu if you click outside it
-  useEffect(() => {
-    function onClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setThermalOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', onClickOutside)
-    return () => document.removeEventListener('mousedown', onClickOutside)
-  }, [])
 
   const links: Array<[string, string]> = [
     ['/', 'Home'],
@@ -35,40 +25,75 @@ export default function Header() {
     setThermalOpen(false)
   }
 
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        closeAll()
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') closeAll()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
+  useEffect(() => {
+    document.body.classList.toggle('nav-open', menuOpen)
+    return () => document.body.classList.remove('nav-open')
+  }, [menuOpen])
+
   return (
-    <header className={styles.header}>
-      <nav className={styles.nav}>
-        {/* Logo */}
+    <header ref={headerRef} className={styles.header}>
+      <nav className={styles.nav} aria-label="Primary">
         <Link href="/" onClick={closeAll} className={styles.logo}>
-          <Image src="/logo.png" alt="SterFlies Logo" width={160} height={64} />
+          <Image
+            src="/logo.png"
+            alt="SterFlies Logo"
+            width={140}
+            height={48}
+            priority
+          />
         </Link>
 
-        {/* Hamburger button (mobile) */}
         <button
+          type="button"
           className={styles.burger}
           onClick={() => { setMenuOpen(o => !o); setThermalOpen(false) }}
-          aria-label="Toggle navigation"
+          aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
         >
-          {menuOpen ? '✕' : '☰'}
+          <span className={styles.burgerIcon} aria-hidden="true">
+            {menuOpen ? '✕' : '☰'}
+          </span>
         </button>
 
-        {/* Navigation links */}
-        <ul className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}>
+        <ul
+          id="primary-navigation"
+          className={`${styles.menu} ${menuOpen ? styles.menuOpen : ''}`}
+        >
           {links.slice(0, 3).map(([href, label]) => (
             <li key={href}>
               <Link href={href} onClick={closeAll}>{label}</Link>
             </li>
           ))}
 
-          {/* Thermal dropdown */}
           <li ref={dropdownRef} className={styles.dropdown}>
             <button
+              type="button"
               onClick={() => setThermalOpen(o => !o)}
               aria-expanded={thermalOpen}
+              aria-controls="thermal-submenu"
             >
               Thermal ▾
             </button>
-            <ul className={styles.submenu}>
+            <ul id="thermal-submenu" className={styles.submenu}>
               <li>
                 <Link href="/thermal/case-studies" onClick={closeAll}>
                   Case Studies

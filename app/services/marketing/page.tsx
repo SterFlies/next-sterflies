@@ -15,7 +15,7 @@ import {
 
 export default function Page() {
   return (
-    <main>
+    <div>
       {/* Business Marketing Content Section */}
       <section className="bg-teal-50 py-16">
         <div className="container mx-auto px-4">
@@ -139,6 +139,6 @@ export default function Page() {
           <MarketingDeliverables />
         </div>
       </section>
-    </main>
+    </div>
   );
 }

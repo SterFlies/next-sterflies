@@ -39,7 +39,7 @@ const CLOUDINARY_DIGITAL_TWIN_VIDEO =
 
 export default function Page() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {/* Header */}
       <section className="mx-auto max-w-5xl px-6 pt-10 pb-6">
         <header className="space-y-6">
@@ -314,7 +314,7 @@ export default function Page() {
           </p>
         </div>
       </article>
-    </main>
+    </div>
   )
 }
 

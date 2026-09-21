@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function TermsPage() {
   return (
-    <main className="container mx-auto px-4 py-16 space-y-8">
+    <div className="container mx-auto px-4 py-16 space-y-8">
       {/* ——— Title ——— */}
       <section className="space-y-4">
         <h1 className="text-3xl font-bold">Terms and Conditions</h1>
@@ -148,11 +148,12 @@ export default function TermsPage() {
         </p>
       </section>
       
-      <Link href="/">
-          <button className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-            Return to Home
-          </button>
-        </Link>
-    </main>
+      <Link
+        href="/"
+        className="mt-8 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
+      >
+        Return to Home
+      </Link>
+    </div>
   );
 }

@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function ThreeDModelPage() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-12">
+    <div className="max-w-4xl mx-auto px-6 py-12">
       <h2 className="text-3xl font-semibold mb-6 text-center">3D Model Sample</h2>
       {/* Viewer at a fixed height */}
       <div className="w-full h-[600px]">
@@ -206,7 +206,7 @@ export default function ThreeDModelPage() {
           Call Today! 
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
 

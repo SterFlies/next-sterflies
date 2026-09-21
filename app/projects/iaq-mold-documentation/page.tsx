@@ -90,7 +90,7 @@ export default function ProjectPage() {
   ];
 
   return (
-    <main className="container mx-auto px-4 py-12 lg:py-16">
+    <div className="container mx-auto px-4 py-12 lg:py-16">
       {/* Breadcrumb */}
       <nav className="mb-6 text-sm text-gray-500">
         <Link href="/projects" className="hover:underline">Projects</Link>
@@ -185,7 +185,7 @@ export default function ProjectPage() {
                 preload="metadata"
                 poster={CLOUDINARY_VIDEO_POSTER}
                 className="absolute inset-0 w-full h-full"
-                style={{ objectFit: "contain", transform: "translateY(-40%) scale(1)", }}
+                style={{ objectFit: "contain", transform: "translateY(-35%) scale(1)", }}
               >
                 <source src={CLOUDINARY_VIDEO_MP4} type="video/mp4" />
               </video>
@@ -286,7 +286,7 @@ export default function ProjectPage() {
           Start a project
         </Link>
       </div>
-    </main>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function privacy() {
   return (
-    <main className="container mx-auto px-4 py-16 space-y-8">
+    <div className="container mx-auto px-4 py-16 space-y-8">
       <h1 className="text-4xl font-bold text-center mb-6">Privacy Policy</h1>
 
       <section className="space-y-4">
@@ -57,12 +57,13 @@ export default function privacy() {
       </section>
 
       <section className="text-center">
-        <Link href="/">
-          <button className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition">
-            Return to Home
-          </button>
+        <Link
+          href="/"
+          className="mt-8 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded transition"
+        >
+          Return to Home
         </Link>
       </section>
-    </main>
+    </div>
   );
 }

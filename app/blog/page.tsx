@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="flex-grow">
+    <div className="flex-grow">
       {/* Hero Banner */}
       <div className="relative h-60 bg-gray-800 mb-8">
         <Image
@@ -28,6 +28,6 @@ export default function BlogPage() {
       <section className="mt-16">
       <BlogList />
       </section>
-    </main>
+    </div>
   )
 }
