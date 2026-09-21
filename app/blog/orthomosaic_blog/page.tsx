@@ -1,139 +1,92 @@
+import Link from "next/link"
+import ArticleCallout from "@/app/components/article/ArticleCallout"
+import ArticleFigure from "@/app/components/article/ArticleFigure"
+import ArticleLayout from "@/app/components/article/ArticleLayout"
+import { articleMetadata } from "@/app/lib/articles"
 
-import Image from 'next/image'
-import Link from 'next/link'
+export const metadata = articleMetadata("orthomosaic_blog")
 
-export const metadata = {
-  title: 'Understanding Orthomosaic Mapping | SterFlies',
-  description:
-    'An in-depth guide to orthomosaic mapping: how SterFlies creates geometrically accurate, high-resolution aerial maps for surveying, construction, and land management.',
-  keywords: ['orthomosaic mapping', 'drone mapping', 'aerial maps', 'GIS', 'SterFlies'],
-  openGraph: {
-    title: 'Understanding Orthomosaic Mapping | SterFlies',
-    description:
-      'Explore SterFlies’ orthomosaic workflow—from high-overlap drone flights to orthorectified exports—enabling precise measurements and GIS-ready maps.',
-    url: 'https://sterflies.com/blog/orthomosaic_blog',
-    siteName: 'SterFlies',
-    images: [
-      {
-        url: 'https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg',
-        width: 1200,
-        height: 630,
-        alt: '36-acre orthomosaic map by SterFlies',
-      },
-    ],
-    type: 'article',
-  },
-}
-
-export default function OrthomosaicBlogPage() {
+export default function Page() {
   return (
-    <div className="bg-white py-20">
-      <article
-        className="
-          mx-auto px-4 max-w-3xl
-          prose prose-blue prose-xl
-          prose-img:mx-auto prose-figure:my-16
-        "
-      >
-        {/* Header */}
-        <header className="space-y-6">
-          <Image
-            src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1754424448/TOPO_DEMO_transparent_mosaic_group1_yeqeyn.png"
-            alt="Orthomosaic of a survey area"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-md"
-          />
+    <ArticleLayout slug="orthomosaic_blog">
+      <p>
+        An orthomosaic is a map made from overlapping photographs. Photogrammetry software aligns
+        those images, corrects for camera angle and terrain, and produces a raster with more uniform
+        scale than a single aerial photograph.
+      </p>
+      <p>
+        That scaled map can be used to review layout, compare conditions over time, and support
+        measurements when the capture is scoped for that purpose. It is not a licensed survey, and
+        it does not replace a surveyor.{" "}
+        <Link href="/services/mapping">Mapping and photogrammetry</Link> is one of the capture
+        methods SterFlies uses when a site needs an exterior spatial record.
+      </p>
 
-          <h1 className="text-4xl font-bold leading-tight">
-            Understanding Orthomosaic Mapping
-          </h1>
+      <h2>What an orthomosaic map is</h2>
+      <p>
+        Overlapping stills are aligned with structure-from-motion. Bundle adjustment refines camera
+        positions and lens distortion. A digital elevation model is derived, and pixels are
+        remapped toward their ground coordinates. The result is a continuous image that can be
+        opened in GIS or CAD software, or tiled for web review.
+      </p>
+      <p>
+        Because scale is more consistent than in a raw aerial frame, later reviewers can draw
+        lines, compare areas, and locate features relative to the rest of the site. How closely
+        those measurements match field conditions depends on flying height, sensor, overlap,
+        control, and processing.
+      </p>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-600 text-sm">
-            <p>By Jerome Sterling — Chief Pilot</p>
-            <time dateTime="2025-07-15">July 15, 2025</time>
-          </div>
-        </header>
+      <h2>Why a mapped record differs from a photograph</h2>
+      <p>
+        A photograph has perspective. Objects closer to the camera appear larger, and terrain tilt
+        distorts distances. An orthomosaic reduces that distortion so the site can be read more like
+        a map.
+      </p>
+      <p>
+        Construction teams use that kind of record to see earthwork, pads, utilities, and access in
+        one frame. Other industries also derive index layers or change-detection products from
+        orthomosaics. Those uses are method capabilities, not a claim that SterFlies provides every
+        downstream analysis.
+      </p>
+      <p>
+        The{" "}
+        <Link href="/projects/65acresite">65-acre development mapping project</Link> is an example
+        of recurring aerial photogrammetry used as a shared spatial record rather than a set of
+        isolated stills.
+      </p>
 
-        {/* Intro */}
-        <p>
-          Orthomosaic mapping has transformed aerial surveying by converting dozens—or even thousands—of overlapping drone photographs into one seamless, distortion-free map. Unlike traditional aerial imagery, which suffers from perspective and terrain tilt, an orthomosaic corrects for camera angle and ground elevation. The result is a geometrically accurate raster file that can be used for precise measurement, GIS overlays, and web-based map services. At SterFlies, we leverage this technology to deliver turnkey solutions for land surveyors, construction managers, and environmental planners.
-        </p>
+      <h2>Flight planning affects the output</h2>
+      <p>
+        Map quality starts before the aircraft leaves the ground. Altitude, overlap, and coverage
+        pattern control ground sample distance and whether gaps appear at the edges. A common
+        planning range for many sites is a few centimeters per pixel, often associated with
+        roughly 150–300 feet AGL, with high forward and side overlap in a grid pattern. Those
+        numbers are planning targets, not guaranteed resolution for every site.
+      </p>
+      <p>
+        Tall vegetation, vertical structures, and site access can require additional passes. The
+        documentation objective—progress record, layout, later comparison, or measurement
+        context—should drive those choices.
+      </p>
+      <ArticleCallout>
+        Ground sample distance is a function of altitude and sensor. It is not a survey accuracy
+        specification by itself.
+      </ArticleCallout>
 
-        <hr className="my-16 border-gray-300" />
+      <h2>From photographs to a map</h2>
+      <p>
+        After capture, images are processed into a point cloud, elevation model, and orthomosaic
+        raster. Typical file deliveries include GeoTIFF for GIS or CAD use, and tiled web maps for
+        browser review. Related 3D outputs from the same image set are described in{" "}
+        <Link href="/blog/3d_model">interactive 3D models</Link>.
+      </p>
 
-        {/* What Is an Orthomosaic Map? */}
-        <h2 className="text-center text-4x1 font-bold">What Is an Orthomosaic Map?</h2>
-        <p>
-          An orthomosaic is generated when photogrammetry software stitches together high-overlap images and applies orthorectification algorithms. First, Structure-from-Motion (SfM) aligns each photo into a precise 3D point cloud. Then bundle adjustment refines the camera positions and corrects for lens distortion. Finally, a Digital Elevation Model (DEM) is generated and each pixel remapped to its true ground coordinate. The final image has uniform scale throughout, enabling you to draw accurate lines, measure areas, and calculate volumes just as you would on a traditional map.
-        </p>
-
-        <hr className="my-16 border-gray-300" />
-
-        {/* Why Orthomosaics Matter */}
-        <h2 className="text-center text-4x1 font-bold">Why Orthomosaics Matter</h2>
-        <p>
-          Orthomosaic maps aren’t just pretty pictures—they’re powerful tools for decision-making. In construction, project managers overlay design plans to track earthwork progress and verify contractor payments. In agriculture, farmers use NDVI and other index layers atop orthomosaics to monitor crop health and irrigation coverage. Environmental consultants quantify erosion, wetland changes, and habitat restoration over time. And utility companies inspect transmission corridors and pipeline routes without setting foot in the field. By providing a single, high-resolution source of truth, orthomosaics reduce field visits, cut costs, and accelerate timelines.
-        </p>
-
-        <hr className="my-16 border-gray-300" />
-
-        {/* Key Flight Planning Factors */}
-        <h2 className="text-center text-4x1 font-bold">Key Flight Planning Factors</h2>
-        <p>
-          The quality of your orthomosaic starts before takeoff. We recommend flying at a constant altitude—typically between 150 and 300 feet AGL—to achieve a ground sampling distance (GSD) of 3–5 cm/pixel. Plan for at least 75% forward overlap and 65% side overlap, using a lawnmower grid pattern for uniform coverage. For areas with tall vegetation or vertical structures, add perimeter passes at a slightly higher overlap to ensure no gaps appear along the edges.
-        </p>
-
-        <hr className="my-16 border-gray-300" />
-
-        {/* From Photos to Final Map */}
-        <h2 className="text-center text-4x1 font-bold">From Photos to Final Map</h2>
-        <p>
-          After data collection, we upload images to our cloud-based photogrammetry pipeline. Automated bundle adjustment refines camera poses, while dense Multi-View Stereo (MVS) generates a high-density point cloud. From this we derive both a DEM and the final orthomosaic raster. Outputs are delivered as GeoTIFFs—ready for ArcGIS, QGIS, AutoCAD, or any modern GIS/CAD platform—or as tiled web maps for integration into online dashboards.
-        </p>
-
-        <hr className="my-16 border-gray-300" />
-
-        {/* Example: 36-Acre Survey */}
-        <h2>Example: 36-Acre Survey at 200 ft</h2>
-        <Image
-          src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg"
-          alt="Orthomosaic of 36-acre property"
-          width={800}
-          height={450}
-          className="rounded-lg shadow-lg"
-        />
-
-        <hr className="my-16 border-gray-300" />
-
-        {/* CTA */}
-        <div className="not-prose mt-10">
-          <div className="rounded-xl border bg-blue-50 p-6">
-            <h3 className="text-2xl font-semibold mb-2">
-              Tell Us About Your Project!
-            </h3>
-            <p className="text-gray-700">
-              We will respond within 24hrs
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <Link
-                href="mailto:jerome.sterling@sterflies.com?subject=Inquiry"
-                className="inline-flex items-center rounded-lg bg-blue-600 px-5 py-3 text-white font-medium shadow hover:bg-blue-900"
-              >
-                Contact Us!
-              </Link>
-              <Link
-                href="/blog"
-                className="inline-flex items-center rounded-lg border px-5 py-3 font-medium hover:bg-gray-50"
-              >
-                Blogs
-             </Link>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  );
+      <h2>Example: mapped property record</h2>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg"
+        alt="Orthomosaic map of a documented property"
+        caption="An orthomosaic of a documented property, used here as an example of a scaled aerial record."
+      />
+    </ArticleLayout>
+  )
 }
-
-
