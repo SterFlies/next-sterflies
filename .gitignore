@@ -45,3 +45,6 @@ node_modules/
 .next/
 out/
 dist/
+
+# stale static export (deployment uses dist/ via GitHub Pages Actions)
+/docs/

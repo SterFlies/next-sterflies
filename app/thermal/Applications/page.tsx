@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -8,14 +7,14 @@ import ThermalNav from "@/app/components/service/ThermalNav"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Thermal Documentation | SterFlies",
   description:
     "Temperature-pattern documentation used to support inspection and technical review of solar PV, electrical systems, building envelope, and industrial assets.",
-  alternates: { canonical: "/thermal/Applications" },
-}
+  path: "/thermal/Applications",
+})
 
 const applications = [
   {
@@ -67,6 +66,7 @@ export default function ThermalDocumentationPage() {
     <>
       <ThermalNav current="/thermal/Applications" />
       <ServiceHero
+        parent={{ href: "/services", label: "Services" }}
         eyebrow="Service 03"
         title="Thermal Documentation"
         description="Thermal imaging captures apparent surface-temperature patterns that can help identify areas for further professional review."

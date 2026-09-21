@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -8,14 +7,14 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "IAQ & Mold Existing Conditions Documentation | SterFlies",
   description:
     "Demonstration project illustrating combined interior walkthrough and exterior 3D documentation of existing site conditions.",
-  alternates: { canonical: "/projects/iaq-mold-documentation" },
-}
+  path: "/projects/iaq-mold-documentation",
+})
 
 const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW"
 const PIX4D_MESH_URL =
@@ -43,6 +42,7 @@ export default function IaqProjectPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Existing Conditions / Reality Capture"
         title="IAQ & Mold Existing Conditions Documentation"
         description="Demonstration project illustrating an interior and exterior documentation workflow used to preserve site conditions as a reviewable spatial record."

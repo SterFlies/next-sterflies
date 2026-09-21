@@ -1,6 +1,7 @@
 import Image from "next/image"
 import SiteContainer from "@/app/components/SiteContainer"
 import ButtonLink from "@/app/components/ButtonLink"
+import PageBreadcrumbs from "@/app/components/PageBreadcrumbs"
 
 export default function ServiceHero({
   eyebrow,
@@ -9,6 +10,7 @@ export default function ServiceHero({
   primary,
   secondary,
   image,
+  parent,
 }: {
   eyebrow?: string
   title: string
@@ -16,6 +18,7 @@ export default function ServiceHero({
   primary?: { href: string; label: string }
   secondary?: { href: string; label: string }
   image?: { src: string; alt: string; priority?: boolean; object?: string }
+  parent?: { href: string; label: string }
 }) {
   return (
     <section className="border-b border-[var(--color-line)]">
@@ -25,6 +28,17 @@ export default function ServiceHero({
         }`}
       >
         <div>
+          {parent ? (
+            <div className="mb-5">
+              <PageBreadcrumbs
+                items={[
+                  { name: "Home", href: "/" },
+                  { name: parent.label, href: parent.href },
+                  { name: title },
+                ]}
+              />
+            </div>
+          ) : null}
           {eyebrow ? (
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-muted)]">
               {eyebrow}

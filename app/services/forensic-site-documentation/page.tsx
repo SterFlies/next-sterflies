@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ServiceHero from "@/app/components/service/ServiceHero"
@@ -8,14 +7,14 @@ import ProcessSteps from "@/app/components/service/ProcessSteps"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Forensic Mapping & Site Documentation | SterFlies",
   description:
     "Preserve changing site conditions through coordinated aerial, ground-based, and spatial documentation for later professional review.",
-  alternates: { canonical: "/services/forensic-site-documentation" },
-}
+  path: "/services/forensic-site-documentation",
+})
 
 const IAQ_VIDEO =
   "https://res.cloudinary.com/dzlmoyomq/video/upload/v1767667626/IAQ_-_DEMO_showcase_qo4nav.mp4"
@@ -32,6 +31,7 @@ export default function ForensicMappingPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/services", label: "Services" }}
         eyebrow="Service 01"
         title="Forensic Mapping & Site Documentation"
         description="Preserve changing site conditions through coordinated aerial, ground-based, and spatial documentation."

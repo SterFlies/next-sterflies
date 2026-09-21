@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
@@ -6,14 +5,15 @@ import ThermalNav from "@/app/components/service/ThermalNav"
 import CompareSlider from "@/app/components/service/CompareSlider"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
-import { cloudinaryUrl } from "@/app/config/site"
+import PageBreadcrumbs from "@/app/components/PageBreadcrumbs"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Thermal Case Studies | SterFlies",
   description:
     "Field documentation of apparent temperature patterns on a photovoltaic array, paired with RGB context for later professional review.",
-  alternates: { canonical: "/thermal/case-studies" },
-}
+  path: "/thermal/case-studies",
+})
 
 const media = {
   rgb: cloudinaryUrl(
@@ -79,6 +79,15 @@ export default function ThermalCaseStudiesPage() {
       <ThermalNav current="/thermal/case-studies" />
       <section className="border-b border-[var(--color-line)]">
         <SiteContainer className="py-10 md:py-14">
+          <div className="mb-5">
+            <PageBreadcrumbs
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Thermal Documentation", href: "/thermal/Applications" },
+                { name: "Case Studies" },
+              ]}
+            />
+          </div>
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-muted)]">
             Case study
           </p>

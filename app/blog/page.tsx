@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -8,30 +7,22 @@ import {
   getFeaturedArticle,
   getListedArticles,
 } from "@/app/lib/articles"
-import { siteConfig } from "@/app/config/site"
+import { pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+const featured = getFeaturedArticle()
+
+export const metadata = pageMetadata({
   title: "Technical Articles & Field Notes | SterFlies",
   description:
     "Practical articles on forensic mapping, photogrammetry, reality capture, thermal documentation, construction records, and preserving site conditions for professional review.",
-  alternates: { canonical: "/blog" },
-  openGraph: {
-    title: "Technical Articles & Field Notes | SterFlies",
-    description:
-      "Practical articles on forensic mapping, photogrammetry, reality capture, thermal documentation, construction records, and preserving site conditions for professional review.",
-    url: `${siteConfig.url}/blog`,
-    siteName: siteConfig.name,
-    type: "website",
-    images: [
-      {
-        url: getFeaturedArticle().heroImage,
-        width: 1200,
-        height: 630,
-        alt: getFeaturedArticle().heroAlt,
-      },
-    ],
+  path: "/blog",
+  image: {
+    url: featured.heroImage,
+    width: 1200,
+    height: 630,
+    alt: featured.heroAlt,
   },
-}
+})
 
 export default function BlogPage() {
   const featured = getFeaturedArticle()

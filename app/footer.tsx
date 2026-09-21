@@ -44,7 +44,7 @@ export default function Footer() {
               {siteConfig.email}
             </a>
           </p>
-          <p className="mt-1 text-sm">{siteConfig.address}</p>
+          <p className="mt-1 text-sm">{siteConfig.location}</p>
         </div>
 
         <div>
@@ -124,7 +124,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <SiteContainer className="flex flex-col gap-4 py-4 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
           <ul className="flex gap-4">
             {siteConfig.social.map((item) => {

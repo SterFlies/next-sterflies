@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ServiceHero from "@/app/components/service/ServiceHero"
@@ -7,14 +6,14 @@ import DeliverableList from "@/app/components/service/DeliverableList"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Mapping & Photogrammetry | SterFlies",
   description:
     "Create measurable 2D and 3D site records using coordinated image capture and photogrammetric processing.",
-  alternates: { canonical: "/services/mapping" },
-}
+  path: "/services/mapping",
+})
 
 const SITE_AERIAL = cloudinaryUrl(
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
@@ -25,6 +24,7 @@ export default function MappingPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/services", label: "Services" }}
         eyebrow="Service 02"
         title="Mapping & Photogrammetry"
         description="Create measurable 2D and 3D site records using coordinated image capture and photogrammetric processing."

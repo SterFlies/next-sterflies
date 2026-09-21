@@ -1,14 +1,14 @@
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import PageCta from "@/app/components/service/PageCta"
+import { pageMetadata, siteConfig } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "FAQ | SterFlies",
   description:
     "Answers about forensic mapping, reality capture, photogrammetry, thermal documentation, deliverables, and how SterFlies supports professional review.",
-  alternates: { canonical: "/faq" },
-}
+  path: "/faq",
+})
 
 const faqs = [
   {
@@ -69,7 +69,7 @@ const faqs = [
   {
     question: "What areas do you serve?",
     answer:
-      "SterFlies is based in the San Antonio area and works throughout Greater Texas Hill Country and nearby regions when access and project conditions allow.",
+      siteConfig.serviceArea,
   },
   {
     question: "How quickly can a site be documented?",

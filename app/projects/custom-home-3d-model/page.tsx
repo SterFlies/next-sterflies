@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -8,14 +7,14 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Custom Home 3D Progress Documentation | SterFlies",
   description:
     "Recurring photogrammetric 3D documentation of a custom home used to preserve changing construction conditions for remote review.",
-  alternates: { canonical: "/projects/custom-home-3d-model" },
-}
+  path: "/projects/custom-home-3d-model",
+})
 
 const COVER = cloudinaryUrl(
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757016149/flighttomesh_ae4avk.png",
@@ -36,6 +35,7 @@ export default function CustomHomeProjectPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/projects", label: "Projects" }}
         eyebrow="3D Progress Documentation"
         title="Custom Home 3D Progress Documentation"
         description="Recurring 3D documentation of a custom home so changing construction conditions could be reviewed remotely as work advanced."

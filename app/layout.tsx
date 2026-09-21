@@ -5,6 +5,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Header from "./header";
 import Footer from "./footer";
 import PageWrapper from "@/app/components/PageWrapper";
+import OrganizationJsonLd from "@/app/components/seo/OrganizationJsonLd";
+import { defaultOgImage, siteConfig } from "@/app/config/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,12 +20,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sterflies.com"),
-  title: "SterFlies | Forensic Mapping & Reality Capture",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: "SterFlies | Forensic Mapping & Reality Capture",
+    template: "%s",
+  },
   description:
     "Technical field documentation, forensic mapping, photogrammetry, reality capture, thermal imaging, and site documentation for investigations, construction, and industrial work.",
   icons: {
-    icon: "/Logo-no-background_edited.ico",
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
+  openGraph: {
+    siteName: siteConfig.name,
+    type: "website",
+    images: [defaultOgImage],
   },
 };
 
@@ -55,6 +65,7 @@ export default function RootLayout({
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        <OrganizationJsonLd />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

@@ -1,16 +1,15 @@
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
 import PageCta from "@/app/components/service/PageCta"
-import { siteConfig } from "@/app/config/site"
+import { pageMetadata, siteConfig } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About | SterFlies",
   description:
     "SterFlies uses aerial and ground-based capture methods to create reviewable spatial records of physical sites and changing conditions.",
-  alternates: { canonical: "/about" },
-}
+  path: "/about",
+})
 
 const qualifications = [
   {
@@ -112,7 +111,7 @@ export default function AboutPage() {
         <SiteContainer className="max-w-3xl">
           <SectionHeader eyebrow="Location" title="Where work is based" />
           <p className="mt-6 text-base leading-relaxed text-[var(--color-muted)]">
-            SterFlies is based in the San Antonio area and works throughout Greater Texas Hill Country and nearby regions when access and project conditions allow.
+            {siteConfig.serviceArea}
           </p>
           {siteConfig.companyRelationship ? (
             <p className="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">

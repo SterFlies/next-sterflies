@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -7,13 +6,15 @@ import ThermalNav from "@/app/components/service/ThermalNav"
 import ProcessSteps from "@/app/components/service/ProcessSteps"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
+import PageBreadcrumbs from "@/app/components/PageBreadcrumbs"
+import { pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Thermal Documentation Method | SterFlies",
   description:
     "How SterFlies plans, captures, and organizes thermal and RGB documentation for later professional review.",
-  alternates: { canonical: "/thermal/method" },
-}
+  path: "/thermal/method",
+})
 
 const steps = [
   {
@@ -49,6 +50,15 @@ export default function ThermalMethodPage() {
       <ThermalNav current="/thermal/method" />
       <section className="border-b border-[var(--color-line)]">
         <SiteContainer className="py-10 md:py-14">
+          <div className="mb-5">
+            <PageBreadcrumbs
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Thermal Documentation", href: "/thermal/Applications" },
+                { name: "Method" },
+              ]}
+            />
+          </div>
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-[var(--color-muted)]">
             Thermal documentation
           </p>

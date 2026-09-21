@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -6,14 +5,14 @@ import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
 import ServiceHero from "@/app/components/service/ServiceHero"
 import PageCta from "@/app/components/service/PageCta"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services | SterFlies",
   description:
     "Forensic mapping, photogrammetry, reality capture, and thermal documentation for investigations, construction, and industrial work.",
-  alternates: { canonical: "/services" },
-}
+  path: "/services",
+})
 
 const primary = [
   {

@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -7,14 +6,14 @@ import ServiceHero from "@/app/components/service/ServiceHero"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Solar PV Thermal Documentation | SterFlies",
   description:
     "Paired thermal and RGB documentation of a photovoltaic array, with location context for later professional review.",
-  alternates: { canonical: "/projects/pv-farm-hotspots" },
-}
+  path: "/projects/pv-farm-hotspots",
+})
 
 const HERO = cloudinaryUrl(
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757025050/Screenshot_2025-09-04_172830_jenh1y.png",
@@ -33,6 +32,7 @@ export default function PvProjectPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Thermal Documentation"
         title="Solar PV Thermal Documentation"
         description="Document apparent temperature patterns across a photovoltaic array and preserve corresponding RGB and location context for later review."

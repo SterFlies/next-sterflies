@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
@@ -8,14 +7,14 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
-import { cloudinaryUrl } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "65-Acre Site Mapping & Progress Documentation | SterFlies",
   description:
     "Recurring aerial photogrammetry used to create a shared spatial record of grading, utilities, pads, and access across a 65-acre development.",
-  alternates: { canonical: "/projects/65acresite" },
-}
+  path: "/projects/65acresite",
+})
 
 const COVER = cloudinaryUrl(
   "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
@@ -51,6 +50,7 @@ export default function MappingProjectPage() {
   return (
     <>
       <ServiceHero
+        parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Mapping & Photogrammetry"
         title="65-Acre Site Mapping & Progress Documentation"
         description="Recurring aerial photogrammetry used to create a shared spatial record of site conditions as the development advanced."

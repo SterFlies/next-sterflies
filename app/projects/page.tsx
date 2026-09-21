@@ -1,17 +1,17 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import PageCta from "@/app/components/service/PageCta"
+import { pageMetadata } from "@/app/config/site"
 import { projects } from "./_data"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Selected Field Documentation | SterFlies",
   description:
     "Examples of aerial, terrestrial, thermal, and photogrammetric documentation used to preserve site conditions and support technical review.",
-  alternates: { canonical: "/projects" },
-}
+  path: "/projects",
+})
 
 export default function ProjectsIndexPage() {
   const items = [...projects].sort((a, b) => (b.date || "").localeCompare(a.date || ""))

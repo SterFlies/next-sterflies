@@ -1,11 +1,14 @@
-'use client';
+import Link from "next/link"
+import { pageMetadata, siteConfig } from "@/app/config/site"
 
-import React from 'react';
-import Link from 'next/link';
+export const metadata = pageMetadata({
+  title: "Privacy Policy | SterFlies",
+  description:
+    "How SterFlies collects, uses, and protects information submitted through the website and project inquiries.",
+  path: "/privacy",
+})
 
-
-
-export default function privacy() {
+export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-16 space-y-8">
       <h1 className="text-4xl font-bold text-center mb-6">Privacy Policy</h1>
@@ -45,7 +48,11 @@ export default function privacy() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Your Rights</h2>
         <p className="text-lg leading-relaxed">
-          You have the right to access, correct, or delete your personal data. To exercise these rights, please contact us at <a href="mailto:jerome.sterling@sterflies.com" className="text-blue-600 underline">privacy@sterflies.com</a>.
+          You have the right to access, correct, or delete your personal data. To exercise these rights, please contact us at{" "}
+          <a href={`mailto:${siteConfig.email}`} className="text-blue-600 underline">
+            {siteConfig.email}
+          </a>
+          .
         </p>
       </section>
 
@@ -65,5 +72,5 @@ export default function privacy() {
         </Link>
       </section>
     </div>
-  );
+  )
 }

@@ -1,6 +1,12 @@
 import Link from 'next/link'
+import { pageMetadata } from '@/app/config/site'
 
-
+export const metadata = pageMetadata({
+  title: 'Terms and Conditions | SterFlies',
+  description:
+    'Terms governing use of the SterFlies website and technical field documentation services.',
+  path: '/terms_conditions',
+})
 
 export default function TermsPage() {
   return (
@@ -33,7 +39,7 @@ export default function TermsPage() {
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">Payment &amp; Refunds</h2>
         <p className="text-lg leading-relaxed">
-          All fees are quoted in USD unless otherwise indicated. Payments are due upon receipt of invoice. You agree to provide accurate billing information. Refunds, if any, are granted at our sole discretion and governed by our <a href="/refund-policy" className="text-blue-600 underline">Refund Policy</a>.
+          All fees are quoted in USD unless otherwise indicated. Payments are due upon receipt of invoice. You agree to provide accurate billing information. Refunds, if any, are granted at our sole discretion. Contact SterFlies to discuss a billing question.
         </p>
       </section>
 

@@ -1,16 +1,15 @@
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
 import CalendlyEmbed from "@/app/components/contact/CalendlyEmbed"
-import { siteConfig } from "@/app/config/site"
+import { pageMetadata, siteConfig } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact | SterFlies",
   description:
     "Tell us what needs to be documented, where the site is located, and what records or deliverables are needed.",
-  alternates: { canonical: "/contact" },
-}
+  path: "/contact",
+})
 
 const intake = [
   "Site location",
@@ -78,7 +77,7 @@ export default function ContactPage() {
                 <dt className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
                   Location
                 </dt>
-                <dd className="mt-2 text-base">{siteConfig.address}</dd>
+                <dd className="mt-2 text-base">{siteConfig.serviceRegion}</dd>
               </div>
               <div className="border-t border-[var(--color-ink)] pt-4">
                 <dt className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">

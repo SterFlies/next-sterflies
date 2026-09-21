@@ -29,6 +29,7 @@ export type Article = {
   relatedSlugs: string[]
   featured?: boolean
   listed?: boolean
+  noindex?: boolean
   tier: ArticleTier
 }
 
@@ -552,6 +553,7 @@ export const articles: Article[] = [
     readingTime: "6 min read",
     relatedSlugs: [],
     listed: false,
+    noindex: true,
     tier: "legacy",
   },
   {
@@ -570,6 +572,7 @@ export const articles: Article[] = [
     readingTime: "5 min read",
     relatedSlugs: [],
     listed: false,
+    noindex: true,
     tier: "legacy",
   },
 ]
@@ -613,6 +616,7 @@ export function articleMetadata(slug: string): Metadata {
     title,
     description: article.description,
     alternates: { canonical: path },
+    robots: article.noindex ? { index: false, follow: true } : undefined,
     openGraph: {
       title,
       description: article.description,

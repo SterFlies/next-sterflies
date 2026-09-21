@@ -1,37 +1,18 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import type { Metadata } from "next"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
-import { cloudinaryUrl, siteConfig } from "@/app/config/site"
+import { cloudinaryUrl, pageMetadata, siteConfig } from "@/app/config/site"
 import { projects } from "@/app/projects/_data"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Forensic Mapping & Reality Capture | SterFlies",
   description:
     "SterFlies provides forensic mapping, photogrammetry, reality capture, thermal imaging, and technical site documentation for investigations, construction, and industrial work.",
-  openGraph: {
-    title: "Forensic Mapping & Reality Capture | SterFlies",
-    description:
-      "Technical field documentation that preserves site conditions as reviewable, measurable spatial records.",
-    url: "https://sterflies.com",
-    siteName: "SterFlies",
-    images: [
-      {
-        url: cloudinaryUrl(
-          "https://res.cloudinary.com/dzlmoyomq/image/upload/v1757015631/DJI_20250831081121_0005_V_nzvjey.jpg",
-          1200
-        ),
-        width: 1200,
-        height: 630,
-        alt: "Aerial mapping of a 65-acre development site",
-      },
-    ],
-    type: "website",
-  },
-}
+  path: "/",
+})
 
 const audienceGroups = [
   {

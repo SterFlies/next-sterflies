@@ -1,15 +1,15 @@
-import type { Metadata } from "next"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
+import { pageMetadata } from "@/app/config/site"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Photography & Videography | SterFlies",
   description:
     "Legacy aerial and ground photography and videography offering. SterFlies primary services are forensic mapping, photogrammetry, and thermal documentation.",
-  alternates: { canonical: "/services/marketing" },
-}
+  path: "/services/marketing",
+})
 
 const offerings = [
   { title: "Aerial stills and video", text: "High-resolution aerial coverage for visual storytelling." },
