@@ -45,11 +45,12 @@ export const articles: Article[] = [
     publishedAt: "2026-09-22",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg",
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790115483/Hero-forensic-mapping_rctzro.png",
       1600
     ),
-    heroAlt: "Mapped aerial record showing site layout and surrounding context",
-    heroCaption: "A mapped aerial record can preserve overall site layout for later review.",
+    heroAlt:
+      "Aerial construction site, point clouds, thermal imagery, and an interior floor record used for forensic site documentation",
+    heroCaption: "Aerial, spatial, thermal, and interior records can preserve site context for later review.",
     readingTime: "9 min read",
     relatedSlugs: [
       "forensic-mapping-incident-investigations",
