@@ -17,8 +17,8 @@ export const metadata = pageMetadata({
 })
 
 const MATTERPORT_URL = "https://my.matterport.com/show/?m=gB2RVDfqLvW"
-const PIX4D_MESH_URL =
-  "https://cloud.pix4d.com/dataset/2349141/model?shareToken=4a7c62ac-8c56-462a-af0e-68711a2d00bc"
+const EXTERIOR_MODEL_URL =
+  "https://www.spearatlas.com/share/v/_1YGNQJW0iLaVssUJiFALNV4qpVJ8rZbThCsbhPeuAw/embed"
 const VIDEO =
   "https://res.cloudinary.com/dzlmoyomq/video/upload/v1757075500/reelmatter_vzpkqo.mp4"
 const VIDEO_POSTER = cloudinaryUrl(
@@ -191,7 +191,7 @@ export default function IaqProjectPage() {
             description="The exterior model preserves roof planes, elevation transitions, and site access for later comparison with interior conditions."
           />
           <div className="mt-10">
-            <ProjectEmbed src={PIX4D_MESH_URL} title="Exterior 3D model of documented site conditions" tall />
+            <ProjectEmbed src={EXTERIOR_MODEL_URL} title="Exterior 3D model of documented site conditions" tall />
           </div>
         </SiteContainer>
       </section>

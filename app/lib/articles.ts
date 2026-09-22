@@ -11,7 +11,7 @@ export const articleCategories = [
 ] as const
 
 export type ArticleCategory = (typeof articleCategories)[number]
-export type ArticleTier = "core" | "supporting" | "legacy"
+export type ArticleTier = "core" | "supporting"
 
 export type Article = {
   slug: string
@@ -35,6 +35,34 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "drone-mapping-forensic-site-investigations",
+    title: "How Drone Mapping Can Support Forensic Site Investigations",
+    description:
+      "How aerial mapping can preserve site layout, spatial relationships, and surrounding context for a forensic site investigation, and where ground-based documentation is still required.",
+    excerpt:
+      "What a mapped aerial record can preserve for later review, and where ground-based capture is still required.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-09-22",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1741107796/Property_Map_Large_pcuwt9.jpg",
+      1600
+    ),
+    heroAlt: "Mapped aerial record showing site layout and surrounding context",
+    heroCaption: "A mapped aerial record can preserve overall site layout for later review.",
+    readingTime: "9 min read",
+    relatedSlugs: [
+      "forensic-mapping-incident-investigations",
+      "what-is-forensic-site-documentation",
+      "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+      "chain-of-custody-digital-site-documentation-litigation",
+    ],
+    featured: true,
+    listed: true,
+    tier: "supporting",
+  },
+  {
     slug: "forensic-mapping-incident-investigations",
     title: "Forensic Mapping for Incident Investigations",
     description:
@@ -52,13 +80,13 @@ export const articles: Article[] = [
     heroCaption: "A coordinated capture can preserve site geometry for later review.",
     readingTime: "9 min read",
     relatedSlugs: [
+      "drone-mapping-forensic-site-investigations",
       "what-is-forensic-site-documentation",
       "why-site-conditions-should-be-documented-before-they-are-altered-blog",
       "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
       "chain-of-custody-digital-site-documentation-litigation",
       "digital-evidence-3d-reality-capture-legal-disputes",
     ],
-    featured: true,
     listed: true,
     tier: "core",
   },
@@ -101,11 +129,8 @@ export const articles: Article[] = [
     publishedAt: "2026-03-05",
     updatedAt: "2026-09-21",
     author: "Jerome Sterling",
-    heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1772731078/2cb13476-2434-4a47-a0f6-dc2a5f6214ad_yirkgi.png",
-      1600
-    ),
-    heroAlt: "Expert reviewing a spatial site record rather than isolated photographs",
+    heroImage: "/pointclouds-camerapoints.png",
+    heroAlt: "Camera positions over a mapped site record used for spatial review",
     readingTime: "8 min read",
     relatedSlugs: [
       "forensic-mapping-incident-investigations",
@@ -382,10 +407,10 @@ export const articles: Article[] = [
     updatedAt: "2026-09-21",
     author: "Jerome Sterling",
     heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1772559651/wesley-tingey-TdNLjGXVH3s-unsplash_dz3ldt.jpg",
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1769103746/ext-int3D_h28l56.jpg",
       1600
     ),
-    heroAlt: "Organized digital documentation files",
+    heroAlt: "Exterior model and interior floor record of a documented site",
     readingTime: "8 min read",
     relatedSlugs: [
       "digital-evidence-3d-reality-capture-legal-disputes",
@@ -535,45 +560,6 @@ export const articles: Article[] = [
     relatedSlugs: ["volumetric_blog", "construction-progress-monitoring-best-practices"],
     listed: true,
     tier: "supporting",
-  },
-  {
-    slug: "the-growing-necessity-of-drone-integration",
-    title: "The Growing Necessity of Drone Integration in Modern Professional Workflows",
-    description:
-      "A legacy industry overview of aerial systems as one capture method among several.",
-    excerpt: "Legacy industry overview of aerial capture.",
-    category: "Mapping & Photogrammetry",
-    publishedAt: "2026-02-11",
-    author: "Jerome Sterling",
-    heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770830502/ImageForArticle_8660_17060939845694007_qtwoma.webp",
-      1200
-    ),
-    heroAlt: "Aerial system used as a capture method",
-    readingTime: "6 min read",
-    relatedSlugs: [],
-    listed: false,
-    noindex: true,
-    tier: "legacy",
-  },
-  {
-    slug: "10-places-to-visit-in-san-antonio",
-    title: "10 Places to Visit in San Antonio",
-    description: "A legacy tourism article kept live but removed from the Articles index.",
-    excerpt: "Legacy tourism article.",
-    category: "Construction Documentation",
-    publishedAt: "2026-02-02",
-    author: "Jerome Sterling",
-    heroImage: cloudinaryUrl(
-      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770054988/csm_favorite_alamo_29649f9bee_t6c95f.jpg",
-      1200
-    ),
-    heroAlt: "San Antonio landmark",
-    readingTime: "5 min read",
-    relatedSlugs: [],
-    listed: false,
-    noindex: true,
-    tier: "legacy",
   },
 ]
 

@@ -75,7 +75,13 @@ export default function Page() {
       </p>
       <p>
         The output is a dated spatial record, not a conclusion about how an event occurred. How
-        useful later measurements are depends on the capture plan, as described below.
+        useful later measurements are depends on the capture plan, as described below. What aerial
+        mapping specifically contributes, and where ground-based documentation is still required,
+        is covered in{" "}
+        <Link href="/blog/drone-mapping-forensic-site-investigations">
+          how drone mapping can support forensic site investigations
+        </Link>
+        .
       </p>
 
       <h2>What ground-based reality capture can preserve</h2>
