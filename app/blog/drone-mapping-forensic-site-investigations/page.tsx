@@ -145,6 +145,11 @@ export default function Page() {
         the position of equipment are difficult to hold together in photographs taken from the
         edge.
       </p>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1790115766/trench_3d_model_xqdpek.png"
+        alt="3D model of an open excavation showing annotated distances, spoil, and nearby equipment"
+        caption="A reconstructed excavation can hold visible geometry, spoil, and nearby equipment in one spatial view."
+      />
       <p>Aerial capture may provide:</p>
       <ul>
         <li>overall excavation geometry, as visible from above</li>
