@@ -36,6 +36,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Thermal work on photovoltaic systems is useful when it is captured under stated conditions
         and reported so a later reviewer can understand what was measured. Colorful heat maps are
@@ -51,6 +52,19 @@ export default function Page() {
         covers measurement equipment, ambient and operating conditions, inspection procedure,
         reporting, personnel qualification, and guidance for classifying thermal abnormalities. That
         scope is PV-specific. IEC 62446-3 does not govern all SterFlies thermal documentation.
+      </p>
+      <p>
+        The purpose of this article is to describe how a photovoltaic thermal inspection is reported
+        so a later reviewer can use it, and to keep IEC 62446-3 within photovoltaic modules and
+        plants. Building-envelope, moisture, and general industrial thermography sit outside that
+        specification. They are documented under their own methods, not as applications of IEC
+        62446-3.
+      </p>
+      <p>
+        A radiometric thermal image stores an apparent temperature in each pixel. Apparent
+        temperature is the value the camera reports for a surface after its measurement settings
+        are applied. Technicians, engineers, and attorneys can read the report at that level: the
+        value, the conditions, and the location, held for qualified review.
       </p>
 
       <ArticleFigureRow>
@@ -80,6 +94,11 @@ export default function Page() {
         present, what equipment and settings were used, and how findings were described. Severity
         language still belongs to qualified review. Documentation records apparent temperature
         difference and location. It does not diagnose a failed module.
+      </p>
+      <p>
+        Stated conditions are what let a second visit be read against the first. The specification
+        gives photovoltaic inspections a shared place to record them, which is the reporting
+        structure the next section describes.
       </p>
 
       <h2>What IEC 62446-3 actually frames</h2>
@@ -111,6 +130,11 @@ export default function Page() {
           caption="A report is more useful when an apparent temperature difference is tied to a location."
         />
       </ArticleFigureRow>
+      <p>
+        Repeatable coverage is useful when a later pass can be set beside the first. That
+        comparison depends on the file still holding measurements, which is the difference between
+        a radiometric record and a thermal picture.
+      </p>
 
       <h2>Radiometric files versus thermal pictures</h2>
       <p>
@@ -123,6 +147,14 @@ export default function Page() {
         Flight planning also affects what can be resolved. Altitude, angle, and speed change ground
         sampling distance. If the objective is module- or substring-level identification, the
         capture geometry should match that objective. The report should state that intent.
+      </p>
+      <p>
+        Ground sample distance is the ground width represented by one pixel, the quantity capture
+        planning refers to as ground sampling distance. Sensor resolution, lens, and camera
+        distance set it. Increasing altitude or widening the view covers more of the plant in each
+        frame and records less detail on each module. The report should state the geometry that was
+        flown so a later reviewer knows what size of pattern the capture was intended to show.
+        Geometry documents the capture and leaves the meaning of a warmer area to qualified review.
       </p>
       <p>
         Tsanakas, Ha, and Buerhop (2016) review thermographic interpretation challenges in operating
@@ -155,6 +187,18 @@ export default function Page() {
         under{" "}
         <Link href="/thermal/Applications">thermal documentation</Link>.
       </p>
+      <p>
+        Counts and locations matter because a crew returns to a module, a combiner, or a row, and
+        needs that place named the same way on the next visit. Pairing each apparent temperature
+        difference with an RGB frame and a stable label keeps two discussions from drifting onto
+        different modules. The description stays with the measurement: where the difference sits,
+        how it compares with neighboring modules under the same conditions, and that the area is
+        marked for further inspection.
+      </p>
+      <p>
+        Words for severity and cause belong to the qualified reviewer who accepts them. A
+        consistent, located, radiometric record can still leave that classification open.
+      </p>
       <ArticleCallout>
         IEC 62446-3 applies to photovoltaic infrared thermography workflows. It does not govern
         building-envelope, moisture, or other non-PV thermal documentation.
@@ -175,6 +219,26 @@ export default function Page() {
       <p>
         A shorter introduction is in{" "}
         <Link href="/blog/thermal101_blog">Thermal Imaging 101</Link>.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        A photovoltaic thermal report is usable later when a reviewer can recover the conditions,
+        the method, the location, and the apparent temperature difference without reconstructing
+        them from memory. IEC TS 62446-3 supplies a structure for infrared thermography of
+        photovoltaic modules and plants. That structure stays inside photovoltaic work.
+      </p>
+      <p>
+        Radiometric values, stated capture geometry, and paired RGB imagery make the pattern
+        measurable and findable on a return visit. A consistent method supports comparison between
+        surveys. The pattern remains an area for further inspection until a qualified reviewer
+        classifies it.
+      </p>
+      <p>
+        ISO 18436-7, ASTM E1934, and NFPA 70B inform personnel qualification, examination records,
+        and electrical maintenance inside their own scopes. They do not widen IEC 62446-3 into a
+        general thermography standard for buildings or industrial equipment, and they do not
+        replace qualified interpretation of the photovoltaic file.
       </p>
     </ArticleLayout>
   )

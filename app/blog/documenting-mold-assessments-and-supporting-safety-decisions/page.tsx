@@ -17,6 +17,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Mold projects differ from many other investigations because conditions can change quickly
         and the physical evidence can disappear. Moisture dries. Materials are removed. Containment
@@ -62,6 +63,15 @@ export default function Page() {
         alt="Interior moisture and material context documented for later review"
         caption="Moisture context and material transitions matter. Capturing the surrounding environment helps preserve that story."
       />
+      <p>
+        For documentation, “moisture context” means the visible setting around the affected
+        materials: staining, damaged finishes, suspected entry points that can be photographed, and
+        the rooms or assemblies next to them. It also means the timing of the visit relative to
+        drying, demolition, and containment, stated as a date rather than as a conclusion about how
+        long a condition had been present. Source, duration, and the significance of a pathway are
+        professional questions. The record’s job is to keep the setting available after the work
+        changes it.
+      </p>
 
       <h2>Document moisture context, not conclusions</h2>
       <p>
@@ -80,6 +90,15 @@ export default function Page() {
           existing-conditions documentation for IH investigations
         </Link>
         .
+      </p>
+      <p>
+        A neutral list is deliberately descriptive. Visible darkening on gypsum, swollen trim, a
+        roof edge above the room, and a condensate pan in a closet are different kinds of
+        observations, and only some of them are visible in a capture. The capture can show the ones
+        that are visible and where they sit. It should not be written as a conclusion about why the
+        condition is present or as a direction to repair it. Those statements belong in the
+        qualified professional’s own work. Spear’s article remains a reference for that professional
+        side. This article does not restate it as a procedure.
       </p>
 
       <h2>Sampling locations are easier to explain when they are preserved</h2>
@@ -101,6 +120,14 @@ export default function Page() {
         suspected moisture source? What materials were adjacent? What was the condition of the
         pathway between spaces?
       </p>
+      <p>
+        Preserving the location does not preserve the sample. The laboratory result, the method, and
+        the reason a location was chosen remain in the professional record. What a spatial layer
+        adds is the ability to stand, virtually, at that location and see the register, the wall,
+        the material, and the opening that the written location might only name. People who were not
+        on site can then follow the explanation. They still rely on the assessor for what the sample
+        means.
+      </p>
 
       <h2>Capture points that disappear during remediation</h2>
       <p>
@@ -113,6 +140,12 @@ export default function Page() {
         removed, before containment changes pressure relationships, before drying changes visible
         moisture signatures, before repairs conceal an intrusion pathway, and before access becomes
         restricted.
+      </p>
+      <p>
+        The items on that list are documentation targets, not a work sequence for cleaning or
+        repair. Porous materials, containment, drying equipment, and closed pathways are mentioned
+        because each one changes what a later visitor can see. Capturing them early keeps the
+        as-found view. It does not say whether removal, drying, or another step is appropriate.
       </p>
       <ArticleCallout>
         Many mold projects become harder to explain after they are cleaned. Early documentation
@@ -135,9 +168,44 @@ export default function Page() {
         caption="A floor plan can complement visual site documentation by making room relationships easier to follow."
       />
       <p>
+        Connected interior and exterior capture is useful on these projects because moisture
+        questions often cross that boundary. A stain on an interior wall may sit below a roof edge,
+        a window, a grade condition, or a mechanical component that is outside the room. A floor
+        plan shows which rooms share a wall. A walkthrough shows the finishes and the openings. An
+        exterior photograph or map shows the corresponding outside surface. Together they preserve a
+        path a later reader can follow. They do not identify the reason the stain is there.
+      </p>
+      <p>
+        The documentation layer can also keep ordinary building context that reports compress into a
+        sentence: the location of a supply or return, the position of a condensate line, the
+        relationship between a crawlspace, a chase, and an occupied room. Preserving that context
+        helps the professionals who assessed the site explain where they looked. It does not perform
+        the assessment, and it does not tell an owner what work to do next.
+      </p>
+      <p>
         This content is informational. Site documentation is not mold assessment, risk evaluation, or
         remediation guidance. Assessments and decisions should be performed by qualified
         professionals according to applicable standards and regulations.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Mold projects move quickly because moisture and damaged materials are often addressed as
+        soon as they are found. That pace is a reason to document the setting while it is still
+        visible. It is not a reason to treat the documentation as the assessment.
+      </p>
+      <p>
+        A useful record shows rooms, materials, visible moisture indicators, and the locations where
+        observations or samples were made, with enough surrounding context to place them. Exterior
+        and interior views can be connected so a later reader can move from a site feature to a room
+        to a surface. Jerome E. Spear’s article remains the professional reference for assessment
+        and remediation thinking. This article does not replace it.
+      </p>
+      <p>
+        SterFlies preserves the spatial and visual context around that professional work. The
+        boundaries stated at the start of this article remain in force: documentation is not
+        assessment, and it is not a recommendation. Qualified professionals make the determinations
+        that apply to their practice.
       </p>
     </ArticleLayout>
   )

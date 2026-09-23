@@ -20,6 +20,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Photovoltaic arrays can look static from a distance. At module scale they are live electrical
         systems operating under irradiance, voltage, and weather. Infrared thermography is one way
@@ -34,6 +35,14 @@ export default function Page() {
           thermal reporting standards in solar PV inspections
         </Link>
         .
+      </p>
+      <p>
+        The purpose of this article is to describe apparent temperature patterns that commonly
+        appear in drone-based photovoltaic records and to state what those records are for. They
+        locate a difference and keep the visible context around it. Apparent temperature is the
+        value the camera reports for a surface under the settings and conditions of that capture.
+        Where the file is a radiometric thermal image, each pixel stores that value for later
+        measurement. SterFlies records the pattern for qualified review.
       </p>
 
       <ArticleFigureRow>
@@ -62,6 +71,10 @@ export default function Page() {
         contrast. That is why IEC 62446-3 treats operating conditions as part of a valid PV
         thermography inspection, and why a report should state those conditions.
       </p>
+      <p>
+        With those conditions written down, the record can be read for the patterns reviewers
+        commonly ask to have located.
+      </p>
 
       <h2>Patterns that commonly appear in PV thermal records</h2>
       <p>
@@ -88,6 +101,12 @@ export default function Page() {
           caption="Site-wide thermal mapping can show whether a pattern is isolated or repeating."
         />
       </ArticleFigureRow>
+      <p>
+        An orthomosaic and a site-wide thermal map show whether a pattern is isolated or repeats
+        across a block. Repetition can focus where a reviewer looks next. Surface conditions,
+        connections, and the module itself remain possible explanations. The map documents that
+        distribution for qualified review.
+      </p>
 
       <h2>Soiling and shading can look like electrical issues</h2>
       <p>
@@ -95,6 +114,19 @@ export default function Page() {
         elevated temperature. The corrective action, if any, is a qualified operational decision.
         The documentation task is to show where the pattern occurred and what the visible context
         looked like at the time.
+      </p>
+      <p>
+        Soiling and shade can reduce the current part of a module is able to pass, so cells that
+        share the circuit operate under mismatch. The additional heat can appear as an apparent
+        temperature difference. Vegetation, debris, or a shadow line from a nearby structure may be
+        plain in the RGB photograph and absent from the thermal frame alone. The observation is the
+        pair: the difference, and the visible condition at the same place and time.
+      </p>
+      <p>
+        Cleaning, vegetation work, or an electrical test can each be a reasonable next question for
+        the same kind of contrast. Choosing among them is an operational decision for the people
+        responsible for the plant. The thermal record shows where the pattern was recorded and what
+        the module looked like then, and it holds that record for qualified review.
       </p>
       <ArticleCallout>
         An apparent temperature difference is an area for further inspection. It is not a failed
@@ -115,11 +147,40 @@ export default function Page() {
         attached to that capture. They are not universal thresholds.
       </p>
       <p>
+        For a technician walking the array back, the useful result is a module that can be found
+        again. For an engineer or an attorney reading the file later, the useful result is the same
+        comparison: a pattern attached to a place, a time, and the neighboring modules captured with
+        it. A single frame, separated from that map, drops the pattern back into an unlabeled
+        temperature.
+      </p>
+      <p>
         Field examples are shown in the{" "}
         <Link href="/projects/pv-farm-hotspots">PV farm thermal documentation project</Link> and{" "}
         <Link href="/thermal/case-studies">thermal case studies</Link>. Service scope is under{" "}
         <Link href="/thermal/Applications">thermal documentation</Link>. A shorter primer is{" "}
         <Link href="/blog/thermal101_blog">Thermal Imaging 101</Link>.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Drone-based thermal documentation of a photovoltaic array records apparent temperature
+        differences that ordinary photographs leave out, together with the RGB and location context
+        a later reviewer needs. Localized warmer areas, bands that follow substring layout, broader
+        warming across a group of modules, and localized differences at connectors and combiner
+        locations are patterns to place on the plant and describe.
+      </p>
+      <p>
+        Soiling, shading, mismatch, and connection conditions can produce similar contrast under
+        load. Neighbor comparison inside one operating period, with the conditions stated, is the
+        comparison the record can support. A single apparent temperature, detached from neighboring
+        modules and from the weather at the time, is a weak basis for that comparison.
+      </p>
+      <p>
+        IEC TS 62446-3 remains the photovoltaic-specific reference for treating operating conditions
+        as part of the inspection. The deliverable described here is a located pattern held for
+        qualified review. Module failure, an electrical fault, and root cause are determinations
+        that review may reach. The capture records the pattern those determinations can be checked
+        against.
       </p>
     </ArticleLayout>
   )

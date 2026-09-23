@@ -19,7 +19,7 @@ export default function ArticleFigure({
   const imageSrc = src.startsWith("https://res.cloudinary.com/") ? cloudinaryUrl(src, 1400) : src
 
   return (
-    <figure className="my-8">
+    <figure className="article-figure">
       {video ? (
         <video
           src={src}
@@ -40,7 +40,7 @@ export default function ArticleFigure({
         />
       )}
       {caption || credit ? (
-        <figcaption className="mt-2 text-[0.9375rem] leading-relaxed text-[var(--color-muted)]">
+        <figcaption className="article-caption">
           {caption}
           {credit ? (
             <span className="mt-1 block text-sm">
@@ -54,5 +54,5 @@ export default function ArticleFigure({
 }
 
 export function ArticleFigureRow({ children }: { children: React.ReactNode }) {
-  return <div className="my-8 grid gap-6 md:grid-cols-2 [&_figure]:my-0">{children}</div>
+  return <div className="article-figure-row">{children}</div>
 }

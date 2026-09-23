@@ -11,6 +11,7 @@ export const metadata = articleMetadata(
 export default function Page() {
   return (
     <ArticleLayout slug="why-existing-conditions-documentation-is-critical-for-ih-investigations">
+      <h2>Introduction</h2>
       <p>
         In industrial hygiene and environmental consulting, later review depends on conditions that
         can still be shown. Sampling results and laboratory analysis matter. So does the ability to
@@ -27,6 +28,12 @@ export default function Page() {
         Existing-conditions documentation is a supporting record, not a substitute for industrial
         hygiene judgment.
       </p>
+      <p>
+        This article explains existing-conditions documentation as a dated visual and spatial
+        record, why that record is difficult to recreate after a site changes, and how it can sit
+        beside sampling and reporting. It does not explain how to plan samples, read laboratory
+        results, or reach a professional conclusion.
+      </p>
 
       <h2>Sites change faster than reports</h2>
       <p>Environmental investigations rarely occur in static environments. Conditions can change because of:</p>
@@ -40,6 +47,14 @@ export default function Page() {
         Once a site changes, reconstructing what was present at the time becomes difficult or
         impossible. Even a careful report can be harder to explain if visual context, spatial
         relationships, or surface conditions are no longer available for review.
+      </p>
+      <p>
+        The speed of that change is why notes written on the visit can be accurate and still be hard
+        to use later. A sentence can say that staining was present on a lower wall. After the wall
+        is opened, dried, and closed, the sentence has no surface left to point at. A photograph of
+        the stain has the same problem if it does not show which room and which adjacent assembly it
+        belonged to. The list above is not exhaustive. It is a reminder that the environment in an
+        industrial hygiene project is often a temporary state.
       </p>
       <ArticleFigure
         src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1767905302/Screenshot_2026-01-08_144800_qrzymb.png"
@@ -59,6 +74,15 @@ export default function Page() {
         <li>Date-stamped documentation tied to a specific site visit</li>
         <li>Navigable interior records that can be revisited later</li>
       </ul>
+      <p>
+        Reality capture is the coordinated photography or scanning that produces this kind of
+        record: images or measurements a later reader can revisit as rooms and surfaces, not only as
+        separate files. Photogrammetry, which builds shape from overlapping photographs, and
+        interior camera capture are two common routes. A point cloud, where the scope includes one,
+        stores surfaces as measured points. These products show what was visible and how it was
+        arranged at the visit. They are not sampling results, and they are not an interpretation of
+        exposure or of building performance.
+      </p>
       <ArticleCallout>
         The goal is preservation, not interpretation. SterFlies does not perform industrial hygiene
         assessments, diagnose conditions, or determine causation.
@@ -85,6 +109,14 @@ export default function Page() {
           documenting mold assessments
         </Link>
         .
+      </p>
+      <p>
+        Geometry is the practical part of that context. A penetration above a ceiling, a chase
+        beside a bathroom, a return near a stained wall, and a door between two rooms are
+        relationships a sample table can name and a navigable record can show. Showing them does not
+        say that air or moisture moved along that path. It lets the industrial hygienist, or another
+        qualified reviewer, point to the path they are discussing and let others see the same
+        surfaces.
       </p>
 
       <h2>Supporting, not replacing, professional judgment</h2>
@@ -121,6 +153,13 @@ export default function Page() {
         </Link>
         .
       </p>
+      <p>
+        The request usually comes from the same constraint. The people who must understand the
+        site—an industrial hygienist’s client, a building owner, counsel, or an insurer—may never
+        walk it in the as-found state. A navigable record gives them a shared view of rooms,
+        materials, and observation locations. It does not give them the hygienist’s conclusions, and
+        it should not be presented as if it had.
+      </p>
 
       <h2>When to capture it</h2>
       <p>
@@ -135,6 +174,30 @@ export default function Page() {
           what forensic site documentation is
         </Link>
         : preserve the site while it still exists.
+      </p>
+      <p>
+        Early capture is a scheduling choice, not a technical claim about the investigation. If the
+        visit happens after removal has started, the record can still document what remains, and it
+        should be described as that later state. What it cannot do is stand in for the surfaces that
+        were already gone. Writing the date and the stage of work next to the files keeps that limit
+        visible.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Industrial hygiene investigations depend on professional methods: observation, sampling,
+        analysis, and interpretation. They also depend on a site that can still be shown. When
+        remediation, drying, or repairs move faster than the report, the showing has to come from
+        records made at the time.
+      </p>
+      <p>
+        Existing-conditions documentation is that record. It can include photographs, spatial
+        context, dates, and a navigable interior, depending on scope. It preserves rooms, materials,
+        and relationships so a later conversation can refer to a place rather than to memory alone.
+      </p>
+      <p>
+        The record supports the industrial hygienist’s work. It does not perform it. SterFlies
+        documents the site as found. Qualified professionals decide what the conditions mean.
       </p>
     </ArticleLayout>
   )

@@ -27,6 +27,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         An investigation often begins after the physical environment has already started changing.
         Ground photographs remain useful. They document particular viewpoints, surfaces, and
@@ -45,6 +46,12 @@ export default function Page() {
           forensic mapping for incident investigations
         </Link>
         .
+      </p>
+      <p>
+        The purpose is to explain what drone mapping can add to a forensic site investigation,
+        which spatial products can be produced from a mapping mission, and where an overhead record
+        has to be supplemented by ground-based capture and professional interpretation. It does not
+        establish cause, fault, liability, or whether a file will be accepted later.
       </p>
 
       <h2>What drone mapping adds to a site investigation</h2>
@@ -262,6 +269,12 @@ export default function Page() {
         can support geometry review, visualization, and downstream technical workflows when those
         workflows are in scope. It represents visible surfaces that were imaged.
       </p>
+      <p>
+        Unlike a photograph, a point cloud can be rotated and sectioned so a later reviewer can
+        look at the same surfaces from more than one direction. Unlike a licensed survey, it is
+        only as useful as the imagery, overlap, and control that produced it. Vegetation, standing
+        water, and surfaces the camera never saw remain gaps.
+      </p>
 
       <h3>High-resolution aerial imagery</h3>
       <p>
@@ -270,6 +283,12 @@ export default function Page() {
         The mapped record and the stills work as a set: one for layout, the others for a particular
         viewpoint.
       </p>
+      <p>
+        An orthomosaic answers where a feature sits in the site. An oblique frame answers what that
+        feature looked like from the side. Keeping both prevents the top-down map from being asked
+        to carry detail it was not built to show, and prevents a single dramatic still from being
+        asked to carry the layout.
+      </p>
 
       <h3>Measurements</h3>
       <p>
@@ -277,6 +296,12 @@ export default function Page() {
         depends on capture geometry, processing, project control, site conditions, and the accuracy
         the project needs. A licensed survey remains a separate professional service when one is
         required.
+      </p>
+      <p>
+        Ground sample distance—the ground area represented by one image pixel—is a planning choice,
+        not a guarantee that every later measurement will match a field tape. Reported distances
+        should stay tied to the capture that produced them. When a question requires a stamped
+        survey, that work is outside this documentation.
       </p>
 
       <h2>Why aerial mapping should not stand alone</h2>
@@ -398,6 +423,24 @@ export default function Page() {
         </Link>
         . To scope an exterior record before conditions change,{" "}
         <Link href="/contact">discuss a project</Link>.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Drone mapping can preserve the broader exterior of a site while that exterior still exists.
+        Overlapping aerial imagery can be processed into an orthomosaic, a navigable model, a point
+        cloud, and a set of still photographs that keep layout and viewpoint together.
+      </p>
+      <p>
+        Those products document visible conditions. They do not determine cause, fault, or
+        liability, and they do not replace a licensed survey when one is required. Interiors,
+        obscured surfaces, and questions that need close inspection or testing still need
+        ground-based capture and qualified review.
+      </p>
+      <p>
+        The practical takeaway is timing and method. Capture the exterior relationships before
+        cleanup and repair remove them, pair the overhead record with the spaces it cannot see,
+        and leave interpretation to the professionals who are qualified to make it.
       </p>
     </ArticleLayout>
   )

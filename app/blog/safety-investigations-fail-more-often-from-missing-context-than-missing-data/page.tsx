@@ -35,6 +35,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Safety reviews are often framed as a search for more information: more photographs, more
         measurements, more notes. Many reviews already have plenty of fragments. What they lack is
@@ -70,6 +71,16 @@ export default function Page() {
         interpret fragments in isolation. That is a different failure mode from “we needed one more
         measurement.”
       </p>
+      <p>
+        Context, in this sense, is a shared spatial frame. It includes the direction a camera faced,
+        the distance between a condition and a path or piece of equipment, the elevation of a work
+        surface, and what occupied the surrounding area at the time of the visit. A single
+        measurement can be correct and still leave those relationships unrecorded. Reality
+        capture—photographs or scans organized so a later reader can move through the place rather
+        than through a folder of separate frames—is one way to keep the frame with the detail. The
+        capture records the scene as it was found. It does not decide which relationship a later
+        review should treat as relevant.
+      </p>
 
       <h2>Why more fragments still leave a gap</h2>
       <p>
@@ -83,8 +94,33 @@ export default function Page() {
         alt="Scattered photographs and notes without a shared spatial reference"
         caption="Plenty of documentation can still be incomplete when spatial relationships are not preserved."
       />
+      <p>
+        The gap is easiest to see by asking what a later reviewer can still locate. A close-up can
+        confirm the appearance of a surface. It cannot, by itself, show how far that surface sat
+        from a doorway, a ladder, or a machine unless the capture was planned to preserve those
+        relationships. Photogrammetry derives shape and position from overlapping photographs and
+        can produce a mesh, an orthomosaic, or a point cloud. A point cloud is a set of measured
+        points describing surfaces in space. An orthomosaic is a plan-view photo map assembled from
+        those overlapping images. An ordinary set of photographs does not become any of those
+        products because the files share a folder. Each product is also limited by overlap, control,
+        and processing. None of them is a property survey.
+      </p>
+      <p>
+        The practical result is often a large set of locally accurate records that cannot be placed.
+        Several close-ups of the same guard, stain, or cover may still leave a reviewer unable to
+        say which wall, which level, or which side of a machine they show. A note that says “north
+        wall” or “near the press” depends on a plan or on someone’s memory of the room. After the
+        room is rearranged, the words and the photographs no longer point at the same place.
+        Existing-conditions documentation is a dated record of the site as it was found, kept so
+        those pointers remain available. It preserves relationships. It does not rank which fragment
+        later mattered.
+      </p>
 
       <h2>What missing context forces later reviewers to do</h2>
+      <p>
+        When that dated frame was never captured, later review does not stop. It changes the kind of
+        work reviewers have to do.
+      </p>
       <p>
         They reconstruct distances, access, and proximity from memory or partial records. Relevance
         becomes subjective. Stakeholders can disagree about whether nearby conditions mattered.
@@ -114,6 +150,25 @@ export default function Page() {
         </Link>{" "}
         is one way to keep those relationships available for later qualified review. It does not
         make a record “defensible” in a legal sense, and it does not determine root cause.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Safety reviews run into this limit when the file can describe pieces of a site and cannot
+        show how those pieces sat together. Additional photographs and notes can leave the same
+        limit in place if they were never tied to a shared view of the environment.
+      </p>
+      <p>
+        A spatial record gives later reviewers one reference for orientation, scale, and adjacency.
+        An interior walkthrough, an orthomosaic, or a point cloud can each do part of that work,
+        within the limits of how it was captured and processed. Reviewers can then ask where a
+        condition sat, what surrounded it, and which path or piece of equipment was nearby, using
+        the record rather than a reconstruction from memory.
+      </p>
+      <p>
+        SterFlies documents the site so qualified reviewers can still see those relationships after
+        conditions change. The record is a reference for that review. What the relationships mean
+        for an investigation remains with the people responsible for the review.
       </p>
     </ArticleLayout>
   )

@@ -22,10 +22,12 @@ export default function ArticleLayout({
   const related = getRelatedArticles(article.relatedSlugs)
 
   return (
-    <article className="bg-[var(--color-canvas)] pb-16 pt-8 md:pb-20 md:pt-10">
+    <article className="article-document bg-[var(--color-canvas)] pb-16 pt-8 md:pb-20 md:pt-10">
       <ArticleJsonLd article={article} wordCount={wordCount} />
       <div className="article-measure">
-        <ArticleBreadcrumbs title={article.title} />
+        <div className="article-no-print">
+          <ArticleBreadcrumbs title={article.title} />
+        </div>
         <ArticleHeader article={article} />
       </div>
 
@@ -39,7 +41,7 @@ export default function ArticleLayout({
           className="h-auto w-full object-cover"
         />
         {article.heroCaption ? (
-          <figcaption className="mt-2 text-[0.9375rem] text-[var(--color-muted)]">
+          <figcaption className="article-caption">
             {article.heroCaption}
           </figcaption>
         ) : null}
@@ -49,8 +51,10 @@ export default function ArticleLayout({
         <div className="article-body">{children}</div>
         {references?.length ? <ArticleReferences items={references} /> : null}
         {related.length ? (
-          <section className="mt-14 border-t border-[var(--color-line)] pt-8">
-            <h2 className="text-xl font-semibold tracking-tight">Related articles</h2>
+          <section className="article-no-print mt-14 border-t border-[var(--color-line)] pt-8">
+            <h2 className="font-[family-name:var(--font-sans)] text-xl font-semibold tracking-tight">
+              Related articles
+            </h2>
             <RelatedArticles
               items={related.map((item) => ({
                 href: `/blog/${item.slug}`,
@@ -59,7 +63,9 @@ export default function ArticleLayout({
             />
           </section>
         ) : null}
-        <ArticleCta />
+        <div className="article-no-print">
+          <ArticleCta />
+        </div>
       </div>
     </article>
   )

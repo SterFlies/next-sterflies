@@ -71,7 +71,7 @@ export default function Header() {
   }, [menuOpen])
 
   return (
-    <header ref={headerRef} className={styles.header}>
+    <header ref={headerRef} className={`${styles.header} site-chrome`}>
       {menuOpen ? (
         <div className={styles.overlay} onClick={closeAll} aria-hidden="true" />
       ) : null}

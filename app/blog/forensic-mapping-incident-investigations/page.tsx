@@ -9,6 +9,7 @@ export const metadata = articleMetadata("forensic-mapping-incident-investigation
 export default function Page() {
   return (
     <ArticleLayout slug="forensic-mapping-incident-investigations" wordCount={1680}>
+      <h2>Introduction</h2>
       <p>
         Incident investigations often begin after the physical scene has already started to change.
         Equipment is moved. Cleanup starts. Temporary controls appear or disappear. Later reviewers
@@ -19,6 +20,18 @@ export default function Page() {
         Forensic mapping is a documentation method for that problem. Aerial and ground-based reality
         capture can preserve spatial context while it still exists. SterFlies captures and organizes
         those conditions. Qualified professionals interpret them.
+      </p>
+      <p>
+        This article explains what forensic mapping means in practice, what aerial and ground-based
+        capture can each preserve, which deliverables are commonly produced, and where the method
+        stops. It does not determine cause, fault, liability, code compliance, or whether a record
+        will be accepted in a proceeding.
+      </p>
+      <p>
+        Photogrammetry, used throughout, is the reconstruction of visible geometry from overlapping
+        photographs. Reality capture is the broader field practice of collecting those photographs,
+        scans, or walkthroughs so the site can be reviewed after access is gone. Both are
+        documentation methods. Neither is an investigation finding.
       </p>
 
       <h2>What forensic mapping actually means</h2>
@@ -150,6 +163,18 @@ export default function Page() {
         promise survey-grade accuracy, and it is not a substitute for a licensed survey when a legal
         survey is required.
       </p>
+      <p>
+        Ground sample distance describes how much ground one image pixel represents. It is a
+        resolution choice driven by flying height and sensor. It is not, by itself, a statement of
+        how closely a later measurement will match a taped distance. Control points, surface
+        visibility, and processing also matter. When a project needs a licensed survey, that work
+        remains with a licensed surveyor.
+      </p>
+      <p>
+        While the aerial record can support exterior measurement context, some incident questions
+        are not visible from above. Thermal imagery is one supporting layer that may be added when
+        apparent temperature patterns are part of what a qualified reviewer needs to see.
+      </p>
 
       <h2>Thermal documentation where relevant</h2>
       <ArticleFigure
@@ -205,6 +230,11 @@ export default function Page() {
         or investigation will follow. It is a way to keep layout and surroundings available if they
         are needed later.
       </p>
+      <p>
+        Waiting until an investigation is formally opened often means documenting a site that has
+        already been made safe. That later record can still be useful. It should be described as a
+        record of the altered site, not as a substitute for the conditions that cleanup removed.
+      </p>
 
       <h2>Related professional workflows</h2>
       <p>
@@ -220,6 +250,23 @@ export default function Page() {
       <ArticleCallout>
         SterFlies captures and organizes site conditions. Qualified professionals interpret them.
       </ArticleCallout>
+
+      <h2>Conclusion</h2>
+      <p>
+        Forensic mapping preserves the spatial context of an incident scene while that context still
+        exists. Aerial photogrammetry can hold site layout, access, and surrounding grade. Ground-based
+        capture can hold interiors, close surfaces, and work areas an overhead camera cannot see.
+      </p>
+      <p>
+        Orthomosaics, models, point clouds, stills, and walkthroughs are deliverables of that
+        record. Measurements from them depend on the capture plan. They are not a licensed survey,
+        and thermal patterns included in the same package are not a diagnosis.
+      </p>
+      <p>
+        The method does not determine cause, fault, liability, or whether a file will be accepted
+        later. It gives qualified professionals a dated view of layout and relationships they can
+        review after the physical scene has changed.
+      </p>
     </ArticleLayout>
   )
 }

@@ -23,6 +23,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Safety reviews commonly rest on photographs, written notes, and recollection. Those tools
         are familiar and necessary. They are also incomplete as a primary site record once the
@@ -55,6 +56,22 @@ export default function Page() {
         equipment or paths. Wide frames still suffer from perspective and selective framing. Two
         reviewers can look at the same image and disagree about scale or relevance.
       </p>
+      <p>
+        Orientation is what a later reviewer needs in order to place the frame: which surface was
+        photographed, which way the camera faced, what stood in front of and behind the subject, and
+        how large the subject is relative to a known feature such as a door, a machine, or a person
+        in the background. A close-up of a guard, a wet floor, or a missing cover can be sharp and
+        still omit each of those facts. A second close-up from a similar distance usually repeats
+        the detail. It does not restore the room.
+      </p>
+      <p>
+        Wide photographs reduce the problem and do not remove it. Perspective compresses distance,
+        and the frame still excludes whatever was left outside it. Without a scale reference or a
+        surrounding view, two readers can assign different sizes to the same object. Reality
+        capture—photographs or scans organized so they can be revisited as a place—keeps a
+        surrounding view with the detail. The close-up can then be read as part of that place rather
+        than as a free-floating image.
+      </p>
 
       <h2>Notes record judgment at one moment</h2>
       <p>
@@ -62,6 +79,20 @@ export default function Page() {
         assumed relevance decide what is omitted. Phrases such as “nearby” or “excessive” depend on
         a shared frame of reference. Months later, after personnel change and the site is altered,
         those references become ambiguous.
+      </p>
+      <p>
+        A note is a selection made under the conditions of the visit. The writer records what seemed
+        to matter and leaves out what seemed ordinary: the lighting, the materials stored in the
+        next aisle, the door that was propped open, the temporary platform beside a walkway. Those
+        omissions are not mistakes in the sentence that was written. They are a limit of a record
+        that was never built to hold the whole site.
+      </p>
+      <p>
+        Relative wording makes the limit easier to miss at the time and harder to use later.
+        “Adjacent,” “elevated,” “shortly after,” and “in the area” are clear to people who share the
+        site that day. They weaken once the writer is unavailable and the site has been altered. A
+        located photograph or a walkthrough does not replace the note. It gives the words a place to
+        point.
       </p>
 
       <h2>Memory reconstructs; it does not replay</h2>
@@ -80,8 +111,26 @@ export default function Page() {
         Photographs, notes, and memory remain useful supporting material. They become fragile when
         they are the only record of a site that no longer exists.
       </ArticleCallout>
+      <p>
+        The reconstruction is ordinary. People often remember an outcome more clearly than a
+        sequence, and they remember later meetings more clearly than the layout of a room. A careful
+        witness can still be unable to place a hose, a ladder, or a stain relative to a machine
+        after months have passed. Asking recollection to serve as the layout of the site asks it to
+        do work it does not do reliably.
+      </p>
+      <p>
+        The human-factors sources cited above are background on that general problem. They are not a
+        procedure applied to any person, and they are not a comment on any particular event. A
+        preserved spatial record gives reviewers something other than recollection to inspect when
+        they need to see the site. It does not correct a memory, and it does not say which account
+        is the one to follow.
+      </p>
 
       <h2>How the three weaknesses stack</h2>
+      <p>
+        Each of these records can be used for what it holds. The difficulty grows when each one is
+        asked to repair the one before it.
+      </p>
       <p>
         A photograph without orientation is interpreted with notes. Notes are interpreted with
         memory. Memory evolves as discussion continues. Each step moves farther from the site as it
@@ -113,6 +162,31 @@ export default function Page() {
           Forensic site documentation
         </Link>{" "}
         is one way to keep a spatial frame around photographs and notes.
+      </p>
+      <p>
+        Read in sequence, the three records answer different questions. The photograph answers what
+        a surface looked like from one viewpoint. The note answers what the writer chose to
+        describe. The recollection answers what someone can still say. None of the three answers, on
+        its own, where the condition sat once the site has been cleaned, repaired, or rebuilt. That
+        location question is a documentation question. It is separate from the question of what a
+        safety review should conclude.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Photographs, notes, and memory stay in safety work because they are available in the moment
+        and because they hold details and judgments a model will not contain. Their limit appears
+        when they are the only way back to a site that no longer exists in that form.
+      </p>
+      <p>
+        The limit shows up as disagreement about scale, about what was nearby, and about which
+        condition was actually in view. The disagreement widens when the file is a set of unlocated
+        images plus a narrative that has been retold. A dated spatial record lets reviewers look at
+        the same capture instead of rebuilding the room from those fragments.
+      </p>
+      <p>
+        The record is a reference. It does not rank the photographs, rewrite the notes, or settle
+        what an investigation should conclude.
       </p>
     </ArticleLayout>
   )

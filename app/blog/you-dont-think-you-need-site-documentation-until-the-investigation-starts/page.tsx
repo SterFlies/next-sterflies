@@ -35,6 +35,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Documentation is often treated as administrative support until an incident, inspection, or
         claim begins. Then the questions arrive: what did the site look like, where was the
@@ -43,6 +44,13 @@ export default function Page() {
       <p>
         This article is about that late start. It is not about how to assign fault or reconstruct
         causation. It is about what information becomes unavailable after the scene changes.
+      </p>
+      <p>
+        The purpose is to describe the questions that arrive after a site has changed, why the
+        record is often requested only then, and what later reviewers cannot recover from
+        photographs, notes, and recollection alone. OSHA’s accident-investigation materials, and
+        the human-factors writing of Reason and Dekker, are used here as background for why scenes
+        and memories both move. They are not a procedure for determining responsibility.
       </p>
 
       <ArticleFigureRow>
@@ -69,6 +77,12 @@ export default function Page() {
         later reviewers are trying to understand. OSHA’s accident-investigation guidance emphasizes
         documenting conditions as close to the event as possible because the scene evolves.
       </p>
+      <p>
+        A typical later question is simple and already too late: where did this stand relative to
+        the access, the equipment, and the material that has since been moved? A close photograph
+        can still show a surface. It cannot restore the path around it. The wider view has to be
+        captured while both are still in place.
+      </p>
       <ArticleCallout>
         The start of an investigation often marks the end of the original site.
       </ArticleCallout>
@@ -87,6 +101,13 @@ export default function Page() {
           why site conditions should be documented before they are altered
         </Link>
         .
+      </p>
+      <p>
+        The delay is understandable. Daily work is organized around completing the job and
+        controlling hazards, not around a review that may never be requested. The difficulty is
+        that the actions which make a site safe—cleanup, repair, restricted access—are the same
+        actions that remove the environment a later reviewer needs. Waiting for the investigation
+        to start often means waiting until that environment is already gone.
       </p>
 
       <ArticleFigureRow>
@@ -128,6 +149,29 @@ export default function Page() {
         </Link>{" "}
         is the service used when the objective is a reviewable spatial record before the scene
         disappears.
+      </p>
+      <p>
+        What cannot be recovered is the unrecorded relationship: which room opened onto which
+        corridor, which pile sat beside which piece of equipment, which stain was next to which
+        opening. More measurements of the cleaned or repaired site can still be useful. They
+        document a later condition. They do not replace the missing earlier one.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Site documentation is easy to postpone because the need for it is clearest after something
+        has already gone wrong. By that point, cleanup, repair, and restricted access have often
+        changed the scene the questions are about.
+      </p>
+      <p>
+        Photographs, notes, and memory remain necessary. They do not restore layout, adjacency, and
+        access that were never preserved. A dated spatial record, made while those relationships
+        still exist, is what later reviewers can still examine.
+      </p>
+      <p>
+        This article does not assign fault or reconstruct cause. It describes a timing problem.
+        The investigation can begin after the original site has ended. The record has to be made
+        before that happens.
       </p>
     </ArticleLayout>
   )

@@ -11,6 +11,7 @@ export const metadata = articleMetadata(
 export default function Page() {
   return (
     <ArticleLayout slug="rebuilding-reality-defensible-digital-site-environments">
+      <h2>Introduction</h2>
       <p>
         Isolated photographs can show a detail without showing how that detail sits in the site. A
         written description can explain what someone observed without letting another person check
@@ -52,6 +53,10 @@ export default function Page() {
         </Link>
         .
       </p>
+      <p>
+        Exterior capture is one place that shared orientation can come from, especially when the
+        questions involve roofs, drainage, or how buildings sit relative to one another.
+      </p>
 
       <h2>Exterior reconstruction preserves context at scale</h2>
       <p>
@@ -66,6 +71,16 @@ export default function Page() {
         processing. See{" "}
         <Link href="/blog/3d_model">interactive 3D models</Link> and{" "}
         <Link href="/blog/orthomosaic_blog">orthomosaic mapping</Link>.
+      </p>
+      <p>
+        At property scale, the useful products are usually an orthomosaic and, when the scope
+        includes it, a point cloud or mesh. An orthomosaic is a plan-view photo map assembled from
+        overlapping aerial images so roofs, grades, and building outlines can be viewed together.
+        Photogrammetry is the calculation that derives those shapes from the photographs. A point
+        cloud is the related set of measured points in space. These products support orientation and
+        later comparison within the limits of overlap, control, and processing. They are reviewable
+        records of a flight or a scan. They are not a property survey, and they do not establish a
+        single correct model of the site.
       </p>
       <ArticleFigure
         src="https://res.cloudinary.com/dzlmoyomq/video/upload/v1771004218/loop_qnwmfw.mp4"
@@ -92,6 +107,21 @@ export default function Page() {
         systems run above ceilings. A navigable interior record lets attorneys, consultants, and
         other qualified reviewers look at the same layout later. It does not replace a site visit
         when one is still possible, and it does not interpret conditions.
+      </p>
+      <p>
+        Layout questions in interiors are often about connection rather than about a single room.
+        Which rooms share a wall. Where a corridor turns. Which ceiling holds the equipment that
+        serves the space below. A navigable capture keeps those connections available when the
+        finishes change or when access is later limited. Photographs of individual rooms remain
+        useful for detail. They do not, as a set of separate files, let a reviewer travel the
+        connection without a guide.
+      </p>
+      <p>
+        Reality capture is the broader name for this kind of record: photographs or scans organized
+        so the place can be revisited. Existing-conditions documentation is the use of that record
+        to preserve a site as it was found on a stated date. Both terms describe documentation.
+        Neither term means the model is complete, current after the visit, or a substitute for a
+        walkthrough that can still be done in person.
       </p>
 
       <h2>Thermal imagery needs location context</h2>
@@ -126,6 +156,39 @@ export default function Page() {
         A digital site record can be navigated and reviewed later. It is not a digital twin in the
         operational sense, and it is not automatically evidence.
       </ArticleCallout>
+      <p>
+        Location context can be as simple as a paired visible photograph and as structured as a
+        marker in a walkthrough or on a plan. The point is that a later reader can find the surface
+        again. Apparent temperature differences remain signals to be interpreted by a qualified
+        reviewer, with whatever notes exist about conditions at the time of capture. The imagery
+        does not identify a material problem by itself, and attaching it to a model does not change
+        that limit.
+      </p>
+      <p>
+        The remote walkthrough shown with this section is the same idea applied to the whole
+        interior. It lets people who were not on site see the preserved environment. It is
+        reviewable. It is not a live feed of the building, and it does not update itself when the
+        building changes.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        A digital site environment, in the sense used here, is a coordinated record of exterior and
+        interior conditions from a dated capture. It is built so later reviewers can share one view
+        of layout, adjacency, and visual context instead of assembling separate mental models from
+        fragments.
+      </p>
+      <p>
+        The record is reviewable. Reviewers can look at an orthomosaic, a point cloud, an interior
+        walkthrough, or a thermal frame tied to a location, and they can see the limits of each
+        product in the capture notes. The record does not interpret a stain, a temperature pattern,
+        or a crack. It also does not stand in for a site visit that is still possible.
+      </p>
+      <p>
+        SterFlies assembles that documentation so the site can be examined after physical conditions
+        change. Qualified reviewers, including attorneys’ experts and other technical professionals,
+        decide what the captured conditions mean for their own questions.
+      </p>
     </ArticleLayout>
   )
 }

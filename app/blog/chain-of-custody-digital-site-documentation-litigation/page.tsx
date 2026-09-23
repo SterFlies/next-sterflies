@@ -27,6 +27,7 @@ export default function Page() {
         },
       ]}
     >
+      <h2>Introduction</h2>
       <p>
         Physical sites rarely stay still long enough for later review to catch up. Repairs begin.
         Materials are removed. Access is restricted. By the time questions harden, the original
@@ -76,6 +77,10 @@ export default function Page() {
         included here as educational background. They do not mean a SterFlies deliverable is
         authenticated, admissible, or court-ready.
       </p>
+      <p>
+        Traceability answers a narrower question than custody. The next section is about that
+        narrower question: what a later reviewer can explain from an organized file.
+      </p>
 
       <h2>What organized records can actually help later reviewers do</h2>
       <p>
@@ -105,6 +110,23 @@ export default function Page() {
         later explanation harder. Consistency is useful because it is easier to describe. It is not
         a guarantee of integrity.
       </p>
+      <p>
+        In practice, explanation usually means a short account that a later reader can follow: which
+        files are originals, which files were exported or cropped, what date the capture carries,
+        and which location the capture was tied to. Processing notes, when they exist, say how an
+        orthomosaic, a point cloud, or a walkthrough was produced. An orthomosaic is a plan-view
+        photo map from overlapping images. A point cloud is a set of measured points describing
+        surfaces. Those notes help a reviewer understand the product. They do not convert organized
+        storage into a formal record of possession and transfer.
+      </p>
+      <p>
+        Version records matter for the same reason. If a model is reprocessed, a later reader needs
+        to know which export was delivered and which export was a working file. Consistent names and
+        separate folders for originals and derivatives make that description possible. Inconsistent
+        names and mixed folders force the reader to infer the history from file dates and software
+        defaults. Inference is weaker than a written note, and a written note is still not a legal
+        chain of custody.
+      </p>
 
       <h2>Why this is usually requested too late</h2>
       <ArticleFigureRow>
@@ -131,6 +153,44 @@ export default function Page() {
           digital site documentation in legal disputes
         </Link>
         .
+      </p>
+      <p>
+        The timing is structural. Repairs, material removal, and restricted access change the site
+        while questions are still forming. A file created after those changes can document the site
+        as it exists then. It cannot show the earlier condition if that condition was never
+        captured. Organized storage of a late file still helps a reviewer explain what the late file
+        is. It does not reach backward to a scene that was not recorded.
+      </p>
+      <p>
+        Teams sometimes treat a later model as if it were the missing earlier record, because the
+        model is spatial and the earlier photographs are not. Spatial structure does not supply a
+        date the capture does not have. The useful question is what the file can still support: the
+        appearance and layout at the time of capture, described plainly, with originals
+        distinguishable from later exports. Whether any of that material is used in a legal workflow
+        is a question for counsel and for the professionals responsible for the matter. This article
+        does not answer it.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Digital site documentation can keep a dated view of a place that will not remain available.
+        The practices that make that view easier to explain are ordinary: consistent names, capture
+        dates, location context, processing notes, and storage that keeps originals separate from
+        derivatives.
+      </p>
+      <p>
+        Those practices are file traceability. A legal chain of custody is a formal account of
+        possession, control, transfer, and disposition. SterFlies does not present its project files
+        as that formal account. Naming, dates, metadata, and organized delivery can be described
+        later. They do not, by themselves, meet a legal chain-of-custody process, and this article
+        is not legal advice.
+      </p>
+      <p>
+        What the organized record can do is narrower and still useful. A later reviewer can see what
+        was captured, when it was captured, and how an output was produced, when those facts were
+        written down. The reviewer can also see spatial context if the capture preserved it. None of
+        that decides a dispute. It gives the people responsible for the dispute a clearer file to
+        examine.
       </p>
     </ArticleLayout>
   )

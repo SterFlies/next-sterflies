@@ -11,6 +11,7 @@ export const metadata = articleMetadata(
 export default function Page() {
   return (
     <ArticleLayout slug="digital-evidence-3d-reality-capture-legal-disputes">
+      <h2>Introduction</h2>
       <p>
         Legal disputes that involve physical sites often start after the site has already changed.
         Materials have been removed, temporary conditions dismantled, and later reviewers are asked
@@ -54,6 +55,14 @@ export default function Page() {
         </Link>
         .
       </p>
+      <p>
+        The open questions are usually spatial. How wide was the opening. Which room did the
+        photograph belong to. Was the stained material on an exterior wall or on an interior chase.
+        Sketches and notes can assert answers. They cannot show the surrounding surfaces to someone
+        who never visited. Months later, with access limited and finishes replaced, the assertion
+        and the remaining photographs are all that is left unless a broader capture was made while
+        the conditions were still there.
+      </p>
 
       <h2>What a spatial record can preserve</h2>
       <p>
@@ -72,6 +81,16 @@ export default function Page() {
         alt="Reviewer examining a spatial site record on a tablet"
         caption="A navigable record can reduce argument about what the site looked like. It does not decide a legal outcome."
       />
+      <p>
+        The products are different views of the same capture problem. An orthomosaic is a plan-view
+        photo map built from overlapping images, useful for seeing roofs, grades, and site layout at
+        a dated moment. A point cloud is a collection of measured points that describes surfaces in
+        three dimensions. Photogrammetry is the method that derives those shapes from overlapping
+        photographs; other captures may come from scanners or from interior cameras. Each one shows
+        layout and appearance within the limits of the capture plan, the overlap or scan coverage,
+        and the processing. A reviewer can use them to see where a condition sat. The reviewer still
+        has to judge what that location means.
+      </p>
 
       <h2>Layered documentation is still documentation</h2>
       <ArticleFigureRow>
@@ -107,6 +126,40 @@ export default function Page() {
           what forensic site documentation is
         </Link>
         . SterFlies captures and organizes site conditions. Qualified professionals interpret them.
+      </p>
+      <p>
+        Layering means the exterior map, the interior walkthrough, and the thermal frame can be read
+        against one another. The map places the building. The walkthrough places the room. The
+        thermal frame, paired with a visible photograph, places an apparent temperature pattern on a
+        surface. A later reader can move from the site, to the room, to the surface without
+        reconstructing that path from separate folders. The pattern remains an apparent temperature
+        difference. Qualified reviewers decide whether it bears on their question.
+      </p>
+      <p>
+        File notes sit beside that spatial reading. A useful note states the capture date, the
+        location, which files are originals, and, when processing was used, the general steps that
+        produced an export. That is file traceability. It is not a legal chain of custody, and it is
+        not a statement that the record has a particular status in a dispute. Counsel and the
+        professionals in the matter decide how, if at all, the record is used.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Disputes about physical sites often ask people to describe a place they can no longer walk.
+        Photographs, notes, sketches, and statements remain part of that work. They leave scale,
+        orientation, and adjacency open when they are the only record.
+      </p>
+      <p>
+        A spatial capture can close part of that opening by preserving layout and visual context
+        from a stated window of time. Orthomosaics, point clouds, interior walkthroughs, and thermal
+        frames paired with visible photographs are different ways of doing that. They are records of
+        what was captured. They do not authenticate themselves, and they do not carry a legal status
+        on their own.
+      </p>
+      <p>
+        SterFlies organizes those records so later readers can see the site as it was documented.
+        Qualified professionals interpret the conditions. This article describes that division of
+        work. It is not legal advice.
       </p>
     </ArticleLayout>
   )

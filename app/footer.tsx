@@ -27,7 +27,7 @@ const socialIcons = {
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-[var(--color-line)] bg-[var(--color-ink)] text-[#c8cdd3]">
+    <footer className="site-chrome mt-auto border-t border-[var(--color-line)] bg-[var(--color-ink)] text-[#c8cdd3]">
       <SiteContainer className="grid grid-cols-1 gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:py-16">
         <div>
           <div className="text-white">

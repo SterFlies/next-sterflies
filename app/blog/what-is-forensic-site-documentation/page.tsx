@@ -9,6 +9,7 @@ export const metadata = articleMetadata("what-is-forensic-site-documentation")
 export default function Page() {
   return (
     <ArticleLayout slug="what-is-forensic-site-documentation">
+      <h2>Introduction</h2>
       <p>
         Site documentation is often treated as an afterthought. Someone walks the site, takes a few
         photographs, maybe records a short video, and assumes that record will be enough if questions
@@ -19,6 +20,18 @@ export default function Page() {
         approach. It is not about capturing what looked interesting in the moment. It is about
         preserving a site as it existed in space and time, so later reviewers can still see layout,
         scale, and relationships after the physical conditions have changed.
+      </p>
+      <p>
+        This article explains what that practice means, why isolated photographs lose orientation,
+        and what a spatially organized record can still support after a site changes. “Forensic”
+        here describes the documentation objective: preserving conditions for later review. It does
+        not mean a finding about cause, responsibility, or a legal result.
+      </p>
+      <p>
+        Reality capture, as used below, means collecting overlapping imagery or scans so software
+        can place those observations in a shared spatial frame. An orthomosaic is the top-down map
+        produced from that process. A point cloud is the set of measured points that describes
+        visible surfaces. None of those products, by themselves, decide what a condition means.
       </p>
 
       <ArticleFigureRow>
@@ -182,11 +195,36 @@ export default function Page() {
         reduce argument over what was present. It does not replace engineering, industrial hygiene,
         legal, or expert opinion.
       </p>
+      <p>
+        The practical setting is familiar. A construction site is repaired. An interior is
+        remediated. An industrial area is returned to service. Months later, someone who was not
+        present is asked where a condition sat and what surrounded it. A folder of unrelated
+        photographs leaves that person to infer the answer. A dated spatial record lets the person
+        look.
+      </p>
       <ArticleCallout>
         Photographs remain useful for detail, texture, and close condition. Without spatial
         structure, they remain fragments. Forensic site documentation is the work of organizing those
         fragments into a reviewable site record.
       </ArticleCallout>
+
+      <h2>Conclusion</h2>
+      <p>
+        Forensic site documentation is the work of preserving a site in space and time, not the
+        work of deciding what the site means. Casual photographs remain useful for detail. Without
+        a shared spatial frame, they stay fragments.
+      </p>
+      <p>
+        Orthomosaics, point clouds, interior records, and structured stills can keep layout, scale,
+        and adjacency available after materials are removed and surfaces are changed. How closely a
+        later measurement matches the field still depends on the capture method, control, and
+        processing.
+      </p>
+      <p>
+        SterFlies captures and organizes that record. Engineers, industrial hygienists, safety
+        professionals, and other qualified reviewers interpret it. The documentation does not
+        replace their judgment, and it does not determine cause or responsibility.
+      </p>
     </ArticleLayout>
   )
 }

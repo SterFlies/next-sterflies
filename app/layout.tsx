@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description:
     "Technical field documentation, forensic mapping, photogrammetry, reality capture, thermal imaging, and site documentation for investigations, construction, and industrial work.",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: "/Logo-no-background_edited.ico",
   },
   openGraph: {
     siteName: siteConfig.name,
@@ -66,7 +66,7 @@ export default function RootLayout({
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <OrganizationJsonLd />
-        <a href="#main-content" className="skip-link">
+        <a href="#main-content" className="skip-link site-chrome">
           Skip to main content
         </a>
         <Header />

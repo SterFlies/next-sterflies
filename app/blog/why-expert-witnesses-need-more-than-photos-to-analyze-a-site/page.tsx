@@ -9,6 +9,7 @@ export const metadata = articleMetadata("why-expert-witnesses-need-more-than-pho
 export default function Page() {
   return (
     <ArticleLayout slug="why-expert-witnesses-need-more-than-photos-to-analyze-a-site">
+      <h2>Introduction</h2>
       <p>
         Expert review depends on context. In construction, premises, safety, and property matters,
         experts are often asked to interpret conditions that are no longer present, no longer
@@ -26,6 +27,13 @@ export default function Page() {
         This is why a useful site record is not “better pictures.” It is enough preserved context
         that a qualified expert can orient, check, and communicate without having to guess the
         environment.
+      </p>
+      <p>
+        This article explains that gap. It describes the questions experts are asked that a single
+        photograph does not answer, why missing orientation increases reconstruction work, and what
+        a spatially organized record can provide. SterFlies does not offer expert opinion. The
+        record is captured and organized so a qualified expert can review it. Acceptance of that
+        record in any proceeding is a separate legal question.
       </p>
 
       <ArticleFigureRow>
@@ -75,6 +83,13 @@ export default function Page() {
         Once orientation is missing, distances become assumptions, angles become subjective, and
         relationships become debate. Even when both sides have qualified experts, those experts can
         disagree when the record forces them to infer the environment rather than observe it.
+      </p>
+      <p>
+        Orientation, in this sense, is not a compass reading alone. It is the ability to place a
+        detail inside the site: which wall, which elevation, which side of a piece of equipment,
+        and which route connects that point to the rest of the work area. An orthomosaic can supply
+        the top-down frame for an exterior. An interior model can supply the room-to-room frame.
+        A close photograph then has a place to sit inside one of those frames.
       </p>
 
       <h2>Partial records increase reconstruction work</h2>
@@ -168,6 +183,24 @@ export default function Page() {
           why site documentation is often requested too late
         </Link>
         .
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Experts are asked to explain relationships: pathway, access, clearance, sequence, and how a
+        condition sat in its surroundings. A sharp photograph can preserve a detail and still omit
+        the orientation that makes the detail usable.
+      </p>
+      <p>
+        A spatially organized record—aerial context, interior geometry, and stills that can be
+        placed inside that frame—lets a later reviewer move from the site to the detail without
+        rebuilding the environment from fragments. That continuity does not guarantee agreement,
+        and it is not a legal chain of custody or a promise that a record will be accepted.
+      </p>
+      <p>
+        SterFlies captures and organizes the site record. Qualified experts interpret it. Once the
+        site has changed, a missing relationship cannot be photographed back into existence. It can
+        only be inferred.
       </p>
     </ArticleLayout>
   )
