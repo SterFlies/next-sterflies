@@ -227,8 +227,8 @@ export default function Page() {
 
       <h3>Orthomosaic</h3>
       <ArticleFigure
-        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1754424448/TOPO_DEMO_transparent_mosaic_group1_yeqeyn.png"
-        alt="Orthomosaic showing a site in a continuous top-down spatial view"
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1790173194/orthomosaic_vsjphi.png"
+        alt="Orthomosaic of a residential development showing houses, roads, a pond, and construction areas"
         caption="An orthomosaic is a top-down spatial image used for orientation, context, and annotation."
       />
       <p>
@@ -239,6 +239,11 @@ export default function Page() {
       </p>
 
       <h3>3D model</h3>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1790173074/Screenshot_2026-09-22_163207_ocb5v3.png"
+        alt="3D model of a material site with outlined stockpiles and nearby equipment"
+        caption="A 3D model can be navigated to review visible surfaces, material piles, and equipment together."
+      />
       <p>
         A 3D model is a reconstructed representation of visible site geometry. It can be navigated
         to see how surfaces and structures sit relative to one another. Typical uses are
