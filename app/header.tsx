@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import BrandMark from './components/BrandMark'
-import { primaryNav, serviceNav, siteConfig } from './config/site'
+import { primaryNav, serviceMenu, siteConfig } from './config/site'
 import styles from './components/Header.module.css'
 
 export default function Header() {
@@ -124,11 +124,18 @@ export default function Header() {
               className={styles.submenu}
               data-open={servicesOpen ? 'true' : 'false'}
             >
-              {serviceNav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} onClick={closeAll}>
-                    {item.label}
-                  </Link>
+              {serviceMenu.map((group) => (
+                <li key={group.label}>
+                  <span className={styles.submenuLabel}>{group.label}</span>
+                  <ul className={styles.submenuGroup}>
+                    {group.items.map((item) => (
+                      <li key={item.href}>
+                        <Link href={item.href} onClick={closeAll}>
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

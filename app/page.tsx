@@ -4,6 +4,8 @@ import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
+import { formatArticleDate, getListedArticles } from "@/app/lib/articles"
+import { applications } from "@/app/lib/practice"
 import { cloudinaryUrl, pageMetadata, siteConfig } from "@/app/config/site"
 import { projects } from "@/app/projects/_data"
 
@@ -209,7 +211,7 @@ const featured = [
     title: "Solar PV Thermal Documentation",
     type: "Thermal documentation",
     documented: "RGB and thermal documentation of a photovoltaic array.",
-    why: "Locate underperforming modules so maintenance can be targeted rather than walked field-wide.",
+    why: "Preserve apparent temperature patterns with RGB and location context for later qualified review.",
     deliverables: "Thermal imagery, defect snapshots, and location context.",
     image: {
       src: "/ThermalThumb.png",
@@ -229,6 +231,7 @@ export default function HomePage() {
     const project = projects.find((entry) => entry.slug === item.slug)
     return { ...item, project }
   })
+  const latestArticles = getListedArticles().slice(0, 3)
 
   return (
     <>
@@ -453,6 +456,90 @@ export default function HomePage() {
                 </article>
               )
             })}
+          </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
+        <SiteContainer>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeader
+              eyebrow="Articles"
+              title="Latest technical articles"
+              description="Recent notes on forensic mapping, site documentation, and the records used in professional review."
+            />
+            <Link
+              href="/blog"
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              All articles
+            </Link>
+          </div>
+          <ul className="mt-10 divide-y divide-[var(--color-line)] border-y border-[var(--color-line)]">
+            {latestArticles.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/blog/${article.slug}`} className="block py-5 hover:text-[var(--color-accent)]">
+                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-[var(--color-muted)]">
+                    {article.category} · {formatArticleDate(article.publishedAt)}
+                  </p>
+                  <h3 className="mt-2 text-lg font-semibold tracking-tight md:text-xl">{article.title}</h3>
+                  <p className="mt-2 max-w-[46rem] text-sm leading-relaxed text-[var(--color-muted)]">
+                    {article.excerpt}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
+        <SiteContainer className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHeader
+              eyebrow="Applications"
+              title="Professional uses of the same documentation"
+              description="These are ways the records are used. They are not separate services."
+            />
+            <ul className="mt-8 space-y-5">
+              {applications.map((item) => (
+                <li key={item.title} className="border-t border-[var(--color-line)] pt-4">
+                  <Link href={item.href} className="font-semibold hover:text-[var(--color-accent)]">
+                    {item.title}
+                  </Link>
+                  <p className="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">{item.text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHeader
+              eyebrow="Capabilities"
+              title="Methods inside the practice"
+              description="Capture methods and outputs, explained as part of the documentation work."
+            />
+            <ul className="mt-8 space-y-4">
+              {[
+                ["reality-capture", "Reality Capture"],
+                ["photogrammetry", "Photogrammetry"],
+                ["orthomosaics", "Orthomosaics"],
+                ["point-clouds", "Point Clouds"],
+                ["thermal-imaging", "Thermal Imaging"],
+                ["construction-progress", "Construction Progress Records"],
+              ].map(([id, label]) => (
+                <li key={id} className="border-t border-[var(--color-line)] pt-3">
+                  <Link href={`/capabilities#${id}`} className="font-semibold hover:text-[var(--color-accent)]">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/capabilities"
+              className="mt-6 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              View all capabilities
+            </Link>
           </div>
         </SiteContainer>
       </section>

@@ -6,6 +6,8 @@ import CompareSlider from "@/app/components/service/CompareSlider"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import PageBreadcrumbs from "@/app/components/PageBreadcrumbs"
+import ContextSidebar from "@/app/components/practice/ContextSidebar"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -77,6 +79,20 @@ export default function ThermalCaseStudiesPage() {
   return (
     <>
       <ThermalNav current="/thermal/case-studies" />
+      <WithRail
+        sidebar={
+          <ContextSidebar
+            articles={[
+              { href: "/blog/solar-thermal-anomalies-drone-based-pv-inspections", title: "Solar Thermal Anomalies in PV Inspections" },
+              { href: "/blog/thermal-reporting-standards-iec-62446-3", title: "Thermal Reporting Standards in Solar PV Inspections" },
+              { href: "/blog/thermal101_blog", title: "What Thermal Imaging Shows and Does Not" },
+            ]}
+            services={[{ href: "/thermal/Applications", title: "Thermal Documentation" }]}
+            projects={[{ href: "/projects/pv-farm-hotspots", title: "Solar PV Thermal Documentation" }]}
+            resources={[{ href: "/thermal/method", title: "Thermal method" }]}
+          />
+        }
+      >
       <section className="border-b border-[var(--color-line)]">
         <SiteContainer className="py-10 md:py-14">
           <div className="mb-5">
@@ -251,6 +267,7 @@ export default function ThermalCaseStudiesPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta
         title="Need thermal documentation?"

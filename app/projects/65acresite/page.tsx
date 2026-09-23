@@ -7,6 +7,8 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
+import { ProjectNotes, ProjectSidebar } from "@/app/components/project/ProjectContext"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -49,6 +51,7 @@ const STILLS = [
 export default function MappingProjectPage() {
   return (
     <>
+      <WithRail sidebar={<ProjectSidebar slug="65acresite" />}>
       <ServiceHero
         parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Mapping & Photogrammetry"
@@ -63,9 +66,10 @@ export default function MappingProjectPage() {
         <SiteContainer>
           <ProjectFacts
             items={[
-              { label: "Category", value: "Mapping & Photogrammetry" },
               { label: "Location", value: "Greater Houston, TX" },
-              { label: "Site area", value: "Approximately 65 acres" },
+              { label: "Site scope", value: "Approximately 65 acres, exterior" },
+              { label: "Capture type", value: "Aerial photogrammetry" },
+              { label: "Outputs", value: "Orthomosaic and shareable web map" },
               { label: "Cadence", value: "Weekly to biweekly by phase" },
             ]}
           />
@@ -151,6 +155,8 @@ export default function MappingProjectPage() {
         </SiteContainer>
       </section>
 
+      <ProjectNotes slug="65acresite" />
+
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
         <SiteContainer>
           <SectionHeader eyebrow="Continue" title="Related service and reading" />
@@ -171,6 +177,7 @@ export default function MappingProjectPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta />
     </>

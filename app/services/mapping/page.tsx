@@ -6,6 +6,9 @@ import DeliverableList from "@/app/components/service/DeliverableList"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
+import ContextSidebar from "@/app/components/practice/ContextSidebar"
+import DepthBlock from "@/app/components/practice/DepthBlock"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -37,6 +40,28 @@ export default function MappingPage() {
         }}
       />
 
+      <WithRail
+        sidebar={
+          <ContextSidebar
+            articles={[
+              { href: "/blog/orthomosaic_blog", title: "Understanding Orthomosaic Mapping" },
+              { href: "/blog/3d_model", title: "Exploring Interactive 3D Models" },
+              { href: "/blog/volumetric_blog", title: "Volumetric Data from Photogrammetric Surfaces" },
+              { href: "/blog/topography_blog", title: "Understanding Topographic Maps" },
+              { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Documentation" },
+            ]}
+            services={[{ href: "/services/forensic-site-documentation", title: "Forensic Mapping & Site Documentation" }]}
+            projects={[
+              { href: "/projects/65acresite", title: "65-Acre Site Mapping & Progress Documentation" },
+              { href: "/projects/custom-home-3d-model", title: "Custom Home 3D Progress Documentation" },
+            ]}
+            resources={[
+              { href: "/capabilities#photogrammetry", title: "Photogrammetry" },
+              { href: "/capabilities#site-measurements", title: "Site Measurements" },
+            ]}
+          />
+        }
+      >
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
           <SectionHeader
@@ -133,6 +158,33 @@ export default function MappingPage() {
         </SiteContainer>
       </section>
 
+      <DepthBlock eyebrow="Products" title="What the spatial products are" surface>
+        <p>
+          An orthomosaic is a scaled aerial map. It removes the single-photo perspective so layout, access, and change can be reviewed across a site. A point cloud is the dense spatial dataset behind that view, used when measurement or further analysis needs geometry rather than an image. A 3D model is the navigable surface built from the same capture, useful when a team needs to look at form, progress, or context remotely.
+        </p>
+        <p>
+          Elevation and surface products describe terrain shape when the capture supports them. Volumetric outputs estimate stockpile or earthwork quantities from that surface. Recurring documentation repeats a compatible capture so a later visit can be compared with an earlier one. Construction progression is one use of that repeatability: grading, pads, utilities, and structure recorded while they are still visible.
+        </p>
+      </DepthBlock>
+
+      <DepthBlock eyebrow="Exports" title="Technical exports and control">
+        <p>
+          Agreed exports such as GeoTIFF, LAS, OBJ, or a web map are provided when the processing method and the engagement specify them. The file format does not add accuracy. Control, when used, ties the model to known positions. Without it, the record can still preserve relative layout, and measurements should be treated as relative to that capture.
+        </p>
+        <p>
+          Photogrammetric elevation context is not a licensed topographic survey. Boundary, easement, and other legal survey products remain with a licensed surveyor. SterFlies can document the visible surface. It does not certify property lines or pay quantities.
+        </p>
+      </DepthBlock>
+
+      <DepthBlock eyebrow="Limits" title="What limits a mapped record" surface>
+        <p>
+          Vegetation, water, glass, moving equipment, and low texture can leave gaps or noise. Flight limits and active construction can block coverage. A single visit documents that visit. Work completed or covered between visits is absent unless it was captured while visible.
+        </p>
+        <p>
+          Those limits belong in the project record. They are the difference between a useful site document and a claim the data cannot support.
+        </p>
+      </DepthBlock>
+
       <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
           <SectionHeader
@@ -170,6 +222,7 @@ export default function MappingPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta />
     </>

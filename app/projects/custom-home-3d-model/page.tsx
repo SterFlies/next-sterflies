@@ -7,6 +7,8 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
+import { ProjectNotes, ProjectSidebar } from "@/app/components/project/ProjectContext"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -34,6 +36,7 @@ const ROUGH_IN = cloudinaryUrl(
 export default function CustomHomeProjectPage() {
   return (
     <>
+      <WithRail sidebar={<ProjectSidebar slug="custom-home-3d-model" />}>
       <ServiceHero
         parent={{ href: "/projects", label: "Projects" }}
         eyebrow="3D Progress Documentation"
@@ -52,9 +55,10 @@ export default function CustomHomeProjectPage() {
         <SiteContainer>
           <ProjectFacts
             items={[
-              { label: "Category", value: "3D Progress Documentation" },
               { label: "Location", value: "San Antonio Area, TX" },
-              { label: "Capture method", value: "Aerial photogrammetry" },
+              { label: "Setting", value: "Exterior construction" },
+              { label: "Capture type", value: "Aerial photogrammetry" },
+              { label: "Outputs", value: "Browser-based 3D model and progress imagery" },
               { label: "Cadence", value: "Milestone-based repeat capture" },
             ]}
           />
@@ -147,6 +151,8 @@ export default function CustomHomeProjectPage() {
         </SiteContainer>
       </section>
 
+      <ProjectNotes slug="custom-home-3d-model" />
+
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
         <SiteContainer>
           <SectionHeader eyebrow="Continue" title="Related service and reading" />
@@ -167,6 +173,7 @@ export default function CustomHomeProjectPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta />
     </>

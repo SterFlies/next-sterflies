@@ -1,3 +1,4 @@
+import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import PageCta from "@/app/components/service/PageCta"
@@ -122,6 +123,27 @@ export default function FaqPage() {
               </details>
             ))}
           </div>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
+        <SiteContainer className="max-w-3xl">
+          <SectionHeader eyebrow="Continue" title="Related resources" />
+          <ul className="mt-6 space-y-3">
+            {[
+              ["/services/forensic-site-documentation", "Forensic Mapping & Site Documentation"],
+              ["/services/mapping", "Mapping & Photogrammetry"],
+              ["/thermal/Applications", "Thermal Documentation"],
+              ["/capabilities", "Technical capabilities"],
+              ["/blog", "Technical articles"],
+            ].map(([href, label]) => (
+              <li key={href}>
+                <Link href={href} className="text-sm font-semibold text-[var(--color-accent)] hover:underline">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </SiteContainer>
       </section>
 

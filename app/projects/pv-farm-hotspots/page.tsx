@@ -6,6 +6,8 @@ import ServiceHero from "@/app/components/service/ServiceHero"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
+import { ProjectNotes, ProjectSidebar } from "@/app/components/project/ProjectContext"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -31,6 +33,7 @@ const ROW = cloudinaryUrl(
 export default function PvProjectPage() {
   return (
     <>
+      <WithRail sidebar={<ProjectSidebar slug="pv-farm-hotspots" />}>
       <ServiceHero
         parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Thermal Documentation"
@@ -49,9 +52,10 @@ export default function PvProjectPage() {
         <SiteContainer>
           <ProjectFacts
             items={[
-              { label: "Category", value: "Thermal Documentation" },
               { label: "Location", value: "Greater San Antonio, TX" },
-              { label: "Capture method", value: "Thermal and RGB aerial capture" },
+              { label: "Setting", value: "Exterior photovoltaic array" },
+              { label: "Capture type", value: "Aerial thermal and RGB" },
+              { label: "Outputs", value: "Thermal imagery, RGB context, location notes" },
               { label: "Asset", value: "Photovoltaic array" },
             ]}
           />
@@ -168,6 +172,8 @@ export default function PvProjectPage() {
         </SiteContainer>
       </section>
 
+      <ProjectNotes slug="pv-farm-hotspots" />
+
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
         <SiteContainer>
           <SectionHeader eyebrow="Continue" title="Related service and reading" />
@@ -188,6 +194,7 @@ export default function PvProjectPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta
         title="Need thermal documentation?"

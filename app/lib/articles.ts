@@ -586,6 +586,10 @@ export function getRelatedArticles(slugs: string[]) {
   return slugs.map((slug) => bySlug.get(slug)).filter((article): article is Article => Boolean(article))
 }
 
+export function getArticlesByCategory(category: ArticleCategory) {
+  return getListedArticles().filter((article) => article.category === category)
+}
+
 export function formatArticleDate(iso: string) {
   return new Intl.DateTimeFormat("en-US", {
     month: "long",

@@ -7,6 +7,9 @@ import ThermalNav from "@/app/components/service/ThermalNav"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
+import ContextSidebar from "@/app/components/practice/ContextSidebar"
+import DepthBlock from "@/app/components/practice/DepthBlock"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -79,6 +82,24 @@ export default function ThermalDocumentationPage() {
         }}
       />
 
+      <WithRail
+        sidebar={
+          <ContextSidebar
+            articles={[
+              { href: "/blog/thermal101_blog", title: "What Thermal Imaging Shows and Does Not" },
+              { href: "/blog/solar-thermal-anomalies-drone-based-pv-inspections", title: "Solar Thermal Anomalies in PV Inspections" },
+              { href: "/blog/thermal-reporting-standards-iec-62446-3", title: "Thermal Reporting Standards in Solar PV Inspections" },
+            ]}
+            services={[{ href: "/services/mapping", title: "Mapping & Photogrammetry" }]}
+            projects={[{ href: "/projects/pv-farm-hotspots", title: "Solar PV Thermal Documentation" }]}
+            resources={[
+              { href: "/thermal/method", title: "Thermal method" },
+              { href: "/thermal/case-studies", title: "Thermal case studies" },
+              { href: "/capabilities#thermal-imaging", title: "Thermal imaging capability" },
+            ]}
+          />
+        }
+      >
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
         <SiteContainer className="max-w-3xl">
           <p className="text-base leading-relaxed text-[var(--color-muted)] md:text-lg">
@@ -94,6 +115,24 @@ export default function ThermalDocumentationPage() {
           </div>
         </SiteContainer>
       </section>
+
+      <DepthBlock eyebrow="Record" title="What thermal imagery records">
+        <p>
+          A thermal camera records apparent surface temperature, not a diagnosis. Where the sensor is radiometric, the file can retain temperature data for later review instead of only a colorized picture. That data still depends on emissivity, reflections, distance, and the conditions at the time of capture.
+        </p>
+        <p>
+          RGB frames are part of the record because a temperature pattern is hard to relocate without the visual asset. Site and environment conditions—sun, load, wind, recent rain, and operating state—belong with the imagery when they affect how the pattern should be read. SterFlies documents those conditions when they are known at capture. It does not infer a cause from the pattern.
+        </p>
+      </DepthBlock>
+
+      <DepthBlock eyebrow="Use" title="Where thermal documentation is legitimate" surface>
+        <p>
+          Photovoltaic inspection is the most developed SterFlies thermal application: module and string patterns, paired with RGB and location context, for later qualified review. Electrical equipment, building envelopes, roofs, and industrial assets can be documented when temperature variation is relevant and the surface is accessible. Those are supporting records for a qualified reviewer, not electrical, moisture, or mechanical conclusions.
+        </p>
+        <p>
+          IEC 62446-3 is a reporting reference for photovoltaic thermal inspections. It is not a general protocol for every thermal job. Reporting for other assets follows the scope: organized thermal and RGB stills, location, and the conditions noted at capture.
+        </p>
+      </DepthBlock>
 
       <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
@@ -164,6 +203,7 @@ export default function ThermalDocumentationPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta
         title="Need thermal documentation?"

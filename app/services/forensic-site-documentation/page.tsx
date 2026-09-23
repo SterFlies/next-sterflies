@@ -7,6 +7,9 @@ import ProcessSteps from "@/app/components/service/ProcessSteps"
 import ProjectProof from "@/app/components/service/ProjectProof"
 import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
+import ContextSidebar from "@/app/components/practice/ContextSidebar"
+import DepthBlock from "@/app/components/practice/DepthBlock"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -44,6 +47,37 @@ export default function ForensicMappingPage() {
         }}
       />
 
+      <WithRail
+        sidebar={
+          <ContextSidebar
+            articles={[
+              {
+                href: "/blog/drone-mapping-forensic-site-investigations",
+                title: "How Drone Mapping Can Support Forensic Site Investigations",
+              },
+              {
+                href: "/blog/forensic-mapping-incident-investigations",
+                title: "Forensic Mapping for Incident Investigations",
+              },
+              {
+                href: "/blog/what-is-forensic-site-documentation",
+                title: "What Is Forensic Site Documentation",
+              },
+              {
+                href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog",
+                title: "Why Site Conditions Should Be Documented Before They Are Altered",
+              },
+            ]}
+            services={[{ href: "/services/mapping", title: "Mapping & Photogrammetry" }]}
+            projects={[
+              {
+                href: "/projects/iaq-mold-documentation",
+                title: "IAQ & Mold Existing Conditions Documentation",
+              },
+            ]}
+          />
+        }
+      >
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
           <SectionHeader
@@ -53,6 +87,15 @@ export default function ForensicMappingPage() {
           />
         </SiteContainer>
       </section>
+
+      <DepthBlock eyebrow="Context" title="Why spatial context matters">
+        <p>
+          A photograph records one viewpoint. An investigation, claim, or design review usually needs something else: how a location sat in relation to access, equipment, adjoining rooms, or the rest of the site. Once equipment is moved or a surface is repaired, that relationship is gone unless it was recorded as a spatial whole.
+        </p>
+        <p>
+          Forensic mapping exists to keep that whole available. SterFlies captures and organizes the record. It does not determine causation, responsibility, or the meaning of a condition. Those conclusions remain with the qualified professional reviewing the work.
+        </p>
+      </DepthBlock>
 
       <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
@@ -149,6 +192,24 @@ export default function ForensicMappingPage() {
         </SiteContainer>
       </section>
 
+      <DepthBlock eyebrow="Measurement" title="Measurement considerations" surface>
+        <p>
+          Distances, areas, and volumes can be taken from an orthomosaic, point cloud, or model when the capture was planned for measurement. Overlap, surface texture, occlusions, and any control used for the engagement all affect what can be measured later. A number from the model should be read with that method in mind.
+        </p>
+        <p>
+          Photogrammetric measurement is not a licensed land survey, an as-built certification, or a stamped engineering product. When a project requires a surveyor, engineer, or other licensed measurement, that work stays with the licensed professional. The SterFlies record can still provide context around it.
+        </p>
+      </DepthBlock>
+
+      <DepthBlock eyebrow="Field conditions" title="Working around site constraints">
+        <p>
+          Sites limit what can be captured. Active work, restricted airspace, weather, interior lighting, reflective surfaces, and access controls all change the plan. The useful response is to state what was reachable and what was not, then choose a method that still preserves the conditions the review needs.
+        </p>
+        <p>
+          Aerial coverage is often the right overview and the wrong interior record. Ground-based capture is often the right room record and the wrong site map. Combining them is a scope decision, not a default package. Flight limits, scan line of sight, and safety requirements are planned before capture, not repaired afterward.
+        </p>
+      </DepthBlock>
+
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
           <SectionHeader
@@ -170,6 +231,15 @@ export default function ForensicMappingPage() {
         </SiteContainer>
       </section>
 
+      <DepthBlock eyebrow="Applications" title="How the record is used">
+        <p>
+          Incident and investigation work uses the record to preserve layout, access, and surrounding conditions before a scene is cleared. Construction and industrial work uses it to keep exposed conditions, staging, and site layout available after they are covered or changed. Industrial hygiene and IAQ work uses interior continuity and exterior context so later sampling review can be located in the building, without SterFlies performing the assessment.
+        </p>
+        <p>
+          In each case the documentation supports someone else’s professional judgment. Expert, insurance, and facility reviewers can use the spatial record when photographs and notes no longer reconstruct the site. The record does not replace that review.
+        </p>
+      </DepthBlock>
+
       <section className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
           <SectionHeader eyebrow="Workflow" title="A documentation workflow" />
@@ -188,6 +258,15 @@ export default function ForensicMappingPage() {
           </p>
         </SiteContainer>
       </section>
+
+      <DepthBlock eyebrow="Limits" title="Professional interpretation and limitations" surface>
+        <p>
+          The practice preserves visible and spatial conditions. It does not determine accident causation, mold or IAQ conclusions, code compliance, structural adequacy, or legal responsibility. Annotations mark locations. They do not validate laboratory results or opinions placed beside them.
+        </p>
+        <p>
+          Operational work is conducted under an FAA Part 107 remote pilot certificate where aircraft are used, with OSHA 10 construction safety training and insured operations. Those credentials support field access and flight operations. They are not industrial-hygiene, engineering, or surveying licenses.
+        </p>
+      </DepthBlock>
 
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16 lg:py-20">
         <SiteContainer>
@@ -227,6 +306,7 @@ export default function ForensicMappingPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta />
     </>

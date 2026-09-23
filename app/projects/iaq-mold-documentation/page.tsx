@@ -7,6 +7,8 @@ import RelatedArticles from "@/app/components/service/RelatedArticles"
 import PageCta from "@/app/components/service/PageCta"
 import ProjectFacts from "@/app/components/project/ProjectFacts"
 import ProjectEmbed from "@/app/components/project/ProjectEmbed"
+import { ProjectNotes, ProjectSidebar } from "@/app/components/project/ProjectContext"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -41,6 +43,7 @@ const FIELD = cloudinaryUrl(
 export default function IaqProjectPage() {
   return (
     <>
+      <WithRail sidebar={<ProjectSidebar slug="iaq-mold-documentation" />}>
       <ServiceHero
         parent={{ href: "/projects", label: "Projects" }}
         eyebrow="Existing Conditions / Reality Capture"
@@ -54,9 +57,10 @@ export default function IaqProjectPage() {
         <SiteContainer>
           <ProjectFacts
             items={[
-              { label: "Category", value: "Existing Conditions / Reality Capture" },
               { label: "Location", value: "San Antonio Area, TX" },
-              { label: "Capture methods", value: "Matterport / terrestrial capture and exterior photogrammetry" },
+              { label: "Setting", value: "Interior and exterior" },
+              { label: "Capture type", value: "Terrestrial walkthrough and exterior photogrammetry" },
+              { label: "Outputs", value: "Walkthrough, exterior 3D model, annotated views" },
               { label: "Record type", value: "Demonstration project" },
             ]}
           />
@@ -229,6 +233,8 @@ export default function IaqProjectPage() {
         </SiteContainer>
       </section>
 
+      <ProjectNotes slug="iaq-mold-documentation" />
+
       <section className="border-b border-[var(--color-line)] bg-[var(--color-surface)] py-12 md:py-16">
         <SiteContainer>
           <SectionHeader eyebrow="Continue" title="Related service and reading" />
@@ -249,6 +255,7 @@ export default function IaqProjectPage() {
           />
         </SiteContainer>
       </section>
+      </WithRail>
 
       <PageCta />
     </>

@@ -120,8 +120,11 @@ export default function AboutPage() {
           ) : null}
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/contact">Discuss a Project</ButtonLink>
-            <ButtonLink href="/faq" variant="secondary">
-              Read the FAQ
+            <ButtonLink href="/blog" variant="secondary">
+              Read technical articles
+            </ButtonLink>
+            <ButtonLink href="/capabilities" variant="secondary">
+              View capabilities
             </ButtonLink>
           </div>
         </SiteContainer>

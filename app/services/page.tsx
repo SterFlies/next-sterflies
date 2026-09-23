@@ -5,6 +5,7 @@ import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
 import ServiceHero from "@/app/components/service/ServiceHero"
 import PageCta from "@/app/components/service/PageCta"
+import { applications } from "@/app/lib/practice"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -233,6 +234,26 @@ export default function ServicesPage() {
               className="aspect-[16/10] w-full object-cover object-left"
             />
           </figure>
+        </SiteContainer>
+      </section>
+
+      <section className="border-b border-[var(--color-line)] py-12 md:py-16">
+        <SiteContainer>
+          <SectionHeader
+            eyebrow="Applications"
+            title="Where the services are used"
+            description="Applications are professional contexts. They route into an existing service, project, or article."
+          />
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2">
+            {applications.map((item) => (
+              <li key={item.title} className="border-t border-[var(--color-ink)] pt-4">
+                <Link href={item.href} className="text-base font-semibold hover:text-[var(--color-accent)]">
+                  {item.title}
+                </Link>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--color-muted)]">{item.text}</p>
+              </li>
+            ))}
+          </ul>
         </SiteContainer>
       </section>
 

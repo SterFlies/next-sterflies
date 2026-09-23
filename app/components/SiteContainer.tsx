@@ -8,7 +8,7 @@ export default function SiteContainer({
   className?: string
 }) {
   return (
-    <div className={`mx-auto w-full max-w-[80rem] px-[var(--page-pad-x)] ${className}`}>
+    <div className={`site-container mx-auto w-full max-w-[80rem] px-[var(--page-pad-x)] ${className}`}>
       {children}
     </div>
   )

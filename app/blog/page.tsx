@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import SiteContainer from "@/app/components/SiteContainer"
+import ContextSidebar from "@/app/components/practice/ContextSidebar"
+import WithRail from "@/app/components/practice/WithRail"
 import { cloudinaryUrl, pageMetadata } from "@/app/config/site"
 import {
   type Article,
@@ -66,12 +68,13 @@ const collections: {
   title: string
   lead: string
   rows: string[]
+  moreHref: string
   moreLabel: string
   reverse?: boolean
 }[] = [
   {
     id: "forensic-documentation",
-    eyebrow: "Forensic documentation",
+    eyebrow: "Forensic & incident documentation",
     title: "Forensic & Incident Documentation",
     lead: "forensic-mapping-incident-investigations",
     rows: [
@@ -80,47 +83,65 @@ const collections: {
       "why-site-conditions-should-be-documented-before-they-are-altered-blog",
       "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
       "chain-of-custody-digital-site-documentation-litigation",
+      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
+      "safety-investigations-fail-more-often-from-missing-context-than-missing-data",
+      "why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation",
     ],
-    moreLabel: "View forensic articles",
+    moreHref: "/services/forensic-site-documentation",
+    moreLabel: "Forensic mapping service",
   },
   {
-    id: "mapping-3d",
+    id: "mapping-photogrammetry",
     eyebrow: "Mapping and photogrammetry",
-    title: "Mapping & 3D",
+    title: "Mapping & Photogrammetry",
+    lead: "orthomosaic_blog",
+    rows: ["volumetric_blog", "topography_blog", "monthly-volumetric-reporting_blog"],
+    moreHref: "/services/mapping",
+    moreLabel: "Mapping & photogrammetry service",
+    reverse: true,
+  },
+  {
+    id: "reality-capture",
+    eyebrow: "Reality capture and 3D",
+    title: "Reality Capture & 3D",
     lead: "3d_model",
     rows: [
-      "orthomosaic_blog",
-      "volumetric_blog",
-      "topography_blog",
-      "monthly-volumetric-reporting_blog",
-      "construction-progress-monitoring-best-practices",
+      "rebuilding-reality-defensible-digital-site-environments",
+      "digital-evidence-3d-reality-capture-legal-disputes",
     ],
-    moreLabel: "View mapping articles",
-    reverse: true,
+    moreHref: "/capabilities#reality-capture",
+    moreLabel: "Reality capture capability",
   },
   {
     id: "thermal-documentation",
     eyebrow: "Thermal documentation",
     title: "Thermal Documentation",
-    lead: "solar-thermal-anomalies-drone-based-pv-inspections",
-    rows: ["thermal101_blog", "thermal-reporting-standards-iec-62446-3"],
-    moreLabel: "View thermal articles",
+    lead: "thermal101_blog",
+    rows: [
+      "solar-thermal-anomalies-drone-based-pv-inspections",
+      "thermal-reporting-standards-iec-62446-3",
+    ],
+    moreHref: "/thermal/Applications",
+    moreLabel: "Thermal documentation service",
+    reverse: true,
+  },
+  {
+    id: "construction-records",
+    eyebrow: "Construction and material records",
+    title: "Construction & Material Records",
+    lead: "construction-progress-monitoring-best-practices",
+    rows: ["documenting-site-conditions-for-construction-defect-litigation"],
+    moreHref: "/projects/65acresite",
+    moreLabel: "65-acre mapping project",
   },
   {
     id: "existing-conditions",
     eyebrow: "Existing conditions",
-    title: "Existing Conditions / Professional Review",
+    title: "Existing Conditions / Industrial Hygiene",
     lead: "why-existing-conditions-documentation-is-critical-for-ih-investigations",
-    rows: [
-      "documenting-mold-assessments-and-supporting-safety-decisions",
-      "documenting-site-conditions-for-construction-defect-litigation",
-      "digital-evidence-3d-reality-capture-legal-disputes",
-      "rebuilding-reality-defensible-digital-site-environments",
-      "you-dont-think-you-need-site-documentation-until-the-investigation-starts",
-      "safety-investigations-fail-more-often-from-missing-context-than-missing-data",
-      "why-photos-notes-and-memory-are-the-weakest-parts-of-a-safety-investigation",
-    ],
-    moreLabel: "View existing-conditions articles",
+    rows: ["documenting-mold-assessments-and-supporting-safety-decisions"],
+    moreHref: "/projects/iaq-mold-documentation",
+    moreLabel: "IAQ existing-conditions project",
     reverse: true,
   },
 ]
@@ -271,6 +292,21 @@ export default function BlogPage() {
         </SiteContainer>
       </section>
 
+      <WithRail
+        sidebar={
+          <ContextSidebar
+            topics={collections.map((collection) => ({
+              href: `#${collection.id}`,
+              title: collection.title,
+            }))}
+            services={[
+              { href: "/services/forensic-site-documentation", title: "Forensic Mapping & Site Documentation" },
+              { href: "/services/mapping", title: "Mapping & Photogrammetry" },
+              { href: "/thermal/Applications", title: "Thermal Documentation" },
+            ]}
+          />
+        }
+      >
       <section className="border-b border-[var(--color-line)]" aria-labelledby="explore-by-topic">
         <SiteContainer className="py-12 md:py-16">
           <h2 id="explore-by-topic" className="text-[1.65rem] font-semibold tracking-tight">
@@ -333,13 +369,13 @@ export default function BlogPage() {
                       ))}
                     </ul>
                   </div>
-                  <a
-                    href={`#${collection.id}`}
+                  <Link
+                    href={collection.moreHref}
                     className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
                   >
                     {collection.moreLabel}
                     <span aria-hidden="true"> →</span>
-                  </a>
+                  </Link>
                 </section>
               )
             })}
@@ -369,6 +405,7 @@ export default function BlogPage() {
           </ul>
         </SiteContainer>
       </section>
+      </WithRail>
     </div>
   )
 }

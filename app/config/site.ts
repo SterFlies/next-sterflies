@@ -49,17 +49,36 @@ export const primaryNav = [
   { href: "/contact", label: "Contact" },
 ] as const
 
-export const serviceNav = [
-  { href: "/services", label: "All services" },
+export const serviceLinks = [
   {
     href: "/services/forensic-site-documentation",
     label: "Forensic Mapping & Site Documentation",
   },
   { href: "/services/mapping", label: "Mapping & Photogrammetry" },
   { href: "/thermal/Applications", label: "Thermal Documentation" },
+] as const
+
+export const capabilityLinks = [
+  { href: "/capabilities#reality-capture", label: "Reality Capture" },
+  { href: "/capabilities#orthomosaics", label: "Orthomosaics" },
+  { href: "/capabilities#point-clouds", label: "3D / Point Clouds" },
+] as const
+
+export const serviceMenu = [
   {
-    href: "/services/forensic-site-documentation#exterior-interior",
-    label: "Reality Capture",
+    label: "Services",
+    items: [{ href: "/services", label: "All services" }, ...serviceLinks],
+  },
+  {
+    label: "Capabilities",
+    items: [
+      { href: "/capabilities", label: "All capabilities" },
+      { href: "/capabilities#reality-capture", label: "Reality Capture" },
+      {
+        href: "/capabilities#point-clouds",
+        label: "3D / Point Cloud Documentation",
+      },
+    ],
   },
 ] as const
 
