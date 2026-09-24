@@ -2,6 +2,7 @@ import Image from "next/image"
 import ArticleBreadcrumbs from "@/app/components/article/ArticleBreadcrumbs"
 import ArticleCta from "@/app/components/article/ArticleCta"
 import ArticleHeader from "@/app/components/article/ArticleHeader"
+import ArticleImagePlaceholder from "@/app/components/article/ArticleImagePlaceholder"
 import ArticleJsonLd from "@/app/components/article/ArticleJsonLd"
 import ArticleReferences from "@/app/components/article/ArticleReferences"
 import ArticleToc from "@/app/components/article/ArticleToc"
@@ -13,12 +14,16 @@ export default function ArticleLayout({
   slug,
   children,
   references,
+  referencesTitle,
   wordCount,
+  cta,
 }: {
   slug: string
   children: React.ReactNode
   references?: { href: string; label: string }[]
+  referencesTitle?: string
   wordCount?: number
+  cta?: { heading: string; body: string }
 }) {
   const article = getArticle(slug)
   const practice = articlePractice(article)
@@ -36,14 +41,23 @@ export default function ArticleLayout({
           </div>
 
           <figure className="article-figure-wide mt-8">
-            <Image
-              src={article.heroImage}
-              alt={article.heroAlt}
-              width={1600}
-              height={1000}
-              priority
-              className="h-auto w-full object-cover"
-            />
+            {article.heroPlaceholder ? (
+              <ArticleImagePlaceholder
+                label={article.heroPlaceholder.label}
+                detail={article.heroPlaceholder.detail}
+                alt={article.heroAlt}
+                bare
+              />
+            ) : (
+              <Image
+                src={article.heroImage}
+                alt={article.heroAlt}
+                width={1600}
+                height={1000}
+                priority
+                className="h-auto w-full object-cover"
+              />
+            )}
             {article.heroCaption ? (
               <figcaption className="article-caption">
                 {article.heroCaption}
@@ -53,9 +67,11 @@ export default function ArticleLayout({
 
           <div className="article-measure mt-10">
             <div className="article-body">{children}</div>
-            {references?.length ? <ArticleReferences items={references} /> : null}
+            {references?.length ? (
+              <ArticleReferences items={references} title={referencesTitle} />
+            ) : null}
             <div className="article-no-print">
-              <ArticleCta />
+              <ArticleCta heading={cta?.heading} body={cta?.body} />
             </div>
           </div>
         </div>

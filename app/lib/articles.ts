@@ -25,6 +25,14 @@ export type Article = {
   heroImage: string
   heroAlt: string
   heroCaption?: string
+  /** Shown in place of heroImage on the article page until a final image is supplied. */
+  heroPlaceholder?: { label: string; detail: string }
+  /** Document title when it should differ from the on-page headline. */
+  seoTitle?: string
+  ogTitle?: string
+  ogDescription?: string
+  /** Index and homepage card text when it should differ from the article dek. */
+  cardExcerpt?: string
   readingTime: string
   relatedSlugs: string[]
   featured?: boolean
@@ -34,6 +42,41 @@ export type Article = {
 }
 
 export const articles: Article[] = [
+  {
+    slug: "remote-site-review-spatial-context-reality-capture",
+    title:
+      "Remote Site Review After Conditions Change: Preserving Spatial Context with Interactive Reality Capture",
+    seoTitle: "Remote Site Review with Reality Capture | SterFlies",
+    description:
+      "Learn how interactive reality capture preserves spatial context for remote site review after physical conditions change, including interiors, exterior models, annotations, measurements, and professional collaboration.",
+    ogTitle: "Remote Site Review After Conditions Change",
+    ogDescription:
+      "How interactive site documentation can preserve orientation, spatial relationships, annotations, and reviewable context after the original environment changes.",
+    excerpt:
+      "Reality capture can preserve more than images. It can preserve the spatial relationships that allow qualified professionals to revisit and understand a documented site after the physical environment has changed.",
+    cardExcerpt:
+      "How interactive spatial documentation helps later reviewers understand rooms, equipment, structures, access, terrain, and other site relationships after original conditions have changed.",
+    category: "Reality Capture",
+    publishedAt: "2026-09-24",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1772565231/3606565c-d081-427a-af68-381048977316_tiuzbt.png",
+      1600
+    ),
+    heroAlt:
+      "Interactive reality capture site record used for remote review of documented site conditions and spatial relationships.",
+    heroCaption:
+      "A spatial site record can preserve relationships that remain reviewable after physical conditions change.",
+    readingTime: "18 min read",
+    relatedSlugs: [
+      "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "why-expert-witnesses-need-more-than-photos-to-analyze-a-site",
+      "forensic-mapping-incident-investigations",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
   {
     slug: "point-clouds-site-documentation",
     title:
@@ -665,6 +708,15 @@ export function getFeaturedArticle() {
   return articles.find((article) => article.featured) ?? getListedArticles()[0]
 }
 
+/** Newest listed articles, with the featured article separated for a lead slot. */
+export function getHomepageArticles(limit = 9) {
+  const featured = getFeaturedArticle()
+  const supporting = getListedArticles()
+    .filter((article) => article.slug !== featured.slug)
+    .slice(0, Math.max(0, limit - 1))
+  return { featured, supporting }
+}
+
 export function getRelatedArticles(slugs: string[]) {
   return slugs.map((slug) => bySlug.get(slug)).filter((article): article is Article => Boolean(article))
 }
@@ -685,15 +737,15 @@ export function formatArticleDate(iso: string) {
 export function articleMetadata(slug: string): Metadata {
   const article = getArticle(slug)
   const path = `/blog/${article.slug}`
-  const title = `${article.title} | SterFlies`
+  const title = article.seoTitle ?? `${article.title} | SterFlies`
   return {
     title,
     description: article.description,
     alternates: { canonical: path },
     robots: article.noindex ? { index: false, follow: true } : undefined,
     openGraph: {
-      title,
-      description: article.description,
+      title: article.ogTitle ?? title,
+      description: article.ogDescription ?? article.description,
       url: `${siteConfig.url}${path}`,
       siteName: siteConfig.name,
       type: "article",

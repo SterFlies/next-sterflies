@@ -106,3 +106,10 @@ export const projects: Project[] = [
     serviceLabel: "Mapping & Photogrammetry",
   },
 ]
+
+/** Presentation order only. Titles, images, and facts stay on each project record. */
+export function getHomepageProjects(featuredSlug = "iaq-mold-documentation") {
+  const featured = projects.find((project) => project.slug === featuredSlug) ?? projects[0]
+  const supporting = projects.filter((project) => project.slug !== featured.slug)
+  return { featured, supporting }
+}
