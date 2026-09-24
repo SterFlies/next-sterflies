@@ -21,6 +21,7 @@ const sidebars: Record<
 > = {
   "iaq-mold-documentation": {
     articles: [
+      { href: "/blog/exterior-photogrammetry-interior-reality-capture", title: "Combining Exterior Photogrammetry with Interior Reality Capture" },
       { href: "/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations", title: "Why Existing Conditions Documentation Is Critical for IH Investigations" },
       { href: "/blog/documenting-mold-assessments-and-supporting-safety-decisions", title: "Documenting Mold Assessments and Supporting Safety Decisions" },
       { href: "/blog/what-is-forensic-site-documentation", title: "What Is Forensic Site Documentation" },
@@ -30,6 +31,7 @@ const sidebars: Record<
   },
   "65acresite": {
     articles: [
+      { href: "/blog/rtk-ground-control-checkpoints-drone-mapping", title: "RTK, Ground Control, and Checkpoints" },
       { href: "/blog/orthomosaic_blog", title: "Understanding Orthomosaic Mapping" },
       { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Documentation" },
       { href: "/blog/volumetric_blog", title: "Volumetric Data from Photogrammetric Surfaces" },

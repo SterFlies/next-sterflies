@@ -170,6 +170,7 @@ export default function MappingProjectPage() {
           </p>
           <RelatedArticles
             items={[
+              { href: "/blog/rtk-ground-control-checkpoints-drone-mapping", title: "RTK, Ground Control, and Checkpoints" },
               { href: "/blog/orthomosaic_blog", title: "Orthomosaic Mapping" },
               { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Monitoring" },
               { href: "/blog/volumetric_blog", title: "Volumetric Data" },

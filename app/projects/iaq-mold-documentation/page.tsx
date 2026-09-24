@@ -248,6 +248,7 @@ export default function IaqProjectPage() {
           </p>
           <RelatedArticles
             items={[
+              { href: "/blog/exterior-photogrammetry-interior-reality-capture", title: "Combining Exterior Photogrammetry with Interior Reality Capture" },
               { href: "/blog/what-is-forensic-site-documentation", title: "What Is Forensic Site Documentation" },
               { href: "/blog/why-existing-conditions-documentation-is-critical-for-ih-investigations", title: "Why Existing Conditions Documentation Is Critical for IH Investigations" },
               { href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog", title: "Why Site Conditions Should Be Documented Before They Are Altered" },

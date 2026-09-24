@@ -44,11 +44,11 @@ export default function MappingPage() {
         sidebar={
           <ContextSidebar
             articles={[
+              { href: "/blog/point-clouds-site-documentation", title: "Point Clouds for Site Documentation" },
+              { href: "/blog/rtk-ground-control-checkpoints-drone-mapping", title: "RTK, Ground Control, and Checkpoints" },
               { href: "/blog/orthomosaic_blog", title: "Understanding Orthomosaic Mapping" },
               { href: "/blog/3d_model", title: "Exploring Interactive 3D Models" },
               { href: "/blog/volumetric_blog", title: "Volumetric Data from Photogrammetric Surfaces" },
-              { href: "/blog/topography_blog", title: "Understanding Topographic Maps" },
-              { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Documentation" },
             ]}
             services={[{ href: "/services/forensic-site-documentation", title: "Forensic Mapping & Site Documentation" }]}
             projects={[
@@ -213,11 +213,12 @@ export default function MappingPage() {
           <SectionHeader eyebrow="Articles" title="Related reading" />
           <RelatedArticles
             items={[
+              { href: "/blog/point-clouds-site-documentation", title: "Point Clouds for Site Documentation" },
+              { href: "/blog/rtk-ground-control-checkpoints-drone-mapping", title: "RTK, Ground Control, and Checkpoints" },
               { href: "/blog/orthomosaic_blog", title: "Orthomosaic Mapping" },
               { href: "/blog/3d_model", title: "3D Models" },
               { href: "/blog/volumetric_blog", title: "Volumetric Data" },
               { href: "/blog/topography_blog", title: "Topographic Maps" },
-              { href: "/blog/construction-progress-monitoring-best-practices", title: "Construction Progress Monitoring" },
             ]}
           />
         </SiteContainer>

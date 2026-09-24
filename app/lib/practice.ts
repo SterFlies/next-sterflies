@@ -59,6 +59,7 @@ const articlePracticeOverrides: Record<
   { service?: PracticeLink; project?: PracticeLink }
 > = {
   "3d_model": { project: homeProject },
+  "point-clouds-site-documentation": { service: mappingService, project: siteProject },
   "documenting-site-conditions-for-construction-defect-litigation": {
     service: forensicService,
     project: homeProject,
@@ -157,6 +158,7 @@ export const capabilities: Capability[] = [
     links: [
       { href: "/services/mapping", title: "Mapping & Photogrammetry" },
       { href: "/blog/3d_model", title: "Exploring Interactive 3D Models" },
+      { href: "/blog/rtk-ground-control-checkpoints-drone-mapping", title: "RTK, Ground Control, and Checkpoints" },
     ],
   },
   {
@@ -171,6 +173,7 @@ export const capabilities: Capability[] = [
       { href: "/services/forensic-site-documentation#exterior-interior", title: "Aerial and ground-based capture" },
       { href: "/projects/iaq-mold-documentation", title: "IAQ & Mold Existing Conditions" },
       { href: "/blog/rebuilding-reality-defensible-digital-site-environments", title: "Creating Reviewable Digital Site Records" },
+      { href: "/blog/exterior-photogrammetry-interior-reality-capture", title: "Exterior Photogrammetry and Interior Reality Capture" },
     ],
   },
   {
@@ -183,6 +186,7 @@ export const capabilities: Capability[] = [
       "Point spacing, occlusions, and control determine what can be measured. The file does not certify accuracy beyond the method used for that engagement.",
     links: [
       { href: "/services/mapping", title: "Mapping & Photogrammetry" },
+      { href: "/blog/point-clouds-site-documentation", title: "Point Clouds for Site Documentation" },
       { href: "/blog/3d_model", title: "Exploring Interactive 3D Models" },
     ],
   },

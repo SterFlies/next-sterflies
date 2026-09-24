@@ -95,7 +95,12 @@ const collections: {
     eyebrow: "Mapping and photogrammetry",
     title: "Mapping & Photogrammetry",
     lead: "orthomosaic_blog",
-    rows: ["volumetric_blog", "topography_blog", "monthly-volumetric-reporting_blog"],
+    rows: [
+      "rtk-ground-control-checkpoints-drone-mapping",
+      "volumetric_blog",
+      "topography_blog",
+      "monthly-volumetric-reporting_blog",
+    ],
     moreHref: "/services/mapping",
     moreLabel: "Mapping & photogrammetry service",
     reverse: true,
@@ -106,6 +111,8 @@ const collections: {
     title: "Reality Capture & 3D",
     lead: "3d_model",
     rows: [
+      "point-clouds-site-documentation",
+      "exterior-photogrammetry-interior-reality-capture",
       "rebuilding-reality-defensible-digital-site-environments",
       "digital-evidence-3d-reality-capture-legal-disputes",
     ],

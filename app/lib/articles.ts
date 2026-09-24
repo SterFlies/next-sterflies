@@ -35,6 +35,89 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "point-clouds-site-documentation",
+    title:
+      "Point Clouds for Site Documentation: What They Are, What You Can Measure, and Their Limitations",
+    description:
+      "What a photogrammetric point cloud contains, how it differs from a mesh and an orthomosaic, and why any measurement still depends on the capture, the control, and the surfaces the camera could see.",
+    excerpt: "A point cloud samples visible surfaces. It is not a picture, a mesh, or a survey.",
+    category: "Reality Capture",
+    publishedAt: "2026-09-23",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1770228255/construction_model_point_cloud_zjshmk.webp",
+      1600
+    ),
+    heroAlt: "Photogrammetric point cloud of a documented construction site",
+    heroCaption:
+      "A photogrammetric point cloud samples visible surfaces so later review can look at geometry, not only a single photograph.",
+    readingTime: "9 min read",
+    relatedSlugs: [
+      "3d_model",
+      "orthomosaic_blog",
+      "rtk-ground-control-checkpoints-drone-mapping",
+      "volumetric_blog",
+      "forensic-mapping-incident-investigations",
+      "exterior-photogrammetry-interior-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
+    slug: "rtk-ground-control-checkpoints-drone-mapping",
+    title: "RTK, Ground Control, and Checkpoints: What They Actually Mean for Drone Mapping Accuracy",
+    description:
+      "Why mapping accuracy is not one number, what RTK and ground control do, and why a checkpoint is a test rather than a guarantee.",
+    excerpt: "RTK, control, and checkpoints answer different questions. None of them is a universal accuracy.",
+    category: "Mapping & Photogrammetry",
+    publishedAt: "2026-09-23",
+    author: "Jerome Sterling",
+    heroImage: "/STERFLIES_TOPODEMO.png",
+    heroAlt: "Photogrammetric terrain surface used to review mapped site context",
+    heroCaption:
+      "A mapped surface is only as well placed as the capture, the control, and the checks used for that project.",
+    readingTime: "10 min read",
+    relatedSlugs: [
+      "point-clouds-site-documentation",
+      "orthomosaic_blog",
+      "volumetric_blog",
+      "topography_blog",
+      "3d_model",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
+    slug: "exterior-photogrammetry-interior-reality-capture",
+    title: "Combining Exterior Photogrammetry with Interior Reality Capture",
+    description:
+      "Why professional site documentation often needs both an exterior photogrammetric record and an interior walkthrough, and what those datasets still do not share.",
+    excerpt: "An aerial model and an interior walkthrough preserve different parts of the same site.",
+    category: "Reality Capture",
+    publishedAt: "2026-09-23",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1769103746/ext-int3D_h28l56.jpg",
+      1600
+    ),
+    heroAlt: "Exterior model and interior floor record of a documented building",
+    heroCaption:
+      "Exterior photogrammetry and an interior walkthrough preserve different parts of the same site.",
+    readingTime: "7 min read",
+    relatedSlugs: [
+      "what-is-forensic-site-documentation",
+      "point-clouds-site-documentation",
+      "forensic-mapping-incident-investigations",
+      "why-existing-conditions-documentation-is-critical-for-ih-investigations",
+      "3d_model",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "drone-mapping-forensic-site-investigations",
     title: "How Drone Mapping Can Support Forensic Site Investigations",
     description:

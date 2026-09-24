@@ -64,6 +64,10 @@ export default function ForensicMappingPage() {
                 title: "What Is Forensic Site Documentation",
               },
               {
+                href: "/blog/exterior-photogrammetry-interior-reality-capture",
+                title: "Combining Exterior Photogrammetry with Interior Reality Capture",
+              },
+              {
                 href: "/blog/why-site-conditions-should-be-documented-before-they-are-altered-blog",
                 title: "Why Site Conditions Should Be Documented Before They Are Altered",
               },
@@ -297,6 +301,7 @@ export default function ForensicMappingPage() {
           <SectionHeader eyebrow="Articles" title="Related reading" />
           <RelatedArticles
             items={[
+              { href: "/blog/exterior-photogrammetry-interior-reality-capture", title: "Combining Exterior Photogrammetry with Interior Reality Capture" },
               { href: "/blog/forensic-mapping-incident-investigations", title: "Forensic Mapping for Incident Investigations" },
               { href: "/blog/drone-mapping-forensic-site-investigations", title: "How Drone Mapping Can Support Forensic Site Investigations" },
               { href: "/blog/what-is-forensic-site-documentation", title: "What Is Forensic Site Documentation" },
