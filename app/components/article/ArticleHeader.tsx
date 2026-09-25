@@ -6,7 +6,7 @@ export default function ArticleHeader({ article }: { article: Article }) {
     <header className="article-header">
       <p className="article-kicker">{article.category}</p>
       <h1 className="article-title">{article.title}</h1>
-      <p className="article-dek">{article.excerpt}</p>
+      <p className="article-dek">{article.subtitle ?? article.excerpt}</p>
       <p className="article-byline">By {article.author}</p>
       <p className="article-meta">
         Published <time dateTime={article.publishedAt}>{formatArticleDate(article.publishedAt)}</time>

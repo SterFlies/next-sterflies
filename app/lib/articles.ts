@@ -18,6 +18,8 @@ export type Article = {
   title: string
   description: string
   excerpt: string
+  /** On-page line under the title when it should differ from the excerpt. */
+  subtitle?: string
   category: ArticleCategory
   publishedAt: string
   updatedAt?: string
@@ -42,6 +44,42 @@ export type Article = {
 }
 
 export const articles: Article[] = [
+  {
+    slug: "documenting-excavation-trenching-incidents-before-site-changes",
+    title: "Documenting Excavation and Trenching Incidents Before the Site Changes",
+    seoTitle: "Documenting Excavation and Trenching Incidents | SterFlies",
+    subtitle:
+      "Preserving excavation geometry, surrounding conditions, and spatial relationships for later professional review",
+    description:
+      "Learn how spatial documentation can preserve trench geometry, equipment, access, spoil, water, protective systems, and site context before conditions change.",
+    ogTitle: "Documenting Excavation and Trenching Incidents Before the Site Changes",
+    ogDescription:
+      "How technical field documentation can preserve excavation geometry, equipment locations, access, protective systems, and surrounding site context before the physical scene changes.",
+    excerpt:
+      "Excavation scenes can change quickly after an incident. Structured photography, mapping, 3D capture, and site context can preserve visible conditions for later professional review.",
+    cardExcerpt:
+      "Why trench geometry, access, equipment, spoil, protective systems, and surrounding site context should be documented while the physical scene still exists.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-09-25",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790350981/trench-exca-hero_vngsqq.png",
+      1600
+    ),
+    heroAlt:
+      "Three dimensional excavation site documentation showing an open trench, protective system, equipment, spoil, access, and surrounding work area.",
+    heroCaption:
+      "Excavation documentation is most useful when the trench and the surrounding work area are preserved as one physical scene.",
+    readingTime: "14 min read",
+    relatedSlugs: [
+      "forensic-mapping-incident-investigations",
+      "why-site-conditions-should-be-documented-before-they-are-altered-blog",
+      "drone-mapping-forensic-site-investigations",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
   {
     slug: "remote-site-review-spatial-context-reality-capture",
     title:
