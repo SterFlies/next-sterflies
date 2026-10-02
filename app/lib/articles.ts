@@ -45,6 +45,39 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "documenting-crane-rigging-incident-sites-reality-capture",
+    title: "Documenting Crane and Rigging Incident Sites with Reality Capture",
+    seoTitle: "Crane and Rigging Incident Site Documentation | SterFlies",
+    subtitle:
+      "Preserving crane setup, support conditions, work zone geometry, and the larger site before it changes",
+    description:
+      "How aerial mapping, 3D reality capture, photography, and measurements can preserve crane setup, work zone geometry, ground conditions, and surrounding site context for later expert review.",
+    ogTitle: "Documenting Crane and Rigging Incident Sites with Reality Capture",
+    ogDescription:
+      "How aerial mapping, 3D reality capture, photography, and measurements can preserve crane setup, work zone geometry, ground conditions, and surrounding site context for later expert review.",
+    excerpt:
+      "Preserving crane setup, support conditions, work zone geometry, and the larger site before it changes.",
+    cardExcerpt:
+      "How aerial mapping, photography, and 3D capture can preserve crane setup, work zone geometry, and surrounding site context before conditions change.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-09-30",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790887485/article1_visual_1_hero_clean_qcbgwe.png",
+      1600
+    ),
+    heroAlt: "3D reality capture view of an active construction site with a tower crane",
+    readingTime: "9 min read",
+    relatedSlugs: [
+      "forensic-mapping-incident-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+      "point-clouds-site-documentation",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-excavation-trenching-incidents-before-site-changes",
     title: "Documenting Excavation and Trenching Incidents Before the Site Changes",
     seoTitle: "Documenting Excavation and Trenching Incidents | SterFlies",
