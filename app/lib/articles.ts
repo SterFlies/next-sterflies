@@ -45,6 +45,39 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "matterport-3d-scanning-safety-investigations",
+    title: "Matterport and 3D Scanning in Safety Investigations",
+    seoTitle: "Matterport and 3D Scanning in Safety Investigations | SterFlies",
+    subtitle:
+      "How spatial capture preserves existing conditions, supports technical review, and helps investigative teams understand complex work sites",
+    description:
+      "How spatial capture preserves existing conditions, supports technical review, and helps investigative teams understand complex work sites.",
+    ogTitle: "Matterport and 3D Scanning in Safety Investigations",
+    ogDescription:
+      "How spatial capture preserves existing conditions, supports technical review, and helps investigative teams understand complex work sites.",
+    excerpt:
+      "How spatial capture preserves existing conditions, supports technical review, and helps investigative teams understand complex work sites.",
+    cardExcerpt:
+      "How spatial capture preserves existing conditions and helps investigative teams understand complex work sites.",
+    category: "Reality Capture",
+    publishedAt: "2026-10-16",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790966269/Massive_manufacturing_plant_02_Pro3_1960x1080px_d9uhto.png",
+      1600
+    ),
+    heroAlt: "Matterport Pro3 reality capture of a large industrial manufacturing facility.",
+    readingTime: "9 min read",
+    relatedSlugs: [
+      "remote-site-review-spatial-context-reality-capture",
+      "documenting-crane-rigging-incident-sites-reality-capture",
+      "point-clouds-site-documentation",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-crane-rigging-incident-sites-reality-capture",
     title: "Documenting Crane and Rigging Incident Sites with Reality Capture",
     seoTitle: "Crane and Rigging Incident Site Documentation | SterFlies",
