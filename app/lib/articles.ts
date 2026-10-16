@@ -78,6 +78,40 @@ export const articles: Article[] = [
     tier: "core",
   },
   {
+    slug: "reality-capture-industrial-hygiene-field-investigations",
+    title: "How Reality Capture Can Strengthen Industrial Hygiene Field Investigations",
+    seoTitle: "Reality Capture for Industrial Hygiene Field Investigations | SterFlies",
+    subtitle:
+      "Using site documentation to preserve sampling locations, work conditions, ventilation context, and the physical layout around an exposure assessment",
+    description:
+      "How Matterport, thermal imaging, mapped photography, and spatial documentation can preserve sampling locations, work areas, ventilation context, and site conditions for industrial hygiene review.",
+    ogTitle: "How Reality Capture Can Strengthen Industrial Hygiene Field Investigations",
+    ogDescription:
+      "How Matterport, thermal imaging, mapped photography, and spatial documentation can preserve sampling locations, work areas, ventilation context, and site conditions for industrial hygiene review.",
+    excerpt:
+      "Using site documentation to preserve sampling locations, work conditions, ventilation context, and the physical layout around an exposure assessment.",
+    cardExcerpt:
+      "How spatial documentation can preserve sampling locations, work areas, ventilation context, and site conditions for later industrial hygiene review.",
+    category: "Industrial Hygiene / Existing Conditions",
+    publishedAt: "2026-09-28",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790966293/Screenshot_2026-01-08_145836_y28eaf.png",
+      1600
+    ),
+    heroAlt:
+      "Matterport interior reality capture showing the layout of a residential or indoor assessment space",
+    readingTime: "8 min read",
+    relatedSlugs: [
+      "why-existing-conditions-documentation-is-critical-for-ih-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+      "thermal101_blog",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-excavation-trenching-incidents-before-site-changes",
     title: "Documenting Excavation and Trenching Incidents Before the Site Changes",
     seoTitle: "Documenting Excavation and Trenching Incidents | SterFlies",
