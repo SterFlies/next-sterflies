@@ -45,6 +45,38 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "when-to-use-drones-workplace-safety-investigations",
+    title: "When Drones Belong in a Workplace Safety Investigation",
+    seoTitle: "When to Use Drones in Workplace Safety Investigations | SterFlies",
+    subtitle: "Knowing when an aerial view helps—and when it creates more problems.",
+    description:
+      "When should safety investigators use drones? Learn how aerial documentation supports incident investigations, reduces hazardous access, and fits into fieldwork.",
+    ogTitle: "When to Use Drones in Workplace Safety Investigations",
+    ogDescription:
+      "When should safety investigators use drones? Learn how aerial documentation supports incident investigations, reduces hazardous access, and fits into fieldwork.",
+    excerpt: "Knowing when an aerial view helps—and when it creates more problems.",
+    cardExcerpt:
+      "A practical look at when drone technology belongs in workplace incident investigations, including safety considerations, deployment planning, and regulatory requirements.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-10-20",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1790887485/article1_visual_1_hero_clean_qcbgwe.png",
+      1600
+    ),
+    heroAlt:
+      "Aerial view of a multistory construction site showing elevated work areas, equipment, and surrounding structures.",
+    readingTime: "6 min read",
+    relatedSlugs: [
+      "drone-mapping-forensic-site-investigations",
+      "forensic-mapping-incident-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "matterport-3d-scanning-safety-investigations",
     title: "Matterport and 3D Scanning in Safety Investigations",
     seoTitle: "Matterport and 3D Scanning in Safety Investigations | SterFlies",
