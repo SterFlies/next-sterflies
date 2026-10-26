@@ -153,6 +153,11 @@ export default function Page() {
         added after capture. Record known changes, areas that were inaccessible, and anything that
         limits interpretation.
       </p>
+      <ArticleFigure
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1793044143/Screenshot_2026-10-26_144737_fzjuge.png"
+        alt="Three dimensional industrial turbine scan with an equipment annotation identifying Turbine 23A and displaying maintenance information."
+        caption="An example of industrial equipment documented within a three dimensional environment, with an annotation identifying the machinery and associated maintenance information."
+      />
       <p>
         OSHA’s incident investigation guide discusses documenting conditions through photographs,
         video, and other records. Those basic practices remain important even when a project includes
