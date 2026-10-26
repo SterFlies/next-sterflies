@@ -45,6 +45,38 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "documenting-industrial-machinery-after-workplace-incident",
+    title: "Documenting Industrial Machinery After a Workplace Incident",
+    seoTitle: "Documenting Industrial Machinery After an Incident | SterFlies",
+    subtitle: "What investigators need to see, record, and verify",
+    description:
+      "Learn how photography, 3D reality capture, and spatial documentation support industrial machinery investigations involving guarding, controls, and equipment conditions.",
+    ogTitle: "Documenting Industrial Machinery After an Incident",
+    ogDescription:
+      "Learn how photography, 3D reality capture, and spatial documentation support industrial machinery investigations involving guarding, controls, and equipment conditions.",
+    excerpt: "What investigators need to see, record, and verify",
+    cardExcerpt:
+      "Industrial machinery investigations require careful documentation of equipment, protective features, and surrounding work environments. Learn how technical documentation supports subsequent investigative review.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-10-23",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1793027512/Screenshot_2026-10-26_101115_n7doh2.png",
+      1600
+    ),
+    heroAlt:
+      "Large industrial manufacturing facility showing production equipment, machinery arrangements, and surrounding work areas.",
+    readingTime: "6 min read",
+    relatedSlugs: [
+      "forensic-mapping-incident-investigations",
+      "matterport-3d-scanning-safety-investigations",
+      "point-clouds-site-documentation",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "when-to-use-drones-workplace-safety-investigations",
     title: "When Drones Belong in a Workplace Safety Investigation",
     seoTitle: "When to Use Drones in Workplace Safety Investigations | SterFlies",
