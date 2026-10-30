@@ -77,6 +77,38 @@ export const articles: Article[] = [
     tier: "core",
   },
   {
+    slug: "documenting-confined-space-incident-scenes",
+    title: "Documenting Confined Space Incident Scenes: What Reality Capture Can Preserve",
+    seoTitle: "Confined Space Incident Documentation and Reality Capture | SterFlies",
+    description:
+      "Explore how 3D reality capture can document confined space incident scenes, including access points, internal geometry, equipment locations, and investigative limitations.",
+    ogTitle: "Confined Space Incident Documentation and Reality Capture",
+    ogDescription:
+      "Explore how 3D reality capture can document confined space incident scenes, including access points, internal geometry, equipment locations, and investigative limitations.",
+    excerpt:
+      "Confined space investigations often involve restricted access and complex interior environments. Learn how reality capture can help document physical conditions for technical review.",
+    cardExcerpt:
+      "Confined space investigations can involve restricted access, limited visibility, and complex interior environments. Learn how reality capture can support technical site documentation.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-10-27",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1793379496/confined_-_hero_bfvf43.jpg",
+      1600
+    ),
+    heroAlt:
+      "Industrial confined space entry showing restricted access to an enclosed industrial environment.",
+    readingTime: "8 min read",
+    relatedSlugs: [
+      "documenting-industrial-machinery-after-workplace-incident",
+      "matterport-3d-scanning-safety-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-industrial-machinery-after-workplace-incident",
     title: "Documenting Industrial Machinery After a Workplace Incident",
     seoTitle: "Documenting Industrial Machinery After an Incident | SterFlies",
