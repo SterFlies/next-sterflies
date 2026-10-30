@@ -8,6 +8,7 @@ export const articleCategories = [
   "Thermal Documentation",
   "Construction Documentation",
   "Industrial Hygiene / Existing Conditions",
+  "Company News",
 ] as const
 
 export type ArticleCategory = (typeof articleCategories)[number]
@@ -44,6 +45,37 @@ export type Article = {
 }
 
 export const articles: Article[] = [
+  {
+    slug: "sterflies-joins-spear-lancaster",
+    title:
+      "SterFlies Joins Spear + Lancaster, Expanding Field Documentation and Reality Capture Capabilities",
+    seoTitle: "SterFlies Joins Spear + Lancaster | Company Announcement",
+    description:
+      "SterFlies is now a division of Spear + Lancaster, expanding forensic mapping, aerial documentation, thermal imaging, and reality capture services.",
+    ogTitle: "SterFlies Joins Spear + Lancaster | Company Announcement",
+    ogDescription:
+      "SterFlies is now a division of Spear + Lancaster, expanding forensic mapping, aerial documentation, thermal imaging, and reality capture services.",
+    excerpt:
+      "SterFlies is now a division of Spear + Lancaster, expanding forensic mapping, aerial documentation, thermal imaging, and reality capture services.",
+    category: "Company News",
+    publishedAt: "2026-10-30",
+    author: "SterFlies",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1793376894/image-collage-FM_rnnccz.png",
+      1600
+    ),
+    heroAlt:
+      "Collage of SterFlies field documentation, including aerial views, thermal imagery, and spatial capture.",
+    readingTime: "7 min read",
+    relatedSlugs: [
+      "matterport-3d-scanning-safety-investigations",
+      "drone-mapping-forensic-site-investigations",
+      "point-clouds-site-documentation",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
   {
     slug: "documenting-industrial-machinery-after-workplace-incident",
     title: "Documenting Industrial Machinery After a Workplace Incident",

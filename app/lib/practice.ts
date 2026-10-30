@@ -52,6 +52,7 @@ const categoryPractice: Record<
   "Thermal Documentation": { service: thermalService, project: pvProject },
   "Construction Documentation": { service: mappingService, project: homeProject },
   "Industrial Hygiene / Existing Conditions": { service: forensicService, project: iaqProject },
+  "Company News": { service: forensicService, project: siteProject },
 }
 
 const articlePracticeOverrides: Record<
