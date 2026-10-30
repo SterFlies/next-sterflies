@@ -10,7 +10,7 @@ import {
   type Article,
   type ArticleCategory,
   formatArticleDate,
-  getFeaturedArticle,
+  getFeaturedArticles,
   getListedArticles,
 } from "@/app/lib/articles"
 import { cloudinaryUrl } from "@/app/config/site"
@@ -112,13 +112,20 @@ export default function BlogArchive() {
   }, [listed, category, qParam])
 
   const searching = qParam.trim().length > 0
-  const featured = useMemo(() => {
-    if (searching || filtered.length === 0) return null
-    if (!category) return getFeaturedArticle()
-    return filtered.find((article) => article.featured) ?? filtered[0]
+  const featuredArticles = useMemo(() => {
+    if (searching || filtered.length === 0) return []
+    if (!category) {
+      const listedSlugs = new Set(filtered.map((article) => article.slug))
+      return getFeaturedArticles().filter((article) => listedSlugs.has(article.slug))
+    }
+    const lead = filtered.find((article) => article.featured) ?? filtered[0]
+    return lead ? [lead] : []
   }, [searching, filtered, category])
 
-  const gridSource = featured ? filtered.filter((article) => article.slug !== featured.slug) : filtered
+  const featuredSlugs = new Set(featuredArticles.map((article) => article.slug))
+  const gridSource = featuredArticles.length
+    ? filtered.filter((article) => !featuredSlugs.has(article.slug))
+    : filtered
   const pageCount = Math.max(1, Math.ceil(gridSource.length / PAGE_SIZE) || 1)
   const requestedPage = Number.isFinite(pageParam) && pageParam > 0 ? pageParam : 1
   const page = Math.min(requestedPage, pageCount)
@@ -231,51 +238,10 @@ export default function BlogArchive() {
         </SiteContainer>
       ) : (
         <>
-          {featured ? (
-            <section className="border-b border-[var(--color-line)]" aria-labelledby="featured-article">
-              <SiteContainer className="py-8 md:py-10">
-                <article className="grid overflow-hidden border border-[var(--color-line)] bg-[var(--color-surface)] lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-                  <Link href={`/blog/${featured.slug}`} className="block min-h-0 bg-[var(--color-canvas)]">
-                    <Image
-                      src={visual(featured).src}
-                      alt={visual(featured).alt}
-                      width={1400}
-                      height={875}
-                      priority
-                      sizes="(min-width: 1024px) 58vw, 100vw"
-                      className="aspect-[16/10] h-full w-full object-cover lg:aspect-auto lg:min-h-[22rem]"
-                    />
-                  </Link>
-                  <div className="flex flex-col justify-center px-5 py-6 sm:px-7 sm:py-8 lg:px-8">
-                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-accent)]">
-                      Featured Article
-                    </p>
-                    <p className="mt-4 text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
-                      {featured.category}
-                    </p>
-                    <h2
-                      id="featured-article"
-                      className="mt-2 text-[1.45rem] font-semibold leading-snug tracking-tight md:text-[1.7rem]"
-                    >
-                      <Link href={`/blog/${featured.slug}`} className="hover:underline">
-                        {featured.title}
-                      </Link>
-                    </h2>
-                    <p className="mt-3 text-base leading-relaxed text-[var(--color-muted)]">{featured.excerpt}</p>
-                    <p className="mt-4 text-sm text-[var(--color-muted)]">
-                      {formatArticleDate(featured.publishedAt)} · {featured.readingTime}
-                    </p>
-                    <Link
-                      href={`/blog/${featured.slug}`}
-                      className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
-                    >
-                      Read article
-                      <span aria-hidden="true"> →</span>
-                    </Link>
-                  </div>
-                </article>
-              </SiteContainer>
-            </section>
+          {featuredArticles.length > 1 ? (
+            <FeaturedArticleGrid articles={featuredArticles} />
+          ) : featuredArticles.length === 1 ? (
+            <FeaturedArticleLead article={featuredArticles[0]} />
           ) : null}
 
           <section aria-labelledby="all-articles">
@@ -345,6 +311,114 @@ export default function BlogArchive() {
         </>
       )}
     </div>
+  )
+}
+
+function FeaturedArticleGrid({ articles }: { articles: Article[] }) {
+  return (
+    <section className="border-b border-[var(--color-line)]" aria-labelledby="featured-articles">
+      <SiteContainer className="py-8 md:py-10">
+        <h2 id="featured-articles" className="sr-only">
+          Featured articles
+        </h2>
+        <ul className="grid items-stretch gap-5 md:grid-cols-2">
+          {articles.map((article) => {
+            const image = visual(article)
+            return (
+              <li key={article.slug} className="min-w-0">
+                <article className="flex h-full flex-col overflow-hidden rounded-[6px] border border-[var(--color-line)] bg-[var(--color-surface)]">
+                  <Link href={`/blog/${article.slug}`} className="block bg-[var(--color-canvas)]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={1672}
+                      height={940}
+                      priority
+                      sizes="(min-width: 768px) 40rem, 100vw"
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                  </Link>
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-accent)]">
+                      {article.category}
+                    </p>
+                    <h3 className="mt-2 text-[1.35rem] font-semibold leading-snug tracking-tight">
+                      <Link href={`/blog/${article.slug}`} className="hover:underline">
+                        {article.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 text-base leading-relaxed text-[var(--color-muted)]">{article.excerpt}</p>
+                    <div className="mt-auto pt-4">
+                      <p className="text-sm text-[var(--color-muted)]">
+                        {formatArticleDate(article.publishedAt)} · {article.readingTime}
+                      </p>
+                      <Link
+                        href={`/blog/${article.slug}`}
+                        className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+                      >
+                        Read article
+                        <span aria-hidden="true"> →</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            )
+          })}
+        </ul>
+      </SiteContainer>
+    </section>
+  )
+}
+
+function FeaturedArticleLead({ article }: { article: Article }) {
+  const image = visual(article)
+
+  return (
+    <section className="border-b border-[var(--color-line)]" aria-labelledby="featured-article">
+      <SiteContainer className="py-8 md:py-10">
+        <article className="grid overflow-hidden border border-[var(--color-line)] bg-[var(--color-surface)] lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+          <Link href={`/blog/${article.slug}`} className="block min-h-0 bg-[var(--color-canvas)]">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={1400}
+              height={875}
+              priority
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              className="aspect-[16/10] h-full w-full object-cover lg:aspect-auto lg:min-h-[22rem]"
+            />
+          </Link>
+          <div className="flex flex-col justify-center px-5 py-6 sm:px-7 sm:py-8 lg:px-8">
+            <p className="text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-accent)]">
+              Featured Article
+            </p>
+            <p className="mt-4 text-xs font-medium uppercase tracking-[0.14em] text-[var(--color-muted)]">
+              {article.category}
+            </p>
+            <h2
+              id="featured-article"
+              className="mt-2 text-[1.45rem] font-semibold leading-snug tracking-tight md:text-[1.7rem]"
+            >
+              <Link href={`/blog/${article.slug}`} className="hover:underline">
+                {article.title}
+              </Link>
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-[var(--color-muted)]">{article.excerpt}</p>
+            <p className="mt-4 text-sm text-[var(--color-muted)]">
+              {formatArticleDate(article.publishedAt)} · {article.readingTime}
+            </p>
+            <Link
+              href={`/blog/${article.slug}`}
+              className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              Read article
+              <span aria-hidden="true"> →</span>
+            </Link>
+          </div>
+        </article>
+      </SiteContainer>
+    </section>
   )
 }
 

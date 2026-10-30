@@ -942,6 +942,16 @@ export function getFeaturedArticle() {
   return articles.find((article) => article.featured) ?? getListedArticles()[0]
 }
 
+/** Articles index lead cards, left to right. Homepage still uses getFeaturedArticle(). */
+const featuredArticleSlugs = [
+  "sterflies-joins-spear-lancaster",
+  "drone-mapping-forensic-site-investigations",
+] as const
+
+export function getFeaturedArticles() {
+  return featuredArticleSlugs.map((slug) => getArticle(slug))
+}
+
 /** Newest listed articles, with the featured article separated for a lead slot. */
 export function getHomepageArticles(limit = 9) {
   const featured = getFeaturedArticle()

@@ -1,7 +1,6 @@
 import SiteContainer from "@/app/components/SiteContainer"
 import SectionHeader from "@/app/components/SectionHeader"
 import ButtonLink from "@/app/components/ButtonLink"
-import CalendlyEmbed from "@/app/components/contact/CalendlyEmbed"
 import { pageMetadata, siteConfig } from "@/app/config/site"
 
 export const metadata = pageMetadata({
@@ -32,11 +31,8 @@ export default function ContactPage() {
             title="Discuss a Documentation Project"
             description="Tell us what needs to be documented, where the site is located, and what records or deliverables are needed."
           />
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7">
             <ButtonLink href={`mailto:${siteConfig.email}`}>Email SterFlies</ButtonLink>
-            <ButtonLink href="#schedule" variant="secondary">
-              Schedule a Consultation
-            </ButtonLink>
           </div>
         </SiteContainer>
       </section>
@@ -88,19 +84,6 @@ export default function ContactPage() {
                 </dd>
               </div>
             </dl>
-          </div>
-        </SiteContainer>
-      </section>
-
-      <section id="schedule" className="border-b border-[var(--color-line)] py-12 md:py-16 lg:py-20">
-        <SiteContainer>
-          <SectionHeader
-            eyebrow="Scheduling"
-            title="Schedule a consultation"
-            description="Pick a time to discuss the site, the documentation objective, and the record that would be useful."
-          />
-          <div className="mt-10">
-            <CalendlyEmbed />
           </div>
         </SiteContainer>
       </section>
