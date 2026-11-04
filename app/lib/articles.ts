@@ -46,6 +46,38 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "planning-3d-scan-avoid-missing-site-details",
+    title: "Planning a 3D Scan: How to Avoid Missing Critical Site Details",
+    seoTitle: "Planning a 3D Scan for Complete Site Documentation | SterFlies",
+    description:
+      "Learn how to plan 3D scanning assignments, reduce missing geometry, position cameras around equipment, and verify scan coverage before leaving a site.",
+    ogTitle: "Planning a 3D Scan for Complete Site Documentation",
+    ogDescription:
+      "Learn how to plan 3D scanning assignments, reduce missing geometry, position cameras around equipment, and verify scan coverage before leaving a site.",
+    excerpt:
+      "A practical technical guide to planning 3D scanning assignments, minimizing missing geometry, and checking scan coverage in complex industrial environments.",
+    cardExcerpt:
+      "A technical guide to planning 3D scanning assignments, avoiding missing geometry, and reviewing scan coverage in industrial environments.",
+    category: "Reality Capture",
+    publishedAt: "2026-11-04",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1793826682/UHgry8vSJAFtcPqdS9pZaue_0AnsyKXHzboAAJezaXFTrzyIIvbTwAxXuujai28N8WFTFsjCIt3uAU7rqGppZWXOd77H0Q90T9-IQFBlbBSaQYi0ROAnYB6PYKu5XY6LcyoCOpAkdCuekbobIm4uR7Xcbf0UczT0Ckh71cCJSWhKzsF5AF8dmIIuaY8zT7nx_tqhpmk.jpg",
+      1600
+    ),
+    heroAlt:
+      "Professional 3D scanning camera positioned inside an industrial facility for reality capture documentation.",
+    readingTime: "8 min read",
+    relatedSlugs: [
+      "matterport-3d-scanning-safety-investigations",
+      "point-clouds-site-documentation",
+      "remote-site-review-spatial-context-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "sterflies-joins-spear-lancaster",
     title:
       "SterFlies Joins Spear + Lancaster, Expanding Field Documentation and Reality Capture Capabilities",
