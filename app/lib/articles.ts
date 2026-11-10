@@ -46,6 +46,39 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "tracking-construction-progress-with-drone-mapping",
+    title:
+      "Tracking Construction Progress With Drone Mapping: From Site Conditions to Project Records",
+    seoTitle: "Construction Progress Tracking With Drone Mapping | SterFlies",
+    description:
+      "Learn how recurring drone mapping helps construction teams document site conditions, track grading and earthwork, review progress, and organize project records.",
+    ogTitle: "Construction Progress Tracking With Drone Mapping",
+    ogDescription:
+      "Learn how recurring drone mapping helps construction teams document site conditions, track grading and earthwork, review progress, and organize project records.",
+    excerpt:
+      "Recurring drone mapping provides construction teams with a visual record of changing site conditions, earthwork, access routes, and project progress.",
+    cardExcerpt:
+      "How recurring drone mapping helps construction teams document site conditions, monitor progress, review earthwork, and maintain organized project records.",
+    category: "Construction Documentation",
+    publishedAt: "2026-11-07",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1788288246/side-by-side_iaycho.png",
+      1600
+    ),
+    heroAlt:
+      "Side-by-side aerial orthomosaic comparison showing construction site conditions at two different stages of development.",
+    readingTime: "15 min read",
+    relatedSlugs: [
+      "construction-progress-monitoring-best-practices",
+      "orthomosaic_blog",
+      "drone-mapping-forensic-site-investigations",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "planning-3d-scan-avoid-missing-site-details",
     title: "Planning a 3D Scan: How to Avoid Missing Critical Site Details",
     seoTitle: "Planning a 3D Scan for Complete Site Documentation | SterFlies",
