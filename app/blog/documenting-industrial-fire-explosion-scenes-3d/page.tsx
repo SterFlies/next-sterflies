@@ -225,7 +225,7 @@ export default function Page() {
         can be safely or completely scanned.
       </p>
       <ArticleFigure
-        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794501013/Screenshot_2026-11-12_102856_gd2mnp.png"
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794505489/Matterport_Scanner_in_Burnt_Industrial_Plant_k0b6bz.png"
         alt="Illustrative Matterport scanning camera positioned inside an industrial building."
         caption="Three dimensional scanning equipment can document accessible interior spaces once the site has been evaluated and cleared for the intended documentation activities."
       />
@@ -251,7 +251,7 @@ export default function Page() {
         for technical use.
       </p>
       <ArticleFigure
-        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794501013/Screenshot_2026-11-12_102836_pkigqm.png"
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794505481/Annotated_Damaged_Industrial_Facility_Cutaway_dlaau8.png"
         alt="Illustrative three dimensional model of a fire damaged industrial building with machinery, structural framing, and measurement annotations."
         caption="Illustrative 3D model showing documented industrial equipment, structural features, and example spatial measurements within a fire damaged facility."
       />
@@ -273,7 +273,7 @@ export default function Page() {
         identifiable. Do not overwrite an earlier record with a later one.
       </p>
       <ArticleFigure
-        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794501014/Screenshot_2026-11-12_102924_dvi8il.png"
+        src="https://res.cloudinary.com/dzlmoyomq/image/upload/v1794505482/Fire-Damaged_Industrial_Facility_Isometric_Render_gz9bku.png"
         alt="Illustrative three dimensional model of an industrial facility showing machinery, exposed structural framing, and interior equipment arrangements."
         caption="Illustrative 3D facility model demonstrating how structural features, equipment locations, and surrounding physical conditions can be organized within a spatial record."
       />
