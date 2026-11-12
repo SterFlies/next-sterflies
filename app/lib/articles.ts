@@ -46,6 +46,40 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "documenting-industrial-fire-explosion-scenes-3d",
+    title: "After the Fire: Documenting Industrial Fire and Explosion Scenes in 3D",
+    seoTitle: "Industrial Fire and Explosion Scene Documentation | SterFlies",
+    description:
+      "Explore how aerial mapping, 3D reality capture, and photography document industrial fire and explosion scenes for forensic investigations and technical review.",
+    ogTitle: "Industrial Fire and Explosion Scene Documentation",
+    ogDescription:
+      "Explore how aerial mapping, 3D reality capture, and photography document industrial fire and explosion scenes for forensic investigations and technical review.",
+    subtitle:
+      "What to capture, when access is restricted, and how spatial records can assist a qualified investigation.",
+    excerpt:
+      "Industrial fires can leave damaged equipment, unstable structures, and complex debris fields. Learn how reality capture supports the documentation of physical conditions for investigative review.",
+    cardExcerpt:
+      "Industrial fires can leave damaged equipment, unstable structures, and complex debris fields. Learn how aerial mapping and 3D reality capture support technical documentation for forensic review.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-11-11",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1794500388/Aerial_View_of_a_Burned_Industrial_Warehouse_cz0ivz.png",
+      1600
+    ),
+    heroAlt:
+      "Illustrative aerial view of a fire damaged industrial warehouse showing collapsed roofing, exposed structural framing, and surrounding site conditions.",
+    readingTime: "10 min read",
+    relatedSlugs: [
+      "documenting-industrial-machinery-after-workplace-incident",
+      "drone-mapping-forensic-site-investigations",
+      "forensic-mapping-incident-investigations",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "tracking-construction-progress-with-drone-mapping",
     title:
       "Tracking Construction Progress With Drone Mapping: From Site Conditions to Project Records",
