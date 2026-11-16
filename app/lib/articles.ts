@@ -46,6 +46,40 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "documenting-commercial-property-damage-before-restoration",
+    title: "Documenting Commercial Property Damage Before Restoration Begins",
+    seoTitle: "Commercial Property Damage Documentation | SterFlies",
+    description:
+      "Learn how photography and 3D reality capture document commercial property damage before restoration, preserving visible conditions and supporting technical review.",
+    ogTitle: "Commercial Property Damage Documentation",
+    ogDescription:
+      "Learn how photography and 3D reality capture document commercial property damage before restoration, preserving visible conditions and supporting technical review.",
+    subtitle:
+      "A practical field record for property owners, restoration teams, consultants, and insurance reviewers",
+    excerpt:
+      "Commercial property restoration can quickly change the conditions left behind by water intrusion, storms, and other damage. Learn how reality capture and organized photography support documentation before repairs begin.",
+    cardExcerpt:
+      "Commercial property damage can change quickly once cleanup and restoration begin. Learn how photography and reality capture help document visible conditions for technical review.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-11-12",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1794842824/Water-Damaged_Office_with_Collapsed_Ceiling-2_avufd7.png",
+      1600
+    ),
+    heroAlt:
+      "Illustrative water damaged commercial office interior showing damaged ceiling panels, exposed insulation, stained walls, and standing water.",
+    readingTime: "11 min read",
+    relatedSlugs: [
+      "documenting-mold-assessments-and-supporting-safety-decisions",
+      "reality-capture-industrial-hygiene-field-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-industrial-fire-explosion-scenes-3d",
     title: "After the Fire: Documenting Industrial Fire and Explosion Scenes in 3D",
     seoTitle: "Industrial Fire and Explosion Scene Documentation | SterFlies",
