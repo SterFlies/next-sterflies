@@ -46,6 +46,41 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "mapping-chemical-exposure-locations-3d-reality-capture",
+    title:
+      "Mapping Chemical Exposure Locations: Using 3D Reality Capture to Examine Distances and Work Areas",
+    seoTitle: "Mapping Chemical Exposure Locations With 3D Reality Capture | SterFlies",
+    description:
+      "Learn how 3D scanning helps investigators examine worker locations, equipment distances, and industrial site conditions during chemical exposure investigations.",
+    ogTitle: "Mapping Chemical Exposure Locations With 3D Reality Capture",
+    ogDescription:
+      "Learn how 3D scanning helps investigators examine worker locations, equipment distances, and industrial site conditions during chemical exposure investigations.",
+    subtitle:
+      "How a spatial record can clarify where someone worked, what equipment surrounded them, and which questions still require industrial hygiene evidence.",
+    excerpt:
+      "Three dimensional reality capture can help investigators examine where workers were located relative to industrial tanks, equipment, and surrounding structures during suspected chemical exposure incidents.",
+    cardExcerpt:
+      "Three dimensional reality capture can help investigators examine reported worker positions, equipment distances, and surrounding industrial conditions during suspected chemical exposure investigations.",
+    category: "Forensic Documentation",
+    publishedAt: "2026-11-20",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1795212434/Industrial_Plant_Holographic_Scan-1_p3f1pj.png",
+      1600
+    ),
+    heroAlt:
+      "Illustrative industrial processing facility showing a chemical storage tank and surrounding equipment transitioning into a three dimensional point cloud.",
+    readingTime: "10 min read",
+    relatedSlugs: [
+      "matterport-3d-scanning-safety-investigations",
+      "reality-capture-industrial-hygiene-field-investigations",
+      "remote-site-review-spatial-context-reality-capture",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "thermal-imaging-industrial-investigations",
     title:
       "Thermal Imaging in Industrial Investigations: What Temperature Patterns Can and Cannot Tell Us",
