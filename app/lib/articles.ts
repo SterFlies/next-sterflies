@@ -46,6 +46,39 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "thermal-imaging-industrial-investigations",
+    title:
+      "Thermal Imaging in Industrial Investigations: What Temperature Patterns Can and Cannot Tell Us",
+    seoTitle: "Thermal Imaging in Industrial Investigations | SterFlies",
+    description:
+      "Learn how thermal imaging supports industrial investigations, including emissivity, reflected temperatures, equipment conditions, and the limits of infrared measurements.",
+    ogTitle: "Thermal Imaging in Industrial Investigations",
+    ogDescription:
+      "Learn how thermal imaging supports industrial investigations, including emissivity, reflected temperatures, equipment conditions, and the limits of infrared measurements.",
+    excerpt:
+      "Thermal cameras can reveal temperature patterns that warrant closer examination, but interpreting those images requires an understanding of emissivity, reflections, operating conditions, and measurement limitations.",
+    cardExcerpt:
+      "Thermal imaging can reveal temperature patterns in industrial equipment, but interpreting those patterns requires an understanding of measurement limitations and operating conditions.",
+    category: "Thermal Documentation",
+    publishedAt: "2026-11-17",
+    author: "Jerome Sterling",
+    heroImage: cloudinaryUrl(
+      "https://res.cloudinary.com/dzlmoyomq/image/upload/v1795194327/Thermal_Inspection_at_Sunset-3_d2tm9l.png",
+      1600
+    ),
+    heroAlt:
+      "Illustrative thermal inspection of industrial piping and a storage tank using a handheld infrared camera.",
+    readingTime: "11 min read",
+    relatedSlugs: [
+      "thermal101_blog",
+      "documenting-industrial-machinery-after-workplace-incident",
+      "forensic-mapping-incident-investigations",
+    ],
+    featured: false,
+    listed: true,
+    tier: "core",
+  },
+  {
     slug: "documenting-commercial-property-damage-before-restoration",
     title: "Documenting Commercial Property Damage Before Restoration Begins",
     seoTitle: "Commercial Property Damage Documentation | SterFlies",
